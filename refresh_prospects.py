@@ -15,8 +15,7 @@ Les nouveaux prospects sortent donc avec statut "Aucune annonce trouvée".
 CE QUI EST FIDÈLEMENT REPRODUIT depuis vos données actuelles :
   • prio   : True si le quartier appartient à PRIO_QUARTIERS (quartiers cibles de l'agence).
   • tier   : chaud / tiede / froid selon la fraîcheur du DPE (seuils TIER_*).
-  • quartier (q) : affecté au quartier connu le plus proche (centroïdes calculés
-                   à partir du prospects.json existant -> apprentissage automatique léger).
+  • quartier (q) : affecté au quartier connu le plus proche (centroïdes FIGÉS, CENTROIDES_REF).
 
 CE QUI EST RECONSTITUÉ (le score exact n'existait pas dans le HTML, il était pré-calculé) :
   • score  : formule transparente et PARAMÉTRABLE ci-dessous (constantes W_*).
@@ -39,6 +38,28 @@ API = "https://data.ademe.fr/data-fair/api/v1/datasets/dpe03existant/lines"
 PRIO_QUARTIERS = {            # quartiers cibles -> prio=True (déduit de vos données)
     "Château-Gombert", "Saint-Jérôme", "Les Médecins", "Palama", "Les Mourets",
 }
+
+# Centroïdes de référence (lat, lon) FIGÉS — calculés une fois depuis le prospects.json
+# d'origine. On les fige pour que l'affectation par quartier reste STABLE jour après jour
+# (sinon, recalculer depuis un fichier régénéré ferait dériver les frontières de quartiers).
+CENTROIDES_REF = {
+    "Château-Gombert": (43.346314, 5.426105),
+    "Saint-Jérôme":    (43.331163, 5.417234),
+    "Clair Soleil":    (43.349280, 5.446723),
+    "Les Médecins":    (43.359562, 5.459901),
+    "Les Olives":      (43.324423, 5.453130),
+    "Saint-Just":      (43.318792, 5.399255),
+    "Saint-Mitre":     (43.346792, 5.416707),
+    "Palama":          (43.359259, 5.440727),
+    "Les Mourets":     (43.351601, 5.436561),
+    "La Croix-Rouge":  (43.336171, 5.440412),
+    "Malpassé":        (43.323078, 5.406721),
+    "Petit Bosquet":   (43.358270, 5.428719),
+}
+
+# Garde-fou : on n'écrit PAS prospects.json si l'API renvoie moins que ce seuil
+# (évite d'écraser vos données par un fichier vide en cas de souci côté ADEME).
+MIN_PROSPECTS = 10
 
 # Seuils de fraîcheur (en jours depuis l'établissement du DPE)
 TIER_CHAUD = 21              # <= 21 j  -> chaud
@@ -71,31 +92,12 @@ def haversine(a_lat, a_lon, b_lat, b_lon):
     h = math.sin(dla / 2) ** 2 + math.cos(a_lat * r) * math.cos(b_lat * r) * math.sin(dlo / 2) ** 2
     return 2 * R * math.asin(math.sqrt(h))
 
-def load_centroids(out_path):
-    """Centroïdes (lat/lon moyens) de chaque quartier à partir du prospects.json existant."""
-    if not out_path.exists():
-        sys.exit("ERREUR : prospects.json introuvable à côté du script ; "
-                 "il sert de référence pour l'affectation par quartier. "
-                 "Gardez la version livrée dans le dossier avant de lancer la recharge.")
-    data = json.loads(out_path.read_text(encoding="utf-8"))
-    acc = {}
-    for p in data:
-        if p.get("lat") is None or p.get("q") is None:
-            continue
-        acc.setdefault(p["q"], []).append((p["lat"], p["lon"]))
-    cents = {q: (sum(x[0] for x in v) / len(v), sum(x[1] for x in v) / len(v))
-             for q, v in acc.items()}
-    if not cents:
-        sys.exit("ERREUR : impossible de calculer des centroïdes de quartiers.")
-    return cents
-
 def nearest_quartier(lat, lon, cents):
     return min(cents.items(), key=lambda kv: haversine(lat, lon, kv[1][0], kv[1][1]))[0]
 
 def clean_addr(rec):
     """Reconstruit '28 Traverse Collet Redon' à partir des champs ADEME."""
     a = (rec.get("adresse_ban") or "").strip()
-    # adresse_ban = "Chemin des Jonquilles 13013 Marseille" -> on retire CP + ville
     for tail in (" 13013 Marseille", " 13013 MARSEILLE", "13013 Marseille", "13013"):
         a = a.replace(tail, "")
     a = a.replace("Marseille", "").strip(" ,")
@@ -115,19 +117,18 @@ def geo(rec):
 
 # ------------------------------------------------------------------ API ADEME
 def fetch_all(cp, since_iso, page=1000, timeout=60):
-    qs = (f'type_batiment:"maison" AND code_postal_ban:"{cp}" '
-          f'AND date_etablissement_dpe:[{since_iso} TO *]')
+    qs = ('type_batiment:"maison" AND code_postal_ban:"%s" '
+          'AND date_etablissement_dpe:[%s TO *]' % (cp, since_iso))
     params = {"qs": qs, "select": SELECT, "size": str(page),
               "sort": "-date_etablissement_dpe"}
     url = API + "?" + urllib.parse.urlencode(params)
-    rows, seen = [], 0
+    rows = []
     while url:
         req = urllib.request.Request(url, headers={"User-Agent": "boitage-13/1.0"})
         with urllib.request.urlopen(req, timeout=timeout) as r:
             payload = json.load(r)
         batch = payload.get("results", [])
         rows.extend(batch)
-        seen += len(batch)
         url = payload.get("next")          # pagination par curseur data-fair
         if not batch:
             break
@@ -186,7 +187,7 @@ def to_prospect(rec, today, cents):
         "score": score,
         "lat": lat,
         "lon": lon,
-        "gmaps": f"https://maps.google.com/?q={lat},{lon}",
+        "gmaps": "https://maps.google.com/?q=%s,%s" % (lat, lon),
         "deja": deja,
         "conso": round(float(conso)) if conso else None,
         "gesv": round(float(gesv)) if gesv else None,
@@ -196,7 +197,7 @@ def to_prospect(rec, today, cents):
 # ------------------------------------------------------------------ main
 def main():
     ap = argparse.ArgumentParser(description="Recharge prospects.json depuis l'API ADEME (DPE).")
-    ap.add_argument("--days", type=int, default=60, help="fenêtre d'ancienneté max du DPE (jours)")
+    ap.add_argument("--days", type=int, default=60, help="fenetre d'anciennete max du DPE (jours)")
     ap.add_argument("--cp", default="13013", help="code postal BAN")
     ap.add_argument("--out", default=str(HERE / "prospects.json"), help="fichier de sortie")
     args = ap.parse_args()
@@ -205,13 +206,12 @@ def main():
     today = date.today()
     since = (today - timedelta(days=args.days)).isoformat()
 
-    print(f"→ Centroïdes de quartiers depuis {out.name} (référence)…")
-    cents = load_centroids(out)
-    print(f"  {len(cents)} quartiers connus.")
+    cents = CENTROIDES_REF          # centroides figes -> affectation stable
+    print("-> %d quartiers de reference (centroides figes)." % len(cents))
 
-    print(f"→ ADEME : maisons CP {args.cp}, DPE depuis {since} …")
+    print("-> ADEME : maisons CP %s, DPE depuis %s ..." % (args.cp, since))
     rows = fetch_all(args.cp, since)
-    print(f"  {len(rows)} DPE bruts reçus.")
+    print("   %d DPE bruts recus." % len(rows))
 
     seen, prospects = set(), []
     for rec in rows:
@@ -223,6 +223,10 @@ def main():
         if p:
             prospects.append(p)
 
+    if len(prospects) < MIN_PROSPECTS:
+        sys.exit("ABANDON : seulement %d prospect(s) (< %d). prospects.json N'EST PAS modifie "
+                 "(probable souci cote API ADEME)." % (len(prospects), MIN_PROSPECTS))
+
     prospects.sort(key=lambda p: p["score"], reverse=True)
     for i, p in enumerate(prospects, 1):
         p["rang"] = i
@@ -230,8 +234,8 @@ def main():
     out.write_text(json.dumps(prospects, ensure_ascii=False, indent=1), encoding="utf-8")
     chauds = sum(1 for p in prospects if p["tier"] == "chaud")
     stars = sum(1 for p in prospects if p["prio"])
-    print(f"✓ {out} : {len(prospects)} prospects  ({stars} ⭐ · {chauds} 🔥)")
-    print("  Pensez à re-pousser :  git add prospects.json && "
+    print("OK %s : %d prospects  (%d etoiles, %d chauds)" % (out, len(prospects), stars, chauds))
+    print('   Pensez a re-pousser : git add prospects.json && '
           'git commit -m "MAJ prospects (extraction ADEME)" && git push')
 
 if __name__ == "__main__":
