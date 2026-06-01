@@ -39,6 +39,9 @@ PRIO_QUARTIERS = {            # quartiers cibles -> prio=True (déduit de vos do
     "Château-Gombert", "Saint-Jérôme", "Les Médecins", "Palama", "Les Mourets",
 }
 
+# Quartiers EXCLUS du boîtage : tout prospect affecté à l'un d'eux est ignoré.
+EXCLUDE_QUARTIERS = {"Les Olives", "Les Martégaux"}
+
 # Centroïdes de référence (lat, lon) FIGÉS — calculés une fois depuis le prospects.json
 # d'origine. On les fige pour que l'affectation par quartier reste STABLE jour après jour
 # (sinon, recalculer depuis un fichier régénéré ferait dériver les frontières de quartiers).
@@ -220,7 +223,7 @@ def main():
             continue
         seen.add(nid)
         p = to_prospect(rec, today, cents)
-        if p:
+        if p and p["q"] not in EXCLUDE_QUARTIERS:
             prospects.append(p)
 
     if len(prospects) < MIN_PROSPECTS:
