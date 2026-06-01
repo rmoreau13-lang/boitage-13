@@ -120,6 +120,10 @@ body.listview .list{display:grid}body.listview #map{display:none}
 .facts{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
 .facts a,.facts button{flex:1;min-width:90px;text-align:center;padding:11px;border-radius:11px;font-weight:700;font-size:13px;text-decoration:none;cursor:pointer;border:none;font-family:inherit}
 .facts .map{background:var(--ink);color:#fff}.facts .ann{background:var(--terra);color:#fff}.facts .earth{background:#3d6e8f;color:#fff}.facts .add{background:var(--teal);color:#fff}.facts .add.in{background:var(--sun);color:var(--ink)}
+.boited{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:13.5px;font-weight:600;color:#1f7a6e;background:#e6f3ef;border:1px solid #cfe7e0;border-radius:11px;padding:9px 11px}
+.bbtn{border:1.5px solid var(--line);background:var(--cream);border-radius:9px;padding:8px 11px;font-family:inherit;font-weight:700;font-size:12.5px;cursor:pointer;color:var(--ink)}
+.bbtn.go{background:var(--teal);color:#fff;border-color:var(--teal);width:100%;padding:11px}
+.bbtn.x{color:var(--terra-d)}
 </style></head><body>
 <div class="top">
  <div class="title">Cockpit <em>Boîtage</em> · 13ᵉ</div>
@@ -173,7 +177,7 @@ let phIndex={};
 async function load(){try{const raw=await store.get('boitage13');if(raw)state=JSON.parse(raw)}catch(e){} try{const t=await store.get('boitage13_tour');if(t)tour=JSON.parse(t)}catch(e){} try{const m=await store.get('boitage13_mode');if(m)travelMode=m}catch(e){} try{const p=await store.get('boitage13_phidx');if(p)phIndex=JSON.parse(p)}catch(e){}}
 async function save(){try{await store.set('boitage13',JSON.stringify(state))}catch(e){}}
 async function saveTour(){try{await store.set('boitage13_tour',JSON.stringify(tour))}catch(e){}}
-function st(id){return state[id]||{s:0,n:''}}
+function st(id){return state[id]||{s:0,n:'',b:''}}
 
 // map
 const map=L.map('map',{zoomControl:true}).setView([43.345,5.432],13);
@@ -200,16 +204,22 @@ function drawList(d){
  list.innerHTML=d.map(p=>{const s=st(p.id);const stxt=s.s>0?' · '+STAT[s.s]:'';
   return `<div class="row ${p.prio?'prio':''} ${s.s>0?'done':''}" onclick="openFiche('${p.id}')">
    <span class="rrang">${p.rang}</span><span class="rdot ${p.tier}"></span>
-   <div class="rmain"><div class="raddr">${p.prio?'\u2b50 ':''}${p.adresse}${phIndex[p.id]?' \U0001f4f7':''}</div>
+   <div class="rmain"><div class="raddr">${p.prio?'\u2b50 ':''}${p.adresse}${phIndex[p.id]?' \U0001f4f7':''}${st(p.id).b?' \ud83d\udced':''}</div>
     <div class="rsub">${p.q} \u00b7 DPE ${p.dpe}/${p.ges} \u00b7 ${p.surface} m\u00b2 \u00b7 J-${p.jours}${stxt}</div></div>
    <div class="rscore">${p.score}</div>
    <div class="rq" onclick="event.stopPropagation()"><button class="qb add ${inTour(p.id)?'in':''}" onclick="toggleTour('${p.id}')">${inTour(p.id)?'\u2713':'\uff0b'}</button><a class="qb" href="${p.gmaps}" target="_blank">\U0001f4cd</a></div>
   </div>`}).join('')||'<div style="padding:30px;text-align:center;color:#9a8a7c">Aucun prospect \U0001f937</div>';
 }
 function cp(b,t){navigator.clipboard.writeText(t).then(()=>{const o=b.textContent;b.textContent='✓';setTimeout(()=>b.textContent=o,1000)})}
-function setS(id,k){const c=st(id);state[id]={s:k,n:c.n};save();refresh();
+function setS(id,k){const c=st(id);state[id]={s:k,n:c.n,b:c.b};save();refresh();
  if(ficheOpen===id){const sel=k;document.querySelectorAll('#fiche .seg button').forEach((b,i)=>b.classList.toggle('on',i===sel))}}
-function setN(id,v){const c=st(id);state[id]={s:c.s,n:v};save();updateTodo()}
+function setN(id,v){const c=st(id);state[id]={s:c.s,n:v,b:c.b};save();updateTodo()}
+// ---- BOÎTÉ (horodaté) ----
+function fmtBoite(iso){const d=new Date(iso);const p=n=>String(n).padStart(2,'0');return p(d.getDate())+'/'+p(d.getMonth()+1)+'/'+d.getFullYear()+' à '+p(d.getHours())+'h'+p(d.getMinutes())}
+function boiteHTML(id){const b=st(id).b;return b?`<div class="boited">📭 Boîté le <b>${fmtBoite(b)}</b><button class="bbtn" onclick="setBoite('${id}')">↻ Refaire</button><button class="bbtn x" onclick="clearBoite('${id}')">✕</button></div>`:`<button class="bbtn go" onclick="setBoite('${id}')">📭 Marquer « boîté » maintenant</button>`}
+function refreshBoite(id){const el=document.getElementById('boitebox');if(el)el.innerHTML=boiteHTML(id)}
+function setBoite(id){const c=st(id);state[id]={s:c.s,n:c.n,b:new Date().toISOString()};save();refreshBoite(id);drawMap(filtered());drawList(filtered())}
+function clearBoite(id){const c=st(id);state[id]={s:c.s,n:c.n,b:''};save();refreshBoite(id);drawMap(filtered());drawList(filtered())}
 function updateTodo(){const todo=DATA.filter(p=>st(p.id).s==0).length;document.getElementById('todo').innerHTML='<b>'+todo+'</b>à visiter'}
 function filtered(){return DATA.filter(p=>(ft.size==0||ft.has(p.tier))&&(fq=='all'||p.q==fq)&&(!prio||p.prio)&&(!q||p.adresse.toLowerCase().includes(q)||p.q.toLowerCase().includes(q)))}
 
@@ -263,6 +273,8 @@ function openFiche(id){ficheOpen=id;const p=byId[id];const s=st(id);
    <div class="fsec">Suivi</div>
    <div class="seg">${segs}</div>
    <textarea class="note" placeholder="Note terrain…" onchange="setN('${id}',this.value)">${s.n||''}</textarea>
+   <div class="fsec">📭 Boîtage</div>
+   <div id="boitebox">${boiteHTML(id)}</div>
    <div class="fsec">📷 Photos du boîtage</div>
    <div class="phgrid" id="phgrid"><label class="phadd">📷<span>Ajouter</span><input type="file" accept="image/*" capture="environment" onchange="addPhoto('${id}',this)"></label></div>
    <div class="facts"><button class="add ${inTour(id)?'in':''}" onclick="toggleTour('${id}')">${inTour(id)?'✓ Tournée':'＋ Tournée'}</button><a class="map" href="${p.gmaps}" target="_blank">📍 Itinéraire</a><a class="earth" href="${earthURL(p)}" target="_blank">🌍 Earth</a><a class="ann" href="${annURL(p)}" target="_blank">🔗 Annonces</a></div>
