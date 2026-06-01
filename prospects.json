@@ -2,6 +2,7 @@
  {
   "id": "2613E1376873J",
   "q": "Château-Gombert",
+  "qoff": "Saint-Mitre",
   "prio": true,
   "date": "2026-05-22",
   "jours": 10,
@@ -27,6 +28,7 @@
  {
   "id": "2613E1393058W",
   "q": "Château-Gombert",
+  "qoff": "Saint-Mitre",
   "prio": true,
   "date": "2026-05-25",
   "jours": 7,
@@ -52,6 +54,7 @@
  {
   "id": "2613E1328055T",
   "q": "Les Médecins",
+  "qoff": "Les Médecins",
   "prio": true,
   "date": "2026-05-18",
   "jours": 14,
@@ -77,6 +80,7 @@
  {
   "id": "2613E1380031V",
   "q": "Les Médecins",
+  "qoff": "Les Médecins",
   "prio": true,
   "date": "2026-05-22",
   "jours": 10,
@@ -102,6 +106,7 @@
  {
   "id": "2613E1307038K",
   "q": "Saint-Jérôme",
+  "qoff": "Saint-Jérôme",
   "prio": true,
   "date": "2026-05-13",
   "jours": 19,
@@ -127,6 +132,7 @@
  {
   "id": "2613E1386376W",
   "q": "Saint-Jérôme",
+  "qoff": "Saint-Jérôme",
   "prio": true,
   "date": "2026-05-22",
   "jours": 10,
@@ -152,6 +158,7 @@
  {
   "id": "2613E1348030A",
   "q": "Clair Soleil",
+  "qoff": "Château-Gombert",
   "prio": false,
   "date": "2026-05-20",
   "jours": 12,
@@ -177,6 +184,7 @@
  {
   "id": "2613E1235088C",
   "q": "Les Mourets",
+  "qoff": "Château-Gombert",
   "prio": true,
   "date": "2026-05-05",
   "jours": 27,
@@ -202,6 +210,7 @@
  {
   "id": "2613E1286940K",
   "q": "Saint-Jérôme",
+  "qoff": "Saint-Jérôme",
   "prio": true,
   "date": "2026-05-12",
   "jours": 20,
@@ -227,6 +236,7 @@
  {
   "id": "2613E1376980M",
   "q": "Clair Soleil",
+  "qoff": "Château-Gombert",
   "prio": false,
   "date": "2026-05-22",
   "jours": 10,
@@ -252,6 +262,7 @@
  {
   "id": "2613E1259018M",
   "q": "Palama",
+  "qoff": "Palama",
   "prio": true,
   "date": "2026-05-07",
   "jours": 25,
@@ -277,6 +288,7 @@
  {
   "id": "2613E1216652A",
   "q": "Palama",
+  "qoff": "Palama",
   "prio": true,
   "date": "2026-05-04",
   "jours": 28,
@@ -302,6 +314,7 @@
  {
   "id": "2613E1075893F",
   "q": "Les Mourets",
+  "qoff": "Château-Gombert",
   "prio": true,
   "date": "2026-04-18",
   "jours": 44,
@@ -327,6 +340,7 @@
  {
   "id": "2613E1159275F",
   "q": "Saint-Jérôme",
+  "qoff": "Saint-Jérôme",
   "prio": true,
   "date": "2026-04-27",
   "jours": 35,
@@ -352,6 +366,7 @@
  {
   "id": "2613E1140405L",
   "q": "Saint-Just",
+  "qoff": "Saint-Just",
   "prio": false,
   "date": "2026-04-24",
   "jours": 38,
@@ -377,6 +392,7 @@
  {
   "id": "2613E1249870Q",
   "q": "Les Mourets",
+  "qoff": "Château-Gombert",
   "prio": true,
   "date": "2026-05-07",
   "jours": 25,
@@ -402,6 +418,7 @@
  {
   "id": "2613E1167439F",
   "q": "Château-Gombert",
+  "qoff": "Saint-Mitre",
   "prio": true,
   "date": "2026-04-28",
   "jours": 34,
@@ -427,6 +444,7 @@
  {
   "id": "2613E1132273R",
   "q": "Les Mourets",
+  "qoff": "Château-Gombert",
   "prio": true,
   "date": "2026-04-24",
   "jours": 38,
@@ -452,6 +470,7 @@
  {
   "id": "2613E1089083N",
   "q": "Château-Gombert",
+  "qoff": "Saint-Mitre",
   "prio": true,
   "date": "2026-04-20",
   "jours": 42,
@@ -477,6 +496,7 @@
  {
   "id": "2613E1089034Q",
   "q": "Château-Gombert",
+  "qoff": "Saint-Mitre",
   "prio": true,
   "date": "2026-04-20",
   "jours": 42,
@@ -502,6 +522,7 @@
  {
   "id": "2613E1084353P",
   "q": "Château-Gombert",
+  "qoff": "Saint-Mitre",
   "prio": true,
   "date": "2026-04-20",
   "jours": 42,
@@ -527,6 +548,7 @@
  {
   "id": "2613E1294345F",
   "q": "Saint-Just",
+  "qoff": "Saint-Just",
   "prio": false,
   "date": "2026-05-12",
   "jours": 20,
@@ -552,6 +574,7 @@
  {
   "id": "2613E1039644A",
   "q": "Les Mourets",
+  "qoff": "Château-Gombert",
   "prio": true,
   "date": "2026-04-15",
   "jours": 47,
@@ -577,6 +600,7 @@
  {
   "id": "2613E1140290A",
   "q": "Saint-Just",
+  "qoff": "Saint-Just",
   "prio": false,
   "date": "2026-04-24",
   "jours": 38,
@@ -602,6 +626,7 @@
  {
   "id": "2613E1155255P",
   "q": "Saint-Mitre",
+  "qoff": "Saint-Mitre",
   "prio": false,
   "date": "2026-04-27",
   "jours": 35,
@@ -627,6 +652,7 @@
  {
   "id": "2613E1239397V",
   "q": "La Croix-Rouge",
+  "qoff": "Château-Gombert",
   "prio": false,
   "date": "2026-05-06",
   "jours": 26,
@@ -652,6 +678,7 @@
  {
   "id": "2613E1043513V",
   "q": "Palama",
+  "qoff": "Palama",
   "prio": true,
   "date": "2026-04-15",
   "jours": 47,
@@ -677,6 +704,7 @@
  {
   "id": "2613E1256550O",
   "q": "La Croix-Rouge",
+  "qoff": "Les Olives",
   "prio": false,
   "date": "2026-05-07",
   "jours": 25,
@@ -702,6 +730,7 @@
  {
   "id": "2613E1035051J",
   "q": "Palama",
+  "qoff": "Palama",
   "prio": true,
   "date": "2026-04-14",
   "jours": 48,
@@ -727,6 +756,7 @@
  {
   "id": "2613E1009804I",
   "q": "Château-Gombert",
+  "qoff": "Saint-Mitre",
   "prio": true,
   "date": "2026-04-11",
   "jours": 51,
@@ -752,6 +782,7 @@
  {
   "id": "2613E1084776W",
   "q": "Malpassé",
+  "qoff": "Malpassé",
   "prio": false,
   "date": "2026-04-20",
   "jours": 42,
@@ -777,6 +808,7 @@
  {
   "id": "2613E0998804G",
   "q": "Château-Gombert",
+  "qoff": "Saint-Mitre",
   "prio": true,
   "date": "2026-04-10",
   "jours": 52,
@@ -802,6 +834,7 @@
  {
   "id": "2613E0981499R",
   "q": "Palama",
+  "qoff": "Palama",
   "prio": true,
   "date": "2026-04-08",
   "jours": 54,
@@ -827,6 +860,7 @@
  {
   "id": "2613E1176421R",
   "q": "Clair Soleil",
+  "qoff": "Château-Gombert",
   "prio": false,
   "date": "2026-04-29",
   "jours": 33,
@@ -852,6 +886,7 @@
  {
   "id": "2613E1119717T",
   "q": "Saint-Mitre",
+  "qoff": "Saint-Mitre",
   "prio": false,
   "date": "2026-04-23",
   "jours": 39,
@@ -877,6 +912,7 @@
  {
   "id": "2613E1155329L",
   "q": "La Croix-Rouge",
+  "qoff": "La Croix-Rouge",
   "prio": false,
   "date": "2026-04-27",
   "jours": 35,
@@ -902,6 +938,7 @@
  {
   "id": "2613E0944407B",
   "q": "Palama",
+  "qoff": "Château-Gombert",
   "prio": true,
   "date": "2026-04-03",
   "jours": 59,
@@ -927,6 +964,7 @@
  {
   "id": "2613E1096613D",
   "q": "Clair Soleil",
+  "qoff": "Château-Gombert",
   "prio": false,
   "date": "2026-04-21",
   "jours": 41,
@@ -952,6 +990,7 @@
  {
   "id": "2613E1049224M",
   "q": "La Croix-Rouge",
+  "qoff": "La Croix-Rouge",
   "prio": false,
   "date": "2026-04-15",
   "jours": 47,
@@ -977,6 +1016,7 @@
  {
   "id": "2613E0950354U",
   "q": "Saint-Just",
+  "qoff": "Saint-Just",
   "prio": false,
   "date": "2026-04-03",
   "jours": 59,
@@ -1002,6 +1042,7 @@
  {
   "id": "2613E1001510I",
   "q": "Saint-Mitre",
+  "qoff": "Saint-Mitre",
   "prio": false,
   "date": "2026-04-10",
   "jours": 52,
@@ -1027,6 +1068,7 @@
  {
   "id": "2613E1001758W",
   "q": "Saint-Mitre",
+  "qoff": "Saint-Mitre",
   "prio": false,
   "date": "2026-04-10",
   "jours": 52,
@@ -1052,6 +1094,7 @@
  {
   "id": "2613E0973940Y",
   "q": "Petit Bosquet",
+  "qoff": "Les Mourets",
   "prio": false,
   "date": "2026-04-08",
   "jours": 54,
@@ -1077,6 +1120,7 @@
  {
   "id": "2613E0971356O",
   "q": "Petit Bosquet",
+  "qoff": "Saint-Mitre",
   "prio": false,
   "date": "2026-04-08",
   "jours": 54,
@@ -1102,6 +1146,7 @@
  {
   "id": "2613E0963900U",
   "q": "Petit Bosquet",
+  "qoff": "Les Mourets",
   "prio": false,
   "date": "2026-04-07",
   "jours": 55,
@@ -1127,6 +1172,7 @@
  {
   "id": "2613E1032517X",
   "q": "Malpassé",
+  "qoff": "Saint-Just",
   "prio": false,
   "date": "2026-04-14",
   "jours": 48,
@@ -1152,6 +1198,7 @@
  {
   "id": "2613E0974957B",
   "q": "Saint-Mitre",
+  "qoff": "Saint-Mitre",
   "prio": false,
   "date": "2026-04-08",
   "jours": 54,
@@ -1177,6 +1224,7 @@
  {
   "id": "2613E0964245B",
   "q": "Saint-Mitre",
+  "qoff": "Saint-Mitre",
   "prio": false,
   "date": "2026-04-07",
   "jours": 55,
