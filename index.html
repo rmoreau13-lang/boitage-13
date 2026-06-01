@@ -124,18 +124,39 @@ body.listview .list{display:grid}body.listview #map{display:none}
 .bbtn{border:1.5px solid var(--line);background:var(--cream);border-radius:9px;padding:8px 11px;font-family:inherit;font-weight:700;font-size:12.5px;cursor:pointer;color:var(--ink)}
 .bbtn.go{background:var(--teal);color:#fff;border-color:var(--teal);width:100%;padding:11px}
 .bbtn.x{color:var(--terra-d)}
+.totop{position:absolute;right:14px;bottom:70px;z-index:680;display:none;align-items:center;justify-content:center;width:44px;height:44px;border-radius:999px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);font-size:20px;font-weight:800;box-shadow:var(--shadow);cursor:pointer}
+body.listview .totop.show{display:flex}
+@media(max-width:560px){
+ .top{padding:8px 10px}
+ .title{font-size:18px}
+ .stat{font-size:12.5px;padding:4px 10px}
+ .bar{gap:7px}
+ .search{min-width:100%;font-size:16px;padding:11px 12px}
+ .sel{font-size:13.5px;padding:10px 11px}
+ .chip{font-size:14px;padding:10px 13px}
+ .toggle{margin-left:0}
+ .toggle button{padding:10px 15px;font-size:14px}
+ .row{padding:13px 12px 13px 15px;gap:12px}
+ .raddr{font-size:15px}
+ .rsub{font-size:12px}
+ .rscore{font-size:21px;min-width:34px}
+ .qb{padding:11px 13px;font-size:17px}
+ .legend{font-size:10px;padding:6px 8px}
+}
 </style></head><body>
 <div class="top">
  <div class="title">Cockpit <em>Boîtage</em> · 13ᵉ</div>
  <div class="stats">
   <span class="stat" id="st-tot"><b>59</b>prospects</span><span class="stat" id="st-star"><b>22</b>⭐</span>
-  <span class="stat" id="st-chaud"><b>13</b>🔥</span><span class="stat" id="todo"><b>59</b>à visiter</span>
+  <span class="stat" id="st-chaud"><b>13</b>🔥</span><span class="stat" id="st-boite"><b>0</b>📭 auj.</span><span class="stat" id="todo"><b>59</b>à visiter</span>
  </div>
  <div class="bar">
   <input class="search" id="q" placeholder="🔎 rue / quartier">
   <select class="sel" id="quart"></select>
   <span class="chip" data-t="chaud">🔥</span><span class="chip" data-t="tiede">♨️</span><span class="chip" data-t="froid">🌡️</span>
   <span class="chip star" id="prio">⭐</span>
+  <span class="chip" id="cboite">📭 à boîter</span>
+  <select class="sel" id="sort"><option value="score">⇅ Score</option><option value="dpe">⇅ DPE récent</option><option value="quartier">⇅ Quartier</option></select>
   <div class="toggle"><button id="bmap" class="on">🗺️ Carte</button><button id="blist">📋 Liste</button></div>
  </div>
 </div>
@@ -143,6 +164,7 @@ body.listview .list{display:grid}body.listview #map{display:none}
  <div id="map"></div>
  <div class="legend"><span><i class="dot" style="background:#e8503a"></i>Chaud</span><span><i class="dot" style="background:#e9a319"></i>Tiède</span><span><i class="dot" style="background:#7d93a3"></i>Refroidi</span><span>⭐ prioritaire</span></div>
  <div class="list" id="list"></div>
+ <button class="totop" id="totop" title="Haut de liste">↑</button>
  <button class="fab" id="fab">🚲 Tournée <span class="bdg" id="fabn">0</span></button>
  <div class="sheet" id="sheet">
   <div class="shead"><div class="t">Plan de tournée</div><div class="d" id="tdesc">Ajoute des adresses depuis la carte ou la liste.</div><button class="sclose" id="sclose">✕</button></div>
@@ -167,7 +189,7 @@ const mem={};
 const store={async get(k){try{if(window.storage){const r=await window.storage.get(k);return r?r.value:null}}catch(e){} try{return localStorage.getItem(k)}catch(e){} return mem[k]??null},
  async set(k,v){try{if(window.storage){await window.storage.set(k,v);return}}catch(e){} try{localStorage.setItem(k,v);return}catch(e){} mem[k]=v}};
 let state={}; // id -> {s:statusIndex, n:note}
-let ft=new Set(), fq='all', prio=0, q='';
+let ft=new Set(), fq='all', prio=0, q='', fBoite=0, sortMode='score';
 let byId={};
 let tour=[]; // ordered ids
 let startPos=null; // {lat,lon} optional
@@ -206,7 +228,7 @@ function drawList(d){
   return `<div class="row ${p.prio?'prio':''} ${s.s>0?'done':''}" onclick="openFiche('${p.id}')">
    <span class="rrang">${p.rang}</span><span class="rdot ${p.tier}"></span>
    <div class="rmain"><div class="raddr">${p.prio?'\u2b50 ':''}${p.adresse}${phIndex[p.id]?' \ud83d\udcf7':''}${st(p.id).b?' \ud83d\udced':''}</div>
-    <div class="rsub">${p.q} \u00b7 DPE ${p.dpe}/${p.ges} \u00b7 ${p.surface} m\u00b2 \u00b7 J-${p.jours}${stxt}</div></div>
+    <div class="rsub">${p.q} \u00b7 DPE ${p.dpe}/${p.ges} \u00b7 ${p.surface} m\u00b2 \u00b7 J-${p.jours}${stxt}${p.qoff&&p.qoff!==p.q?' · 🏛 '+p.qoff:''}</div></div>
    <div class="rscore">${p.score}</div>
    <div class="rq" onclick="event.stopPropagation()"><button class="qb add ${inTour(p.id)?'in':''}" onclick="toggleTour('${p.id}')">${inTour(p.id)?'\u2713':'\uff0b'}</button><a class="qb" href="${p.gmaps}" target="_blank">📍</a></div>
   </div>`}).join('')||'<div style="padding:30px;text-align:center;color:#9a8a7c">Aucun prospect 🤷</div>';
@@ -219,10 +241,14 @@ function setN(id,v){const c=st(id);state[id]={s:c.s,n:v,b:c.b};save();updateTodo
 function fmtBoite(iso){const d=new Date(iso);const p=n=>String(n).padStart(2,'0');return p(d.getDate())+'/'+p(d.getMonth()+1)+'/'+d.getFullYear()+' à '+p(d.getHours())+'h'+p(d.getMinutes())}
 function boiteHTML(id){const b=st(id).b;return b?`<div class="boited">📭 Boîté le <b>${fmtBoite(b)}</b><button class="bbtn" onclick="setBoite('${id}')">↻ Refaire</button><button class="bbtn x" onclick="clearBoite('${id}')">✕</button></div>`:`<button class="bbtn go" onclick="setBoite('${id}')">📭 Marquer « boîté » maintenant</button>`}
 function refreshBoite(id){const el=document.getElementById('boitebox');if(el)el.innerHTML=boiteHTML(id)}
-function setBoite(id){const c=st(id);state[id]={s:c.s,n:c.n,b:new Date().toISOString()};save();refreshBoite(id);drawMap(filtered());drawList(filtered())}
-function clearBoite(id){const c=st(id);state[id]={s:c.s,n:c.n,b:''};save();refreshBoite(id);drawMap(filtered());drawList(filtered())}
+function setBoite(id){const c=st(id);state[id]={s:c.s,n:c.n,b:new Date().toISOString()};save();refreshBoite(id);updateStats();drawMap(filtered());drawList(filtered())}
+function clearBoite(id){const c=st(id);state[id]={s:c.s,n:c.n,b:''};save();refreshBoite(id);updateStats();drawMap(filtered());drawList(filtered())}
 function updateTodo(){const todo=DATA.filter(p=>st(p.id).s==0).length;document.getElementById('todo').innerHTML='<b>'+todo+'</b>à visiter'}
-function filtered(){return DATA.filter(p=>(ft.size==0||ft.has(p.tier))&&(fq=='all'||p.q==fq)&&(!prio||p.prio)&&(!q||p.adresse.toLowerCase().includes(q)||p.q.toLowerCase().includes(q)))}
+function filtered(){let d=DATA.filter(p=>(ft.size==0||ft.has(p.tier))&&(fq=='all'||p.q==fq||p.qoff===fq)&&(!prio||p.prio)&&(!fBoite||!st(p.id).b)&&(!q||p.adresse.toLowerCase().includes(q)||p.q.toLowerCase().includes(q)||(p.qoff||'').toLowerCase().includes(q)));
+ if(sortMode==='dpe')d=d.slice().sort((a,b)=>a.jours-b.jours);
+ else if(sortMode==='quartier')d=d.slice().sort((a,b)=>(a.q||'').localeCompare(b.q||'','fr')||b.score-a.score);
+ else d=d.slice().sort((a,b)=>b.score-a.score);
+ return d;}
 
 // ---- TOURNÉE ----
 function inTour(id){return tour.includes(id)}
@@ -285,8 +311,9 @@ function closeFiche(){ficheOpen=null;document.getElementById('modal').classList.
 function refresh(){const d=filtered();drawMap(d);drawList(d);drawTour();updateTodo();renderSheet()}
 // ---- DONNÉES EXTERNES (prospects.json) + repli embarqué ----
 function buildIndex(){byId={};DATA.forEach(p=>byId[p.id]=p);MAX=Math.max(76,...DATA.map(p=>p.score||0));}
-function populateQuartiers(){const qs=[...new Set(DATA.map(p=>p.q))].sort((a,b)=>a.localeCompare(b,'fr'));const sel=document.getElementById('quart');const cur=sel.value;sel.innerHTML='<option value="all">Tous quartiers</option>'+qs.map(x=>`<option>${x}</option>`).join('');if([...sel.options].some(o=>o.value===cur))sel.value=cur;}
-function updateStats(){const set=(id,n,lbl)=>{const e=document.getElementById(id);if(e)e.innerHTML='<b>'+n+'</b>'+lbl;};set('st-tot',DATA.length,'prospects');set('st-star',DATA.filter(p=>p.prio).length,'⭐');set('st-chaud',DATA.filter(p=>p.tier==='chaud').length,'🔥');}
+function populateQuartiers(){const qs=[...new Set(DATA.flatMap(p=>[p.q,p.qoff]).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'fr'));const sel=document.getElementById('quart');const cur=sel.value;sel.innerHTML='<option value="all">Tous quartiers</option>'+qs.map(x=>`<option>${x}</option>`).join('');if([...sel.options].some(o=>o.value===cur))sel.value=cur;}
+function boitesToday(){const t=new Date();const k=t.getFullYear()+'-'+(t.getMonth()+1)+'-'+t.getDate();return DATA.filter(p=>{const b=st(p.id).b;if(!b)return false;const d=new Date(b);return (d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate())===k;}).length;}
+function updateStats(){const set=(id,n,lbl)=>{const e=document.getElementById(id);if(e)e.innerHTML='<b>'+n+'</b>'+lbl;};set('st-tot',DATA.length,'prospects');set('st-star',DATA.filter(p=>p.prio).length,'⭐');set('st-chaud',DATA.filter(p=>p.tier==='chaud').length,'🔥');set('st-boite',boitesToday(),'📭 auj.');}
 async function initData(){try{const r=await fetch('prospects.json',{cache:'no-store'});if(r.ok){const j=await r.json();const arr=Array.isArray(j)?j:(j&&Array.isArray(j.prospects)?j.prospects:null);if(arr&&arr.length)DATA=arr;}}catch(e){/* file:// ou hors-ligne -> repli sur FALLBACK_DATA */}
  DATA=DATA.filter(p=>!EXCLU.has(p.q)).sort((a,b)=>b.score-a.score);DATA.forEach((p,i)=>p.rang=i+1);
  buildIndex();populateQuartiers();updateStats();}
@@ -296,6 +323,10 @@ document.getElementById('quart').onchange=e=>{fq=e.target.value;refresh()};
 document.getElementById('q').oninput=e=>{q=e.target.value.trim().toLowerCase();refresh()};
 document.querySelectorAll('.chip[data-t]').forEach(c=>c.onclick=()=>{const t=c.dataset.t;c.classList.toggle('on');ft.has(t)?ft.delete(t):ft.add(t);refresh()});
 document.getElementById('prio').onclick=function(){prio=prio?0:1;this.classList.toggle('on');refresh()};
+document.getElementById('cboite').onclick=function(){fBoite=fBoite?0:1;this.classList.toggle('on');refresh()};
+document.getElementById('sort').onchange=e=>{sortMode=e.target.value;refresh()};
+document.getElementById('totop').onclick=()=>list.scrollTo({top:0,behavior:'smooth'});
+list.addEventListener('scroll',()=>{document.getElementById('totop').classList.toggle('show',list.scrollTop>500)});
 document.getElementById('bmap').onclick=()=>{document.body.classList.remove('listview');document.getElementById('bmap').classList.add('on');document.getElementById('blist').classList.remove('on');setTimeout(()=>map.invalidateSize(),100)};
 document.getElementById('blist').onclick=()=>{document.body.classList.add('listview');document.getElementById('blist').classList.add('on');document.getElementById('bmap').classList.remove('on')};
 document.getElementById('fab').onclick=()=>{document.getElementById('sheet').classList.toggle('open');renderSheet()};
