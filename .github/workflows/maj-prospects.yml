@@ -1,0 +1,48 @@
+name: MAJ prospects (ADEME)
+
+# Régénère prospects.json depuis l'open data ADEME et le commit, chaque jour à 9h (Europe/Paris).
+on:
+  schedule:
+    - cron: '0 7 * * *'   # 09:00 Paris en été  (CEST = UTC+2)
+    - cron: '0 8 * * *'   # 09:00 Paris en hiver (CET  = UTC+1)
+  workflow_dispatch:       # bouton "Run workflow" pour lancer à la main
+
+permissions:
+  contents: write          # autorise le commit/push du fichier
+
+jobs:
+  maj:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Recuperer le depot
+        uses: actions/checkout@v4
+
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Regenerer prospects.json et pousser
+        run: |
+          set -e
+          # Garde fuseau : sur declenchement planifie, ne continuer qu'a 9h heure de Paris
+          H=$(TZ=Europe/Paris date +%H)
+          echo "Heure Europe/Paris : ${H}h - evenement : ${{ github.event_name }}"
+          if [ "${{ github.event_name }}" = "schedule" ] && [ "$H" != "09" ]; then
+            echo "Pas 9h a Paris : execution ignoree."
+            exit 0
+          fi
+
+          # Extraction ADEME (si echec ou trop peu de resultats : on garde l'ancien fichier)
+          python3 refresh_prospects.py || { echo "Extraction interrompue : fichier conserve."; exit 0; }
+
+          if git diff --quiet -- prospects.json; then
+            echo "Aucun changement dans prospects.json."
+            exit 0
+          fi
+
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add prospects.json
+          git commit -m "MAJ auto prospects (ADEME) - $(TZ=Europe/Paris date +%F)"
+          git push
