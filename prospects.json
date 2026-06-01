@@ -250,31 +250,6 @@
   "rang": 10
  },
  {
-  "id": "2613E1311386Q",
-  "q": "Les Olives",
-  "prio": false,
-  "date": "2026-05-15",
-  "jours": 17,
-  "dpe": "C",
-  "ges": "C",
-  "surface": 173.6,
-  "niv": 2,
-  "annee": null,
-  "adresse": "7 Avenue Julien",
-  "statut": "Aucune annonce trouvée",
-  "flags": [],
-  "tier": "chaud",
-  "score": 42,
-  "lat": 43.321161025557295,
-  "lon": 5.4540379609467005,
-  "gmaps": "https://maps.google.com/?q=43.321161025557295,5.4540379609467005",
-  "deja": false,
-  "conso": 97,
-  "gesv": 16,
-  "chauf": "Gaz naturel",
-  "rang": 11
- },
- {
   "id": "2613E1259018M",
   "q": "Palama",
   "prio": true,
@@ -297,32 +272,7 @@
   "conso": 145,
   "gesv": 32,
   "chauf": "Gaz naturel",
-  "rang": 12
- },
- {
-  "id": "2613E1263506C",
-  "q": "Les Olives",
-  "prio": false,
-  "date": "2026-05-08",
-  "jours": 24,
-  "dpe": "B",
-  "ges": "B",
-  "surface": 197.3,
-  "niv": 1,
-  "annee": 1987,
-  "adresse": "23 Chemin Des Aurengues",
-  "statut": "Aucune annonce trouvée",
-  "flags": [],
-  "tier": "tiede",
-  "score": 41,
-  "lat": 43.326287997848326,
-  "lon": 5.45503998849507,
-  "gmaps": "https://maps.google.com/?q=43.326287997848326,5.45503998849507",
-  "deja": false,
-  "conso": 35,
-  "gesv": 10,
-  "chauf": "Fioul domestique",
-  "rang": 13
+  "rang": 11
  },
  {
   "id": "2613E1216652A",
@@ -347,32 +297,7 @@
   "conso": 161,
   "gesv": 36,
   "chauf": "Gaz naturel",
-  "rang": 14
- },
- {
-  "id": "2613E1384382E",
-  "q": "Les Olives",
-  "prio": false,
-  "date": "2026-05-22",
-  "jours": 10,
-  "dpe": "E",
-  "ges": "B",
-  "surface": 102.4,
-  "niv": 1,
-  "annee": null,
-  "adresse": "Rue De Pichauris",
-  "statut": "Aucune annonce trouvée",
-  "flags": [],
-  "tier": "chaud",
-  "score": 39,
-  "lat": 43.32945398192063,
-  "lon": 5.4599790487510145,
-  "gmaps": "https://maps.google.com/?q=43.32945398192063,5.4599790487510145",
-  "deja": false,
-  "conso": 150,
-  "gesv": 9,
-  "chauf": "Électricité",
-  "rang": 15
+  "rang": 12
  },
  {
   "id": "2613E1075893F",
@@ -397,32 +322,7 @@
   "conso": 79,
   "gesv": 5,
   "chauf": "Électricité",
-  "rang": 16
- },
- {
-  "id": "2613E1285126Q",
-  "q": "Les Olives",
-  "prio": false,
-  "date": "2026-05-12",
-  "jours": 20,
-  "dpe": "B",
-  "ges": "A",
-  "surface": 146.5,
-  "niv": 2,
-  "annee": null,
-  "adresse": "20 Chemin De La Ribassiere",
-  "statut": "Aucune annonce trouvée",
-  "flags": [],
-  "tier": "chaud",
-  "score": 38,
-  "lat": 43.32640601754507,
-  "lon": 5.4594149872976585,
-  "gmaps": "https://maps.google.com/?q=43.32640601754507,5.4594149872976585",
-  "deja": false,
-  "conso": 39,
-  "gesv": 2,
-  "chauf": "Électricité",
-  "rang": 17
+  "rang": 13
  },
  {
   "id": "2613E1159275F",
@@ -447,7 +347,7 @@
   "conso": 218,
   "gesv": 42,
   "chauf": "Gaz naturel",
-  "rang": 18
+  "rang": 14
  },
  {
   "id": "2613E1140405L",
@@ -472,32 +372,7 @@
   "conso": 285,
   "gesv": 64,
   "chauf": "Gaz naturel",
-  "rang": 19
- },
- {
-  "id": "2613E1264545B",
-  "q": "Les Olives",
-  "prio": false,
-  "date": "2026-05-08",
-  "jours": 24,
-  "dpe": "F",
-  "ges": "C",
-  "surface": 76.5,
-  "niv": 2,
-  "annee": null,
-  "adresse": "Boulevard Roume",
-  "statut": "Aucune annonce trouvée",
-  "flags": [],
-  "tier": "tiede",
-  "score": 37,
-  "lat": 43.32634700914474,
-  "lon": 5.4444109663739795,
-  "gmaps": "https://maps.google.com/?q=43.32634700914474,5.4444109663739795",
-  "deja": false,
-  "conso": 228,
-  "gesv": 13,
-  "chauf": "Électricité",
-  "rang": 20
+  "rang": 15
  },
  {
   "id": "2613E1249870Q",
@@ -522,7 +397,7 @@
   "conso": 119,
   "gesv": 8,
   "chauf": "Électricité",
-  "rang": 21
+  "rang": 16
  },
  {
   "id": "2613E1167439F",
@@ -547,7 +422,7 @@
   "conso": 136,
   "gesv": 27,
   "chauf": "Gaz naturel",
-  "rang": 22
+  "rang": 17
  },
  {
   "id": "2613E1132273R",
@@ -572,7 +447,7 @@
   "conso": 90,
   "gesv": 4,
   "chauf": "Bois – Granulés (pellets) ou briquettes",
-  "rang": 23
+  "rang": 18
  },
  {
   "id": "2613E1089083N",
@@ -597,7 +472,7 @@
   "conso": 103,
   "gesv": 21,
   "chauf": "Gaz naturel",
-  "rang": 24
+  "rang": 19
  },
  {
   "id": "2613E1089034Q",
@@ -622,7 +497,7 @@
   "conso": 103,
   "gesv": 21,
   "chauf": "Gaz naturel",
-  "rang": 25
+  "rang": 20
  },
  {
   "id": "2613E1084353P",
@@ -647,7 +522,7 @@
   "conso": 59,
   "gesv": 4,
   "chauf": "Électricité",
-  "rang": 26
+  "rang": 21
  },
  {
   "id": "2613E1294345F",
@@ -672,7 +547,7 @@
   "conso": 48,
   "gesv": 3,
   "chauf": "Électricité",
-  "rang": 27
+  "rang": 22
  },
  {
   "id": "2613E1039644A",
@@ -697,7 +572,7 @@
   "conso": 75,
   "gesv": 8,
   "chauf": "Électricité",
-  "rang": 28
+  "rang": 23
  },
  {
   "id": "2613E1140290A",
@@ -722,7 +597,7 @@
   "conso": 232,
   "gesv": 49,
   "chauf": "Gaz naturel",
-  "rang": 29
+  "rang": 24
  },
  {
   "id": "2613E1155255P",
@@ -747,57 +622,7 @@
   "conso": 60,
   "gesv": 4,
   "chauf": "Électricité",
-  "rang": 30
- },
- {
-  "id": "2613E1117325T",
-  "q": "Les Olives",
-  "prio": false,
-  "date": "2026-04-22",
-  "jours": 40,
-  "dpe": "D",
-  "ges": "B",
-  "surface": 182.7,
-  "niv": 2,
-  "annee": null,
-  "adresse": "33 Traverse Des Platrieres",
-  "statut": "Aucune annonce trouvée",
-  "flags": [],
-  "tier": "tiede",
-  "score": 30,
-  "lat": 43.31905696937253,
-  "lon": 5.451895995336375,
-  "gmaps": "https://maps.google.com/?q=43.31905696937253,5.451895995336375",
-  "deja": false,
-  "conso": 141,
-  "gesv": 8,
-  "chauf": "Électricité",
-  "rang": 31
- },
- {
-  "id": "2613E1251115N",
-  "q": "Les Olives",
-  "prio": false,
-  "date": "2026-05-07",
-  "jours": 25,
-  "dpe": "C",
-  "ges": "A",
-  "surface": 90.7,
-  "niv": 2,
-  "annee": 1978,
-  "adresse": "Impasse Des Francs Tireurs",
-  "statut": "Aucune annonce trouvée",
-  "flags": [],
-  "tier": "tiede",
-  "score": 29,
-  "lat": 43.322511035046674,
-  "lon": 5.447682035078251,
-  "gmaps": "https://maps.google.com/?q=43.322511035046674,5.447682035078251",
-  "deja": false,
-  "conso": 79,
-  "gesv": 5,
-  "chauf": "Électricité",
-  "rang": 32
+  "rang": 25
  },
  {
   "id": "2613E1239397V",
@@ -822,7 +647,7 @@
   "conso": 84,
   "gesv": 6,
   "chauf": "Électricité",
-  "rang": 33
+  "rang": 26
  },
  {
   "id": "2613E1043513V",
@@ -847,7 +672,7 @@
   "conso": 194,
   "gesv": 9,
   "chauf": "Bois – Bûches",
-  "rang": 34
+  "rang": 27
  },
  {
   "id": "2613E1256550O",
@@ -872,57 +697,7 @@
   "conso": 84,
   "gesv": 6,
   "chauf": "Électricité",
-  "rang": 35
- },
- {
-  "id": "2613E1221250W",
-  "q": "Les Olives",
-  "prio": false,
-  "date": "2026-05-04",
-  "jours": 28,
-  "dpe": "D",
-  "ges": "B",
-  "surface": 90.7,
-  "niv": 2,
-  "annee": 1978,
-  "adresse": "Impasse Des Francs Tireurs",
-  "statut": "Aucune annonce trouvée",
-  "flags": [],
-  "tier": "tiede",
-  "score": 28,
-  "lat": 43.322511035046674,
-  "lon": 5.447682035078251,
-  "gmaps": "https://maps.google.com/?q=43.322511035046674,5.447682035078251",
-  "deja": false,
-  "conso": 102,
-  "gesv": 7,
-  "chauf": "Électricité",
-  "rang": 36
- },
- {
-  "id": "2613E1146108U",
-  "q": "Les Olives",
-  "prio": false,
-  "date": "2026-04-26",
-  "jours": 36,
-  "dpe": "E",
-  "ges": "E",
-  "surface": 49.8,
-  "niv": 1,
-  "annee": null,
-  "adresse": "86 Avenue Frederic Mistral",
-  "statut": "Aucune annonce trouvée",
-  "flags": [],
-  "tier": "tiede",
-  "score": 27,
-  "lat": 43.32258702544665,
-  "lon": 5.455607057134737,
-  "gmaps": "https://maps.google.com/?q=43.32258702544665,5.455607057134737",
-  "deja": false,
-  "conso": 299,
-  "gesv": 65,
-  "chauf": "Gaz naturel",
-  "rang": 37
+  "rang": 28
  },
  {
   "id": "2613E1035051J",
@@ -947,7 +722,7 @@
   "conso": 144,
   "gesv": 25,
   "chauf": "Gaz naturel",
-  "rang": 38
+  "rang": 29
  },
  {
   "id": "2613E1009804I",
@@ -972,7 +747,7 @@
   "conso": 62,
   "gesv": 4,
   "chauf": "Électricité",
-  "rang": 39
+  "rang": 30
  },
  {
   "id": "2613E1084776W",
@@ -997,7 +772,7 @@
   "conso": 174,
   "gesv": 35,
   "chauf": "Gaz naturel",
-  "rang": 40
+  "rang": 31
  },
  {
   "id": "2613E0998804G",
@@ -1022,7 +797,7 @@
   "conso": 143,
   "gesv": 31,
   "chauf": "Gaz naturel",
-  "rang": 41
+  "rang": 32
  },
  {
   "id": "2613E0981499R",
@@ -1047,7 +822,7 @@
   "conso": 107,
   "gesv": 7,
   "chauf": "Électricité",
-  "rang": 42
+  "rang": 33
  },
  {
   "id": "2613E1176421R",
@@ -1072,7 +847,7 @@
   "conso": 152,
   "gesv": 34,
   "chauf": "Gaz naturel",
-  "rang": 43
+  "rang": 34
  },
  {
   "id": "2613E1119717T",
@@ -1097,7 +872,7 @@
   "conso": 165,
   "gesv": 33,
   "chauf": "Gaz naturel",
-  "rang": 44
+  "rang": 35
  },
  {
   "id": "2613E1155329L",
@@ -1122,7 +897,7 @@
   "conso": 85,
   "gesv": 6,
   "chauf": "Électricité",
-  "rang": 45
+  "rang": 36
  },
  {
   "id": "2613E0944407B",
@@ -1147,32 +922,7 @@
   "conso": 114,
   "gesv": 8,
   "chauf": "Électricité",
-  "rang": 46
- },
- {
-  "id": "2613E1144082W",
-  "q": "Les Olives",
-  "prio": false,
-  "date": "2026-04-25",
-  "jours": 37,
-  "dpe": "C",
-  "ges": "A",
-  "surface": 90.7,
-  "niv": 1,
-  "annee": null,
-  "adresse": "39 Boulevard Roume",
-  "statut": "Aucune annonce trouvée",
-  "flags": [],
-  "tier": "tiede",
-  "score": 22,
-  "lat": 43.32637095903772,
-  "lon": 5.444928037127108,
-  "gmaps": "https://maps.google.com/?q=43.32637095903772,5.444928037127108",
-  "deja": false,
-  "conso": 92,
-  "gesv": 5,
-  "chauf": "Électricité",
-  "rang": 47
+  "rang": 37
  },
  {
   "id": "2613E1096613D",
@@ -1197,7 +947,7 @@
   "conso": 88,
   "gesv": 5,
   "chauf": "Électricité",
-  "rang": 48
+  "rang": 38
  },
  {
   "id": "2613E1049224M",
@@ -1222,7 +972,7 @@
   "conso": 111,
   "gesv": 5,
   "chauf": "Bois – Bûches",
-  "rang": 49
+  "rang": 39
  },
  {
   "id": "2613E0950354U",
@@ -1247,32 +997,7 @@
   "conso": 259,
   "gesv": 78,
   "chauf": "Fioul domestique",
-  "rang": 50
- },
- {
-  "id": "2613E1114886Y",
-  "q": "Les Olives",
-  "prio": false,
-  "date": "2026-04-22",
-  "jours": 40,
-  "dpe": "C",
-  "ges": "C",
-  "surface": 96.9,
-  "niv": 1,
-  "annee": 1988,
-  "adresse": "22 Chemin Des Aurengues",
-  "statut": "Aucune annonce trouvée",
-  "flags": [],
-  "tier": "tiede",
-  "score": 21,
-  "lat": 43.32618203196986,
-  "lon": 5.455207944675055,
-  "gmaps": "https://maps.google.com/?q=43.32618203196986,5.455207944675055",
-  "deja": false,
-  "conso": 130,
-  "gesv": 28,
-  "chauf": "Gaz naturel",
-  "rang": 51
+  "rang": 40
  },
  {
   "id": "2613E1001510I",
@@ -1297,7 +1022,7 @@
   "conso": 220,
   "gesv": 49,
   "chauf": "Gaz naturel",
-  "rang": 52
+  "rang": 41
  },
  {
   "id": "2613E1001758W",
@@ -1322,7 +1047,7 @@
   "conso": 220,
   "gesv": 49,
   "chauf": "Gaz naturel",
-  "rang": 53
+  "rang": 42
  },
  {
   "id": "2613E0973940Y",
@@ -1347,32 +1072,7 @@
   "conso": 199,
   "gesv": 20,
   "chauf": "Bois – Bûches",
-  "rang": 54
- },
- {
-  "id": "2613E0980062K",
-  "q": "Les Olives",
-  "prio": false,
-  "date": "2026-04-08",
-  "jours": 54,
-  "dpe": "F",
-  "ges": "F",
-  "surface": 69.5,
-  "niv": 1,
-  "annee": null,
-  "adresse": "7 Avenue Alexandre Coupin",
-  "statut": "Aucune annonce trouvée",
-  "flags": [],
-  "tier": "froid",
-  "score": 18,
-  "lat": 43.32311496926992,
-  "lon": 5.455532041996932,
-  "gmaps": "https://maps.google.com/?q=43.32311496926992,5.455532041996932",
-  "deja": false,
-  "conso": 300,
-  "gesv": 89,
-  "chauf": "Fioul domestique",
-  "rang": 55
+  "rang": 43
  },
  {
   "id": "2613E0971356O",
@@ -1397,7 +1097,7 @@
   "conso": 124,
   "gesv": 21,
   "chauf": "Gaz naturel",
-  "rang": 56
+  "rang": 44
  },
  {
   "id": "2613E0963900U",
@@ -1422,7 +1122,7 @@
   "conso": 128,
   "gesv": 7,
   "chauf": "Électricité",
-  "rang": 57
+  "rang": 45
  },
  {
   "id": "2613E1032517X",
@@ -1447,32 +1147,7 @@
   "conso": 85,
   "gesv": 6,
   "chauf": "Électricité",
-  "rang": 58
- },
- {
-  "id": "2613E0992056S",
-  "q": "Les Olives",
-  "prio": false,
-  "date": "2026-04-09",
-  "jours": 53,
-  "dpe": "C",
-  "ges": "C",
-  "surface": 91.9,
-  "niv": 2,
-  "annee": null,
-  "adresse": "14 Chemin De La Ribassiere",
-  "statut": "Aucune annonce trouvée",
-  "flags": [],
-  "tier": "froid",
-  "score": 13,
-  "lat": 43.32621897555319,
-  "lon": 5.458743010590982,
-  "gmaps": "https://maps.google.com/?q=43.32621897555319,5.458743010590982",
-  "deja": false,
-  "conso": 92,
-  "gesv": 19,
-  "chauf": "Gaz naturel",
-  "rang": 59
+  "rang": 46
  },
  {
   "id": "2613E0974957B",
@@ -1497,57 +1172,7 @@
   "conso": 42,
   "gesv": 3,
   "chauf": "Électricité",
-  "rang": 60
- },
- {
-  "id": "2613E0958131X",
-  "q": "Les Olives",
-  "prio": false,
-  "date": "2026-04-07",
-  "jours": 55,
-  "dpe": "D",
-  "ges": "B",
-  "surface": 84.5,
-  "niv": 1,
-  "annee": null,
-  "adresse": "222 Avenue Des Olives",
-  "statut": "Aucune annonce trouvée",
-  "flags": [],
-  "tier": "froid",
-  "score": 11,
-  "lat": 43.32452697915995,
-  "lon": 5.442544031235273,
-  "gmaps": "https://maps.google.com/?q=43.32452697915995,5.442544031235273",
-  "deja": false,
-  "conso": 127,
-  "gesv": 6,
-  "chauf": "Bois – Granulés (pellets) ou briquettes",
-  "rang": 61
- },
- {
-  "id": "2613E0957201D",
-  "q": "Les Olives",
-  "prio": false,
-  "date": "2026-04-06",
-  "jours": 56,
-  "dpe": "E",
-  "ges": "C",
-  "surface": 67.5,
-  "niv": 1,
-  "annee": null,
-  "adresse": "14 Rue Fernand Chabot",
-  "statut": "Aucune annonce trouvée",
-  "flags": [],
-  "tier": "froid",
-  "score": 9,
-  "lat": 43.32169897741234,
-  "lon": 5.458798939346044,
-  "gmaps": "https://maps.google.com/?q=43.32169897741234,5.458798939346044",
-  "deja": false,
-  "conso": 155,
-  "gesv": 11,
-  "chauf": "Électricité",
-  "rang": 62
+  "rang": 47
  },
  {
   "id": "2613E0964245B",
@@ -1572,6 +1197,6 @@
   "conso": 54,
   "gesv": 3,
   "chauf": "Électricité",
-  "rang": 63
+  "rang": 48
  }
 ]
