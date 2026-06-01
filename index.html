@@ -127,6 +127,8 @@ body.splitview .totop.show{display:flex}
 .bbtn{border:1.5px solid var(--line);background:var(--cream);border-radius:9px;padding:8px 11px;font-family:inherit;font-weight:700;font-size:12.5px;cursor:pointer;color:var(--ink)}
 .bbtn.go{background:var(--teal);color:#fff;border-color:var(--teal);width:100%;padding:11px}
 .bbtn.x{color:var(--terra-d)}
+.copyaddr{margin-top:8px;border:1.5px solid var(--line);background:var(--cream);border-radius:9px;padding:7px 12px;font-family:inherit;font-weight:700;font-size:12.5px;cursor:pointer;color:var(--ink)}
+.copyaddr:active{background:var(--sun);border-color:var(--sun)}
 .totop{position:absolute;right:14px;bottom:70px;z-index:680;display:none;align-items:center;justify-content:center;width:44px;height:44px;border-radius:999px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);font-size:20px;font-weight:800;box-shadow:var(--shadow);cursor:pointer}
 body.listview .totop.show{display:flex}
 @media(max-width:560px){
@@ -237,6 +239,7 @@ function drawList(d){
   </div>`}).join('')||'<div style="padding:30px;text-align:center;color:#9a8a7c">Aucun prospect 🤷</div>';
 }
 function cp(b,t){navigator.clipboard.writeText(t).then(()=>{const o=b.textContent;b.textContent='✓';setTimeout(()=>b.textContent=o,1000)})}
+function copyAddr(id,b){const p=byId[id];if(!p)return;const t=p.adresse+' 13013 Marseille';const o=b.innerHTML;navigator.clipboard.writeText(t).then(()=>{b.innerHTML='✓ Copié !';setTimeout(()=>b.innerHTML=o,1300)}).catch(()=>{b.innerHTML='⚠ échec';setTimeout(()=>b.innerHTML=o,1300)})}
 function setS(id,k){const c=st(id);state[id]={s:k,n:c.n,b:c.b};save();refresh();
  if(ficheOpen===id){const sel=k;document.querySelectorAll('#fiche .seg button').forEach((b,i)=>b.classList.toggle('on',i===sel))}}
 function setN(id,v){const c=st(id);state[id]={s:c.s,n:v,b:c.b};save();updateTodo()}
@@ -295,7 +298,7 @@ function openFiche(id){ficheOpen=id;const p=byId[id];const s=st(id);
  const segs=STAT.map((t,k)=>`<button class="s${k} ${s.s==k?'on':''}" onclick="setS('${id}',${k})">${t}</button>`).join('');
  const g=(k,v,fp)=>`<div class="fg ${fp?'fp':''}"><div class="k">${k}</div><div class="v">${(v==null||v==='')?'—':v}</div></div>`;
  document.getElementById('fiche').innerHTML=`
-  <div class="fhead"><div class="fa"><h2>${p.adresse}</h2><div class="fq">${p.prio?'⭐ ':''}${p.q} · <span class="tb ${p.tier}">${EMO[p.tier]} ${p.tier}</span></div></div>
+  <div class="fhead"><div class="fa"><h2>${p.adresse}</h2><div class="fq">${p.prio?'⭐ ':''}${p.q} · <span class="tb ${p.tier}">${EMO[p.tier]} ${p.tier}</span></div><button class="copyaddr" onclick="event.stopPropagation();copyAddr('${id}',this)">📋 Copier l'adresse</button></div>
    <div class="fsc">${p.score}<div style="font-size:9px;letter-spacing:.1em;color:#b0a08f;text-transform:uppercase">score</div></div>
    <button class="fclose" onclick="closeFiche()">✕</button></div>
   <div class="fbody">
