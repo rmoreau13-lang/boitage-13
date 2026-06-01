@@ -42,6 +42,20 @@ PRIO_QUARTIERS = {            # quartiers cibles -> prio=True (déduit de vos do
 # Quartiers EXCLUS du boîtage : tout prospect affecté à l'un d'eux est ignoré.
 EXCLUDE_QUARTIERS = {"Les Olives", "Les Martégaux"}
 
+# --- Quartier OFFICIEL (champ "qoff" en plus) : croisement point-dans-polygone
+#     avec les 111 quartiers officiels de Marseille (décret 1946, contours INSEE).
+GEOJSON_QUARTIERS = ("https://static.data.gouv.fr/resources/quartiers-de-marseille-1/"
+                     "20210308-145904/quartiers-marseille.geojson")
+# Normalisation des libellés officiels (NOM_QUA en MAJUSCULES -> joli libellé).
+NORM_QUA = {
+    "SAINT MITRE": "Saint-Mitre", "LES MEDECINS": "Les Médecins",
+    "SAINT JEROME": "Saint-Jérôme", "CHATEAU-GOMBERT": "Château-Gombert",
+    "PALAMA": "Palama", "SAINT JUST": "Saint-Just", "LES OLIVES": "Les Olives",
+    "MALPASSE": "Malpassé", "LA CROIX ROUGE": "La Croix-Rouge",
+    "LES MOURETS": "Les Mourets", "LA ROSE": "La Rose", "FRAIS VALLON": "Frais Vallon",
+    "MONTOLIVET": "Montolivet", "SAINT BARNABE": "Saint-Barnabé",
+}
+
 # Centroïdes de référence (lat, lon) FIGÉS — calculés une fois depuis le prospects.json
 # d'origine. On les fige pour que l'affectation par quartier reste STABLE jour après jour
 # (sinon, recalculer depuis un fichier régénéré ferait dériver les frontières de quartiers).
@@ -118,6 +132,50 @@ def geo(rec):
     except Exception:
         return None, None
 
+# ------------------------------------------------------------------ quartier officiel
+def load_quartiers(timeout=60):
+    """Télécharge le GeoJSON officiel des quartiers. Renvoie [] en cas d'échec."""
+    try:
+        req = urllib.request.Request(GEOJSON_QUARTIERS, headers={"User-Agent": "boitage-13/1.0"})
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            gj = json.load(r)
+        return gj.get("features", [])
+    except Exception as e:
+        print("   (quartier officiel indisponible : %s)" % e)
+        return []
+
+def _in_ring(lon, lat, ring):
+    inside = False
+    n = len(ring)
+    j = n - 1
+    for i in range(n):
+        xi, yi = ring[i][0], ring[i][1]
+        xj, yj = ring[j][0], ring[j][1]
+        if ((yi > lat) != (yj > lat)) and (lon < (xj - xi) * (lat - yi) / (yj - yi) + xi):
+            inside = not inside
+        j = i
+    return inside
+
+def _in_poly(lon, lat, poly):           # poly = [outer, hole1, ...]
+    if not _in_ring(lon, lat, poly[0]):
+        return False
+    return not any(_in_ring(lon, lat, h) for h in poly[1:])
+
+def quartier_officiel(lat, lon, feats):
+    for f in feats:
+        gm = f.get("geometry") or {}
+        t = gm.get("type")
+        coords = gm.get("coordinates")
+        hit = False
+        if t == "Polygon":
+            hit = _in_poly(lon, lat, coords)
+        elif t == "MultiPolygon":
+            hit = any(_in_poly(lon, lat, p) for p in coords)
+        if hit:
+            raw = (f.get("properties") or {}).get("NOM_QUA", "")
+            return NORM_QUA.get(raw, raw.title())
+    return ""
+
 # ------------------------------------------------------------------ API ADEME
 def fetch_all(cp, since_iso, page=1000, timeout=60):
     qs = ('type_batiment:"maison" AND code_postal_ban:"%s" '
@@ -175,6 +233,7 @@ def to_prospect(rec, today, cents):
     return {
         "id": rec.get("numero_dpe"),
         "q": q,
+        "qoff": "",            # quartier officiel (rempli dans main via point-dans-polygone)
         "prio": prio,
         "date": d_iso,
         "jours": jours,
@@ -216,6 +275,9 @@ def main():
     rows = fetch_all(args.cp, since)
     print("   %d DPE bruts recus." % len(rows))
 
+    feats = load_quartiers()
+    print("   %d quartiers officiels charges." % len(feats))
+
     seen, prospects = set(), []
     for rec in rows:
         nid = rec.get("numero_dpe")
@@ -224,6 +286,8 @@ def main():
         seen.add(nid)
         p = to_prospect(rec, today, cents)
         if p and p["q"] not in EXCLUDE_QUARTIERS:
+            if feats:
+                p["qoff"] = quartier_officiel(p["lat"], p["lon"], feats)
             prospects.append(p)
 
     if len(prospects) < MIN_PROSPECTS:

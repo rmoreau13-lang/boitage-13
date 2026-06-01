@@ -270,7 +270,7 @@ function openFiche(id){ficheOpen=id;const p=byId[id];const s=st(id);
    <div class="fsc">${p.score}<div style="font-size:9px;letter-spacing:.1em;color:#b0a08f;text-transform:uppercase">score</div></div>
    <button class="fclose" onclick="closeFiche()">✕</button></div>
   <div class="fbody">
-   <div class="fgrid">${g('Classe DPE',p.dpe)}${g('Classe GES',p.ges)}${g('Surface',p.surface+' m²')}${g('Niveaux',p.niv)}${g('Conso',(p.conso||'?')+' kWh/m²/an',1)}${g('Émissions',(p.gesv||'?')+' kg/m²/an',1)}${g('Année',p.annee)}${g('Chauffage',p.chauf)}${g('Fraîcheur DPE','J-'+p.jours)}${g('Annonce',p.statut)}</div>
+   <div class="fgrid">${g('Classe DPE',p.dpe)}${g('Classe GES',p.ges)}${g('Surface',p.surface+' m²')}${g('Niveaux',p.niv)}${g('Conso',(p.conso||'?')+' kWh/m²/an',1)}${g('Émissions',(p.gesv||'?')+' kg/m²/an',1)}${g('Année',p.annee)}${g('Chauffage',p.chauf)}${g('Fraîcheur DPE','J-'+p.jours)}${g('Quartier officiel',p.qoff)}${g('Annonce',p.statut)}</div>
    <div class="fsec">Suivi</div>
    <div class="seg">${segs}</div>
    <textarea class="note" placeholder="Note terrain…" onchange="setN('${id}',this.value)">${s.n||''}</textarea>
