@@ -3,6 +3,7 @@
 <title>Cockpit Boîtage — 13ᵉ Marseille</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{--ink:#241813;--cream:#fbf3e6;--paper:#fffdf9;--terra:#d6552f;--terra-d:#a23c1d;--sun:#f0a500;--teal:#1c8b75;--line:#e4d6c0;--chaud:#df3f17;--tiede:#dd8c00;--froid:#62788a;--mut:#8a7868;--sh:0 8px 24px -12px rgba(60,30,15,.4)}
@@ -144,9 +145,12 @@ function esc(s){return (s==null?'':''+s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':
 function toast(m){const t=$('toast');t.textContent=m;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),1600)}
 // ---- état ----
 function rec(id){let r=state[id];if(!r){r=state[id]={}}r.s=r.s||0;r.notes=r.notes||[];r.contact=r.contact||{};r.det=r.det||{};r.b=r.b||'';r.rdv=r.rdv||'';r.rel=r.rel||'';return r}
-function saveState(){store.set('boitage13_v3',JSON.stringify(state))}
-function saveTours(){store.set('boitage13_tours',JSON.stringify(tours))}
-function saveTour(){store.set('boitage13_tour',JSON.stringify(tour))}
+function saveStateRaw(){store.set('boitage13_v3',JSON.stringify(state))}
+function saveToursRaw(){store.set('boitage13_tours',JSON.stringify(tours))}
+function saveTourRaw(){store.set('boitage13_tour',JSON.stringify(tour))}
+function saveState(){saveStateRaw();syncPush()}
+function saveTours(){saveToursRaw();syncPush()}
+function saveTour(){saveTourRaw();syncPush()}
 function load(){
  let raw=store.get('boitage13_v3');
  if(raw){try{state=JSON.parse(raw)}catch(e){}}
@@ -262,8 +266,23 @@ function boiteHTML(id){const b=rec(id).b;return b?'<div style="display:flex;alig
 function fmtBoite(iso){const d=new Date(iso),p=n=>String(n).padStart(2,'0');return p(d.getDate())+'/'+p(d.getMonth()+1)+'/'+d.getFullYear()+' à '+p(d.getHours())+'h'+p(d.getMinutes())}
 function setBoite(id){rec(id).b=new Date().toISOString();saveState();if($('boitebox'))$('boitebox').innerHTML=boiteHTML(id);updateStats();drawList(filtered());drawMap(filtered());toast('Boîté ✓')}
 function clearBoite(id){rec(id).b='';saveState();if($('boitebox'))$('boitebox').innerHTML=boiteHTML(id);updateStats();drawList(filtered());drawMap(filtered())}
+// ---- Supabase (synchro multi-appareils) ----
+const SB_URL='https://eebdhkbkvkrpoxyndhwj.supabase.co';
+const SB_KEY='sb_publishable_fa0CNokrgAW9HiCvNFK22A_-y_Xc97Y';
+let sb=null,sbUser=null,sbStep='email',sbEmail='',_syncT=null;
+function sbInit(){if(!window.supabase)return;try{sb=window.supabase.createClient(SB_URL,SB_KEY);sb.auth.getSession().then(({data})=>{if(data&&data.session){sbUser=data.session.user;syncPull()}if($('scr-donnees').classList.contains('on'))renderDonnees()});sb.auth.onAuthStateChange((e,s)=>{const was=!!sbUser;sbUser=s?s.user:null;if(sbUser&&!was)syncPull();if($('scr-donnees').classList.contains('on'))renderDonnees()})}catch(e){}}
+async function sbSendCode(){const el=$('sbEmail');if(!el||!el.value.trim())return;sbEmail=el.value.trim();try{const r=await sb.auth.signInWithOtp({email:sbEmail,options:{shouldCreateUser:true,emailRedirectTo:location.origin+location.pathname}});if(r.error){alert('Erreur : '+r.error.message);return}sbStep='code';renderDonnees();toast('E-mail envoyé')}catch(e){alert('Erreur réseau')}}
+async function sbVerify(){const el=$('sbCode');if(!el||!el.value.trim())return;try{const r=await sb.auth.verifyOtp({email:sbEmail,token:el.value.trim(),type:'email'});if(r.error){alert('Code invalide : '+r.error.message);return}sbUser=r.data.user;sbStep='email';await syncPull();renderDonnees();toast('Connecté ✓')}catch(e){alert('Erreur réseau')}}
+async function sbLogout(){try{await sb.auth.signOut()}catch(e){}sbUser=null;sbStep='email';renderDonnees()}
+function cnt(st,ts){let n=0;for(const id in (st||{})){const r=st[id]||{};n+=(r.notes||[]).length+((r.contact&&(r.contact.nom||r.contact.tel||r.contact.email))?1:0)+(r.b?1:0)+(r.rdv?1:0)+(r.rel?1:0)+(r.s>0?1:0)+((r.det&&(r.det.prix||r.det.obs||r.det.type||r.det.etat))?1:0)}return n+((ts||[]).length)}
+function syncPush(){if(!sb||!sbUser)return;clearTimeout(_syncT);_syncT=setTimeout(async()=>{try{await sb.from('app_state').upsert({user_id:sbUser.id,data:{state,tours,tour,mode:travelMode}});store.set('boitage13_sync',new Date().toISOString());if($('scr-donnees').classList.contains('on'))renderDonnees()}catch(e){}},1500)}
+async function syncPull(){if(!sb||!sbUser)return;try{const r=await sb.from('app_state').select('data').eq('user_id',sbUser.id).maybeSingle();if(r.error)return;const rd=r.data&&r.data.data;if(!rd||!rd.state){if(cnt(state,tours)>0)syncPush();return}if(cnt(rd.state,rd.tours)>=cnt(state,tours)){if(rd.state)state=rd.state;if(rd.tours)tours=rd.tours;if(rd.tour)tour=rd.tour;if(rd.mode)travelMode=rd.mode;saveStateRaw();saveToursRaw();saveTourRaw();refresh()}else{syncPush()}store.set('boitage13_sync',new Date().toISOString())}catch(e){}}
+function sbBlockHTML(){if(!sb)return '<div class="block"><h3>☁️ Synchro multi-appareils</h3><p class="hint" style="margin:0">Service en cours de chargement (vérifiez votre connexion)…</p></div>';
+ if(sbUser){const ls=store.get('boitage13_sync');return '<div class="block"><h3>☁️ Synchro activée</h3><p style="font-size:14px;margin:0"><span class="dot" style="background:#1c8b75"></span>Connecté : <b>'+esc(sbUser.email)+'</b></p>'+(ls?'<p class="hint" style="margin:6px 0 0">Dernière synchro : '+new Date(ls).toLocaleString('fr-FR')+'</p>':'')+'<div class="trow"><button onclick="syncPush();toast(\'Synchro…\')">↻ Synchroniser</button><button onclick="sbLogout()">Se déconnecter</button></div></div>'}
+ if(sbStep==='code')return '<div class="block"><h3>☁️ Entrez le code reçu</h3><p class="hint" style="margin:0 0 8px">E-mail envoyé à <b>'+esc(sbEmail)+'</b>. Saisissez le code à 6 chiffres.</p><input class="inp" id="sbCode" inputmode="numeric" placeholder="123456" style="margin-bottom:8px"><button class="big" onclick="sbVerify()">Valider le code</button><button class="big ghost" style="margin-top:6px" onclick="sbStep=\'email\';renderDonnees()">‹ Changer d\'e-mail</button></div>';
+ return '<div class="block"><h3>☁️ Synchro multi-appareils</h3><p class="hint" style="margin:0 0 8px">Connectez-vous pour retrouver vos saisies sur tous vos appareils. Un code vous est envoyé par e-mail — aucun mot de passe.</p><input class="inp" id="sbEmail" inputmode="email" placeholder="votre e-mail" style="margin-bottom:8px"><button class="big" onclick="sbSendCode()">Recevoir un code par e-mail</button></div>'}
 // ---- données / export-import ----
-function renderDonnees(){const keys=allKeys();let h='<div class="sec">Synchro multi-appareils</div><div class="block"><h3>☁️ Compte (à venir)</h3><p class="hint" style="margin:0">La synchro entre vos appareils se branche ici (Supabase). En attendant, tout est sauvegardé sur cet appareil et exportable ci-dessous.</p></div>';
+function renderDonnees(){const keys=allKeys();let h='<div class="sec">Synchro multi-appareils</div>'+sbBlockHTML();
  h+='<div class="sec">Sauvegarde</div><div class="block"><button class="big ink" onclick="exportData()">⬇️ Exporter mes saisies</button><label class="big ghost" style="display:block;text-align:center;margin-top:8px;cursor:pointer">⬆️ Importer une sauvegarde<input type="file" accept="application/json" style="display:none" onchange="importData(this)"></label><p class="hint">'+keys.notes+' note(s) · '+keys.photos+' photo(s) · '+tours.length+' tournée(s) enregistrée(s). Pensez à exporter avant de vider le cache ou changer de téléphone.</p></div>';
  $('scr-donnees').innerHTML=h}
 function allKeys(){let n=0;for(const id in state)n+=(state[id].notes||[]).length;let ph=0;for(const id in phIndex)ph+=phIndex[id]||0;return {notes:n,photos:ph}}
@@ -283,5 +302,5 @@ $('quart').onchange=e=>{fq=e.target.value;refresh()};
 $('sort').onchange=e=>{sortMode=e.target.value;refresh()};
 document.querySelectorAll('#nav button').forEach(b=>b.onclick=()=>nav(b.dataset.s));
 // boot
-load();initMap();initData().then(()=>{populateQuartiers();refresh();setTimeout(()=>map&&map.invalidateSize(),200)});
+load();initMap();sbInit();initData().then(()=>{populateQuartiers();refresh();setTimeout(()=>map&&map.invalidateSize(),200)});
 </script></body></html>
