@@ -1,358 +1,287 @@
 <!DOCTYPE html><html lang="fr"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
 <title>Cockpit Boîtage — 13ᵉ Marseille</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#231a16;--cream:#fdf6ec;--paper:#fffaf2;--terra:#e07a5f;--terra-d:#c25c43;--sun:#f2b705;--teal:#2a9d8f;--line:#e7d8c4;--chaud:#e8503a;--tiede:#e9a319;--froid:#7d93a3;--shadow:0 8px 24px -12px rgba(60,30,15,.4)}
-*{box-sizing:border-box;margin:0;padding:0}html,body{height:100%}
-body{font-family:'Hanken Grotesk',sans-serif;color:var(--ink);background:var(--cream);display:flex;flex-direction:column;overflow:hidden}
-.top{padding:10px 14px;background:var(--paper);border-bottom:1px solid var(--line);box-shadow:var(--shadow);z-index:1000}
-.title{font-family:'Fraunces',serif;font-weight:900;font-size:20px;line-height:1}
-.title em{font-style:italic;color:var(--terra)}
-.stats{display:flex;gap:6px;margin-top:7px;flex-wrap:wrap}
+:root{--ink:#241813;--cream:#fbf3e6;--paper:#fffdf9;--terra:#d6552f;--terra-d:#a23c1d;--sun:#f0a500;--teal:#1c8b75;--line:#e4d6c0;--chaud:#df3f17;--tiede:#dd8c00;--froid:#62788a;--mut:#8a7868;--sh:0 8px 24px -12px rgba(60,30,15,.4)}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}body{font-family:'Hanken Grotesk',system-ui,sans-serif;color:var(--ink);background:var(--cream);display:flex;flex-direction:column;overflow:hidden}
+.top{background:var(--paper);border-bottom:1px solid var(--line);padding:10px 14px 8px;z-index:1000;box-shadow:var(--sh)}
+.brand{display:flex;align-items:baseline;justify-content:space-between}
+.brand h1{font-family:'Fraunces',serif;font-weight:900;font-size:20px}.brand h1 em{font-style:italic;color:var(--terra)}
+.brand .sub{font-size:12px;font-weight:700;color:var(--mut)}
+.stats{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
 .stat{background:var(--cream);border:1px solid var(--line);border-radius:999px;padding:3px 10px;font-size:12px;font-weight:600}
 .stat b{font-family:'Fraunces',serif;color:var(--terra-d);margin-right:3px}
-.bar{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;align-items:center}
-.search{flex:1;min-width:140px;padding:8px 12px;border:1.5px solid var(--line);border-radius:11px;font-size:14px;font-family:inherit;background:var(--cream)}
-.sel{padding:7px 10px;border:1.5px solid var(--line);border-radius:999px;background:var(--cream);font-family:inherit;font-weight:600;font-size:12px}
-.chip{border:1.5px solid var(--line);background:var(--cream);border-radius:999px;padding:6px 11px;font-size:12px;font-weight:600;cursor:pointer;user-select:none}
-.chip.on{background:var(--ink);color:var(--cream);border-color:var(--ink)}.chip.star.on{background:var(--sun);color:var(--ink);border-color:var(--sun)}
-.toggle{display:flex;background:var(--cream);border:1.5px solid var(--line);border-radius:999px;overflow:hidden;margin-left:auto}
-.toggle button{border:none;background:none;padding:7px 14px;font-family:inherit;font-weight:700;font-size:13px;cursor:pointer;color:#8a7a6c}
-.toggle button.on{background:var(--terra);color:#fff}
+.srow{display:flex;gap:8px;margin-top:8px}
+.search{flex:1;min-width:0;border:1.5px solid var(--line);background:var(--cream);border-radius:12px;padding:11px 13px;font-family:inherit;font-size:16px}
+.fbtn{border:1.5px solid var(--line);background:var(--cream);border-radius:12px;padding:0 14px;font-family:inherit;font-weight:700;font-size:14px;cursor:pointer;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.fbtn.on{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.panel{max-height:0;overflow:hidden;transition:max-height .25s}.panel.open{max-height:240px}
+.panelin{padding:9px 0 2px;display:flex;flex-wrap:wrap;gap:7px}
+.chip{border:1.5px solid var(--line);background:var(--cream);border-radius:999px;padding:8px 12px;font-size:13px;font-weight:700;cursor:pointer;user-select:none}
+.chip.on{background:var(--ink);color:var(--cream);border-color:var(--ink)}.chip.sun.on{background:var(--sun);color:var(--ink);border-color:var(--sun)}
+.sel{border:1.5px solid var(--line);background:var(--cream);border-radius:10px;padding:9px 10px;font-family:inherit;font-weight:700;font-size:13px}
 .main{flex:1;position:relative;overflow:hidden}
-#map{position:absolute;inset:0}
-.list{position:absolute;inset:0;overflow-y:auto;padding:12px;display:none;grid-template-columns:1fr;gap:9px;background:var(--cream)}
-@media(min-width:980px){.list{grid-template-columns:1fr 1fr}}
-body.listview .list{display:grid}body.listview #map{display:none}
-body.splitview #map{display:block;top:0;bottom:auto;left:0;right:0;height:44%;box-shadow:0 6px 14px -8px rgba(60,30,15,.45)}
-body.splitview .list{display:grid;grid-template-columns:1fr;top:44%;bottom:0;left:0;right:0}
-body.splitview .totop.show{display:flex}
-.row{display:flex;align-items:center;gap:11px;background:var(--paper);border:1.5px solid var(--line);border-radius:13px;padding:12px 13px 12px 15px;box-shadow:var(--shadow);cursor:pointer;position:relative;overflow:hidden}
-.row::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--froid)}
-.row.prio::before{background:linear-gradient(var(--sun),var(--terra))}
-.row.done{opacity:.5}
-.row:hover{border-color:var(--terra)}
-.rrang{font-family:'Fraunces',serif;font-weight:900;font-size:15px;color:#cdbba6;min-width:20px;text-align:center;flex:none;margin-left:3px}
-.rdot{width:11px;height:11px;border-radius:99px;flex:none}
-.rdot.chaud{background:var(--chaud)}.rdot.tiede{background:var(--tiede)}.rdot.froid{background:var(--froid)}
-.rmain{flex:1;min-width:0}
-.raddr{font-family:'Fraunces',serif;font-weight:700;font-size:14.5px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.rsub{font-size:11.5px;color:#8a7a6c;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:3px}
-.rscore{font-family:'Fraunces',serif;font-weight:900;font-size:19px;color:var(--terra-d);min-width:30px;text-align:right;flex:none}
-.rq{display:flex;gap:5px;flex:none}
-.qb{border:1.5px solid var(--line);background:var(--cream);border-radius:9px;padding:8px 11px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;text-decoration:none;color:var(--ink);line-height:1}
-.qb.add.in{background:var(--sun);border-color:var(--sun)}
-.card{background:var(--paper);border:1.5px solid var(--line);border-radius:15px;padding:13px;box-shadow:var(--shadow);position:relative;overflow:hidden}
-.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--froid)}
-.card.prio::before{background:linear-gradient(var(--sun),var(--terra))}
+.scr{position:absolute;inset:0;display:none;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.scr.on{display:block}.scr.pad{padding:12px}
+#scr-carte{padding:0}#map{position:absolute;inset:0}
+.legend{position:absolute;bottom:12px;left:12px;background:rgba(255,253,249,.95);border:1px solid var(--line);border-radius:10px;padding:7px 10px;font-size:11px;z-index:600;box-shadow:var(--sh)}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:99px;margin-right:3px}
+.card{background:var(--paper);border:1.5px solid var(--line);border-radius:14px;padding:12px 13px 12px 15px;margin-bottom:10px;display:flex;align-items:center;gap:11px;cursor:pointer;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px}
+.card.chaud::before{background:var(--chaud)}.card.tiede::before{background:var(--tiede)}.card.froid::before{background:var(--froid)}
 .card.done{opacity:.55}
-.chead{display:flex;gap:8px;align-items:flex-start}
-.rang{font-family:'Fraunces',serif;font-weight:900;font-size:16px;color:#cdbba6;min-width:24px}
-.addr{font-family:'Fraunces',serif;font-weight:700;font-size:15px;line-height:1.12;flex:1}
-.qt{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:#9a8a7c;margin-top:2px}
-.sc{font-family:'Fraunces',serif;font-weight:900;font-size:20px;text-align:center;min-width:34px}
-.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}
-.tag{font-size:11px;font-weight:600;padding:3px 8px;border-radius:7px;background:#f3e8d8;color:#6b5b4d}
-.tag.d{background:#e6f3ef;color:#1f7a6e}.tag.j{background:#fdeccf;color:#a5740a}
-.tb{display:inline-block;font-size:10px;font-weight:800;text-transform:uppercase;padding:2px 7px;border-radius:6px;color:#fff}
-.tb.chaud{background:var(--chaud)}.tb.tiede{background:var(--tiede)}.tb.froid{background:var(--froid)}
-.seg{display:flex;gap:4px;margin-top:10px;flex-wrap:wrap}
-.seg button{flex:1;min-width:54px;border:1.5px solid var(--line);background:var(--cream);border-radius:8px;padding:5px 4px;font-size:10.5px;font-weight:700;font-family:inherit;cursor:pointer;color:#7a6a5c}
-.seg button.on{color:#fff;border-color:transparent}
-.seg button.s0.on{background:var(--froid)}.seg button.s1.on{background:var(--teal)}.seg button.s2.on{background:#3d6e8f}.seg button.s3.on{background:var(--terra)}.seg button.s4.on{background:#9a8a7c}.seg button.s5.on{background:#9c6ab5}.seg button.s6.on{background:#2f6b3d}
-.note{width:100%;margin-top:8px;border:1.5px solid var(--line);border-radius:9px;padding:7px;font-family:inherit;font-size:12.5px;background:var(--cream);resize:vertical;min-height:34px}
-.acts{display:flex;gap:6px;margin-top:9px}
-.btn{flex:1;text-align:center;padding:8px;border-radius:9px;font-weight:700;font-size:12px;text-decoration:none;cursor:pointer;border:none;font-family:inherit}
-.btn.map{background:var(--ink);color:var(--cream)}.btn.ann{background:var(--terra);color:#fff}.btn.cp{flex:0 0 auto;background:var(--cream);border:1.5px solid var(--line);color:var(--ink);padding:8px 11px}
-.leaflet-popup-content{margin:11px 13px;font-family:'Hanken Grotesk',sans-serif}
-.pp-addr{font-family:'Fraunces',serif;font-weight:700;font-size:15px;margin-bottom:3px}
-.pp-meta{font-size:12px;color:#6b5b4d;margin-bottom:7px}
-.pp a{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;padding:5px 9px;border-radius:7px;font-size:12px;font-weight:700;margin-right:5px}
-.pp a.ann{background:var(--terra)}
-.legend{position:absolute;bottom:12px;left:12px;background:rgba(255,250,242,.95);border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:11px;z-index:600;box-shadow:var(--shadow)}
-.legend span{display:inline-flex;align-items:center;gap:4px;margin-right:8px}
-.dot{width:10px;height:10px;border-radius:99px;display:inline-block}
-.btn.add{background:var(--teal);color:#fff}.btn.add.in{background:var(--sun);color:var(--ink)}
-.fab{position:absolute;right:14px;bottom:14px;z-index:700;background:var(--ink);color:var(--cream);border:none;border-radius:999px;padding:13px 18px;font-family:'Fraunces',serif;font-weight:900;font-size:15px;box-shadow:var(--shadow);cursor:pointer;display:flex;align-items:center;gap:8px}
-.fab .bdg{background:var(--sun);color:var(--ink);border-radius:999px;min-width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:13px}
-.sheet{position:absolute;left:0;right:0;bottom:0;z-index:900;background:var(--paper);border-top-left-radius:20px;border-top-right-radius:20px;box-shadow:0 -10px 30px -10px rgba(60,30,15,.4);transform:translateY(110%);transition:transform .3s;max-height:75%;display:flex;flex-direction:column}
-.sheet.open{transform:translateY(0)}
-.shead{padding:14px 16px 8px;border-bottom:1px solid var(--line)}
-.shead .t{font-family:'Fraunces',serif;font-weight:900;font-size:18px}
-.shead .d{font-size:12.5px;color:#8a7a6c;margin-top:2px}
-.sclose{position:absolute;right:14px;top:12px;border:none;background:var(--cream);border-radius:999px;width:30px;height:30px;font-size:16px;cursor:pointer}
-.tlist{overflow-y:auto;padding:8px 12px;flex:1}
-.titem{display:flex;align-items:center;gap:10px;padding:9px;border:1px solid var(--line);border-radius:11px;margin-bottom:7px;background:var(--cream)}
-.tnum{font-family:'Fraunces',serif;font-weight:900;font-size:15px;color:#fff;background:var(--terra);border-radius:999px;min-width:26px;height:26px;display:flex;align-items:center;justify-content:center;flex:none}
-.titem .ta{flex:1;font-weight:600;font-size:13.5px;line-height:1.2}.titem .ta small{color:#9a8a7c;font-weight:500}
-.titem .rm{border:none;background:none;color:var(--terra-d);font-size:18px;cursor:pointer}
-.sfoot{padding:10px 14px;border-top:1px solid var(--line);display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.sfoot .opt{padding:9px 12px;border:1.5px solid var(--line);background:var(--cream);border-radius:10px;font-family:inherit;font-weight:700;font-size:13px;cursor:pointer}
-.sfoot .go{flex:1;min-width:160px;padding:11px;border:none;border-radius:10px;background:var(--terra);color:#fff;font-family:inherit;font-weight:700;font-size:14px;text-decoration:none;text-align:center;cursor:pointer}
-.sfoot .km{font-family:'Fraunces',serif;font-weight:700;color:var(--terra-d)}
-.tnumicon{background:var(--terra);color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.rg{font-family:'Fraunces',serif;font-weight:900;font-size:15px;color:#cdbba6;min-width:18px;text-align:center;flex:none}
+.mn{flex:1;min-width:0}
+.ad{font-family:'Fraunces',serif;font-weight:700;font-size:15px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mt{font-size:12px;color:var(--mut);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tags{margin-top:5px;display:flex;gap:4px;flex-wrap:wrap}
+.tag{font-size:10.5px;font-weight:800;padding:2px 7px;border-radius:6px}
+.tag.rdv{background:#e6f3ef;color:#10705a}.tag.rel{background:#fdeccf;color:#a5740a}.tag.bo{background:#efe7f5;color:#6b3f99}.tag.st{background:#f3e8d8;color:#6b5b4d}
+.sc{font-family:'Fraunces',serif;font-weight:900;font-size:20px;color:var(--terra-d);min-width:30px;text-align:right;flex:none}
+.qadd{border:1.5px solid var(--line);background:var(--cream);border-radius:9px;padding:9px 11px;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;flex:none}
+.qadd.in{background:var(--sun);border-color:var(--sun)}
+.nav{display:flex;background:var(--paper);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
+.nav button{flex:1;border:none;background:none;padding:8px 0 9px;font-family:inherit;font-weight:700;font-size:11px;color:var(--mut);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;position:relative}
+.nav button .ic{font-size:21px;line-height:1}.nav button.on{color:var(--terra)}
+.nav .bdg{position:absolute;top:4px;right:50%;margin-right:-22px;background:var(--terra);color:#fff;border-radius:999px;min-width:17px;height:17px;font-size:10px;display:flex;align-items:center;justify-content:center;padding:0 4px}
+.sec{font-family:'Fraunces',serif;font-weight:900;font-size:13px;text-transform:uppercase;letter-spacing:.04em;color:var(--mut);margin:14px 2px 8px}.sec:first-child{margin-top:2px}
+.big{width:100%;padding:13px;border:none;border-radius:12px;background:var(--teal);color:#fff;font-family:inherit;font-weight:800;font-size:14px;cursor:pointer}
+.big.ink{background:var(--ink);color:var(--cream)}.big.ghost{background:var(--cream);border:1.5px solid var(--line);color:var(--ink)}.big.terra{background:var(--terra)}
+.block{background:var(--paper);border:1.5px solid var(--line);border-radius:14px;padding:13px;margin-bottom:11px}
+.block h3{font-family:'Fraunces',serif;font-weight:900;font-size:15px;margin-bottom:10px}
+.tourcard{background:var(--paper);border:1.5px solid var(--line);border-radius:13px;padding:12px;margin-bottom:10px}
+.tourcard .tn{font-family:'Fraunces',serif;font-weight:900;font-size:15px}.tourcard .tmm{font-size:12px;color:var(--mut);margin-top:2px}
+.trow{display:flex;gap:6px;margin-top:10px}.trow button{flex:1;border:1.5px solid var(--line);background:var(--cream);border-radius:9px;padding:8px 4px;font-family:inherit;font-weight:700;font-size:12px;cursor:pointer}
+.titem{display:flex;align-items:center;gap:9px;padding:8px;border:1px solid var(--line);border-radius:10px;margin-bottom:6px;background:var(--cream)}
+.tnum{font-family:'Fraunces',serif;font-weight:900;color:#fff;background:var(--terra);border-radius:999px;min-width:24px;height:24px;display:flex;align-items:center;justify-content:center;flex:none;font-size:13px}
+.titem .ta{flex:1;font-size:13px;font-weight:600;line-height:1.2}.titem .ta small{color:var(--mut);font-weight:500}
+.titem .rm{border:none;background:none;color:var(--terra-d);font-size:17px;cursor:pointer}
 .modeseg{display:flex;border:1.5px solid var(--line);border-radius:10px;overflow:hidden}
-.modeseg button{border:none;background:var(--cream);padding:9px 12px;font-family:inherit;font-weight:700;font-size:13px;cursor:pointer;color:#8a7a6c}
-.modeseg button.on{background:var(--teal);color:#fff}
-.phb{position:absolute;top:8px;right:8px;background:var(--ink);color:#fff;border-radius:999px;font-size:11px;font-weight:700;padding:2px 7px}
-.modal{position:fixed;inset:0;z-index:2000;background:rgba(35,26,22,.55);display:none;align-items:flex-end;justify-content:center}
-.modal.open{display:flex}
-.fiche{background:var(--paper);width:100%;max-width:560px;max-height:92%;border-top-left-radius:22px;border-top-right-radius:22px;overflow-y:auto;box-shadow:0 -10px 40px rgba(0,0,0,.4)}
-@media(min-width:560px){.modal{align-items:center}.fiche{border-radius:22px}}
-.fhead{position:sticky;top:0;background:var(--paper);padding:16px 18px 12px;border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:flex-start}
-.fhead .fa{flex:1}.fhead .fa h2{font-family:'Fraunces',serif;font-weight:900;font-size:21px;line-height:1.08}
-.fhead .fa .fq{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:#9a8a7c;margin-top:3px}
-.fhead .fsc{font-family:'Fraunces',serif;font-weight:900;font-size:26px;color:var(--terra-d);text-align:center}
-.fclose{position:absolute;right:14px;top:13px;border:none;background:var(--cream);border-radius:999px;width:32px;height:32px;font-size:17px;cursor:pointer}
-.fbody{padding:14px 18px 22px}
-.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
-.fg{background:var(--cream);border:1px solid var(--line);border-radius:11px;padding:9px 11px}
-.fg .k{font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:#a89684;font-weight:700}
-.fg .v{font-family:'Fraunces',serif;font-weight:700;font-size:16px;margin-top:2px}
-.fg.fp{background:#eaf2f8;border-color:#cfe0ec}
-.fsec{font-family:'Fraunces',serif;font-weight:700;font-size:15px;margin:16px 0 8px}
+.modeseg button{flex:1;border:none;background:var(--cream);padding:9px;font-family:inherit;font-weight:700;font-size:13px;cursor:pointer;color:var(--mut)}.modeseg button.on{background:var(--teal);color:#fff}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}
+.hint{color:var(--mut);font-size:12px;margin-top:6px;line-height:1.45}
+.fiche{position:absolute;inset:0;background:var(--cream);z-index:1500;transform:translateX(100%);transition:transform .26s;display:none;flex-direction:column}
+.fiche.show{display:flex}.fiche.open{transform:translateX(0)}
+.fhead{background:var(--paper);border-bottom:1px solid var(--line);padding:11px 13px}
+.fbar{display:flex;align-items:center;gap:10px}
+.back{border:1.5px solid var(--line);background:var(--cream);border-radius:10px;width:38px;height:38px;font-size:20px;cursor:pointer;flex:none}
+.ftt{flex:1;min-width:0}.ftt h2{font-family:'Fraunces',serif;font-weight:900;font-size:18px;line-height:1.1}
+.ftt .fq{font-size:12px;color:var(--mut);font-weight:700;margin-top:2px}
+.fsc{font-family:'Fraunces',serif;font-weight:900;font-size:24px;color:var(--terra-d);flex:none}
+.copyaddr{margin-top:9px;border:1.5px solid var(--line);background:var(--cream);border-radius:9px;padding:7px 12px;font-family:inherit;font-weight:700;font-size:12.5px;cursor:pointer}
+.facts{display:flex;gap:6px;margin-top:9px;flex-wrap:wrap}
+.act{flex:1;min-width:70px;text-align:center;padding:9px;border-radius:10px;font-weight:700;font-size:12px;border:none;font-family:inherit;cursor:pointer;text-decoration:none}
+.act.map{background:var(--ink);color:#fff}.act.earth{background:#36617d;color:#fff}.act.ann{background:var(--terra);color:#fff}.act.tour{background:var(--teal);color:#fff}.act.tour.in{background:var(--sun);color:var(--ink)}
+.fbody{flex:1;overflow-y:auto;padding:13px;-webkit-overflow-scrolling:touch}
+.fld{margin-bottom:9px}.fld label{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--mut);margin-bottom:4px}
+.inp{width:100%;border:1.5px solid var(--line);background:var(--cream);border-radius:10px;padding:10px 11px;font-family:inherit;font-size:15px}
+textarea.inp{resize:vertical;min-height:40px}
+.two{display:flex;gap:8px}.two>div{flex:1;min-width:0}
+.callrow{display:flex;gap:7px;margin-top:4px}
+.cb{flex:1;text-align:center;padding:10px;border-radius:10px;font-weight:700;font-size:13px;border:none;font-family:inherit;cursor:pointer;text-decoration:none}
+.cb.tel{background:var(--teal);color:#fff}.cb.sms{background:#36617d;color:#fff}
+.seg{display:flex;flex-wrap:wrap;gap:5px}
+.seg button{flex:1;min-width:62px;border:1.5px solid var(--line);background:var(--cream);border-radius:9px;padding:8px 4px;font-size:11px;font-weight:700;font-family:inherit;cursor:pointer;color:#7a6a5c}
+.seg button.on{background:var(--terra);color:#fff;border-color:var(--terra)}
+.note{display:flex;gap:9px;padding:8px 0;border-top:1px solid var(--line)}
+.note .nd{font-size:11px;color:var(--mut);font-weight:700;min-width:72px}.note .nx{font-size:13.5px;flex:1;word-break:break-word}
+.note .ndel{border:none;background:none;color:var(--terra-d);cursor:pointer;font-size:14px}
 .phgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .phc{position:relative;aspect-ratio:1;border-radius:11px;overflow:hidden;border:1px solid var(--line);background:var(--cream)}
 .phc img{width:100%;height:100%;object-fit:cover;display:block}
-.phc .del{position:absolute;top:4px;right:4px;background:rgba(35,26,22,.75);color:#fff;border:none;border-radius:999px;width:24px;height:24px;font-size:13px;cursor:pointer}
-.phadd{aspect-ratio:1;border:2px dashed var(--terra);border-radius:11px;background:#fdeee9;color:var(--terra-d);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-weight:700;font-size:12px;cursor:pointer}
+.phc .del{position:absolute;top:4px;right:4px;background:rgba(35,26,22,.75);color:#fff;border:none;border-radius:999px;width:24px;height:24px;cursor:pointer}
+.phadd{aspect-ratio:1;border:2px dashed var(--terra);border-radius:11px;background:#fdeee9;color:var(--terra-d);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-weight:700;font-size:12px;cursor:pointer}
 .phadd input{display:none}
-.facts{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
-.facts a,.facts button{flex:1;min-width:90px;text-align:center;padding:11px;border-radius:11px;font-weight:700;font-size:13px;text-decoration:none;cursor:pointer;border:none;font-family:inherit}
-.facts .map{background:var(--ink);color:#fff}.facts .ann{background:var(--terra);color:#fff}.facts .earth{background:#3d6e8f;color:#fff}.facts .add{background:var(--teal);color:#fff}.facts .add.in{background:var(--sun);color:var(--ink)}
-.boited{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:13.5px;font-weight:600;color:#1f7a6e;background:#e6f3ef;border:1px solid #cfe7e0;border-radius:11px;padding:9px 11px}
-.bbtn{border:1.5px solid var(--line);background:var(--cream);border-radius:9px;padding:8px 11px;font-family:inherit;font-weight:700;font-size:12.5px;cursor:pointer;color:var(--ink)}
-.bbtn.go{background:var(--teal);color:#fff;border-color:var(--teal);width:100%;padding:11px}
-.bbtn.x{color:var(--terra-d)}
-.copyaddr{margin-top:8px;border:1.5px solid var(--line);background:var(--cream);border-radius:9px;padding:7px 12px;font-family:inherit;font-weight:700;font-size:12.5px;cursor:pointer;color:var(--ink)}
-.copyaddr:active{background:var(--sun);border-color:var(--sun)}
-.totop{position:absolute;right:14px;bottom:70px;z-index:680;display:none;align-items:center;justify-content:center;width:44px;height:44px;border-radius:999px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);font-size:20px;font-weight:800;box-shadow:var(--shadow);cursor:pointer}
-body.listview .totop.show{display:flex}
-@media(max-width:560px){
- .top{padding:8px 10px}
- .title{font-size:18px}
- .stat{font-size:12.5px;padding:4px 10px}
- .bar{gap:7px}
- .search{min-width:100%;font-size:16px;padding:11px 12px}
- .sel{font-size:13.5px;padding:10px 11px}
- .chip{font-size:14px;padding:10px 13px}
- .toggle{margin-left:0}
- .toggle button{padding:10px 15px;font-size:14px}
- .row{padding:13px 12px 13px 15px;gap:12px}
- .raddr{font-size:15px}
- .rsub{font-size:12px}
- .rscore{font-size:21px;min-width:34px}
- .qb{padding:11px 13px;font-size:17px}
- .legend{font-size:10px;padding:6px 8px}
-}
+.toast{position:absolute;left:50%;bottom:78px;transform:translateX(-50%);background:var(--ink);color:var(--cream);padding:10px 16px;border-radius:999px;font-size:13px;font-weight:700;z-index:2000;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.show{opacity:1}
+@media(min-width:760px){#scr-liste.pad{column-count:2;column-gap:10px}#scr-liste .card{break-inside:avoid}}
 </style></head><body>
 <div class="top">
- <div class="title">Cockpit <em>Boîtage</em> · 13ᵉ</div>
- <div class="stats">
-  <span class="stat" id="st-tot"><b>59</b>prospects</span><span class="stat" id="st-star"><b>22</b>⭐</span>
-  <span class="stat" id="st-chaud"><b>13</b>🔥</span><span class="stat" id="st-boite"><b>0</b>📭 auj.</span><span class="stat" id="todo"><b>59</b>à visiter</span>
- </div>
- <div class="bar">
+ <div class="brand"><h1>Cockpit <em>Boîtage</em> · 13ᵉ</h1><span class="sub" id="sub">…</span></div>
+ <div class="stats" id="stats"></div>
+ <div class="srow" id="srow">
   <input class="search" id="q" placeholder="🔎 rue / quartier">
-  <select class="sel" id="quart"></select>
-  <span class="chip" data-t="chaud">🔥</span><span class="chip" data-t="tiede">♨️</span><span class="chip" data-t="froid">🌡️</span>
-  <span class="chip star" id="prio">⭐</span>
-  <span class="chip" id="cboite">📭 à boîter</span>
-  <select class="sel" id="sort"><option value="score">⇅ Score</option><option value="dpe">⇅ DPE récent</option><option value="quartier">⇅ Quartier</option></select>
-  <div class="toggle"><button id="bmap" class="on">🗺️ Carte</button><button id="bmix">⊟ Mixte</button><button id="blist">📋 Liste</button></div>
+  <button class="fbtn" id="fbtn">⚙︎ Filtres</button>
  </div>
+ <div class="panel" id="panel"><div class="panelin">
+  <span class="chip" data-t="chaud">🔥</span><span class="chip" data-t="tiede">♨️</span><span class="chip" data-t="froid">🌡️</span>
+  <span class="chip sun" id="cprio">⭐</span><span class="chip" id="cboite">📭 à boîter</span>
+  <select class="sel" id="quart"></select>
+  <select class="sel" id="sort"><option value="score">⇅ Score</option><option value="dpe">⇅ DPE récent</option><option value="quartier">⇅ Quartier</option></select>
+ </div></div>
 </div>
 <div class="main">
- <div id="map"></div>
- <div class="legend"><span><i class="dot" style="background:#e8503a"></i>Chaud</span><span><i class="dot" style="background:#e9a319"></i>Tiède</span><span><i class="dot" style="background:#7d93a3"></i>Refroidi</span><span>⭐ prioritaire</span></div>
- <div class="list" id="list"></div>
- <button class="totop" id="totop" title="Haut de liste">↑</button>
- <button class="fab" id="fab">🚲 Tournée <span class="bdg" id="fabn">0</span></button>
- <div class="sheet" id="sheet">
-  <div class="shead"><div class="t">Plan de tournée</div><div class="d" id="tdesc">Ajoute des adresses depuis la carte ou la liste.</div><button class="sclose" id="sclose">✕</button></div>
-  <div class="tlist" id="tlist"></div>
-  <div class="sfoot">
-   <button class="opt" id="usepos">📍 Partir d'ici</button>
-   <button class="opt" id="optimize">↘️ Optimiser</button>
-   <div class="modeseg"><button id="mbike" class="on">🚲 Vélo</button><button id="mscoot">🛵 Scoot</button></div>
-   <span class="km" id="tkm"></span>
-   <a class="go" id="gomaps" target="_blank">Ouvrir dans Maps</a>
-  </div>
+ <div class="scr on" id="scr-carte"><div id="map"></div>
+  <div class="legend"><i style="background:var(--chaud)"></i>Chaud <i style="background:var(--tiede)"></i>Tiède <i style="background:var(--froid)"></i>Refroidi · ⭐ prio</div>
  </div>
+ <div class="scr pad" id="scr-liste"></div>
+ <div class="scr pad" id="scr-tournees"></div>
+ <div class="scr pad" id="scr-donnees"></div>
 </div>
-<div class="modal" id="modal"><div class="fiche" id="fiche"></div></div>
+<div class="nav" id="nav">
+ <button class="on" data-s="carte"><span class="ic">🗺️</span>Carte</button>
+ <button data-s="liste"><span class="ic">📋</span>Liste</button>
+ <button data-s="tournees"><span class="ic">🧭</span>Tournées<span class="bdg" id="navbdg" style="display:none">0</span></button>
+ <button data-s="donnees"><span class="ic">💾</span>Données</button>
+</div>
+<div class="fiche" id="fiche"></div>
+<div class="toast" id="toast"></div>
 <script>
-const FALLBACK_DATA=[{"id": "2613E1376873J", "q": "Château-Gombert", "prio": true, "date": "2026-05-22", "jours": 9, "dpe": "B", "ges": "A", "surface": 251.7, "niv": 2, "annee": 1999, "adresse": "28 Traverse Collet Redon", "statut": "Aucune annonce trouvée", "flags": [], "tier": "chaud", "score": 76, "lat": 43.348916044843605, "lon": 5.427980979798896, "gmaps": "https://maps.google.com/?q=43.348916044843605,5.427980979798896", "deja": false, "conso": 90, "gesv": 3, "chauf": "Électricité", "rang": 1}, {"id": "2613E1307038K", "q": "Saint-Jérôme", "prio": true, "date": "2026-05-13", "jours": 18, "dpe": "D", "ges": "D", "surface": 161.5, "niv": null, "annee": null, "adresse": "30 Boulevard De Cazoran", "statut": "Aucune annonce trouvée", "flags": [], "tier": "chaud", "score": 72, "lat": 43.33109802123519, "lon": 5.416790999497521, "gmaps": "https://maps.google.com/?q=43.33109802123519,5.416790999497521", "deja": false, "conso": 235, "gesv": 30, "chauf": "Gaz naturel", "rang": 2}, {"id": "2613E1348030A", "q": "Clair Soleil", "prio": false, "date": "2026-05-20", "jours": 11, "dpe": "B", "ges": "A", "surface": 198.1, "niv": null, "annee": 1980, "adresse": "96 Avenue Paul Dalbret", "statut": "Aucune annonce trouvée", "flags": [], "tier": "chaud", "score": 68, "lat": 43.353224032488775, "lon": 5.447777049246701, "gmaps": "https://maps.google.com/?q=43.353224032488775,5.447777049246701", "deja": false, "conso": 91, "gesv": 3, "chauf": "Bois – Bûches", "rang": 3}, {"id": "2613E1328055T", "q": "Les Médecins", "prio": true, "date": "2026-05-18", "jours": 13, "dpe": "D", "ges": "B", "surface": 137.2, "niv": 2, "annee": null, "adresse": "101 Chemin Des Paroyes", "statut": "Aucune annonce trouvée", "flags": [], "tier": "chaud", "score": 68, "lat": 43.359561976441015, "lon": 5.4599009610347, "gmaps": "https://maps.google.com/?q=43.359561976441015,5.4599009610347", "deja": false, "conso": 235, "gesv": 8, "chauf": "Bois – Granulés (pellets) ou briquettes", "rang": 4}, {"id": "2613E1311386Q", "q": "Les Olives", "prio": false, "date": "2026-05-15", "jours": 16, "dpe": "C", "ges": "C", "surface": 173.6, "niv": null, "annee": null, "adresse": "7 Avenue Julien", "statut": "Aucune annonce trouvée", "flags": [], "tier": "chaud", "score": 64, "lat": 43.32116102555739, "lon": 5.4540379609467, "gmaps": "https://maps.google.com/?q=43.32116102555739,5.4540379609467", "deja": false, "conso": 128, "gesv": 16, "chauf": "Gaz naturel", "rang": 5}, {"id": "2613E1393058W", "q": "Château-Gombert", "prio": true, "date": "2026-05-25", "jours": 6, "dpe": "C", "ges": "A", "surface": 104.1, "niv": 2, "annee": null, "adresse": "285 Chemin De Chateau Gombert", "statut": "Aucune annonce trouvée", "flags": [], "tier": "chaud", "score": 62, "lat": 43.348525960944585, "lon": 5.430342052126505, "gmaps": "https://maps.google.com/?q=43.348525960944585,5.430342052126505", "deja": false, "conso": 112, "gesv": 4, "chauf": "Électricité", "rang": 6}, {"id": "2613E1286940K", "q": "Saint-Jérôme", "prio": true, "date": "2026-05-12", "jours": 19, "dpe": "C", "ges": "B", "surface": 92.8, "niv": null, "annee": null, "adresse": "Rue Des Polytres", "statut": "Aucune annonce trouvée", "flags": [], "tier": "chaud", "score": 62, "lat": 43.33070502438618, "lon": 5.416298004862515, "gmaps": "https://maps.google.com/?q=43.33070502438618,5.416298004862515", "deja": false, "conso": 167, "gesv": 6, "chauf": "Électricité", "rang": 7}, {"id": "2613E1285126Q", "q": "Les Olives", "prio": false, "date": "2026-05-12", "jours": 19, "dpe": "B", "ges": "A", "surface": 146.5, "niv": null, "annee": null, "adresse": "20 Chemin De La Ribassiere", "statut": "Aucune annonce trouvée", "flags": [], "tier": "chaud", "score": 60, "lat": 43.32640601754517, "lon": 5.459414987297658, "gmaps": "https://maps.google.com/?q=43.32640601754517,5.459414987297658", "deja": false, "conso": 74, "gesv": 2, "chauf": "Électricité", "rang": 8}, {"id": "2613E1384382E", "q": "Les Olives", "prio": false, "date": "2026-05-22", "jours": 9, "dpe": "E", "ges": "B", "surface": 102.4, "niv": null, "annee": null, "adresse": "Rue De Pichauris", "statut": "Aucune annonce trouvée", "flags": [], "tier": "chaud", "score": 59, "lat": 43.32945398192071, "lon": 5.459979048751013, "gmaps": "https://maps.google.com/?q=43.32945398192071,5.459979048751013", "deja": false, "conso": 255, "gesv": 9, "chauf": "Électricité", "rang": 9}, {"id": "2613E1386376W", "q": "Saint-Jérôme", "prio": true, "date": "2026-05-22", "jours": 9, "dpe": "B", "ges": "A", "surface": 82.7, "niv": null, "annee": null, "adresse": "49 Rue Des Polytres", "statut": "Aucune annonce trouvée", "flags": [], "tier": "chaud", "score": 57, "lat": 43.33184599367684, "lon": 5.416478017122563, "gmaps": "https://maps.google.com/?q=43.33184599367684,5.416478017122563", "deja": false, "conso": 86, "gesv": 3, "chauf": "Électricité", "rang": 10}, {"id": "2613E1380031V", "q": "Clair Soleil", "prio": false, "date": "2026-05-22", "jours": 9, "dpe": "C", "ges": "B", "surface": 106.7, "niv": 1, "annee": null, "adresse": "Traverse De La Balme", "statut": "Aucune annonce trouvée", "flags": [], "tier": "chaud", "score": 54, "lat": 43.35408502781071, "lon": 5.454001025531924, "gmaps": "https://maps.google.com/?q=43.35408502781071,5.454001025531924", "deja": false, "conso": 174, "gesv": 6, "chauf": "Électricité", "rang": 11}, {"id": "2613E1294345F", "q": "Saint-Just", "prio": false, "date": "2026-05-12", "jours": 19, "dpe": "B", "ges": "A", "surface": 106, "niv": null, "annee": null, "adresse": "100 Rue Chalusset", "statut": "Aucune annonce trouvée", "flags": [], "tier": "chaud", "score": 54, "lat": 43.3165510397504, "lon": 5.3939989932725005, "gmaps": "https://maps.google.com/?q=43.3165510397504,5.3939989932725005", "deja": false, "conso": 92, "gesv": 3, "chauf": "Électricité", "rang": 12}, {"id": "2613E1140405L", "q": "Saint-Just", "prio": false, "date": "2026-04-24", "jours": 37, "dpe": "E", "ges": "E", "surface": 176, "niv": null, "annee": null, "adresse": "5 Boulevard Emile Rambaud", "statut": "Aucune annonce trouvée", "flags": [], "tier": "tiede", "score": 54, "lat": 43.32031399261079, "lon": 5.401206971577566, "gmaps": "https://maps.google.com/?q=43.32031399261079,5.401206971577566", "deja": false, "conso": 289, "gesv": 64, "chauf": "Gaz naturel", "rang": 13}, {"id": "2613E1263506C", "q": "Les Olives", "prio": false, "date": "2026-05-08", "jours": 23, "dpe": "B", "ges": "B", "surface": 197.3, "niv": null, "annee": 1987, "adresse": "23 Chemin Des Aurengues", "statut": "Aucune annonce trouvée", "flags": [], "tier": "tiede", "score": 53, "lat": 43.32628799784843, "lon": 5.45503998849507, "gmaps": "https://maps.google.com/?q=43.32628799784843,5.45503998849507", "deja": false, "conso": 40, "gesv": 10, "chauf": "Fioul domestique", "rang": 14}, {"id": "2613E1117325T", "q": "Les Olives", "prio": false, "date": "2026-04-22", "jours": 39, "dpe": "D", "ges": "B", "surface": 182.7, "niv": null, "annee": null, "adresse": "33 Traverse Des Platrieres", "statut": "Aucune annonce trouvée", "flags": [], "tier": "tiede", "score": 53, "lat": 43.319056969372625, "lon": 5.451895995336374, "gmaps": "https://maps.google.com/?q=43.319056969372625,5.451895995336374", "deja": false, "conso": 217, "gesv": 8, "chauf": "Électricité", "rang": 15}, {"id": "2613E1159275F", "q": "Saint-Jérôme", "prio": true, "date": "2026-04-27", "jours": 34, "dpe": "E", "ges": "D", "surface": 110.6, "niv": null, "annee": null, "adresse": "Avenue De Saint Jerome", "statut": "Aucune annonce trouvée", "flags": [], "tier": "tiede", "score": 52, "lat": 43.331004034515786, "lon": 5.419368005796739, "gmaps": "https://maps.google.com/?q=43.331004034515786,5.419368005796739", "deja": false, "conso": 261, "gesv": 42, "chauf": "Gaz naturel", "rang": 16}, {"id": "2613E1235088C", "q": "Clair Soleil", "prio": false, "date": "2026-05-05", "jours": 26, "dpe": "C", "ges": "B", "surface": 150, "niv": 1, "annee": null, "adresse": "Traverse De La Rose", "statut": "Aucune annonce trouvée", "flags": [], "tier": "tiede", "score": 49, "lat": 43.346944021723466, "lon": 5.439500001359007, "gmaps": "https://maps.google.com/?q=43.346944021723466,5.439500001359007", "deja": false, "conso": 179, "gesv": 6, "chauf": "Bois – Bûches", "rang": 17}, {"id": "2613E1155255P", "q": "Saint-Mitre", "prio": false, "date": "2026-04-27", "jours": 34, "dpe": "C", "ges": "A", "surface": 179, "niv": 2, "annee": 1970, "adresse": "4 Chemin De Rousset", "statut": "Aucune annonce trouvée", "flags": [], "tier": "tiede", "score": 49, "lat": 43.35012396006378, "lon": 5.419646989327833, "gmaps": "https://maps.google.com/?q=43.35012396006378,5.419646989327833", "deja": false, "conso": 115, "gesv": 4, "chauf": "Électricité", "rang": 18}, {"id": "2613E1216652A", "q": "Palama", "prio": true, "date": "2026-05-04", "jours": 27, "dpe": "D", "ges": "D", "surface": 98.3, "niv": 2, "annee": null, "adresse": "46 Rue Des Ecuyers", "statut": "Aucune annonce trouvée", "flags": [], "tier": "tiede", "score": 47, "lat": 43.35884795690349, "lon": 5.439567034199537, "gmaps": "https://maps.google.com/?q=43.35884795690349,5.439567034199537", "deja": false, "conso": 164, "gesv": 36, "chauf": "Gaz naturel", "rang": 19}, {"id": "2613E1132273R", "q": "Les Mourets", "prio": true, "date": "2026-04-24", "jours": 37, "dpe": "C", "ges": "A", "surface": 99.9, "niv": 3, "annee": null, "adresse": "3 Impasse Gombert", "statut": "Aucune annonce trouvée", "flags": [], "tier": "tiede", "score": 47, "lat": 43.3517099967136, "lon": 5.4394580044382055, "gmaps": "https://maps.google.com/?q=43.3517099967136,5.4394580044382055", "deja": false, "conso": 134, "gesv": 4, "chauf": "Bois – Granulés (pellets) ou briquettes", "rang": 20}, {"id": "2613E1119717T", "q": "Saint-Mitre", "prio": false, "date": "2026-04-23", "jours": 38, "dpe": "D", "ges": "D", "surface": 123, "niv": 3, "annee": 1974, "adresse": "3 Boulevard Marie Louise", "statut": "Aucune annonce trouvée", "flags": [], "tier": "tiede", "score": 45, "lat": 43.34006402128773, "lon": 5.41401100128432, "gmaps": "https://maps.google.com/?q=43.34006402128773,5.41401100128432", "deja": false, "conso": 191.7, "gesv": 32.7, "chauf": "Gaz naturel", "rang": 21}, {"id": "2613E1075893F", "q": "Les Mourets", "prio": true, "date": "2026-04-18", "jours": 43, "dpe": "C", "ges": "A", "surface": 176, "niv": 2, "annee": null, "adresse": "4 Traverse De La Baume Loubiere", "statut": "Aucune annonce trouvée", "flags": [], "tier": "froid", "score": 42, "lat": 43.35192501695646, "lon": 5.4333400533687035, "gmaps": "https://maps.google.com/?q=43.35192501695646,5.4333400533687035", "deja": false, "conso": 143, "gesv": 5, "chauf": "Électricité", "rang": 22}, {"id": "2613E1251115N", "q": "Les Olives", "prio": false, "date": "2026-05-07", "jours": 24, "dpe": "C", "ges": "A", "surface": 90.7, "niv": null, "annee": 1978, "adresse": "Impasse Des Francs Tireurs", "statut": "Aucune annonce trouvée", "flags": [], "tier": "tiede", "score": 39, "lat": 43.32251103504678, "lon": 5.447682035078251, "gmaps": "https://maps.google.com/?q=43.32251103504678,5.447682035078251", "deja": false, "conso": 151, "gesv": 5, "chauf": "Électricité", "rang": 23}, {"id": "2613E1176421R", "q": "Clair Soleil", "prio": false, "date": "2026-04-29", "jours": 32, "dpe": "D", "ges": "D", "surface": 94.4, "niv": null, "annee": null, "adresse": "Rond-Point Albert Tian", "statut": "Aucune annonce trouvée", "flags": [], "tier": "tiede", "score": 39, "lat": 43.34277398529061, "lon": 5.44911498311987, "gmaps": "https://maps.google.com/?q=43.34277398529061,5.44911498311987", "deja": false, "conso": 156, "gesv": 34, "chauf": "Gaz naturel", "rang": 24}, {"id": "2613E1155329L", "q": "La Croix-Rouge", "prio": false, "date": "2026-04-27", "jours": 34, "dpe": "C", "ges": "B", "surface": 90.5, "niv": null, "annee": 1961, "adresse": "15 Rue Ventose", "statut": "Aucune annonce trouvée", "flags": [], "tier": "tiede", "score": 39, "lat": 43.33813398381521, "lon": 5.438780003602309, "gmaps": "https://maps.google.com/?q=43.33813398381521,5.438780003602309", "deja": false, "conso": 161, "gesv": 6, "chauf": "Électricité", "rang": 25}, {"id": "2613E1144082W", "q": "Les Olives", "prio": false, "date": "2026-04-25", "jours": 36, "dpe": "C", "ges": "A", "surface": 90.7, "niv": null, "annee": null, "adresse": "39 Boulevard Roume", "statut": "Aucune annonce trouvée", "flags": [], "tier": "tiede", "score": 39, "lat": 43.3263709590378, "lon": 5.444928037127108, "gmaps": "https://maps.google.com/?q=43.3263709590378,5.444928037127108", "deja": false, "conso": 158, "gesv": 5, "chauf": "Électricité", "rang": 26}, {"id": "2613E1114886Y", "q": "Les Olives", "prio": false, "date": "2026-04-22", "jours": 39, "dpe": "C", "ges": "C", "surface": 96.9, "niv": null, "annee": 1988, "adresse": "22 Chemin Des Aurengues", "statut": "Aucune annonce trouvée", "flags": [], "tier": "tiede", "score": 39, "lat": 43.32618203196997, "lon": 5.455207944675054, "gmaps": "https://maps.google.com/?q=43.32618203196997,5.455207944675054", "deja": false, "conso": 134, "gesv": 28, "chauf": "Gaz naturel", "rang": 27}, {"id": "2613E1249870Q", "q": "Les Mourets", "prio": true, "date": "2026-05-07", "jours": 24, "dpe": "D", "ges": "B", "surface": 32.1, "niv": 1, "annee": null, "adresse": "19 Boulevard Fernand Durbec", "statut": "Aucune annonce trouvée", "flags": [], "tier": "tiede", "score": 38, "lat": 43.35095804357629, "lon": 5.438494992907637, "gmaps": "https://maps.google.com/?q=43.35095804357629,5.438494992907637", "deja": false, "conso": 227, "gesv": 8, "chauf": "Électricité", "rang": 28}, {"id": "2613E1089083N", "q": "Château-Gombert", "prio": true, "date": "2026-04-20", "jours": 41, "dpe": "C", "ges": "C", "surface": 127.1, "niv": 2, "annee": null, "adresse": "15 Impasse Coulomb", "statut": "Aucune annonce trouvée", "flags": [], "tier": "froid", "score": 38, "lat": 43.34689399791733, "lon": 5.422046003368456, "gmaps": "https://maps.google.com/?q=43.34689399791733,5.422046003368456", "deja": false, "conso": 116, "gesv": 21, "chauf": "Gaz naturel", "rang": 29}, {"id": "2613E1084353P", "q": "Château-Gombert", "prio": true, "date": "2026-04-20", "jours": 41, "dpe": "C", "ges": "A", "surface": 123.1, "niv": 2, "annee": null, "adresse": "194 Chemin De Chateau Gombert", "statut": "Aucune annonce trouvée", "flags": [], "tier": "froid", "score": 38, "lat": 43.3446219629855, "lon": 5.4231599981718785, "gmaps": "https://maps.google.com/?q=43.3446219629855,5.4231599981718785", "deja": false, "conso": 112, "gesv": 4, "chauf": "Électricité", "rang": 30}, {"id": "2613E1039644A", "q": "Les Mourets", "prio": true, "date": "2026-04-15", "jours": 46, "dpe": "C", "ges": "B", "surface": 145.6, "niv": 2, "annee": 2003, "adresse": "12 Avenue De Chateau Gombert", "statut": "Aucune annonce trouvée", "flags": [], "tier": "froid", "score": 38, "lat": 43.3518120167915, "lon": 5.434949982669402, "gmaps": "https://maps.google.com/?q=43.3518120167915,5.434949982669402", "deja": false, "conso": 122, "gesv": 8, "chauf": "Électricité", "rang": 31}, {"id": "2613E1259018M", "q": "Palama", "prio": true, "date": "2026-05-07", "jours": 24, "dpe": "D", "ges": "D", "surface": 95.2, "niv": 2, "annee": null, "adresse": "5 Rue Des Chars", "statut": "Aucune annonce trouvée", "flags": ["DPE remplacé"], "tier": "tiede", "score": 37, "lat": 43.36071098957026, "lon": 5.442472983868842, "gmaps": "https://maps.google.com/?q=43.36071098957026,5.442472983868842", "deja": false, "conso": 150, "gesv": 32, "chauf": "Gaz naturel", "rang": 32}, {"id": "2613E1043513V", "q": "Palama", "prio": true, "date": "2026-04-15", "jours": 46, "dpe": "E", "ges": "B", "surface": 96.2, "niv": 2, "annee": 1973, "adresse": "Rue Des Ecuyers", "statut": "Aucune annonce trouvée", "flags": [], "tier": "froid", "score": 37, "lat": 43.358971026794805, "lon": 5.440207996261407, "gmaps": "https://maps.google.com/?q=43.358971026794805,5.440207996261407", "deja": false, "conso": 262, "gesv": 9, "chauf": "Bois – Bûches", "rang": 33}, {"id": "2613E1146108U", "q": "Les Olives", "prio": false, "date": "2026-04-26", "jours": 35, "dpe": "E", "ges": "E", "surface": 49.8, "niv": null, "annee": null, "adresse": "86 Avenue Frederic Mistral", "statut": "Aucune annonce trouvée", "flags": [], "tier": "tiede", "score": 35, "lat": 43.322587025446765, "lon": 5.455607057134737, "gmaps": "https://maps.google.com/?q=43.322587025446765,5.455607057134737", "deja": false, "conso": 314, "gesv": 65, "chauf": "Gaz naturel", "rang": 34}, {"id": "2613E1264545B", "q": "Les Olives", "prio": false, "date": "2026-05-08", "jours": 23, "dpe": "F", "ges": "C", "surface": 76.5, "niv": null, "annee": null, "adresse": "Boulevard Roume", "statut": "Aucune annonce trouvée", "flags": [], "tier": "tiede", "score": 34, "lat": 43.32634700914484, "lon": 5.444410966373979, "gmaps": "https://maps.google.com/?q=43.32634700914484,5.444410966373979", "deja": false, "conso": 349, "gesv": 13, "chauf": "Électricité", "rang": 35}, {"id": "2613E1256550O", "q": "La Croix-Rouge", "prio": false, "date": "2026-05-07", "jours": 24, "dpe": "C", "ges": "B", "surface": 75.3, "niv": null, "annee": 1950, "adresse": "66 Allée Des Chardonnerets", "statut": "Aucune annonce trouvée", "flags": [], "tier": "tiede", "score": 34, "lat": 43.329634000206276, "lon": 5.438385999570473, "gmaps": "https://maps.google.com/?q=43.329634000206276,5.438385999570473", "deja": false, "conso": 161, "gesv": 6, "chauf": "Électricité", "rang": 36}, {"id": "2613E1239397V", "q": "La Croix-Rouge", "prio": false, "date": "2026-05-06", "jours": 25, "dpe": "C", "ges": "B", "surface": 89.1, "niv": 1, "annee": 1990, "adresse": "33 Rue Frederic Joliot-Curie", "statut": "Aucune annonce trouvée", "flags": [], "tier": "tiede", "score": 34, "lat": 43.341676970622025, "lon": 5.436369988680919, "gmaps": "https://maps.google.com/?q=43.341676970622025,5.436369988680919", "deja": false, "conso": 161, "gesv": 6, "chauf": "Électricité", "rang": 37}, {"id": "2613E1084776W", "q": "Malpassé", "prio": false, "date": "2026-04-20", "jours": 41, "dpe": "D", "ges": "D", "surface": 150, "niv": null, "annee": null, "adresse": "18 Impasse Raphael", "statut": "Aucune annonce trouvée", "flags": [], "tier": "froid", "score": 34, "lat": 43.32202396608661, "lon": 5.411588026472236, "gmaps": "https://maps.google.com/?q=43.32202396608661,5.411588026472236", "deja": false, "conso": 197, "gesv": 35, "chauf": "Gaz naturel", "rang": 38}, {"id": "2613E0973940Y", "q": "Petit Bosquet", "prio": false, "date": "2026-04-08", "jours": 53, "dpe": "D", "ges": "C", "surface": 157.1, "niv": 2, "annee": null, "adresse": "30 Boulevard Bernard Verge", "statut": "Aucune annonce trouvée", "flags": [], "tier": "froid", "score": 34, "lat": 43.359400999191784, "lon": 5.427232017635938, "gmaps": "https://maps.google.com/?q=43.359400999191784,5.427232017635938", "deja": false, "conso": 215, "gesv": 20, "chauf": "Bois – Bûches", "rang": 39}, {"id": "2613E0981499R", "q": "Palama", "prio": true, "date": "2026-04-08", "jours": 53, "dpe": "D", "ges": "B", "surface": 106, "niv": 2, "annee": null, "adresse": "3 Rue Des Ecuyers", "statut": "Aucune annonce trouvée", "flags": [], "tier": "froid", "score": 32, "lat": 43.35926403669936, "lon": 5.44127901140844, "gmaps": "https://maps.google.com/?q=43.35926403669936,5.44127901140844", "deja": false, "conso": 186, "gesv": 7, "chauf": "Électricité", "rang": 40}, {"id": "2613E0944407B", "q": "Palama", "prio": true, "date": "2026-04-03", "jours": 58, "dpe": "D", "ges": "B", "surface": 110, "niv": 2, "annee": null, "adresse": "90 Chemin De Palama", "statut": "Aucune annonce trouvée", "flags": [], "tier": "froid", "score": 32, "lat": 43.35748297788824, "lon": 5.4405200537312775, "gmaps": "https://maps.google.com/?q=43.35748297788824,5.4405200537312775", "deja": false, "conso": 216, "gesv": 8, "chauf": "Électricité", "rang": 41}, {"id": "2613E0916729N", "q": "Palama", "prio": true, "date": "2026-04-01", "jours": 60, "dpe": "E", "ges": "E", "surface": 89.9, "niv": 2, "annee": null, "adresse": "53 Rue Des Ecuyers", "statut": "Aucune annonce trouvée", "flags": [], "tier": "froid", "score": 32, "lat": 43.358817999169496, "lon": 5.43881197158736, "gmaps": "https://maps.google.com/?q=43.358817999169496,5.43881197158736", "deja": false, "conso": 261, "gesv": 57, "chauf": "Gaz naturel", "rang": 42}, {"id": "2613E1049224M", "q": "La Croix-Rouge", "prio": false, "date": "2026-04-15", "jours": 46, "dpe": "C", "ges": "A", "surface": 139.8, "niv": null, "annee": null, "adresse": "108 Chemin Des Amphoux", "statut": "Aucune annonce trouvée", "flags": [], "tier": "froid", "score": 30, "lat": 43.33523798488451, "lon": 5.4481129404450535, "gmaps": "https://maps.google.com/?q=43.33523798488451,5.4481129404450535", "deja": false, "conso": 151, "gesv": 5, "chauf": "Bois – Bûches", "rang": 43}, {"id": "2613E0971356O", "q": "Petit Bosquet", "prio": false, "date": "2026-04-08", "jours": 53, "dpe": "C", "ges": "C", "surface": 142, "niv": 1, "annee": null, "adresse": "Traverse De La Baume Loubiere", "statut": "Aucune annonce trouvée", "flags": [], "tier": "froid", "score": 30, "lat": 43.35393803743397, "lon": 5.428809975008672, "gmaps": "https://maps.google.com/?q=43.35393803743397,5.428809975008672", "deja": false, "conso": 163, "gesv": 21, "chauf": "Gaz naturel", "rang": 44}, {"id": "2613E0950354U", "q": "Saint-Just", "prio": false, "date": "2026-04-03", "jours": 58, "dpe": "F", "ges": "F", "surface": 133.1, "niv": null, "annee": null, "adresse": "11 Avenue Montcalm", "statut": "Aucune annonce trouvée", "flags": [], "tier": "froid", "score": 30, "lat": 43.31951103883623, "lon": 5.402559011083241, "gmaps": "https://maps.google.com/?q=43.31951103883623,5.402559011083241", "deja": false, "conso": 281, "gesv": 78, "chauf": "Fioul domestique", "rang": 45}, {"id": "2613E1035051J", "q": "Palama", "prio": true, "date": "2026-04-14", "jours": 47, "dpe": "C", "ges": "C", "surface": 78.1, "niv": 2, "annee": 1976, "adresse": "8 Rue Des Chars", "statut": "Aucune annonce trouvée", "flags": [], "tier": "froid", "score": 27, "lat": 43.36071496672797, "lon": 5.442229033929412, "gmaps": "https://maps.google.com/?q=43.36071496672797,5.442229033929412", "deja": false, "conso": 147, "gesv": 25, "chauf": "Gaz naturel", "rang": 46}, {"id": "2613E0992056S", "q": "Les Olives", "prio": false, "date": "2026-04-09", "jours": 52, "dpe": "C", "ges": "C", "surface": 91.9, "niv": null, "annee": null, "adresse": "14 Chemin De La Ribassiere", "statut": "Aucune annonce trouvée", "flags": [], "tier": "froid", "score": 24, "lat": 43.32621897555329, "lon": 5.4587430105909815, "gmaps": "https://maps.google.com/?q=43.32621897555329,5.4587430105909815", "deja": false, "conso": 101, "gesv": 19, "chauf": "Gaz naturel", "rang": 47}, {"id": "2613E0974957B", "q": "Saint-Mitre", "prio": false, "date": "2026-04-08", "jours": 53, "dpe": "B", "ges": "A", "surface": 92.7, "niv": null, "annee": 2010, "adresse": "130 Chemin De St Mitre A Four De Buze", "statut": "Aucune annonce trouvée", "flags": [], "tier": "froid", "score": 24, "lat": 43.347966037447115, "lon": 5.413170039759094, "gmaps": "https://maps.google.com/?q=43.347966037447115,5.413170039759094", "deja": false, "conso": 81, "gesv": 3, "chauf": "Électricité", "rang": 48}, {"id": "2613E0963900U", "q": "Petit Bosquet", "prio": false, "date": "2026-04-07", "jours": 54, "dpe": "D", "ges": "B", "surface": 112.7, "niv": 1, "annee": 1982, "adresse": "Montée Milou", "statut": "Aucune annonce trouvée", "flags": [], "tier": "froid", "score": 24, "lat": 43.36147196886773, "lon": 5.430115023592498, "gmaps": "https://maps.google.com/?q=43.36147196886773,5.430115023592498", "deja": false, "conso": 198, "gesv": 7, "chauf": "Électricité", "rang": 49}, {"id": "2613E0957201D", "q": "Les Olives", "prio": false, "date": "2026-04-06", "jours": 55, "dpe": "E", "ges": "C", "surface": 67.5, "niv": null, "annee": null, "adresse": "14 Rue Fernand Chabot", "statut": "Aucune annonce trouvée", "flags": [], "tier": "froid", "score": 20, "lat": 43.32169897741245, "lon": 5.458798939346043, "gmaps": "https://maps.google.com/?q=43.32169897741245,5.458798939346043", "deja": false, "conso": 294, "gesv": 11, "chauf": "Électricité", "rang": 50}, {"id": "2613E1376980M", "q": "Clair Soleil", "prio": false, "date": "2026-05-22", "jours": 9, "dpe": "C", "ges": "C", "surface": 151.7, "niv": null, "annee": null, "adresse": "116 Boulevard Bara", "statut": "Annonces actives Bd Bara", "flags": [], "tier": "chaud", "score": 19, "lat": 43.34774202588797, "lon": 5.448067023690112, "gmaps": "https://maps.google.com/?q=43.34774202588797,5.448067023690112", "deja": true, "conso": 130, "gesv": 18, "chauf": "Gaz naturel", "rang": 51}, {"id": "2613E1001510I", "q": "Saint-Mitre", "prio": false, "date": "2026-04-10", "jours": 51, "dpe": "D", "ges": "D", "surface": 71.4, "niv": 1, "annee": null, "adresse": "66 Chemin De La Bastide Longue", "statut": "Aucune annonce trouvée", "flags": [], "tier": "froid", "score": 19, "lat": 43.347814966927864, "lon": 5.419944033475611, "gmaps": "https://maps.google.com/?q=43.347814966927864,5.419944033475611", "deja": false, "conso": 224, "gesv": 49, "chauf": "Gaz naturel", "rang": 52}, {"id": "2613E0958131X", "q": "Les Olives", "prio": false, "date": "2026-04-07", "jours": 54, "dpe": "D", "ges": "B", "surface": 84.5, "niv": null, "annee": null, "adresse": "222 Avenue Des Olives", "statut": "Aucune annonce trouvée", "flags": [], "tier": "froid", "score": 19, "lat": 43.32452697916005, "lon": 5.442544031235272, "gmaps": "https://maps.google.com/?q=43.32452697916005,5.442544031235272", "deja": false, "conso": 187, "gesv": 6, "chauf": "Bois – Granulés (pellets) ou briquettes", "rang": 53}, {"id": "2613E1009804I", "q": "Château-Gombert", "prio": true, "date": "2026-04-11", "jours": 50, "dpe": "C", "ges": "A", "surface": 96.1, "niv": 2, "annee": 2003, "adresse": "237 Chemin De Chateau Gombert", "statut": "Aucune annonce trouvée", "flags": ["Chambre d'hôtes"], "tier": "froid", "score": 17, "lat": 43.34634000181686, "lon": 5.425959054652672, "gmaps": "https://maps.google.com/?q=43.34634000181686,5.425959054652672", "deja": false, "conso": 119, "gesv": 4, "chauf": "Électricité", "rang": 54}, {"id": "2613E1032517X", "q": "Malpassé", "prio": false, "date": "2026-04-14", "jours": 47, "dpe": "C", "ges": "B", "surface": 64, "niv": null, "annee": null, "adresse": "4 Allée Des Jacinthes", "statut": "Aucune annonce trouvée", "flags": [], "tier": "froid", "score": 15, "lat": 43.32413199260698, "lon": 5.401853969090629, "gmaps": "https://maps.google.com/?q=43.32413199260698,5.401853969090629", "deja": false, "conso": 163, "gesv": 6, "chauf": "Électricité", "rang": 55}, {"id": "2613E0980062K", "q": "Les Olives", "prio": false, "date": "2026-04-08", "jours": 53, "dpe": "F", "ges": "F", "surface": 69.5, "niv": null, "annee": null, "adresse": "7 Avenue Alexandre Coupin", "statut": "Aucune annonce trouvée", "flags": [], "tier": "froid", "score": 15, "lat": 43.32311496927003, "lon": 5.455532041996932, "gmaps": "https://maps.google.com/?q=43.32311496927003,5.455532041996932", "deja": false, "conso": 325, "gesv": 89, "chauf": "Fioul domestique", "rang": 56}, {"id": "2613E0964245B", "q": "Saint-Mitre", "prio": false, "date": "2026-04-07", "jours": 54, "dpe": "B", "ges": "A", "surface": 50, "niv": 1, "annee": 2008, "adresse": "Chemin De Party", "statut": "Aucune annonce trouvée", "flags": [], "tier": "froid", "score": 15, "lat": 43.34799202111622, "lon": 5.416762997138113, "gmaps": "https://maps.google.com/?q=43.34799202111622,5.416762997138113", "deja": false, "conso": 102, "gesv": 3, "chauf": "Électricité", "rang": 57}, {"id": "2613E1167439F", "q": "Château-Gombert", "prio": true, "date": "2026-04-28", "jours": 33, "dpe": "C", "ges": "C", "surface": 88.9, "niv": 1, "annee": 1997, "adresse": "Traverse Grandjean", "statut": "Annonce active même rue (Casavo)", "flags": [], "tier": "tiede", "score": -3, "lat": 43.3425840176386, "lon": 5.427143058518529, "gmaps": "https://maps.google.com/?q=43.3425840176386,5.427143058518529", "deja": true, "conso": 159, "gesv": 27, "chauf": "Gaz naturel", "rang": 58}, {"id": "2613E1096613D", "q": "Clair Soleil", "prio": false, "date": "2026-04-21", "jours": 40, "dpe": "C", "ges": "A", "surface": 105.5, "niv": 2, "annee": null, "adresse": "44 Boulevard Bara", "statut": "Annonces actives Bd Bara", "flags": [], "tier": "tiede", "score": -6, "lat": 43.350908007536205, "lon": 5.441878007308655, "gmaps": "https://maps.google.com/?q=43.350908007536205,5.441878007308655", "deja": true, "conso": 144, "gesv": 5, "chauf": "Électricité", "rang": 59}];
-let DATA=FALLBACK_DATA, MAX=76;
-const EXCLU=new Set(['Les Olives','Les Martégaux']); // quartiers exclus du boîtage
-const EMO={chaud:'🔥',tiede:'♨️',froid:'🌡️'}, TC={chaud:'#e8503a',tiede:'#e9a319',froid:'#7d93a3'};
-const STAT=['À visiter','Visité','Contacté','RDV','Pas vendeur','Déjà sous mandat','Vendu'];
+const EXCLU=new Set(['Les Olives','Les Martégaux']);
+const EMO={chaud:'🔥',tiede:'♨️',froid:'🌡️'},TC={chaud:'#df3f17',tiede:'#dd8c00',froid:'#62788a'};
+const STAT=['À visiter','Visité','Contacté','RDV','Pas vendeur','Sous mandat','Vendu'];
 const mem={};
-const store={async get(k){try{if(window.storage){const r=await window.storage.get(k);return r?r.value:null}}catch(e){} try{return localStorage.getItem(k)}catch(e){} return mem[k]??null},
- async set(k,v){try{if(window.storage){await window.storage.set(k,v);return}}catch(e){} try{localStorage.setItem(k,v);return}catch(e){} mem[k]=v}};
-let state={}; // id -> {s:statusIndex, n:note}
-let ft=new Set(), fq='all', prio=0, q='', fBoite=0, sortMode='score';
-let byId={};
-let tour=[]; // ordered ids
-let startPos=null; // {lat,lon} optional
-let travelMode='bicycling';
-let ficheOpen=null;
-let phIndex={};
-
-async function load(){try{const raw=await store.get('boitage13');if(raw)state=JSON.parse(raw)}catch(e){} try{const t=await store.get('boitage13_tour');if(t)tour=JSON.parse(t)}catch(e){} try{const m=await store.get('boitage13_mode');if(m)travelMode=m}catch(e){} try{const p=await store.get('boitage13_phidx');if(p)phIndex=JSON.parse(p)}catch(e){}}
-async function save(){try{await store.set('boitage13',JSON.stringify(state))}catch(e){}}
-async function saveTour(){try{await store.set('boitage13_tour',JSON.stringify(tour))}catch(e){}}
-function st(id){return state[id]||{s:0,n:'',b:''}}
-
-// map
-const map=L.map('map',{zoomControl:true}).setView([43.345,5.432],13);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
-let markers=[];
-const baseLayer=L.layerGroup().addTo(map);
-const tourLayer=L.layerGroup().addTo(map);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return mem[k]??null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){mem[k]=v}},del(k){try{localStorage.removeItem(k)}catch(e){delete mem[k]}}};
+let DATA=[],byId={},MAX=76;
+let state={},tours=[],tour=[],travelMode='bicycling',startPos=null,phIndex={},ficheOpen=null;
+let ft=new Set(),fq='all',prio=0,q='',fBoite=0,sortMode='score';
+function $(id){return document.getElementById(id)}
+function esc(s){return (s==null?'':''+s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function toast(m){const t=$('toast');t.textContent=m;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),1600)}
+// ---- état ----
+function rec(id){let r=state[id];if(!r){r=state[id]={}}r.s=r.s||0;r.notes=r.notes||[];r.contact=r.contact||{};r.det=r.det||{};r.b=r.b||'';r.rdv=r.rdv||'';r.rel=r.rel||'';return r}
+function saveState(){store.set('boitage13_v3',JSON.stringify(state))}
+function saveTours(){store.set('boitage13_tours',JSON.stringify(tours))}
+function saveTour(){store.set('boitage13_tour',JSON.stringify(tour))}
+function load(){
+ let raw=store.get('boitage13_v3');
+ if(raw){try{state=JSON.parse(raw)}catch(e){}}
+ else{let old=store.get('boitage13');if(old){try{const o=JSON.parse(old);for(const id in o){const v=o[id]||{};state[id]={s:v.s||0,b:v.b||'',rdv:'',rel:'',contact:{},det:{},notes:v.n?[{t:v.b||new Date().toISOString(),x:v.n}]:[]}}}catch(e){}}}
+ let t=store.get('boitage13_tours');if(t){try{tours=JSON.parse(t)}catch(e){}}
+ let c=store.get('boitage13_tour');if(c){try{tour=JSON.parse(c)}catch(e){}}
+ let m=store.get('boitage13_mode');if(m)travelMode=m;
+ let p=store.get('boitage13_phidx');if(p){try{phIndex=JSON.parse(p)}catch(e){}}
+}
+async function initData(){
+ try{const r=await fetch('prospects.json',{cache:'no-store'});if(r.ok){const j=await r.json();const a=Array.isArray(j)?j:(j&&j.prospects);if(a&&a.length){DATA=a;store.set('boitage13_cache',JSON.stringify(a))}}}catch(e){}
+ if(!DATA.length){const c=store.get('boitage13_cache');if(c){try{DATA=JSON.parse(c)}catch(e){}}}
+ DATA=DATA.filter(p=>!EXCLU.has(p.q)).sort((a,b)=>b.score-a.score);DATA.forEach((p,i)=>p.rang=i+1);
+ byId={};DATA.forEach(p=>byId[p.id]=p);MAX=Math.max(76,...DATA.map(p=>p.score||0));
+}
+// ---- carte ----
+let map,baseLayer,tourLayer;
 function annURL(p){const rue=p.adresse.replace(/^\d+\s*/,'');return 'https://www.google.com/search?q='+encodeURIComponent('"'+rue+'" 13013 Marseille maison à vendre')}
 function earthURL(p){return 'https://earth.google.com/web/@'+p.lat+','+p.lon+',120a,350d,35y,0h,45t,0r'}
-function drawMap(d){
- baseLayer.clearLayers();markers=[];
- d.forEach(p=>{if(p.lat==null)return;
-  const done=st(p.id).s>0;
-  const m=L.circleMarker([p.lat,p.lon],{radius:6+p.score/MAX*8,fillColor:TC[p.tier],color:p.prio?'#f2b705':'#fff',weight:p.prio?3:1.5,fillOpacity:done?.35:.9});
-  m.bindPopup(`<div class="pp"><div class="pp-addr">${p.prio?'⭐ ':''}${p.adresse}</div>
-   <div class="pp-meta">${p.q} · ${EMO[p.tier]} DPE ${p.dpe}/${p.ges} · ${p.surface} m² · J-${p.jours} · score ${p.score}<br>empreinte: ${p.conso||'?'} kWh · ${p.gesv||'?'} kg</div>
-   <a href="${p.gmaps}" target="_blank">📍 Itinéraire</a><a href="${earthURL(p)}" target="_blank">🌍 Earth</a><a class="ann" href="${annURL(p)}" target="_blank">🔗 Annonces</a>
-   <a href="#" onclick="toggleTour('${p.id}');return false">${inTour(p.id)?'✓ Dans la tournée':'＋ Tournée'}</a> <a href="#" onclick="openFiche('${p.id}');return false">📋 Fiche</a></div>`);
-  m.addTo(baseLayer);markers.push(m)});
-}
-// list
-const list=document.getElementById('list');
-function drawList(d){
- list.innerHTML=d.map(p=>{const s=st(p.id);const stxt=s.s>0?' · '+STAT[s.s]:'';
-  return `<div class="row ${p.prio?'prio':''} ${s.s>0?'done':''}" onclick="openFiche('${p.id}')">
-   <span class="rrang">${p.rang}</span><span class="rdot ${p.tier}"></span>
-   <div class="rmain"><div class="raddr">${p.prio?'\u2b50 ':''}${p.adresse}${phIndex[p.id]?' \ud83d\udcf7':''}${st(p.id).b?' \ud83d\udced':''}</div>
-    <div class="rsub">${p.q} \u00b7 DPE ${p.dpe}/${p.ges} \u00b7 ${p.surface} m\u00b2 \u00b7 J-${p.jours}${stxt}${p.qoff&&p.qoff!==p.q?' · 🏛 '+p.qoff:''}</div></div>
-   <div class="rscore">${p.score}</div>
-   <div class="rq" onclick="event.stopPropagation()"><button class="qb add ${inTour(p.id)?'in':''}" onclick="toggleTour('${p.id}')">${inTour(p.id)?'\u2713':'\uff0b'}</button><a class="qb" href="${p.gmaps}" target="_blank">📍</a></div>
-  </div>`}).join('')||'<div style="padding:30px;text-align:center;color:#9a8a7c">Aucun prospect 🤷</div>';
-}
-function cp(b,t){navigator.clipboard.writeText(t).then(()=>{const o=b.textContent;b.textContent='✓';setTimeout(()=>b.textContent=o,1000)})}
-function copyAddr(id,b){const p=byId[id];if(!p)return;const t=p.adresse+' 13013 Marseille';const o=b.innerHTML;navigator.clipboard.writeText(t).then(()=>{b.innerHTML='✓ Copié !';setTimeout(()=>b.innerHTML=o,1300)}).catch(()=>{b.innerHTML='⚠ échec';setTimeout(()=>b.innerHTML=o,1300)})}
-function setS(id,k){const c=st(id);state[id]={s:k,n:c.n,b:c.b};save();refresh();
- if(ficheOpen===id){const sel=k;document.querySelectorAll('#fiche .seg button').forEach((b,i)=>b.classList.toggle('on',i===sel))}}
-function setN(id,v){const c=st(id);state[id]={s:c.s,n:v,b:c.b};save();updateTodo()}
-// ---- BOÎTÉ (horodaté) ----
-function fmtBoite(iso){const d=new Date(iso);const p=n=>String(n).padStart(2,'0');return p(d.getDate())+'/'+p(d.getMonth()+1)+'/'+d.getFullYear()+' à '+p(d.getHours())+'h'+p(d.getMinutes())}
-function boiteHTML(id){const b=st(id).b;return b?`<div class="boited">📭 Boîté le <b>${fmtBoite(b)}</b><button class="bbtn" onclick="setBoite('${id}')">↻ Refaire</button><button class="bbtn x" onclick="clearBoite('${id}')">✕</button></div>`:`<button class="bbtn go" onclick="setBoite('${id}')">📭 Marquer « boîté » maintenant</button>`}
-function refreshBoite(id){const el=document.getElementById('boitebox');if(el)el.innerHTML=boiteHTML(id)}
-function setBoite(id){const c=st(id);state[id]={s:c.s,n:c.n,b:new Date().toISOString()};save();refreshBoite(id);updateStats();drawMap(filtered());drawList(filtered())}
-function clearBoite(id){const c=st(id);state[id]={s:c.s,n:c.n,b:''};save();refreshBoite(id);updateStats();drawMap(filtered());drawList(filtered())}
-function updateTodo(){const todo=DATA.filter(p=>st(p.id).s==0).length;document.getElementById('todo').innerHTML='<b>'+todo+'</b>à visiter'}
-function filtered(){let d=DATA.filter(p=>(ft.size==0||ft.has(p.tier))&&(fq=='all'||p.q==fq||p.qoff===fq)&&(!prio||p.prio)&&(!fBoite||!st(p.id).b)&&(!q||p.adresse.toLowerCase().includes(q)||p.q.toLowerCase().includes(q)||(p.qoff||'').toLowerCase().includes(q)));
+function initMap(){map=L.map('map',{zoomControl:true}).setView([43.345,5.432],13);
+ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
+ baseLayer=L.layerGroup().addTo(map);tourLayer=L.layerGroup().addTo(map)}
+function drawMap(d){if(!map)return;baseLayer.clearLayers();
+ d.forEach(p=>{if(p.lat==null)return;const done=rec(p.id).s>0;
+  const m=L.circleMarker([p.lat,p.lon],{radius:6+p.score/MAX*8,fillColor:TC[p.tier],color:p.prio?'#f0a500':'#fff',weight:p.prio?3:1.5,fillOpacity:done?.35:.9});
+  m.bindPopup('<div style="font-family:Hanken Grotesk,sans-serif"><div style="font-family:Fraunces,serif;font-weight:700;font-size:15px">'+(p.prio?'⭐ ':'')+esc(p.adresse)+'</div><div style="font-size:12px;color:#6b5b4d;margin:3px 0 6px">'+esc(p.q)+' · '+EMO[p.tier]+' DPE '+p.dpe+'/'+p.ges+' · '+p.surface+' m² · score '+p.score+'</div><a href="#" onclick="openFiche(\''+p.id+'\');return false" style="background:#241813;color:#fff;text-decoration:none;padding:5px 9px;border-radius:7px;font-size:12px;font-weight:700;margin-right:5px">📋 Fiche</a><a href="#" onclick="toggleTour(\''+p.id+'\');return false" style="background:#1c8b75;color:#fff;text-decoration:none;padding:5px 9px;border-radius:7px;font-size:12px;font-weight:700">'+(inTour(p.id)?'✓ tournée':'＋ tournée')+'</a></div>');
+  m.addTo(baseLayer)});
+ drawTour()}
+// ---- liste ----
+function filtered(){let d=DATA.filter(p=>(ft.size==0||ft.has(p.tier))&&(fq=='all'||p.q==fq||p.qoff===fq)&&(!prio||p.prio)&&(!fBoite||!rec(p.id).b)&&(!q||p.adresse.toLowerCase().includes(q)||p.q.toLowerCase().includes(q)||(p.qoff||'').toLowerCase().includes(q)));
  if(sortMode==='dpe')d=d.slice().sort((a,b)=>a.jours-b.jours);
  else if(sortMode==='quartier')d=d.slice().sort((a,b)=>(a.q||'').localeCompare(b.q||'','fr')||b.score-a.score);
  else d=d.slice().sort((a,b)=>b.score-a.score);
- return d;}
-
-// ---- TOURNÉE ----
+ return d}
+function tagHTML(p){const r=rec(p.id);let h='';if(r.b)h+='<span class="tag bo">📭 boîté</span>';if(r.rdv)h+='<span class="tag rdv">📅 RDV '+fdate(r.rdv)+'</span>';if(r.rel)h+='<span class="tag rel">🔔 relance '+fdate(r.rel)+'</span>';if(r.s>0)h+='<span class="tag st">'+STAT[r.s]+'</span>';return h}
+function drawList(d){$('scr-liste').innerHTML=d.map(p=>{const r=rec(p.id);const off=p.qoff&&p.qoff!==p.q?' · 🏛 '+esc(p.qoff):'';
+ return '<div class="card '+p.tier+(r.s>0?' done':'')+'" onclick="openFiche(\''+p.id+'\')"><span class="rg">'+p.rang+'</span><div class="mn"><div class="ad">'+(p.prio?'⭐ ':'')+esc(p.adresse)+(phIndex[p.id]?' 📷':'')+'</div><div class="mt">'+esc(p.q)+' · DPE '+p.dpe+'/'+p.ges+' · '+p.surface+' m² · J-'+p.jours+off+'</div><div class="tags">'+tagHTML(p)+'</div></div><div class="sc">'+p.score+'</div><button class="qadd '+(inTour(p.id)?'in':'')+'" onclick="event.stopPropagation();toggleTour(\''+p.id+'\')">'+(inTour(p.id)?'✓':'＋')+'</button></div>'
+ }).join('')||'<div style="padding:30px;text-align:center;color:var(--mut)">Aucun prospect 🤷</div>'}
+// ---- stats / filtres ----
+function fdate(s){if(!s)return '';const p=s.split('-');return p.length===3?p[2]+'/'+p[1]:s}
+function boitesToday(){const t=new Date(),k=t.getFullYear()+'-'+(t.getMonth()+1)+'-'+t.getDate();return DATA.filter(p=>{const b=rec(p.id).b;if(!b)return false;const d=new Date(b);return (d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate())===k}).length}
+function updateStats(){const tot=DATA.length,star=DATA.filter(p=>p.prio).length,chaud=DATA.filter(p=>p.tier=='chaud').length,todo=DATA.filter(p=>rec(p.id).s==0).length;
+ $('sub').textContent='13ᵉ · '+tot+' biens';
+ $('stats').innerHTML='<span class="stat"><b>'+tot+'</b>prospects</span><span class="stat"><b>'+star+'</b>⭐</span><span class="stat"><b>'+chaud+'</b>🔥</span><span class="stat"><b>'+boitesToday()+'</b>📭 auj.</span><span class="stat"><b>'+todo+'</b>à visiter</span>'}
+function populateQuartiers(){const qs=[...new Set(DATA.flatMap(p=>[p.q,p.qoff]).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'fr'));const s=$('quart');const cur=s.value;s.innerHTML='<option value="all">Tous quartiers</option>'+qs.map(x=>'<option>'+esc(x)+'</option>').join('');if([...s.options].some(o=>o.value===cur))s.value=cur}
+// ---- tournée ----
 function inTour(id){return tour.includes(id)}
-function toggleTour(id){const i=tour.indexOf(id);if(i<0)tour.push(id);else tour.splice(i,1);saveTour();refresh();
- if(ficheOpen){const b=document.querySelector('#fiche .add');if(b){const on=inTour(ficheOpen);b.classList.toggle('in',on);b.textContent=on?'✓ Tournée':'＋ Tournée'}}}
+function toggleTour(id){const i=tour.indexOf(id);if(i<0)tour.push(id);else tour.splice(i,1);saveTour();refresh();if(map&&map._popup)map.closePopup();if(ficheOpen===id)syncFicheTour()}
 function tourStops(){return tour.map(id=>byId[id]).filter(Boolean)}
-function dist(a,b){const R=6371,r=Math.PI/180,dla=(b.lat-a.lat)*r,dlo=(b.lon-a.lon)*r,la1=a.lat*r,la2=b.lat*r;
- const h=Math.sin(dla/2)**2+Math.cos(la1)*Math.cos(la2)*Math.sin(dlo/2)**2;return 2*R*Math.asin(Math.sqrt(h))}
+function dist(a,b){const R=6371,r=Math.PI/180,dla=(b.lat-a.lat)*r,dlo=(b.lon-a.lon)*r;const h=Math.sin(dla/2)**2+Math.cos(a.lat*r)*Math.cos(b.lat*r)*Math.sin(dlo/2)**2;return 2*R*Math.asin(Math.sqrt(h))}
 function tourKm(){const s=tourStops();let pts=startPos?[startPos,...s]:s,d=0;for(let i=1;i<pts.length;i++)d+=dist(pts[i-1],pts[i]);return d}
-function optimize(){let s=tourStops();if(s.length<2)return;
- let cur=startPos||s[0],pool=startPos?[...s]:s.slice(1),ordered=startPos?[]:[s[0]];
- while(pool.length){let bi=0,bd=1e9;pool.forEach((p,i)=>{const d=dist(cur,p);if(d<bd){bd=d;bi=i}});cur=pool[bi];ordered.push(cur);pool.splice(bi,1)}
- tour=ordered.map(p=>p.id);saveTour();refresh();fitTour()}
-function mapsUrl(){const s=tourStops();if(s.length<1)return '#';
- let pts=startPos?[startPos,...s]:s;if(pts.length<2)return 'https://www.google.com/maps/dir/?api=1&destination='+pts[0].lat+','+pts[0].lon+'&travelmode='+travelMode;
- const o=pts[0],d=pts[pts.length-1],wp=pts.slice(1,-1).map(p=>p.lat+','+p.lon).join('|');
- let u='https://www.google.com/maps/dir/?api=1&travelmode='+travelMode+'&origin='+o.lat+','+o.lon+'&destination='+d.lat+','+d.lon;
- if(wp)u+='&waypoints='+encodeURIComponent(wp);return u}
-function fitTour(){const s=tourStops();if(!s.length)return;const ll=s.map(p=>[p.lat,p.lon]);if(startPos)ll.unshift([startPos.lat,startPos.lon]);
- if(!document.body.classList.contains('listview'))map.fitBounds(ll,{padding:[50,50],maxZoom:15})}
-function drawTour(){tourLayer.clearLayers();const s=tourStops();if(!s.length)return;
- let pts=startPos?[startPos,...s]:s;const ll=pts.map(p=>[p.lat,p.lon]);
- L.polyline(ll,{color:'#e07a5f',weight:4,opacity:.85,dashArray:'7 7'}).addTo(tourLayer);
- if(startPos)L.circleMarker([startPos.lat,startPos.lon],{radius:7,fillColor:'#2a9d8f',color:'#fff',weight:2,fillOpacity:1}).bindTooltip('Départ').addTo(tourLayer);
- s.forEach((p,i)=>L.marker([p.lat,p.lon],{icon:L.divIcon({className:'',html:'<div class="tnumicon">'+(i+1)+'</div>',iconSize:[24,24],iconAnchor:[12,12]})}).addTo(tourLayer))}
-function renderSheet(){const s=tourStops();
- document.getElementById('fabn').textContent=tour.length;
- document.getElementById('tdesc').textContent=s.length?(s.length+' arrêt'+(s.length>1?'s':'')+(startPos?' · départ : ma position':'')):'Ajoute des adresses depuis la carte ou la liste.';
- document.getElementById('tkm').textContent=s.length>=1?('≈ '+tourKm().toFixed(1)+' km'):'';
- document.getElementById('gomaps').href=mapsUrl();
- document.getElementById('tlist').innerHTML=s.length?s.map((p,i)=>`<div class="titem"><span class="tnum">${i+1}</span><div class="ta">${p.adresse}<br><small>${p.q} · ${EMO[p.tier]} ${p.dpe} · ${p.surface} m²</small></div><button class="rm" onclick="toggleTour('${p.id}')">✕</button></div>`).join(''):'<div style="padding:24px;text-align:center;color:#9a8a7c">Tournée vide.</div>';
-}
-function downscale(file,cb){const fr=new FileReader();fr.onload=()=>{const img=new Image();img.onload=()=>{const max=900;let w=img.width,h=img.height;if(w>h&&w>max){h=Math.round(h*max/w);w=max}else if(h>=w&&h>max){w=Math.round(w*max/h);h=max}const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(img,0,0,w,h);try{cb(c.toDataURL('image/jpeg',0.6))}catch(e){cb(fr.result)}};img.src=fr.result};fr.readAsDataURL(file)}
-async function getPhotos(id){try{const r=await store.get('ph_'+id);return r?JSON.parse(r):[]}catch(e){return[]}}
-async function setPhotos(id,arr){try{await store.set('ph_'+id,JSON.stringify(arr))}catch(e){alert('Stockage plein : réduis le nombre de photos.')}phIndex[id]=arr.length;try{await store.set('boitage13_phidx',JSON.stringify(phIndex))}catch(e){}}
-function addPhoto(id,input){const f=input.files&&input.files[0];if(!f)return;downscale(f,async url=>{const arr=await getPhotos(id);arr.push(url);await setPhotos(id,arr);renderPhotos(id);drawMap(filtered());drawList(filtered())})}
-async function delPhoto(id,i){const arr=await getPhotos(id);arr.splice(i,1);await setPhotos(id,arr);renderPhotos(id);drawMap(filtered());drawList(filtered())}
-async function renderPhotos(id){const el=document.getElementById('phgrid');if(!el)return;const arr=await getPhotos(id);
- el.innerHTML=arr.map((u,i)=>`<div class="phc"><img src="${u}"><button class="del" onclick="delPhoto('${id}',${i})">✕</button></div>`).join('')+`<label class="phadd">📷<span>Ajouter</span><input type="file" accept="image/*" capture="environment" onchange="addPhoto('${id}',this)"></label>`}
-function openFiche(id){ficheOpen=id;const p=byId[id];const s=st(id);
- const segs=STAT.map((t,k)=>`<button class="s${k} ${s.s==k?'on':''}" onclick="setS('${id}',${k})">${t}</button>`).join('');
- const g=(k,v,fp)=>`<div class="fg ${fp?'fp':''}"><div class="k">${k}</div><div class="v">${(v==null||v==='')?'—':v}</div></div>`;
- document.getElementById('fiche').innerHTML=`
-  <div class="fhead"><div class="fa"><h2>${p.adresse}</h2><div class="fq">${p.prio?'⭐ ':''}${p.q} · <span class="tb ${p.tier}">${EMO[p.tier]} ${p.tier}</span></div><button class="copyaddr" onclick="event.stopPropagation();copyAddr('${id}',this)">📋 Copier l'adresse</button></div>
-   <div class="fsc">${p.score}<div style="font-size:9px;letter-spacing:.1em;color:#b0a08f;text-transform:uppercase">score</div></div>
-   <button class="fclose" onclick="closeFiche()">✕</button></div>
-  <div class="fbody">
-   <div class="fgrid">${g('Classe DPE',p.dpe)}${g('Classe GES',p.ges)}${g('Surface',p.surface+' m²')}${g('Niveaux',p.niv)}${g('Conso',(p.conso||'?')+' kWh/m²/an',1)}${g('Émissions',(p.gesv||'?')+' kg/m²/an',1)}${g('Année',p.annee)}${g('Chauffage',p.chauf)}${g('Fraîcheur DPE','J-'+p.jours)}${g('Quartier officiel',p.qoff)}${g('Annonce',p.statut)}</div>
-   <div class="fsec">Suivi</div>
-   <div class="seg">${segs}</div>
-   <textarea class="note" placeholder="Note terrain…" onchange="setN('${id}',this.value)">${s.n||''}</textarea>
-   <div class="fsec">📭 Boîtage</div>
-   <div id="boitebox">${boiteHTML(id)}</div>
-   <div class="fsec">📷 Photos du boîtage</div>
-   <div class="phgrid" id="phgrid"><label class="phadd">📷<span>Ajouter</span><input type="file" accept="image/*" capture="environment" onchange="addPhoto('${id}',this)"></label></div>
-   <div class="facts"><button class="add ${inTour(id)?'in':''}" onclick="toggleTour('${id}')">${inTour(id)?'✓ Tournée':'＋ Tournée'}</button><a class="map" href="${p.gmaps}" target="_blank">📍 Itinéraire</a><a class="earth" href="${earthURL(p)}" target="_blank">🌍 Earth</a><a class="ann" href="${annURL(p)}" target="_blank">🔗 Annonces</a></div>
-  </div>`;
- document.getElementById('modal').classList.add('open');renderPhotos(id)}
-function closeFiche(){ficheOpen=null;document.getElementById('modal').classList.remove('open')}
-function refresh(){const d=filtered();drawMap(d);drawList(d);drawTour();updateTodo();renderSheet()}
-// ---- DONNÉES EXTERNES (prospects.json) + repli embarqué ----
-function buildIndex(){byId={};DATA.forEach(p=>byId[p.id]=p);MAX=Math.max(76,...DATA.map(p=>p.score||0));}
-function populateQuartiers(){const qs=[...new Set(DATA.flatMap(p=>[p.q,p.qoff]).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'fr'));const sel=document.getElementById('quart');const cur=sel.value;sel.innerHTML='<option value="all">Tous quartiers</option>'+qs.map(x=>`<option>${x}</option>`).join('');if([...sel.options].some(o=>o.value===cur))sel.value=cur;}
-function boitesToday(){const t=new Date();const k=t.getFullYear()+'-'+(t.getMonth()+1)+'-'+t.getDate();return DATA.filter(p=>{const b=st(p.id).b;if(!b)return false;const d=new Date(b);return (d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate())===k;}).length;}
-function updateStats(){const set=(id,n,lbl)=>{const e=document.getElementById(id);if(e)e.innerHTML='<b>'+n+'</b>'+lbl;};set('st-tot',DATA.length,'prospects');set('st-star',DATA.filter(p=>p.prio).length,'⭐');set('st-chaud',DATA.filter(p=>p.tier==='chaud').length,'🔥');set('st-boite',boitesToday(),'📭 auj.');}
-async function initData(){try{const r=await fetch('prospects.json',{cache:'no-store'});if(r.ok){const j=await r.json();const arr=Array.isArray(j)?j:(j&&Array.isArray(j.prospects)?j.prospects:null);if(arr&&arr.length)DATA=arr;}}catch(e){/* file:// ou hors-ligne -> repli sur FALLBACK_DATA */}
- DATA=DATA.filter(p=>!EXCLU.has(p.q)).sort((a,b)=>b.score-a.score);DATA.forEach((p,i)=>p.rang=i+1);
- buildIndex();populateQuartiers();updateStats();}
+function optimize(){let s=tourStops();if(s.length<2)return;let cur=startPos||s[0],pool=startPos?[...s]:s.slice(1),ord=startPos?[]:[s[0]];while(pool.length){let bi=0,bd=1e9;pool.forEach((p,i)=>{const d=dist(cur,p);if(d<bd){bd=d;bi=i}});cur=pool[bi];ord.push(cur);pool.splice(bi,1)}tour=ord.map(p=>p.id);saveTour();renderTours();drawTour();fitTour()}
+function mapsUrl(){const s=tourStops();if(!s.length)return '#';let pts=startPos?[startPos,...s]:s;if(pts.length<2)return 'https://www.google.com/maps/dir/?api=1&destination='+pts[0].lat+','+pts[0].lon+'&travelmode='+travelMode;const o=pts[0],d=pts[pts.length-1],wp=pts.slice(1,-1).map(p=>p.lat+','+p.lon).join('|');let u='https://www.google.com/maps/dir/?api=1&travelmode='+travelMode+'&origin='+o.lat+','+o.lon+'&destination='+d.lat+','+d.lon;if(wp)u+='&waypoints='+encodeURIComponent(wp);return u}
+function fitTour(){const s=tourStops();if(!s.length||!map)return;const ll=s.map(p=>[p.lat,p.lon]);if(startPos)ll.unshift([startPos.lat,startPos.lon]);if($('scr-carte').classList.contains('on'))map.fitBounds(ll,{padding:[50,50],maxZoom:15})}
+function drawTour(){if(!tourLayer)return;tourLayer.clearLayers();const s=tourStops();if(!s.length)return;let pts=startPos?[startPos,...s]:s;const ll=pts.map(p=>[p.lat,p.lon]);
+ L.polyline(ll,{color:'#d6552f',weight:4,opacity:.85,dashArray:'7 7'}).addTo(tourLayer);
+ if(startPos)L.circleMarker([startPos.lat,startPos.lon],{radius:7,fillColor:'#1c8b75',color:'#fff',weight:2,fillOpacity:1}).bindTooltip('Départ').addTo(tourLayer);
+ s.forEach((p,i)=>L.marker([p.lat,p.lon],{icon:L.divIcon({className:'',html:'<div style="background:#d6552f;color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3)">'+(i+1)+'</div>',iconSize:[24,24],iconAnchor:[12,12]})}).addTo(tourLayer))}
+function renderTours(){const s=tourStops();const n=tour.length;$('navbdg').style.display=n?'flex':'none';$('navbdg').textContent=n;
+ let h='<div class="sec">Tournée en cours</div>';
+ if(!s.length){h+='<div class="block"><p class="hint" style="margin:0">Ajoutez des adresses avec le bouton ＋ (liste ou carte) pour bâtir une tournée.</p></div>'}
+ else{h+='<div class="block"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><b style="font-family:Fraunces,serif">'+s.length+' arrêt'+(s.length>1?'s':'')+'</b><span style="font-family:Fraunces,serif;font-weight:700;color:var(--terra-d)">≈ '+tourKm().toFixed(1)+' km</span></div>';
+  h+=s.map((p,i)=>'<div class="titem"><span class="tnum">'+(i+1)+'</span><div class="ta">'+esc(p.adresse)+'<br><small>'+esc(p.q)+' · '+EMO[p.tier]+' '+p.dpe+'</small></div><button class="rm" onclick="toggleTour(\''+p.id+'\')">✕</button></div>').join('');
+  h+='<div class="modeseg" style="margin:10px 0"><button id="mbike" class="'+(travelMode==='bicycling'?'on':'')+'" onclick="setMode(\'bicycling\')">🚲 Vélo</button><button id="mscoot" class="'+(travelMode==='driving'?'on':'')+'" onclick="setMode(\'driving\')">🛵 Scooter</button></div>';
+  h+='<div class="trow"><button onclick="usePos()">📍 Partir d\'ici</button><button onclick="optimize()">↘️ Optimiser</button></div>';
+  h+='<a class="big terra" style="display:block;text-align:center;text-decoration:none;margin-top:8px" href="'+mapsUrl()+'" target="_blank">Ouvrir dans Google Maps</a>';
+  h+='<button class="big ghost" style="margin-top:8px" onclick="saveCurrentTour()">💾 Enregistrer cette tournée</button></div>'}
+ h+='<div class="sec">Tournées enregistrées</div>';
+ if(!tours.length)h+='<div class="block"><p class="hint" style="margin:0">Aucune tournée enregistrée pour l\'instant.</p></div>';
+ else h+=tours.map(t=>'<div class="tourcard"><div class="tn">🧭 '+esc(t.name)+'</div><div class="tmm">'+esc(t.date)+' · '+t.stops.length+' arrêt'+(t.stops.length>1?'s':'')+'</div><div class="trow"><button onclick="openTour(\''+t.id+'\')">Charger</button><button onclick="dupTour(\''+t.id+'\')">Dupliquer</button><a class="big ghost" style="flex:1;padding:8px 4px;font-size:12px" href="'+tourMapsUrl(t)+'" target="_blank">Maps</a><button onclick="delTour(\''+t.id+'\')">🗑️</button></div></div>').join('')}
+function setMode(m){travelMode=m;store.set('boitage13_mode',m);renderTours()}
+function usePos(){if(!navigator.geolocation){alert('Géoloc non supportée');return}toast('Localisation…');navigator.geolocation.getCurrentPosition(pos=>{startPos={lat:pos.coords.latitude,lon:pos.coords.longitude};toast('Position prise');renderTours();drawTour();fitTour()},()=>alert('Position indisponible (autorisez la géoloc).'),{enableHighAccuracy:true,timeout:8000})}
+function tourMapsUrl(t){const s=t.stops.map(id=>byId[id]).filter(Boolean);if(!s.length)return '#';if(s.length<2)return 'https://www.google.com/maps/dir/?api=1&destination='+s[0].lat+','+s[0].lon;const o=s[0],d=s[s.length-1],wp=s.slice(1,-1).map(p=>p.lat+','+p.lon).join('|');let u='https://www.google.com/maps/dir/?api=1&origin='+o.lat+','+o.lon+'&destination='+d.lat+','+d.lon;if(wp)u+='&waypoints='+encodeURIComponent(wp);return u}
+function saveCurrentTour(){if(!tour.length)return;const nm=prompt('Nom de la tournée :','Tournée '+new Date().toLocaleDateString('fr-FR'));if(nm===null)return;tours.unshift({id:'t'+Date.now(),name:nm||'Tournée',date:new Date().toLocaleDateString('fr-FR'),stops:[...tour]});saveTours();renderTours();toast('Tournée enregistrée')}
+function openTour(id){const t=tours.find(x=>x.id===id);if(!t)return;tour=[...t.stops];saveTour();refresh();toast('Tournée chargée')}
+function dupTour(id){const t=tours.find(x=>x.id===id);if(!t)return;tours.unshift({id:'t'+Date.now(),name:t.name+' (copie)',date:new Date().toLocaleDateString('fr-FR'),stops:[...t.stops]});saveTours();renderTours()}
+function delTour(id){if(!confirm('Supprimer cette tournée ?'))return;tours=tours.filter(x=>x.id!==id);saveTours();renderTours()}
+// ---- photos ----
+function downscale(file,cb){const fr=new FileReader();fr.onload=()=>{const img=new Image();img.onload=()=>{const max=900;let w=img.width,h=img.height;if(w>h&&w>max){h=Math.round(h*max/w);w=max}else if(h>=w&&h>max){w=Math.round(w*max/h);h=max}const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(img,0,0,w,h);try{cb(c.toDataURL('image/jpeg',.6))}catch(e){cb(fr.result)}};img.src=fr.result};fr.readAsDataURL(file)}
+function getPhotos(id){try{const r=store.get('ph_'+id);return r?JSON.parse(r):[]}catch(e){return[]}}
+function setPhotos(id,arr){try{store.set('ph_'+id,JSON.stringify(arr))}catch(e){alert('Stockage plein : réduisez le nombre de photos.')}phIndex[id]=arr.length;store.set('boitage13_phidx',JSON.stringify(phIndex))}
+function addPhoto(id,input){const f=input.files&&input.files[0];if(!f)return;downscale(f,url=>{const a=getPhotos(id);a.push(url);setPhotos(id,a);renderPhotos(id);drawList(filtered())})}
+function delPhoto(id,i){const a=getPhotos(id);a.splice(i,1);setPhotos(id,a);renderPhotos(id);drawList(filtered())}
+function renderPhotos(id){const el=$('phgrid');if(!el)return;const a=getPhotos(id);el.innerHTML=a.map((u,i)=>'<div class="phc"><img src="'+u+'"><button class="del" onclick="delPhoto(\''+id+'\','+i+')">✕</button></div>').join('')+'<label class="phadd">📷<span>Ajouter</span><input type="file" accept="image/*" capture="environment" onchange="addPhoto(\''+id+'\',this)"></label>'}
+// ---- fiche ----
+function openFiche(id){ficheOpen=id;const p=byId[id];if(!p)return;const r=rec(id);
+ const seg=STAT.map((t,k)=>'<button class="'+(r.s==k?'on':'')+'" onclick="setS(\''+id+'\','+k+')">'+t+'</button>').join('');
+ const off=p.qoff&&p.qoff!==p.q?' · 🏛 '+esc(p.qoff):'';
+ $('fiche').innerHTML='<div class="fhead"><div class="fbar"><button class="back" onclick="closeFiche()">‹</button><div class="ftt"><h2>'+esc(p.adresse)+'</h2><div class="fq">'+(p.prio?'⭐ ':'')+esc(p.q)+' · '+EMO[p.tier]+' '+p.tier+off+'</div></div><div class="fsc">'+p.score+'</div></div>'
+ +'<button class="copyaddr" onclick="copyAddr(\''+id+'\',this)">📋 Copier l\'adresse</button>'
+ +'<div class="facts"><a class="act map" href="'+p.gmaps+'" target="_blank">📍 Maps</a><a class="act earth" href="'+earthURL(p)+'" target="_blank">🌍 Earth</a><a class="act ann" href="'+annURL(p)+'" target="_blank">🔗 Annonces</a><button class="act tour '+(inTour(id)?'in':'')+'" id="ftour" onclick="toggleTour(\''+id+'\')">'+(inTour(id)?'✓ Tournée':'＋ Tournée')+'</button></div></div>'
+ +'<div class="fbody">'
+ +'<div class="block"><h3>👤 Contact propriétaire</h3><div class="fld"><label>Nom</label><input class="inp" placeholder="ex. M. Martin" value="'+esc(r.contact.nom)+'" onchange="setC(\''+id+'\',\'nom\',this.value)"></div><div class="fld"><label>Téléphone</label><input class="inp" inputmode="tel" placeholder="06…" value="'+esc(r.contact.tel)+'" onchange="setC(\''+id+'\',\'tel\',this.value)"></div><div class="callrow"><a class="cb tel" href="'+(r.contact.tel?'tel:'+encodeURIComponent(r.contact.tel):'#')+'">📞 Appeler</a><a class="cb sms" href="'+(r.contact.tel?'sms:'+encodeURIComponent(r.contact.tel):'#')+'">💬 SMS</a></div><div class="fld" style="margin-top:9px"><label>E-mail</label><input class="inp" placeholder="@" value="'+esc(r.contact.email)+'" onchange="setC(\''+id+'\',\'email\',this.value)"></div></div>'
+ +'<div class="block"><h3>📌 Suivi</h3><div class="seg">'+seg+'</div><div class="two" style="margin-top:11px"><div class="fld"><label>📅 RDV</label><input class="inp" type="date" value="'+esc(r.rdv)+'" onchange="setF(\''+id+'\',\'rdv\',this.value)"></div><div class="fld"><label>🔔 Relance</label><input class="inp" type="date" value="'+esc(r.rel)+'" onchange="setF(\''+id+'\',\'rel\',this.value)"></div></div><div id="boitebox">'+boiteHTML(id)+'</div></div>'
+ +'<div class="block"><h3>🏠 Détails du bien / visite</h3><div class="two"><div class="fld"><label>Prix estimé</label><input class="inp" placeholder="€" value="'+esc(r.det.prix)+'" onchange="setD(\''+id+'\',\'prix\',this.value)"></div><div class="fld"><label>Type</label><input class="inp" placeholder="Maison T4" value="'+esc(r.det.type)+'" onchange="setD(\''+id+'\',\'type\',this.value)"></div></div><div class="fld"><label>État</label><input class="inp" placeholder="Bon / à rafraîchir…" value="'+esc(r.det.etat)+'" onchange="setD(\''+id+'\',\'etat\',this.value)"></div><div class="fld"><label>Observations</label><textarea class="inp" rows="2" onchange="setD(\''+id+'\',\'obs\',this.value)">'+esc(r.det.obs)+'</textarea></div></div>'
+ +'<div class="block"><h3>📝 Notes (horodatées)</h3><div style="display:flex;gap:7px"><input class="inp" id="newnote" placeholder="Note de passage…"><button class="cb tel" style="flex:none;width:46px" onclick="addNote(\''+id+'\')">+</button></div><div id="notes" style="margin-top:6px">'+notesHTML(id)+'</div></div>'
+ +'<div class="block"><h3>📷 Photos</h3><div class="phgrid" id="phgrid"></div></div>'
+ +'<div class="fgrid block"><h3>📄 Diagnostic</h3><div class="mt" style="white-space:normal;font-size:13px;color:var(--ink)">DPE '+p.dpe+' / GES '+p.ges+' · '+p.surface+' m²'+(p.niv?' · '+p.niv+' niv.':'')+(p.annee?' · '+p.annee:'')+'<br>Conso '+(p.conso||'?')+' kWh · '+(p.gesv||'?')+' kg/m²/an · '+esc(p.chauf||'')+'<br>DPE J-'+p.jours+' · '+esc(p.statut)+'</div></div>'
+ +'</div>';
+ const fd=$('fiche');fd.classList.add('show');requestAnimationFrame(()=>fd.classList.add('open'));renderPhotos(id)}
+function closeFiche(){const fd=$('fiche');fd.classList.remove('open');ficheOpen=null;setTimeout(()=>fd.classList.remove('show'),260);refresh()}
+function syncFicheTour(){const b=$('ftour');if(b){const on=inTour(ficheOpen);b.classList.toggle('in',on);b.textContent=on?'✓ Tournée':'＋ Tournée'}}
+function setS(id,k){rec(id).s=k;saveState();document.querySelectorAll('#fiche .seg button').forEach((b,i)=>b.classList.toggle('on',i===k))}
+function setC(id,k,v){rec(id).contact[k]=v;saveState()}
+function setD(id,k,v){rec(id).det[k]=v;saveState()}
+function setF(id,k,v){rec(id)[k]=v;saveState()}
+function copyAddr(id,b){const p=byId[id];const t=p.adresse+' 13013 Marseille';const o=b.innerHTML;navigator.clipboard.writeText(t).then(()=>{b.innerHTML='✓ Copié !';setTimeout(()=>b.innerHTML=o,1300)}).catch(()=>{b.innerHTML='⚠';setTimeout(()=>b.innerHTML=o,1300)})}
+function notesHTML(id){const r=rec(id);return r.notes.map((n,i)=>'<div class="note"><span class="nd">'+fdt(n.t)+'</span><span class="nx">'+esc(n.x)+'</span><button class="ndel" onclick="delNote(\''+id+'\','+i+')">🗑️</button></div>').join('')||'<p class="hint" style="margin:4px 0">Aucune note.</p>'}
+function fdt(iso){const d=new Date(iso),p=n=>String(n).padStart(2,'0');return p(d.getDate())+'/'+p(d.getMonth()+1)+' '+p(d.getHours())+'h'+p(d.getMinutes())}
+function addNote(id){const el=$('newnote'),v=el.value.trim();if(!v)return;rec(id).notes.unshift({t:new Date().toISOString(),x:v});saveState();el.value='';$('notes').innerHTML=notesHTML(id)}
+function delNote(id,i){rec(id).notes.splice(i,1);saveState();$('notes').innerHTML=notesHTML(id)}
+function boiteHTML(id){const b=rec(id).b;return b?'<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;background:#efe7f5;border:1px solid #ddcdec;border-radius:11px;padding:9px 11px;font-size:13.5px;font-weight:600;color:#6b3f99">📭 Boîté le <b>'+fmtBoite(b)+'</b><button class="qadd" style="padding:6px 10px;font-size:12px" onclick="setBoite(\''+id+'\')">↻</button><button class="qadd" style="padding:6px 10px;font-size:12px;color:var(--terra-d)" onclick="clearBoite(\''+id+'\')">✕</button></div>':'<button class="big" style="background:#6b3f99" onclick="setBoite(\''+id+'\')">📭 Marquer « boîté » maintenant</button>'}
+function fmtBoite(iso){const d=new Date(iso),p=n=>String(n).padStart(2,'0');return p(d.getDate())+'/'+p(d.getMonth()+1)+'/'+d.getFullYear()+' à '+p(d.getHours())+'h'+p(d.getMinutes())}
+function setBoite(id){rec(id).b=new Date().toISOString();saveState();if($('boitebox'))$('boitebox').innerHTML=boiteHTML(id);updateStats();drawList(filtered());drawMap(filtered());toast('Boîté ✓')}
+function clearBoite(id){rec(id).b='';saveState();if($('boitebox'))$('boitebox').innerHTML=boiteHTML(id);updateStats();drawList(filtered());drawMap(filtered())}
+// ---- données / export-import ----
+function renderDonnees(){const keys=allKeys();let h='<div class="sec">Synchro multi-appareils</div><div class="block"><h3>☁️ Compte (à venir)</h3><p class="hint" style="margin:0">La synchro entre vos appareils se branche ici (Supabase). En attendant, tout est sauvegardé sur cet appareil et exportable ci-dessous.</p></div>';
+ h+='<div class="sec">Sauvegarde</div><div class="block"><button class="big ink" onclick="exportData()">⬇️ Exporter mes saisies</button><label class="big ghost" style="display:block;text-align:center;margin-top:8px;cursor:pointer">⬆️ Importer une sauvegarde<input type="file" accept="application/json" style="display:none" onchange="importData(this)"></label><p class="hint">'+keys.notes+' note(s) · '+keys.photos+' photo(s) · '+tours.length+' tournée(s) enregistrée(s). Pensez à exporter avant de vider le cache ou changer de téléphone.</p></div>';
+ $('scr-donnees').innerHTML=h}
+function allKeys(){let n=0;for(const id in state)n+=(state[id].notes||[]).length;let ph=0;for(const id in phIndex)ph+=phIndex[id]||0;return {notes:n,photos:ph}}
+function exportData(){const o={v:3,date:new Date().toISOString(),state:state,tours:tours,tour:tour,mode:travelMode,phIndex:phIndex,photos:{}};for(const k in localStorage){if(k.indexOf('ph_')===0)o.photos[k]=localStorage.getItem(k)}
+ const blob=new Blob([JSON.stringify(o)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='boitage13-sauvegarde-'+new Date().toISOString().slice(0,10)+'.json';a.click();toast('Export prêt')}
+function importData(input){const f=input.files&&input.files[0];if(!f)return;const fr=new FileReader();fr.onload=()=>{try{const o=JSON.parse(fr.result);if(o.state){state=o.state;saveState()}if(o.tours){tours=o.tours;saveTours()}if(o.tour){tour=o.tour;saveTour()}if(o.mode){travelMode=o.mode;store.set('boitage13_mode',o.mode)}if(o.phIndex){phIndex=o.phIndex;store.set('boitage13_phidx',JSON.stringify(phIndex))}if(o.photos){for(const k in o.photos)store.set(k,o.photos[k])}refresh();renderDonnees();toast('Sauvegarde importée ✓')}catch(e){alert('Fichier invalide.')}};fr.readAsText(f)}
+// ---- navigation / refresh ----
+function refresh(){const d=filtered();drawList(d);drawMap(d);updateStats();renderTours();if($('scr-donnees').classList.contains('on'))renderDonnees()}
+function nav(s){document.querySelectorAll('.scr').forEach(e=>e.classList.remove('on'));$('scr-'+s).classList.add('on');document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('on',b.dataset.s===s));$('srow').style.display=(s==='carte'||s==='liste')?'flex':'none';if($('panel').classList.contains('open')){$('panel').classList.remove('open');$('fbtn').classList.remove('on')}if(s==='carte')setTimeout(()=>{map&&map.invalidateSize()},120);if(s==='tournees')renderTours();if(s==='donnees')renderDonnees()}
 // controls
-// quartiers peuplés par populateQuartiers() après chargement des données
-document.getElementById('quart').onchange=e=>{fq=e.target.value;refresh()};
-document.getElementById('q').oninput=e=>{q=e.target.value.trim().toLowerCase();refresh()};
+$('fbtn').onclick=function(){$('panel').classList.toggle('open');this.classList.toggle('on')};
+$('q').oninput=e=>{q=e.target.value.trim().toLowerCase();drawList(filtered());drawMap(filtered())};
 document.querySelectorAll('.chip[data-t]').forEach(c=>c.onclick=()=>{const t=c.dataset.t;c.classList.toggle('on');ft.has(t)?ft.delete(t):ft.add(t);refresh()});
-document.getElementById('prio').onclick=function(){prio=prio?0:1;this.classList.toggle('on');refresh()};
-document.getElementById('cboite').onclick=function(){fBoite=fBoite?0:1;this.classList.toggle('on');refresh()};
-document.getElementById('sort').onchange=e=>{sortMode=e.target.value;refresh()};
-document.getElementById('totop').onclick=()=>list.scrollTo({top:0,behavior:'smooth'});
-list.addEventListener('scroll',()=>{document.getElementById('totop').classList.toggle('show',list.scrollTop>500)});
-function setView(mode){
- document.body.classList.toggle('listview',mode==='list');
- document.body.classList.toggle('splitview',mode==='split');
- document.getElementById('bmap').classList.toggle('on',mode==='map');
- document.getElementById('bmix').classList.toggle('on',mode==='split');
- document.getElementById('blist').classList.toggle('on',mode==='list');
- if(mode!=='list')setTimeout(()=>map.invalidateSize(),150);
-}
-document.getElementById('bmap').onclick=()=>setView('map');
-document.getElementById('bmix').onclick=()=>setView('split');
-document.getElementById('blist').onclick=()=>setView('list');
-document.getElementById('fab').onclick=()=>{document.getElementById('sheet').classList.toggle('open');renderSheet()};
-document.getElementById('sclose').onclick=()=>document.getElementById('sheet').classList.remove('open');
-document.getElementById('optimize').onclick=optimize;
-document.getElementById('usepos').onclick=function(){const b=this;b.textContent='⏳';
- navigator.geolocation?navigator.geolocation.getCurrentPosition(
-  pos=>{startPos={lat:pos.coords.latitude,lon:pos.coords.longitude};b.textContent='✓ Ma position';refresh();fitTour()},
-  ()=>{b.textContent='📍 Partir d\'ici';alert('Position indisponible (autorise la géoloc).')},{enableHighAccuracy:true,timeout:8000}):alert('Géoloc non supportée')};
-document.getElementById('mbike').onclick=()=>{travelMode='bicycling';store.set('boitage13_mode','bicycling');document.getElementById('mbike').classList.add('on');document.getElementById('mscoot').classList.remove('on');renderSheet()};
-document.getElementById('mscoot').onclick=()=>{travelMode='driving';store.set('boitage13_mode','driving');document.getElementById('mscoot').classList.add('on');document.getElementById('mbike').classList.remove('on');renderSheet()};
-document.getElementById('modal').onclick=e=>{if(e.target.id==='modal')closeFiche()};
-initData().then(load).then(()=>{if(travelMode==='driving'){document.getElementById('mscoot').classList.add('on');document.getElementById('mbike').classList.remove('on')}refresh()});
+$('cprio').onclick=function(){prio=prio?0:1;this.classList.toggle('on');refresh()};
+$('cboite').onclick=function(){fBoite=fBoite?0:1;this.classList.toggle('on');refresh()};
+$('quart').onchange=e=>{fq=e.target.value;refresh()};
+$('sort').onchange=e=>{sortMode=e.target.value;refresh()};
+document.querySelectorAll('#nav button').forEach(b=>b.onclick=()=>nav(b.dataset.s));
+// boot
+load();initMap();initData().then(()=>{populateQuartiers();refresh();setTimeout(()=>map&&map.invalidateSize(),200)});
 </script></body></html>
