@@ -526,6 +526,7 @@ function ficheAdemeHTML(p){
   // Confort + méthode
   h+=infoLine('Confort été',p.confort_ete||'—');
   h+=infoLine('N° DPE',p.id||'—');
+  h+=infoLine('Date du DPE',p.date||'—');
   h+=infoLine('Validité DPE',p.date_fin_validite||'—');
   h+=infoLine('Date visite',p.date_visite||'—');
   h+=infoLine('Méthode',p.modele_dpe||'—');
@@ -556,7 +557,18 @@ sc.ico+' '+sc.msg+
     h+='</div>';
   }
   h+=infoLine('Adresse',esc(p.dvf_adresse||'—'));
-  h+=infoLine('Date vente',p.dvf_date||'—');
+  // Dates enrichies
+  const fmtD=d=>d?new Date(d).toLocaleDateString('fr-FR',{day:'2-digit',month:'short',year:'numeric'}):'—';
+  h+=infoLine('Date de vente','<b>'+fmtD(p.dvf_date)+'</b>');
+  h+=infoLine('Date du DPE','<b>'+fmtD(p.date)+'</b>');
+  // Interprétation chronologique
+  if(p.dvf_jours_avant_dpe!==undefined){
+    const j=p.dvf_jours_avant_dpe,aj=Math.abs(j);
+    const chrono=j>0
+      ?'<span style="color:#1c8b75;font-weight:800">→ DPE établi '+aj+'j APRÈS la vente</span><br><small style="color:var(--mut)">Nouveau proprio actif — travaux, location ou revente en préparation</small>'
+      :'<span style="color:#b07020;font-weight:800">→ DPE établi '+aj+'j AVANT la vente</span><br><small style="color:var(--mut)">DPE obligatoire pour la transaction — vente déjà finalisée</small>';
+    h+='<div style="background:var(--cream);border:1.5px solid var(--line);border-radius:9px;padding:9px 12px;margin:8px 0;font-size:12.5px;line-height:1.5">'+chrono+'</div>';
+  }
   h+=infoLine('Surface bâtie',p.dvf_surface?p.dvf_surface+' m²':'—');
   h+=infoLine('Surface terrain',p.dvf_terrain?p.dvf_terrain+' m²':'—');
   h+=infoLine('Pièces',p.dvf_pieces||'—');
