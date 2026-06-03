@@ -1,25 +1,50 @@
 # CHANGELOG — Cockpit Boîtage 13ᵉ
 
-## v2.0 — 2026-06-01 — Package GitHub Pages
-- **Externalisation des données** : les 59 prospects sortent dans `prospects.json`,
-  chargé au démarrage par `fetch('prospects.json')`. Mise à jour hebdo = remplacer
-  ce seul fichier.
-- **Repli embarqué** : copie des données conservée dans `index.html` (`FALLBACK_DATA`).
-  Si le `fetch` échoue (ouverture en `file://`, hors-ligne), l'app bascule dessus →
-  le fichier reste ouvrable d'un double-clic, sans serveur.
-- **Compteurs d'en-tête dynamiques** : prospects / ⭐ / 🔥 recalculés selon les données
-  réellement chargées (plus de valeurs figées).
-- **Ajout `.nojekyll`** : désactive le traitement Jekyll de GitHub Pages.
-- **Ajout `refresh_prospects.py`** : recharge depuis l'API open data ADEME
-  (DPE logements existants, maison / 13013 / 60 derniers jours). Reproduit `prio`
-  (quartiers cibles), `tier` (fraîcheur) et l'affectation par quartier (plus proche
-  centroïde) ; score reconstitué et paramétrable.
-- **Docs** : `README.md` (déploiement web ou git + activation Pages + URL finale),
-  ce `CHANGELOG.md`.
-- **Vie privée** : `prospects.json` ne contient que de l'open data ADEME. Notes, statuts
-  et photos restent en local (localStorage), hors du dépôt.
+## v3.1 — 2026-06-03 — Fiabilisation de la sauvegarde + ergonomie terrain
 
-## v1.x — antérieur
-- Application mono-page de terrain : carte Leaflet, liste triée, fiches, photos,
-  7 statuts de suivi, planificateur de tournée (vélo / scooter), liens Google Maps
-  + Google Earth. Données prospects embarquées dans `index.html`.
+### Priorité 1 — Sauvegarde fiable (plus de perte silencieuse)
+- **Supabase = source de vérité.** À la connexion, l'app récupère les données du cloud et les
+  fusionne avec le local ; chaque sauvegarde est immédiatement repoussée vers Supabase.
+- **Invite claire au 1er lancement** : bannière « Activez la sauvegarde cloud » + écran de
+  connexion par **code e-mail** (sans mot de passe) dans l'onglet Données.
+- **Photos sorties du localStorage → IndexedDB.** C'était la cause des pertes (quota
+  localStorage saturé faisait échouer TOUTES les écritures). Les photos existantes sont
+  **migrées automatiquement** au démarrage (et retirées du localStorage, ce qui libère le quota).
+  Compression inchangée (redimension 900 px, JPEG qualité 0,6).
+- **Gestion du quota / localStorage indisponible** : toute écriture échouée bascule un drapeau
+  `localBroken` et affiche une **bannière rouge persistante** « Sauvegarde locale saturée —
+  connectez-vous ». Plus jamais de perte silencieuse.
+- **Indicateur d'état permanent** en haut à droite : `✓ Sauvegardé` / `⏳ Synchro…` /
+  `⚠️ Non sauvegardé`, mis à jour à chaque sauvegarde et à chaque synchro.
+- **Fusion par enregistrement** (et non plus par comptage global) : chaque fiche et chaque
+  tournée porte un horodatage `u` ; à la synchro, on garde **toujours la version la plus
+  récente, fiche par fiche**. Plus aucun risque d'écraser une saisie plus récente.
+  Les tournées supprimées utilisent un marqueur (tombstone) pour que la suppression se
+  propage entre appareils sans réapparaître.
+
+### Priorité 2 — Sécurité (Row-Level Security)
+- La table `app_state` doit avoir la RLS activée (chaque utilisateur ne lit/écrit que SA ligne).
+  Le SQL exact à exécuter dans Supabase (SQL Editor) est dans `supabase_init.sql` (rappel en
+  bas de ce fichier). Déjà exécuté sur le projet : table + 3 policies vérifiées.
+
+### Priorité 3 — Ergonomie terrain (vélo cargo)
+- **Toast de confirmation à chaque enregistrement** (« ✓ Enregistré », « 📭 Boîté ✓ »,
+  « 📝 Note ajoutée », « 📷 Photo ajoutée »).
+- **Actions rapides en 1 geste depuis la liste** : sur chaque carte, 3 gros boutons tactiles
+  **＋ (tournée) · 📭 (boîté) · 📝 (note)** ; le 📭 est aussi accessible depuis la bulle de la carte.
+- Boutons et champs agrandis (cibles ≥ 40 px, police 16 px anti-zoom iOS).
+- **Charte conservée** : terracotta / crème, typographie Fraunces + Hanken Grotesk, ton inchangé.
+
+### Inchangé (par contrainte)
+- `refresh_prospects.py` et la logique open data ADEME : non modifiés (pas de pige/scraping).
+- Compatibilité **GitHub Pages** (statique, vanilla JS, aucune étape serveur).
+
+---
+
+### Rappel — SQL Row-Level Security (à coller dans Supabase → SQL Editor)
+Voir `supabase_init.sql`. En résumé : table `app_state(user_id, data jsonb, updated_at)`,
+RLS activée, 3 policies (`select_own`, `insert_own`, `update_own`) liant `auth.uid() = user_id`.
+
+## v3.0 — Refonte (onglets bas, fiche enrichie, tournées nommées, quartier officiel)
+## v2.x — Externalisation prospects.json, MAJ ADEME quotidienne, exclusions, vue mixte
+## v1.x — Appli mono-page initiale (carte, liste, fiches, photos, statuts, tournée)
