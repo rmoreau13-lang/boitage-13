@@ -35,10 +35,10 @@ body{font-family:'Hanken Grotesk',system-ui,sans-serif;color:var(--ink);backgrou
 .pill.fail{background:#fdecea;color:var(--red);border-color:#f5b8b8}
 
 /* stats scroll */
-.stats{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:1px;margin-bottom:8px}
+.stats{display:flex;gap:5px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:1px;margin-bottom:6px}
 .stats::-webkit-scrollbar{display:none}
-.stat{background:var(--cream);border:1.5px solid var(--line);border-radius:999px;padding:5px 12px;font-size:12px;font-weight:600;white-space:nowrap;flex:none}
-.stat b{font-family:'Fraunces',serif;color:var(--terra-d);margin-right:3px;font-size:13px}
+.stat{background:var(--cream);border:1.5px solid var(--line);border-radius:999px;padding:4px 9px;font-size:11px;font-weight:600;white-space:nowrap;flex:none}
+.stat b{font-family:'Fraunces',serif;color:var(--terra-d);margin-right:2px;font-size:12px}
 
 /* search row */
 .srow{display:flex;gap:8px}
@@ -56,7 +56,7 @@ body{font-family:'Hanken Grotesk',system-ui,sans-serif;color:var(--ink);backgrou
 
 /* banner */
 #banner{display:none}
-.bn{padding:11px 14px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap;line-height:1.35}
+.bn{padding:8px 14px;font-size:12px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:nowrap;line-height:1.3}
 .bn.warn{background:#fdecea;color:var(--red)}.bn.info{background:#fef8ec;color:#7a4d00;border-bottom:1px solid #fce5b0}
 .bn button{border:1.5px solid currentColor;background:transparent;color:inherit;border-radius:10px;padding:7px 13px;font-family:inherit;font-weight:800;font-size:12px;cursor:pointer;touch-action:manipulation}
 .bn button.x{border:none;padding:6px 8px;font-size:16px;margin-left:auto}
@@ -72,21 +72,21 @@ body{font-family:'Hanken Grotesk',system-ui,sans-serif;color:var(--ink);backgrou
 .legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px}
 
 /* ── CARDS ── */
-.card{background:var(--paper);border:1.5px solid var(--line);border-radius:var(--r);padding:13px 13px 13px 18px;margin-bottom:10px;display:flex;align-items:center;gap:11px;cursor:pointer;position:relative;overflow:hidden;box-shadow:var(--sh);transition:transform .1s,box-shadow .1s;-webkit-user-select:none}
+.card{background:var(--paper);border:1.5px solid var(--line);border-radius:var(--r);padding:10px 10px 10px 16px;margin-bottom:7px;display:flex;align-items:center;gap:8px;cursor:pointer;position:relative;overflow:hidden;box-shadow:var(--sh);transition:transform .1s,box-shadow .1s;-webkit-user-select:none}
 .card:active{transform:scale(.985);box-shadow:none}
 .card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;border-radius:4px 0 0 4px}
 .card.chaud::before{background:var(--chaud)}.card.tiede::before{background:var(--tiede)}.card.froid::before{background:var(--froid)}
 .card.done{opacity:.5}
 .rg{font-family:'Fraunces',serif;font-weight:900;font-size:14px;color:#c8b49e;min-width:18px;text-align:center;flex:none}
 .mn{flex:1;min-width:0}
-.ad{font-family:'Fraunces',serif;font-weight:700;font-size:15px;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.mt{font-size:12px;color:var(--mut);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.tags{margin-top:5px;display:flex;gap:4px;flex-wrap:wrap}
+.ad{font-family:'Fraunces',serif;font-weight:700;font-size:14px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mt{font-size:11px;color:var(--mut);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tags{margin-top:3px;display:flex;gap:3px;flex-wrap:wrap;min-height:0}
 .tag{font-size:10px;font-weight:800;padding:2px 8px;border-radius:6px;letter-spacing:.01em}
 .tag.rdv{background:#e3f4ef;color:#0d6b55}.tag.rel{background:#fdefd0;color:#9c6a08}.tag.bo{background:#f0e8f8;color:#6533a0}.tag.st{background:#f0eae0;color:#5c4d3d}
-.sc{font-family:'Fraunces',serif;font-weight:900;font-size:20px;color:var(--terra-d);min-width:28px;text-align:right;flex:none}
-.qcol{display:flex;flex-direction:column;gap:5px;flex:none}
-.qbtn{border:1.5px solid var(--line);background:var(--cream);border-radius:11px;width:48px;height:48px;font-size:18px;font-weight:700;font-family:inherit;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;touch-action:manipulation;transition:all .15s}
+.sc{font-family:'Fraunces',serif;font-weight:900;font-size:18px;color:var(--terra-d);min-width:24px;text-align:right;flex:none}
+.qcol{display:flex;flex-direction:row;gap:4px;flex:none;align-items:center}
+.qbtn{border:1.5px solid var(--line);background:var(--cream);border-radius:10px;width:40px;height:40px;font-size:16px;font-weight:700;font-family:inherit;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;touch-action:manipulation;transition:all .15s}
 .qbtn:active{transform:scale(.9)}
 .qbtn.in{background:var(--sun);border-color:var(--sun)}.qbtn.bo.on{background:#f0e8f8;border-color:#c4a0e8}
 
@@ -184,9 +184,9 @@ textarea.inp{resize:vertical;min-height:46px}
  </div>
  <div class="panel" id="panel"><div class="panelin">
   <span class="chip" data-t="chaud">🔥</span><span class="chip" data-t="tiede">♨️</span><span class="chip" data-t="froid">🌡️</span>
-  <span class="chip sun" id="cprio">⭐</span><span class="chip" id="cboite">📭 à boîter</span><span class="chip" id="crecent">🗓️ non boîté 30j</span>
+  <span class="chip sun" id="cprio">⭐</span><span class="chip" id="cboite">📭 à boîter</span><span class="chip" id="crecent">🗓️ non boîté 30j</span><span class="chip" id="cdvf" style="background:#d0282815;border-color:#d02828;color:#c01818">🚨 DVF</span>
   <select class="sel" id="quart"></select>
-  <select class="sel" id="sort"><option value="score">⇅ Score</option><option value="dpe">⇅ DPE récent</option><option value="quartier">⇅ Quartier</option></select>
+  <select class="sel" id="sort"><option value="score">⇅ Score</option><option value="dvf">⇅ Ventes DVF</option><option value="dpe">⇅ DPE récent</option><option value="quartier">⇅ Quartier</option></select>
  </div></div>
 </div>
 <div id="banner"></div>
@@ -221,7 +221,7 @@ const store={get(k){try{return localStorage.getItem(k)}catch(e){return mem[k]??n
  del(k){try{localStorage.removeItem(k)}catch(e){delete mem[k]}}};
 let DATA=[],byId={},MAX=76;
 let state={},tours=[],tour=[],tourU='',travelMode='bicycling',startPos=null,phIndex={},ficheOpen=null,firstDismissed=false;
-let ft=new Set(),fq='all',prio=0,q='',fBoite=0,fRecent=0,sortMode='score';
+let ft=new Set(),fq='all',prio=0,q='',fBoite=0,fRecent=0,fDvf=0,sortMode='score';
 // ---- état + horodatage par enregistrement ----
 function rec(id){let r=state[id];if(!r){r=state[id]={}}r.s=r.s||0;r.notes=r.notes||[];r.contact=r.contact||{};r.det=r.det||{};r.b=r.b||'';r.rdv=r.rdv||'';r.rel=r.rel||'';return r}
 function touch(id){rec(id).u=now()}
@@ -253,7 +253,7 @@ async function initData(){
 // ---- bannière ----
 function renderBanner(){const b=$('banner');let h='';
  if(localBroken)h='<div class="bn warn">⚠️ Sauvegarde locale saturée — vos saisies risquent de se perdre. Connectez-vous pour sauvegarder en ligne.<button onclick="nav(\'donnees\')">Activer</button></div>';
- else if(!sbUser&&!firstDismissed)h='<div class="bn info">🔒 Activez la sauvegarde cloud pour ne rien perdre (sur tous vos appareils).<button onclick="nav(\'donnees\')">Se connecter</button><button class="x" onclick="dismissFirst()">✕</button></div>';
+ else if(!sbUser&&!firstDismissed)h='<div class="bn info">🔒 Sauvegarde cloud désactivée — <button onclick="nav(\'donnees\')" style="padding:3px 9px;font-size:11px">Activer</button><button class="x" onclick="dismissFirst()">✕</button></div>';
  b.innerHTML=h;b.style.display=h?'block':'none'}
 function dismissFirst(){firstDismissed=true;store.set('boitage13_dismiss','1');renderBanner()}
 // ---- carte ----
@@ -271,9 +271,10 @@ function drawMap(d){if(!map)return;baseLayer.clearLayers();
   m.addTo(baseLayer)});
  drawTour()}
 // ---- liste ----
-function filtered(){const now30=Date.now()-30*86400000;let d=DATA.filter(p=>(ft.size==0||ft.has(p.tier))&&(fq=='all'||p.q==fq||p.qoff===fq)&&(!prio||p.prio)&&(!fBoite||!rec(p.id).b)&&(!fRecent||!rec(p.id).b||new Date(rec(p.id).b)<new Date(Date.now()-30*86400000))&&(!q||p.adresse.toLowerCase().includes(q)||p.q.toLowerCase().includes(q)||(p.qoff||'').toLowerCase().includes(q)));
+function filtered(){const now30=Date.now()-30*86400000;let d=DATA.filter(p=>(ft.size==0||ft.has(p.tier))&&(fq=='all'||p.q==fq||p.qoff===fq)&&(!prio||p.prio)&&(!fBoite||!rec(p.id).b)&&(!fRecent||!rec(p.id).b||new Date(rec(p.id).b)<new Date(Date.now()-30*86400000))&&(!q||p.adresse.toLowerCase().includes(q)||p.q.toLowerCase().includes(q)||(p.qoff||'').toLowerCase().includes(q))&&(!fDvf||p.dvf_signal==='en_vente'||p.dvf_signal==='vendu_recemment'||p.dvf_signal==='ancienne_vente'));
  if(sortMode==='dpe')d=d.slice().sort((a,b)=>a.jours-b.jours);
  else if(sortMode==='quartier')d=d.slice().sort((a,b)=>(a.q||'').localeCompare(b.q||'','fr')||b.score-a.score);
+ else if(sortMode==='dvf'){const P={en_vente:0,vendu_recemment:1,ancienne_vente:2,none:3};d=d.slice().sort((a,b)=>(P[a.dvf_signal||'none']||3)-(P[b.dvf_signal||'none']||3)||b.score-a.score);}
  else d=d.slice().sort((a,b)=>b.score-a.score);
  return d}
 function dvfSignalBadge(p){
@@ -316,8 +317,8 @@ function quickNote(id){const v=prompt('Note — '+byId[id].adresse+' :');if(v==n
 // ---- stats / filtres ----
 function fdate(s){if(!s)return '';const p=s.split('-');return p.length===3?p[2]+'/'+p[1]:s}
 function boitesToday(){const t=new Date(),k=t.getFullYear()+'-'+(t.getMonth()+1)+'-'+t.getDate();return DATA.filter(p=>{const b=rec(p.id).b;if(!b)return false;const d=new Date(b);return (d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate())===k}).length}
-function updateStats(){const tot=DATA.length,star=DATA.filter(p=>p.prio).length,chaud=DATA.filter(p=>p.tier=='chaud').length,todo=DATA.filter(p=>rec(p.id).s==0).length;
- $('stats').innerHTML='<span class="stat"><b>'+tot+'</b>prospects</span><span class="stat"><b>'+star+'</b>⭐</span><span class="stat"><b>'+chaud+'</b>🔥</span><span class="stat"><b>'+boitesToday()+'</b>📭 auj.</span><span class="stat"><b>'+todo+'</b>à visiter</span>'}
+function updateStats(){const tot=DATA.length,star=DATA.filter(p=>p.prio).length,chaud=DATA.filter(p=>p.tier=='chaud').length,todo=DATA.filter(p=>rec(p.id).s==0).length,dvfHot=DATA.filter(p=>p.dvf_signal==='en_vente'||p.dvf_signal==='vendu_recemment').length;
+ $('stats').innerHTML='<span class="stat"><b>'+tot+'</b>prospects</span><span class="stat"><b>'+star+'</b>⭐</span><span class="stat"><b>'+chaud+'</b>🔥</span><span class="stat"><b>'+boitesToday()+'</b>📭 auj.</span><span class="stat"><b>'+todo+'</b>à visiter</span>'+('<span class="stat" style="cursor:pointer;background:#d0282815;border-color:#d02828;color:#c01818" onclick="fDvf=1;if(typeof sortMode!==\'undefined\'){sortMode=\'dvf\'};nav(\'liste\');refresh()" title="Ventes DVF">🚨 <b>'+dvfHot+'</b></span>')}
 function populateQuartiers(){const qs=[...new Set(DATA.flatMap(p=>[p.q,p.qoff]).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'fr'));const s=$('quart');const cur=s.value;s.innerHTML='<option value="all">Tous quartiers</option>'+qs.map(x=>'<option>'+esc(x)+'</option>').join('');if([...s.options].some(o=>o.value===cur))s.value=cur}
 // ---- tournée ----
 function inTour(id){return tour.includes(id)}
@@ -332,8 +333,20 @@ function drawTour(){if(!tourLayer)return;tourLayer.clearLayers();const s=tourSto
  L.polyline(ll,{color:'#d6552f',weight:4,opacity:.85,dashArray:'7 7'}).addTo(tourLayer);
  if(startPos)L.circleMarker([startPos.lat,startPos.lon],{radius:7,fillColor:'#1c8b75',color:'#fff',weight:2,fillOpacity:1}).bindTooltip('Départ').addTo(tourLayer);
  s.forEach((p,i)=>L.marker([p.lat,p.lon],{icon:L.divIcon({className:'',html:'<div style="background:#d6552f;color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3)">'+(i+1)+'</div>',iconSize:[24,24],iconAnchor:[12,12]})}).addTo(tourLayer))}
+function autoTourDvf(){
+  const PRIO=['en_vente','vendu_recemment','ancienne_vente'];
+  const P={en_vente:0,vendu_recemment:1,ancienne_vente:2};
+  const candidates=DATA.filter(p=>PRIO.includes(p.dvf_signal)&&!rec(p.id).b)
+    .sort((a,b)=>(P[a.dvf_signal]||2)-(P[b.dvf_signal]||2)||b.score-a.score);
+  if(!candidates.length){toast('⚠️ Aucun prospect DVF non boîté');return;}
+  let added=0;
+  candidates.forEach(p=>{if(!inTour(p.id)){tour.push(p.id);added++}});
+  saveTour();renderTours();
+  toast('✅ '+added+' prospects DVF ajoutés');
+  nav('tournees');
+}
 function renderTours(){const s=tourStops();const n=tour.length;$('navbdg').style.display=n?'flex':'none';$('navbdg').textContent=n;const saved=tours.filter(t=>!t.deleted);
- let h='<div class="sec">Tournée en cours</div>';
+ let h='<button onclick="autoTourDvf()" style="display:block;width:calc(100% - 28px);margin:10px 14px 2px;padding:13px;background:#d02828;color:#fff;border:none;border-radius:13px;font-family:Fraunces,serif;font-weight:900;font-size:15px;cursor:pointer;letter-spacing:.3px;box-shadow:0 2px 8px #d0282840">🚨 Tournée Ventes récentes</button><div class="sec" style="margin-top:8px">Tournée en cours</div>';
  if(!s.length)h+='<div class="block"><p class="hint" style="margin:0">Ajoutez des adresses avec le bouton ＋ (liste ou carte) pour bâtir une tournée.</p></div>';
  else{h+='<div class="block"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><b style="font-family:Fraunces,serif">'+s.length+' arrêt'+(s.length>1?'s':'')+'</b><span style="font-family:Fraunces,serif;font-weight:700;color:var(--terra-d)">≈ '+tourKm().toFixed(1)+' km</span></div>';
   h+=s.map((p,i)=>'<div class="titem"><span class="tnum">'+(i+1)+'</span><div class="ta">'+esc(p.adresse)+'<br><small>'+esc(p.q)+' · '+EMO[p.tier]+' '+p.dpe+'</small></div><button class="rm" onclick="toggleTour(\''+p.id+'\')">✕</button></div>').join('');
@@ -563,6 +576,7 @@ function openFiche(id){ficheOpen=id;const p=byId[id];if(!p)return;const r=rec(id
  +'<button class="copyaddr" onclick="copyAddr(\''+id+'\',this)">📋 Copier l\'adresse</button>'
  +'<div class="facts"><a class="act map" href="'+p.gmaps+'" target="_blank"><span class="ai">📍</span>Maps</a><a class="act earth" href="'+earthURL(p)+'" target="_blank"><span class="ai">🌍</span>Earth</a><a class="act ann" href="'+annURL(p)+'" target="_blank"><span class="ai">🔗</span>Annonces</a><a class="act papers" href="'+pappersURL(p)+'" target="_blank"><span class="ai">🏠</span>Pappers</a><button class="act tour '+(inTour(id)?'in':'')+'" id="ftour" onclick="toggleTour(\''+id+'\')">'+(inTour(id)?'<span class=\"ai\">✓</span>Tournée':'<span class=\"ai\">＋</span>Tournée')+'</button></div></div>'
  +'<div class="fbody">'
+ +'<div id="dvf-top">'+ficheDvfTopHTML(p)+'</div>'
  +'<div class="block"><h3>👤 Contact propriétaire</h3><div class="fld"><label>Nom</label><input class="inp" placeholder="ex. M. Martin" value="'+esc(r.contact.nom)+'" onchange="setC(\''+id+'\',\'nom\',this.value)"></div><div class="fld"><label>Téléphone</label><input class="inp" inputmode="tel" placeholder="06…" value="'+esc(r.contact.tel)+'" onchange="setC(\''+id+'\',\'tel\',this.value)"></div><div class="callrow"><a class="cb tel" href="'+(r.contact.tel?'tel:'+encodeURIComponent(r.contact.tel):'#')+'">📞 Appeler</a><a class="cb sms" href="'+(r.contact.tel?'sms:'+encodeURIComponent(r.contact.tel):'#')+'">💬 SMS</a></div><div class="fld" style="margin-top:9px"><label>E-mail</label><input class="inp" placeholder="@" value="'+esc(r.contact.email)+'" onchange="setC(\''+id+'\',\'email\',this.value)"></div></div>'
  +'<div class="block"><h3>📌 Suivi</h3><div class="seg">'+seg+'</div><div class="two" style="margin-top:11px"><div class="fld"><label>📅 RDV</label><input class="inp" type="date" value="'+esc(r.rdv)+'" onchange="setF(\''+id+'\',\'rdv\',this.value)"></div><div class="fld"><label>🔔 Relance</label><input class="inp" type="date" value="'+esc(r.rel)+'" onchange="setF(\''+id+'\',\'rel\',this.value)"></div></div><div id="boitebox">'+boiteHTML(id)+'</div></div>'
  +'<div class="block"><h3>🏠 Détails du bien / visite</h3><div class="two"><div class="fld"><label>Prix estimé</label><input class="inp" placeholder="€" value="'+esc(r.det.prix)+'" onchange="setD(\''+id+'\',\'prix\',this.value)"></div><div class="fld"><label>Type</label><input class="inp" placeholder="Maison T4" value="'+esc(r.det.type)+'" onchange="setD(\''+id+'\',\'type\',this.value)"></div></div><div class="fld"><label>État</label><input class="inp" placeholder="Bon / à rafraîchir…" value="'+esc(r.det.etat)+'" onchange="setD(\''+id+'\',\'etat\',this.value)"></div><div class="fld"><label>Observations</label><textarea class="inp" rows="2" onchange="setD(\''+id+'\',\'obs\',this.value)">'+esc(r.det.obs)+'</textarea></div></div>'
@@ -613,6 +627,7 @@ document.querySelectorAll('.chip[data-t]').forEach(c=>c.onclick=()=>{const t=c.d
 $('cprio').onclick=function(){prio=prio?0:1;this.classList.toggle('on');refresh()};
 $('cboite').onclick=function(){fBoite=fBoite?0:1;this.classList.toggle('on');refresh()};
 $('crecent').onclick=function(){fRecent=fRecent?0:1;this.classList.toggle('on');refresh()};
+$('cdvf').onclick=function(){fDvf=fDvf?0:1;this.classList.toggle('on');if(fDvf&&sortMode==='score')sortMode='dvf';else if(!fDvf)sortMode='score';$('sort').value=sortMode;refresh()};
 $('quart').onchange=e=>{fq=e.target.value;refresh()};
 $('sort').onchange=e=>{sortMode=e.target.value;refresh()};
 document.querySelectorAll('#nav button').forEach(b=>b.onclick=()=>nav(b.dataset.s));
