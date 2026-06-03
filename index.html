@@ -184,7 +184,7 @@ textarea.inp{resize:vertical;min-height:46px}
  </div>
  <div class="panel" id="panel"><div class="panelin">
   <span class="chip" data-t="chaud">🔥</span><span class="chip" data-t="tiede">♨️</span><span class="chip" data-t="froid">🌡️</span>
-  <span class="chip sun" id="cprio">⭐</span><span class="chip" id="cboite">📭 à boîter</span><span class="chip" id="crecent">🗓️ non boîté 30j</span><span class="chip" id="cdvf" style="background:#d0282815;border-color:#d02828;color:#c01818">🚨 DVF</span><span class="chip" id="chist" style="background:#1a3a6020;border-color:#1a3a60;color:#1a3a60">📅 Achat ancien</span><span class="chip" id="cpv" style="background:#c8960c20;border-color:#c8960c;color:#8a6800">📈 PV +50%</span>
+  <span class="chip sun" id="cprio">⭐</span><span class="chip" id="cboite">📭 à boîter</span><span class="chip" id="crecent">🗓️ non boîté 30j</span><span class="chip" id="cdvf" style="background:#d0282815;border-color:#d02828;color:#c01818">🚨 DVF</span><span class="chip" id="chist" style="background:#1a3a6020;border-color:#1a3a60;color:#1a3a60">📅 Achat ancien</span><span class="chip" id="cpv" style="background:#c8960c20;border-color:#c8960c;color:#8a6800">📈 PV +50%</span><span class="chip" id="cterrain" style="background:#1a6e2e20;border-color:#1a6e2e;color:#145a26">🌳 Terrain +400m²</span>
   <select class="sel" id="quart"></select>
   <select class="sel" id="sort"><option value="score">⇅ Score</option><option value="dvf">⇅ Ventes DVF</option><option value="hist">⇅ Achat ancien</option><option value="dpe">⇅ DPE récent</option><option value="quartier">⇅ Quartier</option></select>
  </div></div>
@@ -221,7 +221,7 @@ const store={get(k){try{return localStorage.getItem(k)}catch(e){return mem[k]??n
  del(k){try{localStorage.removeItem(k)}catch(e){delete mem[k]}}};
 let DATA=[],byId={},MAX=76;
 let state={},tours=[],tour=[],tourU='',travelMode='bicycling',startPos=null,phIndex={},ficheOpen=null,firstDismissed=false;
-let ft=new Set(),fq='all',prio=0,q='',fBoite=0,fRecent=0,fDvf=0,fHist=0,fPv=0,sortMode='score';
+let ft=new Set(),fq='all',prio=0,q='',fBoite=0,fRecent=0,fDvf=0,fHist=0,fPv=0,fTerrain=0,sortMode='score';
 // ---- état + horodatage par enregistrement ----
 function rec(id){let r=state[id];if(!r){r=state[id]={}}r.s=r.s||0;r.notes=r.notes||[];r.contact=r.contact||{};r.det=r.det||{};r.b=r.b||'';r.rdv=r.rdv||'';r.rel=r.rel||'';return r}
 function touch(id){rec(id).u=now()}
@@ -271,7 +271,7 @@ function drawMap(d){if(!map)return;baseLayer.clearLayers();
   m.addTo(baseLayer)});
  drawTour()}
 // ---- liste ----
-function filtered(){const now30=Date.now()-30*86400000;let d=DATA.filter(p=>(ft.size==0||ft.has(p.tier))&&(fq=='all'||p.q==fq||p.qoff===fq)&&(!prio||p.prio)&&(!fBoite||!rec(p.id).b)&&(!fRecent||!rec(p.id).b||new Date(rec(p.id).b)<new Date(Date.now()-30*86400000))&&(!q||p.adresse.toLowerCase().includes(q)||p.q.toLowerCase().includes(q)||(p.qoff||'').toLowerCase().includes(q))&&(!fDvf||p.dvf_signal==='en_vente'||p.dvf_signal==='vendu_recemment'||p.dvf_signal==='ancienne_vente')&&(!fHist||p.hist_maturite==='tres_mature'||p.hist_maturite==='mature')&&(!fPv||p.pv_pct>=50));
+function filtered(){const now30=Date.now()-30*86400000;let d=DATA.filter(p=>(ft.size==0||ft.has(p.tier))&&(fq=='all'||p.q==fq||p.qoff===fq)&&(!prio||p.prio)&&(!fBoite||!rec(p.id).b)&&(!fRecent||!rec(p.id).b||new Date(rec(p.id).b)<new Date(Date.now()-30*86400000))&&(!q||p.adresse.toLowerCase().includes(q)||p.q.toLowerCase().includes(q)||(p.qoff||'').toLowerCase().includes(q))&&(!fDvf||p.dvf_signal==='en_vente'||p.dvf_signal==='vendu_recemment'||p.dvf_signal==='ancienne_vente')&&(!fHist||p.hist_maturite==='tres_mature'||p.hist_maturite==='mature')&&(!fPv||p.pv_pct>=50)&&(!fTerrain||p.terrain_divisible));
  if(sortMode==='dpe')d=d.slice().sort((a,b)=>a.jours-b.jours);
  else if(sortMode==='quartier')d=d.slice().sort((a,b)=>(a.q||'').localeCompare(b.q||'','fr')||b.score-a.score);
  else if(sortMode==='dvf'){const P={en_vente:0,vendu_recemment:1,ancienne_vente:2,none:3};d=d.slice().sort((a,b)=>(P[a.dvf_signal||'none']||3)-(P[b.dvf_signal||'none']||3)||b.score-a.score);}
@@ -300,7 +300,11 @@ function dvfSignalBadge(p){
   const c=cfg[sig];if(!c)return '';
   return '<span style="background:'+c.bg+';color:'+c.fg+';border-radius:5px;padding:2px 7px;font-size:11px;font-weight:800">'+c.ico+' '+c.lbl+'</span> ';
 }
-function tagHTML(p){const r=rec(p.id);let h=dvfSignalBadge(p)+histBadge(p);if(r.b)h+='<span class="tag bo">📭 boîté</span>';if(r.rdv)h+='<span class="tag rdv">📅 RDV '+fdate(r.rdv)+'</span>';if(r.rel)h+='<span class="tag rel">🔔 relance '+fdate(r.rel)+'</span>';if(r.s>0)h+='<span class="tag st">'+STAT[r.s]+'</span>';return h}
+function terrainBadge(p){
+  if(!p.terrain_divisible)return '';
+  return '<span style="background:#1a6e2e;color:#fff;border-radius:5px;padding:2px 6px;font-size:10px;font-weight:800;margin-left:2px">🌳 '+Math.round(p.terrain_m2||0)+'m²</span> ';
+}
+function tagHTML(p){const r=rec(p.id);let h=dvfSignalBadge(p)+histBadge(p)+terrainBadge(p);if(r.b)h+='<span class="tag bo">📭 boîté</span>';if(r.rdv)h+='<span class="tag rdv">📅 RDV '+fdate(r.rdv)+'</span>';if(r.rel)h+='<span class="tag rel">🔔 relance '+fdate(r.rel)+'</span>';if(r.s>0)h+='<span class="tag st">'+STAT[r.s]+'</span>';return h}
 // ── Swipe sur cartes ──
 function addSwipe(el, onLeft, onRight){
   let sx=0,sy=0,moved=false;
@@ -342,6 +346,8 @@ function updateStats(){
  st+='<span class="stat" style="cursor:pointer;background:#1a3a6015;border-color:#1a3a60;color:#1a3a60" onclick="fHist=1;if($(\'chist\'))$(\'chist\').classList.add(\'on\');sortMode=\'hist\';$(\'sort\').value=\'hist\';nav(\'liste\');refresh()" title="Vendeurs potentiels">📅 <b>'+histHot+'</b></span>';
  const pvHot=DATA.filter(p=>p.pv_pct>=50).length;
  if(pvHot>0)st+='<span class="stat" style="cursor:pointer;background:#c8960c20;border-color:#c8960c;color:#8a6800" onclick="fPv=1;if($(\'cpv\'))$(\'cpv\').classList.add(\'on\');refresh()" title="Plus-value +50%">📈 <b>'+pvHot+'</b></span>';
+ const terrainHot=DATA.filter(p=>p.terrain_divisible).length;
+ if(terrainHot>0)st+='<span class="stat" style="cursor:pointer;background:#1a6e2e20;border-color:#1a6e2e;color:#145a26" onclick="fTerrain=1;if($(\'cterrain\'))$(\'cterrain\').classList.add(\'on\');refresh()" title="Terrain divisible">🌳 <b>'+terrainHot+'</b></span>';
  $('stats').innerHTML=st;
 }
 function autoTourDvf(){
@@ -618,6 +624,7 @@ function ficheHistHTML(p){
     +(prixAchat?'<div style="font-size:12px;opacity:.88;margin-top:3px">Acheté '+(prixM2?'à '+prixM2:'')+(p.hist_annee_achat?' en '+p.hist_annee_achat:'')+'</div>':'')
     +pvLine
     +periodeL
+    +(p.terrain_m2?'<div style="font-size:11px;opacity:.7;margin-top:5px">🌳 Terrain : '+Math.round(p.terrain_m2)+'m²'+(p.terrain_divisible?' — divisible possible':'')+'</div>':'')
     +'</div>';
 }
 function ficheDvfTopHTML(p){
@@ -697,6 +704,7 @@ $('crecent').onclick=function(){fRecent=fRecent?0:1;this.classList.toggle('on');
 $('cdvf').onclick=function(){fDvf=fDvf?0:1;this.classList.toggle('on');if(fDvf&&sortMode==='score')sortMode='dvf';else if(!fDvf)sortMode='score';$('sort').value=sortMode;refresh()};
 $('chist').onclick=function(){fHist=fHist?0:1;this.classList.toggle('on');if(fHist)sortMode='hist';else sortMode='score';$('sort').value=sortMode;refresh()};
 if($('cpv'))$('cpv').onclick=function(){fPv=fPv?0:1;this.classList.toggle('on');refresh()};
+if($('cterrain'))$('cterrain').onclick=function(){fTerrain=fTerrain?0:1;this.classList.toggle('on');refresh()};
 $('quart').onchange=e=>{fq=e.target.value;refresh()};
 $('sort').onchange=e=>{sortMode=e.target.value;refresh()};
 document.querySelectorAll('#nav button').forEach(b=>b.onclick=()=>nav(b.dataset.s));
