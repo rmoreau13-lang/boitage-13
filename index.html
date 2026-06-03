@@ -1,5 +1,11 @@
 <!DOCTYPE html><html lang="fr"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1a1209">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Boîtage 13">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
 <title>Cockpit Boîtage — 13ᵉ Marseille</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
@@ -178,7 +184,7 @@ textarea.inp{resize:vertical;min-height:46px}
  </div>
  <div class="panel" id="panel"><div class="panelin">
   <span class="chip" data-t="chaud">🔥</span><span class="chip" data-t="tiede">♨️</span><span class="chip" data-t="froid">🌡️</span>
-  <span class="chip sun" id="cprio">⭐</span><span class="chip" id="cboite">📭 à boîter</span>
+  <span class="chip sun" id="cprio">⭐</span><span class="chip" id="cboite">📭 à boîter</span><span class="chip" id="crecent">🗓️ non boîté 30j</span>
   <select class="sel" id="quart"></select>
   <select class="sel" id="sort"><option value="score">⇅ Score</option><option value="dpe">⇅ DPE récent</option><option value="quartier">⇅ Quartier</option></select>
  </div></div>
@@ -186,7 +192,7 @@ textarea.inp{resize:vertical;min-height:46px}
 <div id="banner"></div>
 <div class="main">
  <div class="scr on" id="scr-carte"><div id="map"></div>
-  <div class="legend"><i style="background:var(--chaud)"></i>Chaud <i style="background:var(--tiede)"></i>Tiède <i style="background:var(--froid)"></i>Refroidi · ⭐ prio</div>
+  <div class="legend"><i style="background:var(--chaud)"></i>Chaud <i style="background:var(--tiede)"></i>Tiède <i style="background:var(--froid)"></i>Refroidi · ⭐ prio</div><button onclick="geoWatch?stopGeoWatch():startGeoWatch()" style="position:absolute;bottom:14px;right:12px;z-index:600;background:var(--paper);border:1.5px solid var(--line);border-radius:12px;width:44px;height:44px;font-size:20px;cursor:pointer;box-shadow:var(--sh);touch-action:manipulation" title="Ma position">📍</button>
  </div>
  <div class="scr pad" id="scr-liste"></div>
  <div class="scr pad" id="scr-tournees"></div>
@@ -215,7 +221,7 @@ const store={get(k){try{return localStorage.getItem(k)}catch(e){return mem[k]??n
  del(k){try{localStorage.removeItem(k)}catch(e){delete mem[k]}}};
 let DATA=[],byId={},MAX=76;
 let state={},tours=[],tour=[],tourU='',travelMode='bicycling',startPos=null,phIndex={},ficheOpen=null,firstDismissed=false;
-let ft=new Set(),fq='all',prio=0,q='',fBoite=0,sortMode='score';
+let ft=new Set(),fq='all',prio=0,q='',fBoite=0,fRecent=0,sortMode='score';
 // ---- état + horodatage par enregistrement ----
 function rec(id){let r=state[id];if(!r){r=state[id]={}}r.s=r.s||0;r.notes=r.notes||[];r.contact=r.contact||{};r.det=r.det||{};r.b=r.b||'';r.rdv=r.rdv||'';r.rel=r.rel||'';return r}
 function touch(id){rec(id).u=now()}
@@ -265,15 +271,42 @@ function drawMap(d){if(!map)return;baseLayer.clearLayers();
   m.addTo(baseLayer)});
  drawTour()}
 // ---- liste ----
-function filtered(){let d=DATA.filter(p=>(ft.size==0||ft.has(p.tier))&&(fq=='all'||p.q==fq||p.qoff===fq)&&(!prio||p.prio)&&(!fBoite||!rec(p.id).b)&&(!q||p.adresse.toLowerCase().includes(q)||p.q.toLowerCase().includes(q)||(p.qoff||'').toLowerCase().includes(q)));
+function filtered(){const now30=Date.now()-30*86400000;let d=DATA.filter(p=>(ft.size==0||ft.has(p.tier))&&(fq=='all'||p.q==fq||p.qoff===fq)&&(!prio||p.prio)&&(!fBoite||!rec(p.id).b)&&(!fRecent||!rec(p.id).b||new Date(rec(p.id).b)<new Date(Date.now()-30*86400000))&&(!q||p.adresse.toLowerCase().includes(q)||p.q.toLowerCase().includes(q)||(p.qoff||'').toLowerCase().includes(q)));
  if(sortMode==='dpe')d=d.slice().sort((a,b)=>a.jours-b.jours);
  else if(sortMode==='quartier')d=d.slice().sort((a,b)=>(a.q||'').localeCompare(b.q||'','fr')||b.score-a.score);
  else d=d.slice().sort((a,b)=>b.score-a.score);
  return d}
 function tagHTML(p){const r=rec(p.id);let h='';if(r.b)h+='<span class="tag bo">📭 boîté</span>';if(r.rdv)h+='<span class="tag rdv">📅 RDV '+fdate(r.rdv)+'</span>';if(r.rel)h+='<span class="tag rel">🔔 relance '+fdate(r.rel)+'</span>';if(r.s>0)h+='<span class="tag st">'+STAT[r.s]+'</span>';return h}
+// ── Swipe sur cartes ──
+function addSwipe(el, onLeft, onRight){
+  let sx=0,sy=0,moved=false;
+  el.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY;moved=false},{passive:true});
+  el.addEventListener('touchmove',e=>{const dx=e.touches[0].clientX-sx,dy=e.touches[0].clientY-sy;if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>12){moved=true;el.style.transform='translateX('+dx*0.4+'px)';el.style.transition='none'}},{passive:true});
+  el.addEventListener('touchend',e=>{el.style.transition='transform .2s';el.style.transform='';const dx=e.changedTouches[0].clientX-sx;if(moved&&Math.abs(dx)>55){if(dx<0)onLeft();else onRight()}moved=false});
+}
+function bindSwipes(){document.querySelectorAll('.card').forEach(card=>{const id=card.dataset.id;if(!id)return;addSwipe(card,()=>{quickBoite(id);card.style.background='#f0e8f8'},()=>{toggleTour(id);card.style.background='#faeeda'})});}
+
+// ── Historique boîtage ──
+function getBoiteHistory(){const hist={};DATA.forEach(p=>{const b=rec(p.id).b;if(!b)return;const d=new Date(b);const k=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');hist[k]=(hist[k]||0)+1});return hist}
+function renderHistory(){const hist=getBoiteHistory();const days=[];const now=new Date();for(let i=29;i>=0;i--){const d=new Date(now);d.setDate(d.getDate()-i);days.push(d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'))}const max=Math.max(1,...days.map(d=>hist[d]||0));const goal=parseInt(store.get('boitage13_goal')||'5');return '<div class="block"><h3>📊 Boîtages 30 derniers jours</h3><div style="display:flex;align-items:flex-end;gap:2px;height:52px;margin-bottom:6px">'+days.map(d=>{const v=hist[d]||0;const h=Math.round((v/Math.max(max,goal))*48);const isToday=d===days[days.length-1];return '<div title="'+d+' : '+v+'" style="flex:1;background:'+(isToday?'var(--terra)':'var(--teal)')+ ';height:'+h+'px;border-radius:3px 3px 0 0;min-height:'+(v>0?2:0)+'px"></div>'}).join('')+'</div><div style="display:flex;justify-content:space-between;font-size:11px;color:var(--mut);margin-bottom:8px"><span>J-29</span><span>Aujourd'hui</span></div><div style="display:flex;gap:8px;align-items:center"><label style="font-size:12px;font-weight:700;color:var(--mut)">Objectif/jour</label><input class="inp" type="number" min="1" max="50" value="'+goal+'" style="width:70px;padding:6px 10px;font-size:15px" onchange="store.set('boitage13_goal',this.value);renderDonnees()"></div></div>'}
+
+// ── SMS en masse ──
+function smsMasse(){const stops=tourStops();if(!stops.length){toast('Aucun prospect en tournée');return}const tpl=store.get('boitage13_sms_tpl')||'Bonjour, je suis agent immobilier et je serais intéressé par votre bien situé au {adresse}. Pouvez-vous me contacter ? Rémi MOREAU - Pardo & Chartier';const nums=stops.map(p=>rec(p.id).contact?.tel).filter(Boolean);if(!nums.length){toast('Aucun numéro dans la tournée');return}const msg=tpl.replace('{adresse}','votre adresse');window.open('sms:'+nums.join(',')+'?body='+encodeURIComponent(msg));toast('📱 SMS ouvert pour '+nums.length+' contacts')}
+
+// ── Templates ──
+function getSmsTpl(){return store.get('boitage13_sms_tpl')||'Bonjour, je suis agent immobilier et je serais intéressé par votre bien situé au {adresse}. Pouvez-vous me contacter ? Rémi MOREAU - Pardo & Chartier'}
+function getEmailTpl(){return store.get('boitage13_email_tpl')||'Bonjour,
+
+Je suis agent immobilier et votre bien au {adresse} retient mon attention.
+Seriez-vous vendeur ?
+
+Cordialement,
+Rémi MOREAU
+Pardo & Chartier'}
+
 function drawList(d){$('scr-liste').innerHTML=d.map(p=>{const r=rec(p.id);const off=p.qoff&&p.qoff!==p.q?' · 🏛 '+esc(p.qoff):'';
- return '<div class="card '+p.tier+(r.s>0?' done':'')+'" onclick="openFiche(\''+p.id+'\')"><span class="rg">'+p.rang+'</span><div class="mn"><div class="ad">'+(p.prio?'⭐ ':'')+esc(p.adresse)+(phIndex[p.id]?' 📷':'')+'</div><div class="mt">'+esc(p.q)+' · DPE '+p.dpe+'/'+p.ges+' · '+p.surface+' m² · J-'+p.jours+off+'</div><div class="tags">'+tagHTML(p)+'</div></div><div class="sc">'+p.score+'</div><div class="qcol" onclick="event.stopPropagation()"><button class="qbtn '+(inTour(p.id)?'in':'')+'" title="Tournée" onclick="toggleTour(\''+p.id+'\')">'+(inTour(p.id)?'✓':'＋')+'</button><button class="qbtn bo '+(r.b?'on':'')+'" title="Boîté" onclick="quickBoite(\''+p.id+'\')">📭</button><button class="qbtn" title="Note" onclick="quickNote(\''+p.id+'\')">📝</button></div></div>'
- }).join('')||'<div style="padding:30px;text-align:center;color:var(--mut)">Aucun prospect 🤷</div>'}
+ return '<div class="card '+p.tier+(r.s>0?' done':'')+'" data-id="'+p.id+'" onclick="openFiche(\''+p.id+'\')"><span class="rg">'+p.rang+'</span><div class="mn"><div class="ad">'+(p.prio?'⭐ ':'')+esc(p.adresse)+(phIndex[p.id]?' 📷':'')+'</div><div class="mt">'+esc(p.q)+' · DPE '+p.dpe+'/'+p.ges+' · '+p.surface+' m² · J-'+p.jours+off+'</div><div class="tags">'+tagHTML(p)+'</div></div><div class="sc">'+p.score+'</div><div class="qcol" onclick="event.stopPropagation()"><button class="qbtn '+(inTour(p.id)?'in':'')+'" title="Tournée" onclick="toggleTour(\''+p.id+'\')">'+(inTour(p.id)?'✓':'＋')+'</button><button class="qbtn bo '+(r.b?'on':'')+'" title="Boîté" onclick="quickBoite(\''+p.id+'\')">📭</button><button class="qbtn" title="Note" onclick="quickNote(\''+p.id+'\')">📝</button></div></div>'
+ }).join('')||'<div style="padding:30px;text-align:center;color:var(--mut)">Aucun prospect 🤷</div>';requestAnimationFrame(bindSwipes)}
 function quickBoite(id){const r=rec(id);r.b=r.b?'':now();touch(id);saveState();refresh();if(ficheOpen===id&&$('boitebox'))$('boitebox').innerHTML=boiteHTML(id);toast(r.b?'📭 Boîté ✓':'Boîté annulé');if(map)map.closePopup()}
 function quickNote(id){const v=prompt('Note — '+byId[id].adresse+' :');if(v==null||!v.trim())return;rec(id).notes.unshift({t:now(),x:v.trim()});touch(id);saveState();refresh();toast('📝 Note ajoutée')}
 // ---- stats / filtres ----
@@ -302,7 +335,7 @@ function renderTours(){const s=tourStops();const n=tour.length;$('navbdg').style
   h+=s.map((p,i)=>'<div class="titem"><span class="tnum">'+(i+1)+'</span><div class="ta">'+esc(p.adresse)+'<br><small>'+esc(p.q)+' · '+EMO[p.tier]+' '+p.dpe+'</small></div><button class="rm" onclick="toggleTour(\''+p.id+'\')">✕</button></div>').join('');
   h+='<div class="modeseg" style="margin:10px 0"><button class="'+(travelMode==='bicycling'?'on':'')+'" onclick="setMode(\'bicycling\')">🚲 Vélo</button><button class="'+(travelMode==='driving'?'on':'')+'" onclick="setMode(\'driving\')">🛵 Scooter</button></div>';
   h+='<div class="trow"><button onclick="usePos()">📍 Partir d\'ici</button><button onclick="optimize()">↘️ Optimiser</button></div>';
-  h+='<a class="big terra" style="display:block;text-align:center;text-decoration:none;margin-top:8px" href="'+mapsUrl()+'" target="_blank">Ouvrir dans Google Maps</a>';
+  h+='<a class="big terra" style="display:block;text-align:center;text-decoration:none;margin-top:8px" href="'+mapsUrl()+'" target="_blank">Ouvrir dans Google Maps</a><button class="big" style="background:#2d5a7a;margin-top:8px" onclick="smsMasse()">💬 SMS en masse à la tournée</button>';
   h+='<button class="big ghost" style="margin-top:8px" onclick="saveCurrentTour()">💾 Enregistrer cette tournée</button></div>'}
  h+='<div class="sec">Tournées enregistrées</div>';
  if(!saved.length)h+='<div class="block"><p class="hint" style="margin:0">Aucune tournée enregistrée.</p></div>';
@@ -392,7 +425,9 @@ function clearBoite(id){rec(id).b='';touch(id);saveState();if($('boitebox'))$('b
 // ---- données / export-import ----
 function renderDonnees(){let h='<div class="sec">Sauvegarde cloud</div>'+sbBlockHTML();
  let nn=0;for(const id in state)nn+=(state[id].notes||[]).length;let ph=0;for(const id in phIndex)ph+=phIndex[id]||0;
- h+='<div class="sec">Sauvegarde fichier</div><div class="block"><button class="big ink" onclick="exportData()">⬇️ Exporter mes saisies</button><label class="big ghost" style="display:block;text-align:center;margin-top:8px;cursor:pointer">⬆️ Importer une sauvegarde<input type="file" accept="application/json" style="display:none" onchange="importData(this)"></label><p class="hint">'+nn+' note(s) · '+ph+' photo(s) · '+tours.filter(t=>!t.deleted).length+' tournée(s). Les photos sont stockées en local (IndexedDB) — incluses dans l\'export.</p></div>';
+ h+=renderHistory();
+ h+='<div class="sec">Templates messages</div><div class="block"><h3>💬 SMS</h3><div class="fld"><textarea class="inp" rows="3" id="sms_tpl" onchange="store.set('boitage13_sms_tpl',this.value)">'+esc(getSmsTpl())+'</textarea><p class="hint">Variables : {adresse}, {quartier}</p></div><h3 style="margin-top:10px">📧 E-mail</h3><div class="fld"><textarea class="inp" rows="4" id="email_tpl" onchange="store.set('boitage13_email_tpl',this.value)">'+esc(getEmailTpl())+'</textarea></div></div>';
+ h+='<div class="sec">Export &amp; import</div><div class="block"><button class="big ink" onclick="exportCSV()">📊 Export CSV (Notion/Excel)</button><button class="big ink" style="margin-top:8px" onclick="exportData()">⬇️ Sauvegarde complète</button><label class="big ghost" style="display:block;text-align:center;margin-top:8px;cursor:pointer">⬆️ Importer une sauvegarde<input type="file" accept="application/json" style="display:none" onchange="importData(this)"></label><p class="hint">'+nn+' note(s) · '+ph+' photo(s) · '+tours.filter(t=>!t.deleted).length+' tournée(s).</p></div>';
  $('scr-donnees').innerHTML=h}
 async function exportData(){toast('Préparation…');const photos=await idbAll();const o={v:4,date:now(),state,tours,tour,tourU,mode:travelMode,phIndex,photos};const blob=new Blob([JSON.stringify(o)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='boitage13-sauvegarde-'+now().slice(0,10)+'.json';a.click();toast('Export prêt ✓')}
 function importData(input){const f=input.files&&input.files[0];if(!f)return;const fr=new FileReader();fr.onload=async()=>{try{const o=JSON.parse(fr.result);if(o.state){state=mergeRecs(state,o.state);saveStateRaw()}if(o.tours){tours=mergeTours(tours,o.tours);saveToursRaw()}if(o.tour&&(!tourU||(o.tourU||'')>tourU)){tour=o.tour;tourU=o.tourU||now();saveTourRaw()}if(o.mode){travelMode=o.mode;store.set('boitage13_mode',o.mode)}if(o.phIndex){phIndex=o.phIndex;store.set('boitage13_phidx',JSON.stringify(phIndex))}if(o.photos){for(const k in o.photos)await idbSet(k,o.photos[k])}if(sbUser)syncPush();refresh();renderDonnees();toast('Sauvegarde importée ✓')}catch(e){alert('Fichier invalide.')}};fr.readAsText(f)}
@@ -404,12 +439,28 @@ $('q').oninput=e=>{q=e.target.value.trim().toLowerCase();drawList(filtered());dr
 document.querySelectorAll('.chip[data-t]').forEach(c=>c.onclick=()=>{const t=c.dataset.t;c.classList.toggle('on');ft.has(t)?ft.delete(t):ft.add(t);refresh()});
 $('cprio').onclick=function(){prio=prio?0:1;this.classList.toggle('on');refresh()};
 $('cboite').onclick=function(){fBoite=fBoite?0:1;this.classList.toggle('on');refresh()};
+$('crecent').onclick=function(){fRecent=fRecent?0:1;this.classList.toggle('on');refresh()};
 $('quart').onchange=e=>{fq=e.target.value;refresh()};
 $('sort').onchange=e=>{sortMode=e.target.value;refresh()};
 document.querySelectorAll('#nav button').forEach(b=>b.onclick=()=>nav(b.dataset.s));
 // sauvegarde quand l'app passe en arrière-plan (mobile)
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden'){saveStateRaw();saveToursRaw();saveTourRaw();if(sbUser)syncPush(true)}});
 window.addEventListener('pagehide',()=>{saveStateRaw();saveToursRaw();saveTourRaw()});
+// ── Service Worker (PWA offline) ──
+if('serviceWorker' in navigator){navigator.serviceWorker.register('/boitage-13/sw.js').then(()=>{}).catch(()=>{})}
+
+// ── Géoloc temps réel ──
+let geoWatch=null,geoMarker=null;
+function startGeoWatch(){if(!map||geoWatch)return;geoWatch=navigator.geolocation.watchPosition(pos=>{const ll=[pos.coords.latitude,pos.coords.longitude];if(!geoMarker){geoMarker=L.circleMarker(ll,{radius:9,fillColor:'#2563eb',color:'#fff',weight:2.5,fillOpacity:1,zIndexOffset:1000}).addTo(map);geoMarker.bindTooltip('Vous êtes ici',{permanent:false})}else{geoMarker.setLatLng(ll)}},()=>{},{enableHighAccuracy:true,maximumAge:5000,timeout:10000});toast('📍 Géoloc activée')}
+function stopGeoWatch(){if(geoWatch){navigator.geolocation.clearWatch(geoWatch);geoWatch=null}if(geoMarker){map.removeLayer(geoMarker);geoMarker=null}}
+
+// ── Score dynamique ──
+function dynamicScore(p){const r=rec(p.id);let s=p.score;if(r.b){const days=(Date.now()-new Date(r.b))/(86400000);if(days<7)s-=30;else if(days<30)s-=15}if(r.s>=3)s-=20;if(r.s===4||r.s===5||r.s===6)s-=50;return Math.max(0,s)}
+
+// ── Export CSV ──
+function exportCSV(){const rows=[['Adresse','Quartier','Score','Tier','Priorité','Statut','Boîté le','RDV','Relance','Tél','Email','Notes']];DATA.forEach(p=>{const r=rec(p.id);rows.push([p.adresse,p.q,p.score,p.tier,p.prio?'Oui':'Non',r.s>0?(require_STAT||STAT)[r.s]:'À visiter',r.b?new Date(r.b).toLocaleDateString('fr-FR'):'',r.rdv||'',r.rel||'',r.contact?.tel||'',r.contact?.email||'',r.notes?.map(n=>n.x).join(' | ')||''])});const csv=rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(';')).join('
+');const blob=new Blob(['﻿'+csv],{type:'text/csv;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='prospects-13-'+new Date().toISOString().slice(0,10)+'.csv';a.click();toast('📊 Export CSV prêt')}
+
 // boot
 load();renderBanner();initMap();sbInit();migratePhotos();initData().then(()=>{populateQuartiers();refresh();setStatus('ok');setTimeout(()=>map&&map.invalidateSize(),200)});
 </script></body></html>

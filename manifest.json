@@ -1,0 +1,17 @@
+{
+  "name": "Cockpit Boîtage 13e",
+  "short_name": "Boîtage 13",
+  "description": "Prospection boîtage Marseille 13e",
+  "start_url": "/boitage-13/",
+  "scope": "/boitage-13/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fbf3e6",
+  "theme_color": "#1a1209",
+  "icons": [
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}
+  ],
+  "categories": ["productivity", "utilities"],
+  "lang": "fr"
+}
