@@ -3,9 +3,10 @@
 """
 refresh_prospects.py — Régénère prospects.json depuis l'open data ADEME (DPE).
 
-Dataset : "DPE logements existants (depuis juillet 2021)"  ->  slug API : dpe03existant
-API     : https://data.ademe.fr/data-fair/api/v1/datasets/dpe03existant/lines
-Filtre  : type_batiment = maison, code_postal_ban = 13013, date_etablissement_dpe >= aujourd'hui - 60 j
+Dataset : "DPE logements existants Métropole Aix-Marseille-Provence"
+          -> slug API : meg-83tjwtg8dyz4vv7h1dqe
+API     : https://data.ademe.fr/data-fair/api/v1/datasets/meg-83tjwtg8dyz4vv7h1dqe/lines
+Filtre  : type_batiment = maison, code_postal_ban = 13013, date_etablissement_dpe >= aujourd'hui - 90 j
 
 Aucune clé d'API requise. Aucune donnée personnelle : uniquement de l'open data (adresses + DPE).
 Démarche signal-based : on NE vérifie PAS les annonces en ligne (pas de pige / scraping).
@@ -33,7 +34,7 @@ from datetime import date, datetime, timedelta
 from pathlib import Path
 
 # ------------------------------------------------------------------ paramètres
-API = "https://data.ademe.fr/data-fair/api/v1/datasets/dpe03existant/lines"
+API = "https://data.ademe.fr/data-fair/api/v1/datasets/meg-83tjwtg8dyz4vv7h1dqe/lines"
 
 PRIO_QUARTIERS = {            # quartiers cibles -> prio=True (déduit de vos données)
     "Château-Gombert", "Saint-Jérôme", "Les Médecins", "Palama", "Les Mourets",
@@ -79,8 +80,8 @@ CENTROIDES_REF = {
 MIN_PROSPECTS = 10
 
 # Seuils de fraîcheur (en jours depuis l'établissement du DPE)
-TIER_CHAUD = 21              # <= 21 j  -> chaud
-TIER_TIEDE = 42              # <= 42 j  -> tiede, sinon froid
+TIER_CHAUD = 30              # <= 30 j  -> chaud
+TIER_TIEDE = 60              # <= 60 j  -> tiede, sinon froid
 
 # Poids du score (PARAMÉTRABLES) — score borné ensuite à [-20 ; 100]
 W_FRAICHEUR = 35.0           # bonus max pour un DPE tout frais (décroît jusqu'à 60 j)
@@ -94,8 +95,9 @@ SELECT = ",".join([
     "numero_dpe", "type_batiment", "code_postal_ban", "date_etablissement_dpe",
     "etiquette_dpe", "etiquette_ges", "surface_habitable_logement",
     "nombre_niveau_logement", "annee_construction", "type_energie_principale_chauffage",
-    "conso_5_usages_par_m2_ef", "emission_ges_5_usages_par_m2",
-    "adresse_ban", "adresse_brut", "_geopoint",
+    "conso_5_usages_par_m2_ep",   # énergie primaire (nouveau dataset)
+    "emission_ges_5_usages_par_m2",
+    "adresse_ban", "adresse_brut", "_geopoint", "periode_construction",
 ])
 
 HERE = Path(__file__).resolve().parent
@@ -178,7 +180,7 @@ def quartier_officiel(lat, lon, feats):
 
 # ------------------------------------------------------------------ API ADEME
 def fetch_all(cp, since_iso, page=1000, timeout=60):
-    qs = ('type_batiment:"maison" AND code_postal_ban:"%s" '
+    qs = ('type_batiment:maison AND code_postal_ban:%s '
           'AND date_etablissement_dpe:[%s TO *]' % (cp, since_iso))
     params = {"qs": qs, "select": SELECT, "size": str(page),
               "sort": "-date_etablissement_dpe"}
@@ -213,7 +215,7 @@ def to_prospect(rec, today, cents):
     tier = "chaud" if jours <= TIER_CHAUD else ("tiede" if jours <= TIER_TIEDE else "froid")
 
     surface = rec.get("surface_habitable_logement")
-    conso = rec.get("conso_5_usages_par_m2_ef")
+    conso = rec.get("conso_5_usages_par_m2_ep")   # énergie primaire
     gesv = rec.get("emission_ges_5_usages_par_m2")
 
     # --- score reconstitué (paramétrable via W_*) ---
@@ -259,7 +261,7 @@ def to_prospect(rec, today, cents):
 # ------------------------------------------------------------------ main
 def main():
     ap = argparse.ArgumentParser(description="Recharge prospects.json depuis l'API ADEME (DPE).")
-    ap.add_argument("--days", type=int, default=60, help="fenetre d'anciennete max du DPE (jours)")
+    ap.add_argument("--days", type=int, default=90, help="fenetre d'anciennete max du DPE (jours)")
     ap.add_argument("--cp", default="13013", help="code postal BAN")
     ap.add_argument("--out", default=str(HERE / "prospects.json"), help="fichier de sortie")
     args = ap.parse_args()
