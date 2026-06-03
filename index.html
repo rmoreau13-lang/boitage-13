@@ -382,6 +382,164 @@ function sbBlockHTML(){if(!sb)return '<div class="block"><h3>☁️ Synchro mult
  if(sbUser){const ls=store.get('boitage13_sync');return '<div class="block"><h3>☁️ Synchro activée</h3><p style="font-size:14px;margin:0"><span class="dot" style="background:#1c8b75"></span>Connecté : <b>'+esc(sbUser.email)+'</b></p>'+(ls?'<p class="hint" style="margin:6px 0 0">Dernière synchro : '+new Date(ls).toLocaleString('fr-FR')+'</p>':'')+'<div class="trow"><button onclick="syncPush();toast(\'Synchro…\')">↻ Synchroniser</button><button onclick="sbLogout()">Se déconnecter</button></div></div>'}
  if(sbStep==='code')return '<div class="block"><h3>☁️ Code envoyé ✉️</h3><p class="hint" style="margin:0 0 12px">E-mail envoyé à <b>'+esc(sbEmail)+'</b>.<br>Ouvrez votre boîte mail et saisissez le <b>code à 6 chiffres</b>.</p><input class="inp" id="sbCode" inputmode="numeric" maxlength="6" placeholder="_ _ _ _ _ _" style="margin-bottom:10px;font-size:28px;letter-spacing:8px;text-align:center;font-weight:800" oninput="if(this.value.length===6)sbVerify()" autofocus><button class="big" onclick="sbVerify()">Valider le code</button><button class="big ghost" style="margin-top:8px" onclick="sbStep=\'email\';renderDonnees()">‹ Changer d\'e-mail</button></div>';
  return '<div class="block"><h3>☁️ Activez la sauvegarde cloud</h3><p class="hint" style="margin:0 0 8px">Connectez-vous pour que vos saisies soient sauvegardées et retrouvées sur tous vos appareils. Un code vous est envoyé par e-mail — aucun mot de passe.</p><input class="inp" id="sbEmail" inputmode="email" placeholder="votre e-mail" style="margin-bottom:8px"><button class="big" onclick="sbSendCode()">Recevoir un code par e-mail</button></div>'}
+// ---- fiche ADEME + DVF blocks ----
+function dpeColor(l){
+  return {A:'#319a5c',B:'#52b86b',C:'#aad155',D:'#f5d13a',E:'#f0a020',F:'#e86030',G:'#d02828'}[l]||'#999';
+}
+function isoLbl(v){
+  const m={excellente:'Excellente',tres_bonne:'Très bonne',bonne:'Bonne',moyenne:'Moyenne',insuffisante:'Insuffisante',
+    'très bonne':'Très bonne','très insuffisante':'Très insuff.',inconnu:'?'};
+  return m[(v||'').toLowerCase()]||esc(v||'—');
+}
+function isoColor(v){
+  const s=(v||'').toLowerCase();
+  if(s.includes('excell')||s.includes('tres_b')||s.includes('très b'))return '#319a5c';
+  if(s.includes('bonne'))return '#52b86b';
+  if(s.includes('moyen'))return '#f0a020';
+  if(s.includes('insuff'))return '#d02828';
+  return '#999';
+}
+function kpi(label,val,unit,color){
+  return '<div style="background:var(--cream);border:1.5px solid var(--line);border-radius:10px;padding:10px 8px;text-align:center">'
+    +'<div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--mut);margin-bottom:4px">'+label+'</div>'
+    +'<div style="font-size:20px;font-weight:900;font-family:Fraunces,serif;color:'+(color||'var(--ink)')+'">'+val+'</div>'
+    +(unit?'<div style="font-size:10px;color:var(--mut);margin-top:1px">'+unit+'</div>':'');
+  +'</div>';
+}
+function row2(a,b){
+  return '<div class="two" style="gap:8px;margin-bottom:8px">'+a+b+'</div>';
+}
+function infoLine(label,val){
+  if(!val&&val!==0)return '';
+  return '<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--line);font-size:13px">'
+    +'<span style="color:var(--mut);font-weight:600">'+label+'</span>'
+    +'<span style="font-weight:700;text-align:right;max-width:55%">'+val+'</span></div>';
+}
+function ficheAdemeHTML(p){
+  // --- Bandeau DPE/GES coloré ---
+  const dpeC=dpeColor(p.dpe);
+  const gesC=dpeColor(p.ges);
+  let h='<div class="block">';
+  h+='<h3>📄 Diagnostic ADEME</h3>';
+
+  // KPI principaux : DPE / GES / Conso EP / Émission GES
+  h+='<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:12px">';
+  h+='<div style="background:'+dpeC+'1a;border:2px solid '+dpeC+';border-radius:10px;padding:10px 6px;text-align:center">'
+   +'<div style="font-size:10px;font-weight:800;text-transform:uppercase;color:'+dpeC+'">DPE</div>'
+   +'<div style="font-size:28px;font-weight:900;font-family:Fraunces,serif;color:'+dpeC+'">'+(p.dpe||'?')+'</div></div>';
+  h+='<div style="background:'+gesC+'1a;border:2px solid '+gesC+';border-radius:10px;padding:10px 6px;text-align:center">'
+   +'<div style="font-size:10px;font-weight:800;text-transform:uppercase;color:'+gesC+'">GES</div>'
+   +'<div style="font-size:28px;font-weight:900;font-family:Fraunces,serif;color:'+gesC+'">'+(p.ges||'?')+'</div></div>';
+  h+='<div style="background:var(--cream);border:1.5px solid var(--line);border-radius:10px;padding:10px 6px;text-align:center">'
+   +'<div style="font-size:10px;font-weight:800;text-transform:uppercase;color:var(--mut)">Conso EP</div>'
+   +'<div style="font-size:20px;font-weight:900;font-family:Fraunces,serif">'+(p.conso||'?')+'</div>'
+   +'<div style="font-size:10px;color:var(--mut)">kWh/m²/an</div></div>';
+  h+='<div style="background:var(--cream);border:1.5px solid var(--line);border-radius:10px;padding:10px 6px;text-align:center">'
+   +'<div style="font-size:10px;font-weight:800;text-transform:uppercase;color:var(--mut)">GES</div>'
+   +'<div style="font-size:20px;font-weight:900;font-family:Fraunces,serif">'+(p.gesv||'?')+'</div>'
+   +'<div style="font-size:10px;color:var(--mut)">kg/m²/an</div></div>';
+  h+='</div>';
+
+  // Identité du bien
+  h+='<div style="margin-bottom:10px">';
+  h+=infoLine('Surface',p.surface?p.surface+' m²':'—');
+  h+=infoLine('Niveaux',p.niv||'—');
+  h+=infoLine('Année construction',(p.annee||'')+(p.periode?' ('+p.periode+')':''));
+  h+=infoLine('Hauteur plafond',p.hauteur_plafond?p.hauteur_plafond+' m':'—');
+  h+=infoLine('Inertie',p.inertie||'—');
+  h+='</div>';
+
+  // Énergie
+  h+='<div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin:10px 0 6px">Énergie</div>';
+  h+='<div style="margin-bottom:10px">';
+  h+=infoLine('Chauffage',p.chauf||'—');
+  h+=infoLine('ECS',p.ecs_energie||'—');
+  h+=infoLine('Sys. chauffage',p.installation_chauf||'—');
+  h+=infoLine('Sys. ECS',p.installation_ecs||'—');
+  h+=infoLine('Générateur chauf.',p.generateur_chauf||'—');
+  h+=infoLine('Générateur ECS',p.generateur_ecs||'—');
+  h+=infoLine('Conso EF',p.conso_ef?p.conso_ef+' kWh/m²/an':'—');
+  h+=infoLine('Coût annuel',p.cout_total?p.cout_total+' €':'—');
+  h+='</div>';
+
+  // Usages détaillés (si disponibles)
+  if(p.conso_chauf_ef||p.conso_ecs_ef||p.conso_eclairage_ef){
+    h+='<div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin:10px 0 6px">Consommation par usage (kWh ef/an)</div>';
+    h+='<div style="margin-bottom:10px">';
+    h+=infoLine('Chauffage',p.conso_chauf_ef?p.conso_chauf_ef+' kWh':'—');
+    h+=infoLine('Eau chaude',p.conso_ecs_ef?p.conso_ecs_ef+' kWh':'—');
+    h+=infoLine('Éclairage',p.conso_eclairage_ef?p.conso_eclairage_ef+' kWh':'—');
+    h+=infoLine('Refroid.',p.conso_refroid_ef?p.conso_refroid_ef+' kWh':'—');
+    h+='</div>';
+  }
+
+  // Besoins thermiques
+  if(p.besoin_chauf||p.besoin_ecs){
+    h+='<div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin:10px 0 6px">Besoins thermiques (kWh/an)</div>';
+    h+='<div style="margin-bottom:10px">';
+    h+=infoLine('Besoin chauffage',p.besoin_chauf?p.besoin_chauf+' kWh':'—');
+    h+=infoLine('Besoin ECS',p.besoin_ecs?p.besoin_ecs+' kWh':'—');
+    h+=infoLine('Besoin refroid.',p.besoin_refroid?p.besoin_refroid+'  kWh':'—');
+    h+='</div>';
+  }
+
+  // Isolation
+  h+='<div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin:10px 0 6px">Isolation</div>';
+  h+='<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:10px">';
+  ['enveloppe','murs','fenetres'].forEach(k=>{
+    const v=p['iso_'+k];
+    const labels={enveloppe:'Enveloppe',murs:'Murs',fenetres:'Fenêtres'};
+    h+='<div style="border-radius:9px;border:1.5px solid '+(isoColor(v))+';padding:8px 6px;text-align:center">'
+     +'<div style="font-size:10px;font-weight:800;color:var(--mut);text-transform:uppercase">'+labels[k]+'</div>'
+     +'<div style="font-size:12px;font-weight:700;color:'+isoColor(v)+';margin-top:3px">'+isoLbl(v)+'</div></div>';
+  });
+  h+='</div>';
+  h+=infoLine('Ubat (W/m²·K)',p.ubat||'—');
+
+  // Déperditions
+  if(p.dep_enveloppe||p.dep_murs){
+    h+='<div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin:10px 0 6px">Déperditions (W/K)</div>';
+    h+='<div style="margin-bottom:10px">';
+    h+=infoLine('Enveloppe totale',p.dep_enveloppe?p.dep_enveloppe+' W/K':'—');
+    h+=infoLine('Murs',p.dep_murs?p.dep_murs+' W/K':'—');
+    h+=infoLine('Baies vitrées',p.dep_baies?p.dep_baies+' W/K':'—');
+    h+='</div>';
+  }
+
+  // Confort + méthode
+  h+=infoLine('Confort été',p.confort_ete||'—');
+  h+=infoLine('N° DPE',p.id||'—');
+  h+=infoLine('Validité DPE',p.date_fin_validite||'—');
+  h+=infoLine('Date visite',p.date_visite||'—');
+  h+=infoLine('Méthode',p.modele_dpe||'—');
+
+  h+='</div>';
+  return h;
+}
+function ficheDvfHTML(p){
+  if(!p.dvf_prix&&!p.dvf_date)return '';
+  let h='<div class="block">';
+  h+='<h3>💰 Marché DVF — Ventes réelles</h3>';
+  // Vente principale
+  h+='<div style="background:linear-gradient(135deg,#1c8b751a 0%,var(--cream) 100%);border:1.5px solid #1c8b7555;border-radius:10px;padding:12px;margin-bottom:10px">';
+  if(p.dvf_prix){
+    h+='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">';
+    h+='<div style="font-family:Fraunces,serif;font-size:22px;font-weight:900;color:var(--teal-d)">'+p.dvf_prix.toLocaleString('fr-FR')+' €</div>';
+    if(p.dvf_prix_m2)h+='<div style="background:#1c8b75;color:#fff;border-radius:8px;padding:4px 10px;font-size:13px;font-weight:800">'+p.dvf_prix_m2.toLocaleString('fr-FR')+' €/m²</div>';
+    h+='</div>';
+  }
+  h+=infoLine('Adresse',esc(p.dvf_adresse||'—'));
+  h+=infoLine('Date vente',p.dvf_date||'—');
+  h+=infoLine('Surface bâtie',p.dvf_surface?p.dvf_surface+' m²':'—');
+  h+=infoLine('Surface terrain',p.dvf_terrain?p.dvf_terrain+' m²':'—');
+  h+=infoLine('Pièces',p.dvf_pieces||'—');
+  h+=infoLine('Distance DPE',p.dvf_dist_m?p.dvf_dist_m+' m':'—');
+  h+='</div>';
+  // Contexte marché 13e
+  h+='<div style="font-size:12px;color:var(--mut);padding:6px 0">Marché 13e (2024-2025) · Médiane maisons : <b style="color:var(--ink)">4 039 €/m²</b> · Moyenne : <b style="color:var(--ink)">4 247 €/m²</b></div>';
+  h+='</div>';
+  return h;
+}
 // ---- fiche ----
 function openFiche(id){ficheOpen=id;const p=byId[id];if(!p)return;const r=rec(id);
  const seg=STAT.map((t,k)=>'<button class="'+(r.s==k?'on':'')+'" onclick="setS(\''+id+'\','+k+')">'+t+'</button>').join('');
@@ -395,7 +553,7 @@ function openFiche(id){ficheOpen=id;const p=byId[id];if(!p)return;const r=rec(id
  +'<div class="block"><h3>🏠 Détails du bien / visite</h3><div class="two"><div class="fld"><label>Prix estimé</label><input class="inp" placeholder="€" value="'+esc(r.det.prix)+'" onchange="setD(\''+id+'\',\'prix\',this.value)"></div><div class="fld"><label>Type</label><input class="inp" placeholder="Maison T4" value="'+esc(r.det.type)+'" onchange="setD(\''+id+'\',\'type\',this.value)"></div></div><div class="fld"><label>État</label><input class="inp" placeholder="Bon / à rafraîchir…" value="'+esc(r.det.etat)+'" onchange="setD(\''+id+'\',\'etat\',this.value)"></div><div class="fld"><label>Observations</label><textarea class="inp" rows="2" onchange="setD(\''+id+'\',\'obs\',this.value)">'+esc(r.det.obs)+'</textarea></div></div>'
  +'<div class="block"><h3>📝 Notes (horodatées)</h3><div style="display:flex;gap:7px"><input class="inp" id="newnote" placeholder="Note de passage…"><button class="cb tel" style="flex:none;width:48px;height:52px;min-height:52px" onclick="addNote(\''+id+'\')">+</button></div><div id="notes" style="margin-top:6px">'+notesHTML(id)+'</div></div>'
  +'<div class="block"><h3>📷 Photos</h3><div class="phgrid" id="phgrid"></div></div>'
- +'<div class="block"><h3>📄 Diagnostic</h3><div class="mt" style="white-space:normal;font-size:13px;color:var(--ink)">DPE '+p.dpe+' / GES '+p.ges+' · '+p.surface+' m²'+(p.niv?' · '+p.niv+' niv.':'')+(p.annee?' · '+p.annee:'')+'<br>Conso '+(p.conso||'?')+' kWh · '+(p.gesv||'?')+' kg/m²/an · '+esc(p.chauf||'')+'<br>DPE J-'+p.jours+' · '+esc(p.statut)+'</div></div>'
+ +ficheAdemeHTML(p)+ficheDvfHTML(p)
  +'</div>';
  const fd=$('fiche');fd.classList.add('show');requestAnimationFrame(()=>fd.classList.add('open'));renderPhotos(id);bindFicheInputs(id)}
 function closeFiche(){saveState();const fd=$('fiche');fd.classList.remove('open');ficheOpen=null;setTimeout(()=>fd.classList.remove('show'),260);refresh()}
