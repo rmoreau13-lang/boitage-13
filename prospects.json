@@ -52,7 +52,8 @@
   "confort_ete": "insuffisant",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 1
+  "rang": 1,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E1458128O",
@@ -107,7 +108,8 @@
   "confort_ete": "insuffisant",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 2
+  "rang": 2,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E1448520A",
@@ -162,7 +164,8 @@
   "confort_ete": "insuffisant",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 3
+  "rang": 3,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E1376873J",
@@ -225,7 +228,9 @@
   "dvf_prix_m2": 3587.0,
   "dvf_dist_m": 7.3,
   "dvf_adresse": "31 Tsse Du Collet Redon",
-  "rang": 4
+  "rang": 4,
+  "dvf_jours_avant_dpe": 196,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2613E1328055T",
@@ -280,7 +285,8 @@
   "confort_ete": "insuffisant",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 5
+  "rang": 5,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E1307038K",
@@ -343,7 +349,9 @@
   "dvf_prix_m2": 3733.0,
   "dvf_dist_m": 59.9,
   "dvf_adresse": "41 Bd Ararat",
-  "rang": 6
+  "rang": 6,
+  "dvf_jours_avant_dpe": 154,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2613E1409709H",
@@ -406,7 +414,9 @@
   "dvf_prix_m2": 4986.0,
   "dvf_dist_m": 0.0,
   "dvf_adresse": "211 Lot Les Allees De Palama 3",
-  "rang": 7
+  "rang": 7,
+  "dvf_jours_avant_dpe": 624,
+  "dvf_signal": "ancienne_vente"
  },
  {
   "id": "2613E1393058W",
@@ -469,7 +479,9 @@
   "dvf_prix_m2": 2833.0,
   "dvf_dist_m": 21.5,
   "dvf_adresse": "290 Che De Chateau Gombert",
-  "rang": 8
+  "rang": 8,
+  "dvf_jours_avant_dpe": 703,
+  "dvf_signal": "ancienne_vente"
  },
  {
   "id": "2613E1380031V",
@@ -524,7 +536,8 @@
   "confort_ete": "insuffisant",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 9
+  "rang": 9,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E1453678K",
@@ -587,7 +600,9 @@
   "dvf_prix_m2": 3496.0,
   "dvf_dist_m": 20.3,
   "dvf_adresse": "14 Bd Du Travail",
-  "rang": 10
+  "rang": 10,
+  "dvf_jours_avant_dpe": 311,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2613E1403458W",
@@ -642,7 +657,8 @@
   "confort_ete": "moyen",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 11
+  "rang": 11,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E1386376W",
@@ -697,7 +713,8 @@
   "confort_ete": "moyen",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 12
+  "rang": 12,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E1348030A",
@@ -760,7 +777,9 @@
   "dvf_prix_m2": 4235.0,
   "dvf_dist_m": 0.0,
   "dvf_adresse": "96 Av Paul Dalbret",
-  "rang": 13
+  "rang": 13,
+  "dvf_jours_avant_dpe": 712,
+  "dvf_signal": "ancienne_vente"
  },
  {
   "id": "2613E1235088C",
@@ -815,7 +834,8 @@
   "confort_ete": "insuffisant",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 14
+  "rang": 14,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E1159275F",
@@ -870,7 +890,8 @@
   "confort_ete": "insuffisant",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 15
+  "rang": 15,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E1376980M",
@@ -925,7 +946,8 @@
   "confort_ete": "insuffisant",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 16
+  "rang": 16,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E1286940K",
@@ -988,7 +1010,9 @@
   "dvf_prix_m2": 3733.0,
   "dvf_dist_m": 57.3,
   "dvf_adresse": "41 Bd Ararat",
-  "rang": 17
+  "rang": 17,
+  "dvf_jours_avant_dpe": 153,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2613E1400602A",
@@ -1051,7 +1075,9 @@
   "dvf_prix_m2": 5643.0,
   "dvf_dist_m": 72.1,
   "dvf_adresse": "22 Che Des Grottes-Loubiere",
-  "rang": 18
+  "rang": 18,
+  "dvf_jours_avant_dpe": 279,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2613E1249870Q",
@@ -1114,7 +1140,9 @@
   "dvf_prix_m2": 4483.0,
   "dvf_dist_m": 39.4,
   "dvf_adresse": "36 Bd Fernand Durbec",
-  "rang": 19
+  "rang": 19,
+  "dvf_jours_avant_dpe": 234,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2513E3874066F",
@@ -1169,7 +1197,8 @@
   "confort_ete": "insuffisant",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 20
+  "rang": 20,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E1437454K",
@@ -1224,7 +1253,8 @@
   "confort_ete": "moyen",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 21
+  "rang": 21,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E1259018M",
@@ -1287,7 +1317,9 @@
   "dvf_prix_m2": 3948.0,
   "dvf_dist_m": 7.5,
   "dvf_adresse": "4 Rue Des Chars",
-  "rang": 22
+  "rang": 22,
+  "dvf_jours_avant_dpe": 692,
+  "dvf_signal": "ancienne_vente"
  },
  {
   "id": "2613E1216652A",
@@ -1350,7 +1382,9 @@
   "dvf_prix_m2": 3909.0,
   "dvf_dist_m": 9.5,
   "dvf_adresse": "39 Rue Des Ecuyers",
-  "rang": 23
+  "rang": 23,
+  "dvf_jours_avant_dpe": 753,
+  "dvf_signal": "ancienne_vente"
  },
  {
   "id": "2613E1075893F",
@@ -1413,7 +1447,9 @@
   "dvf_prix_m2": 3931.0,
   "dvf_dist_m": 26.8,
   "dvf_adresse": "6 Imp Du Plan",
-  "rang": 24
+  "rang": 24,
+  "dvf_jours_avant_dpe": 116,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2613E1140405L",
@@ -1476,7 +1512,9 @@
   "dvf_prix_m2": 5690.0,
   "dvf_dist_m": 28.9,
   "dvf_adresse": "3 A Bd Emile Rambaud",
-  "rang": 25
+  "rang": 25,
+  "dvf_jours_avant_dpe": 191,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2613E1043513V",
@@ -1539,7 +1577,9 @@
   "dvf_prix_m2": 3137.0,
   "dvf_dist_m": 35.0,
   "dvf_adresse": "35 Rue Des Ecuyers",
-  "rang": 26
+  "rang": 26,
+  "dvf_jours_avant_dpe": 513,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2613E1167439F",
@@ -1602,7 +1642,9 @@
   "dvf_prix_m2": 3702.0,
   "dvf_dist_m": 31.0,
   "dvf_adresse": "64 Tsse Grandjean",
-  "rang": 27
+  "rang": 27,
+  "dvf_jours_avant_dpe": 645,
+  "dvf_signal": "ancienne_vente"
  },
  {
   "id": "2613E1132273R",
@@ -1665,7 +1707,9 @@
   "dvf_prix_m2": 3133.0,
   "dvf_dist_m": 27.9,
   "dvf_adresse": "1 Imp Rivet",
-  "rang": 28
+  "rang": 28,
+  "dvf_jours_avant_dpe": 455,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2613E1089083N",
@@ -1720,7 +1764,8 @@
   "confort_ete": "bon",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 29
+  "rang": 29,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E1084353P",
@@ -1783,7 +1828,9 @@
   "dvf_prix_m2": 8325.0,
   "dvf_dist_m": 14.9,
   "dvf_adresse": "195 Che De Chateau Gombert",
-  "rang": 30
+  "rang": 30,
+  "dvf_jours_avant_dpe": 651,
+  "dvf_signal": "ancienne_vente"
  },
  {
   "id": "2613E0376377T",
@@ -1838,7 +1885,8 @@
   "confort_ete": "moyen",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 31
+  "rang": 31,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E0334772O",
@@ -1901,7 +1949,9 @@
   "dvf_prix_m2": 8325.0,
   "dvf_dist_m": 52.3,
   "dvf_adresse": "195 Che De Chateau Gombert",
-  "rang": 32
+  "rang": 32,
+  "dvf_jours_avant_dpe": 576,
+  "dvf_signal": "ancienne_vente"
  },
  {
   "id": "2613E0233356Y",
@@ -1956,7 +2006,8 @@
   "confort_ete": "insuffisant",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 33
+  "rang": 33,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E1294345F",
@@ -2011,7 +2062,8 @@
   "confort_ete": "insuffisant",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 34
+  "rang": 34,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E1039644A",
@@ -2074,7 +2126,9 @@
   "dvf_prix_m2": 4920.0,
   "dvf_dist_m": 11.6,
   "dvf_adresse": "13 Lot Bastides De Chateau Gomber",
-  "rang": 35
+  "rang": 35,
+  "dvf_jours_avant_dpe": 481,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2513E3990139O",
@@ -2129,7 +2183,8 @@
   "confort_ete": "insuffisant",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 36
+  "rang": 36,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E1155255P",
@@ -2184,7 +2239,8 @@
   "confort_ete": "insuffisant",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 37
+  "rang": 37,
+  "dvf_signal": "none"
  },
  {
   "id": "2513E3956068D",
@@ -2247,7 +2303,9 @@
   "dvf_prix_m2": 3403.0,
   "dvf_dist_m": 40.2,
   "dvf_adresse": "105 A Av Saint-Jerome",
-  "rang": 38
+  "rang": 38,
+  "dvf_jours_avant_dpe": 603,
+  "dvf_signal": "ancienne_vente"
  },
  {
   "id": "2613E0347309T",
@@ -2310,7 +2368,9 @@
   "dvf_prix_m2": 5520.0,
   "dvf_dist_m": 0.0,
   "dvf_adresse": "237 Che De Chateau Gombert",
-  "rang": 39
+  "rang": 39,
+  "dvf_jours_avant_dpe": 380,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2613E0217908U",
@@ -2365,7 +2425,8 @@
   "confort_ete": "insuffisant",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 40
+  "rang": 40,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E0916729N",
@@ -2428,7 +2489,9 @@
   "dvf_prix_m2": 4035.0,
   "dvf_dist_m": 14.0,
   "dvf_adresse": "60 Rue Des Ecuyers",
-  "rang": 41
+  "rang": 41,
+  "dvf_jours_avant_dpe": 716,
+  "dvf_signal": "ancienne_vente"
  },
  {
   "id": "2613E0882945D",
@@ -2491,7 +2554,9 @@
   "dvf_prix_m2": 3579.0,
   "dvf_dist_m": 77.0,
   "dvf_adresse": "55 Tsse Des Alvergnes",
-  "rang": 42
+  "rang": 42,
+  "dvf_jours_avant_dpe": 510,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2613E0204459N",
@@ -2546,7 +2611,8 @@
   "confort_ete": "insuffisant",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 43
+  "rang": 43,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E0397784C",
@@ -2601,7 +2667,8 @@
   "confort_ete": "moyen",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 44
+  "rang": 44,
+  "dvf_signal": "none"
  },
  {
   "id": "2513E3985169K",
@@ -2656,7 +2723,8 @@
   "confort_ete": "bon",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 45
+  "rang": 45,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E1239397V",
@@ -2719,7 +2787,9 @@
   "dvf_prix_m2": 2357.0,
   "dvf_dist_m": 0.0,
   "dvf_adresse": "33 Rue Frederic Joliot Curie",
-  "rang": 46
+  "rang": 46,
+  "dvf_jours_avant_dpe": 194,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2613E0447268I",
@@ -2774,7 +2844,8 @@
   "confort_ete": "insuffisant",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 47
+  "rang": 47,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E0031524E",
@@ -2829,7 +2900,8 @@
   "confort_ete": "insuffisant",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 48
+  "rang": 48,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E1256550O",
@@ -2892,7 +2964,9 @@
   "dvf_prix_m2": 3357.0,
   "dvf_dist_m": 31.6,
   "dvf_adresse": "76 All Des Chardonnerets",
-  "rang": 49
+  "rang": 49,
+  "dvf_jours_avant_dpe": 699,
+  "dvf_signal": "ancienne_vente"
  },
  {
   "id": "2613E0887933Z",
@@ -2947,7 +3021,8 @@
   "confort_ete": "moyen",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 50
+  "rang": 50,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E0862533B",
@@ -3002,7 +3077,8 @@
   "confort_ete": "insuffisant",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 51
+  "rang": 51,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E0069747H",
@@ -3065,7 +3141,9 @@
   "dvf_prix_m2": 4912.0,
   "dvf_dist_m": 41.8,
   "dvf_adresse": "8 Lot Les Allees De Palama 2",
-  "rang": 52
+  "rang": 52,
+  "dvf_jours_avant_dpe": 448,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2613E1035051J",
@@ -3128,7 +3206,9 @@
   "dvf_prix_m2": 3948.0,
   "dvf_dist_m": 18.5,
   "dvf_adresse": "4 Rue Des Chars",
-  "rang": 53
+  "rang": 53,
+  "dvf_jours_avant_dpe": 669,
+  "dvf_signal": "ancienne_vente"
  },
  {
   "id": "2513E3961987U",
@@ -3183,7 +3263,8 @@
   "confort_ete": "insuffisant",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 54
+  "rang": 54,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E0981499R",
@@ -3246,7 +3327,9 @@
   "dvf_prix_m2": 4326.0,
   "dvf_dist_m": 78.9,
   "dvf_adresse": "41 Rue Des Chars",
-  "rang": 55
+  "rang": 55,
+  "dvf_jours_avant_dpe": 621,
+  "dvf_signal": "ancienne_vente"
  },
  {
   "id": "2613E0300749Z",
@@ -3309,7 +3392,9 @@
   "dvf_prix_m2": 2461.0,
   "dvf_dist_m": 12.9,
   "dvf_adresse": "135 Che Du Merlan A La Rose",
-  "rang": 56
+  "rang": 56,
+  "dvf_jours_avant_dpe": 290,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2613E0189712I",
@@ -3372,7 +3457,9 @@
   "dvf_prix_m2": 2855.0,
   "dvf_dist_m": 0.0,
   "dvf_adresse": "9002 Tsse De La Rose",
-  "rang": 57
+  "rang": 57,
+  "dvf_jours_avant_dpe": 728,
+  "dvf_signal": "ancienne_vente"
  },
  {
   "id": "2613E1176421R",
@@ -3427,7 +3514,8 @@
   "confort_ete": "moyen",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 58
+  "rang": 58,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E1084776W",
@@ -3490,7 +3578,9 @@
   "dvf_prix_m2": 3333.0,
   "dvf_dist_m": 78.9,
   "dvf_adresse": "32 Bd De La Cooperation",
-  "rang": 59
+  "rang": 59,
+  "dvf_jours_avant_dpe": 452,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2613E0902203V",
@@ -3553,7 +3643,9 @@
   "dvf_prix_m2": 3149.0,
   "dvf_dist_m": 0.0,
   "dvf_adresse": "122 Che N-D De Consolation",
-  "rang": 60
+  "rang": 60,
+  "dvf_jours_avant_dpe": 693,
+  "dvf_signal": "ancienne_vente"
  },
  {
   "id": "2613E0886672M",
@@ -3616,7 +3708,9 @@
   "dvf_prix_m2": 1507.0,
   "dvf_dist_m": 22.8,
   "dvf_adresse": "7 Pl Quiadou",
-  "rang": 61
+  "rang": 61,
+  "dvf_jours_avant_dpe": 740,
+  "dvf_signal": "ancienne_vente"
  },
  {
   "id": "2613E0445911D",
@@ -3671,7 +3765,8 @@
   "confort_ete": "moyen",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 62
+  "rang": 62,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E0506506S",
@@ -3734,7 +3829,9 @@
   "dvf_prix_m2": 2375.0,
   "dvf_dist_m": 0.0,
   "dvf_adresse": "9110 Tra Des Omnibus",
-  "rang": 63
+  "rang": 63,
+  "dvf_jours_avant_dpe": 658,
+  "dvf_signal": "ancienne_vente"
  },
  {
   "id": "2613E0381408G",
@@ -3797,7 +3894,9 @@
   "dvf_prix_m2": 4746.0,
   "dvf_dist_m": 14.4,
   "dvf_adresse": "8 Av Miss Columbia",
-  "rang": 64
+  "rang": 64,
+  "dvf_jours_avant_dpe": 68,
+  "dvf_signal": "en_vente"
  },
  {
   "id": "2613E0051664U",
@@ -3852,7 +3951,8 @@
   "confort_ete": "insuffisant",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 65
+  "rang": 65,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E1119717T",
@@ -3915,7 +4015,9 @@
   "dvf_prix_m2": 5312.0,
   "dvf_dist_m": 28.9,
   "dvf_adresse": "4 Bd Marie Louise",
-  "rang": 66
+  "rang": 66,
+  "dvf_jours_avant_dpe": 566,
+  "dvf_signal": "ancienne_vente"
  },
  {
   "id": "2613E0944407B",
@@ -3978,7 +4080,9 @@
   "dvf_prix_m2": 6338.0,
   "dvf_dist_m": 17.2,
   "dvf_adresse": "88 Che De Palama",
-  "rang": 67
+  "rang": 67,
+  "dvf_jours_avant_dpe": 606,
+  "dvf_signal": "ancienne_vente"
  },
  {
   "id": "2613E0864901D",
@@ -4041,7 +4145,9 @@
   "dvf_prix_m2": 4288.0,
   "dvf_dist_m": 0.0,
   "dvf_adresse": "85 Che Des Xaviers",
-  "rang": 68
+  "rang": 68,
+  "dvf_jours_avant_dpe": 694,
+  "dvf_signal": "ancienne_vente"
  },
  {
   "id": "2613E0662042W",
@@ -4104,7 +4210,9 @@
   "dvf_prix_m2": 3952.0,
   "dvf_dist_m": 69.8,
   "dvf_adresse": "4 Rue Des Commercants",
-  "rang": 69
+  "rang": 69,
+  "dvf_jours_avant_dpe": 416,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2613E0254257V",
@@ -4167,7 +4275,9 @@
   "dvf_prix_m2": 4986.0,
   "dvf_dist_m": 46.0,
   "dvf_adresse": "211 Lot Les Allees De Palama 3",
-  "rang": 70
+  "rang": 70,
+  "dvf_jours_avant_dpe": 505,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2613E0057449H",
@@ -4222,7 +4332,8 @@
   "confort_ete": "insuffisant",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 71
+  "rang": 71,
+  "dvf_signal": "none"
  },
  {
   "id": "2513E3943647K",
@@ -4277,7 +4388,8 @@
   "confort_ete": "moyen",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 72
+  "rang": 72,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E1155329L",
@@ -4332,7 +4444,8 @@
   "confort_ete": "insuffisant",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 73
+  "rang": 73,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E0600752O",
@@ -4395,7 +4508,9 @@
   "dvf_prix_m2": 5278.0,
   "dvf_dist_m": 0.0,
   "dvf_adresse": "24 Lot Les Allees De Palama 3",
-  "rang": 74
+  "rang": 74,
+  "dvf_jours_avant_dpe": 777,
+  "dvf_signal": "ancienne_vente"
  },
  {
   "id": "2613E0396183N",
@@ -4458,7 +4573,9 @@
   "dvf_prix_m2": 4746.0,
   "dvf_dist_m": 45.0,
   "dvf_adresse": "8 Av Miss Columbia",
-  "rang": 75
+  "rang": 75,
+  "dvf_jours_avant_dpe": 69,
+  "dvf_signal": "en_vente"
  },
  {
   "id": "2613E0236317V",
@@ -4521,7 +4638,9 @@
   "dvf_prix_m2": 3456.0,
   "dvf_dist_m": 14.4,
   "dvf_adresse": "20 Rue Alphonse Daudet",
-  "rang": 76
+  "rang": 76,
+  "dvf_jours_avant_dpe": 83,
+  "dvf_signal": "en_vente"
  },
  {
   "id": "2613E0239042Q",
@@ -4584,7 +4703,9 @@
   "dvf_prix_m2": 2909.0,
   "dvf_dist_m": 72.8,
   "dvf_adresse": "198 Che De La Grave",
-  "rang": 77
+  "rang": 77,
+  "dvf_jours_avant_dpe": 182,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2513E4005405S",
@@ -4647,7 +4768,9 @@
   "dvf_prix_m2": 4223.0,
   "dvf_dist_m": 10.5,
   "dvf_adresse": "7 Av Campagne Barielle",
-  "rang": 78
+  "rang": 78,
+  "dvf_jours_avant_dpe": 367,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2513E3992275S",
@@ -4710,7 +4833,9 @@
   "dvf_prix_m2": 1640.0,
   "dvf_dist_m": 0.0,
   "dvf_adresse": "97 Av De La Rose",
-  "rang": 79
+  "rang": 79,
+  "dvf_jours_avant_dpe": 20,
+  "dvf_signal": "en_vente"
  },
  {
   "id": "2513E3912418H",
@@ -4773,7 +4898,9 @@
   "dvf_prix_m2": 3137.0,
   "dvf_dist_m": 48.1,
   "dvf_adresse": "5005 F Imp De La Chapelle",
-  "rang": 80
+  "rang": 80,
+  "dvf_jours_avant_dpe": 137,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2613E0950354U",
@@ -4828,7 +4955,8 @@
   "confort_ete": "insuffisant",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 81
+  "rang": 81,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E0788725H",
@@ -4883,7 +5011,8 @@
   "confort_ete": "insuffisant",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 82
+  "rang": 82,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E0658510A",
@@ -4946,7 +5075,9 @@
   "dvf_prix_m2": 4212.0,
   "dvf_dist_m": 0.0,
   "dvf_adresse": "32 Che De La Grave",
-  "rang": 83
+  "rang": 83,
+  "dvf_jours_avant_dpe": 312,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2613E0541387H",
@@ -5009,7 +5140,9 @@
   "dvf_prix_m2": 3929.0,
   "dvf_dist_m": 0.0,
   "dvf_adresse": "17 Bd Marius Masse",
-  "rang": 84
+  "rang": 84,
+  "dvf_jours_avant_dpe": 258,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2613E0453415T",
@@ -5064,7 +5197,8 @@
   "confort_ete": "moyen",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 85
+  "rang": 85,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E0341499H",
@@ -5127,7 +5261,9 @@
   "dvf_prix_m2": 4000.0,
   "dvf_dist_m": 0.0,
   "dvf_adresse": "76 Che Des Serens",
-  "rang": 86
+  "rang": 86,
+  "dvf_jours_avant_dpe": 686,
+  "dvf_signal": "ancienne_vente"
  },
  {
   "id": "2613E0295007D",
@@ -5182,7 +5318,8 @@
   "confort_ete": "insuffisant",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 87
+  "rang": 87,
+  "dvf_signal": "none"
  },
  {
   "id": "2513E3908102H",
@@ -5237,7 +5374,8 @@
   "confort_ete": "moyen",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 88
+  "rang": 88,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E1096613D",
@@ -5300,7 +5438,9 @@
   "dvf_prix_m2": 4591.0,
   "dvf_dist_m": 44.7,
   "dvf_adresse": "50 Bd Bara",
-  "rang": 89
+  "rang": 89,
+  "dvf_jours_avant_dpe": 722,
+  "dvf_signal": "ancienne_vente"
  },
  {
   "id": "2613E1049224M",
@@ -5355,7 +5495,8 @@
   "confort_ete": "insuffisant",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 90
+  "rang": 90,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E0894122A",
@@ -5418,7 +5559,9 @@
   "dvf_prix_m2": 4039.0,
   "dvf_dist_m": 0.0,
   "dvf_adresse": "17 Av De Chateau Gombert",
-  "rang": 91
+  "rang": 91,
+  "dvf_jours_avant_dpe": 629,
+  "dvf_signal": "ancienne_vente"
  },
  {
   "id": "2613E0818875X",
@@ -5481,7 +5624,9 @@
   "dvf_prix_m2": 3710.0,
   "dvf_dist_m": 11.3,
   "dvf_adresse": "15 Rue Du Troubadour",
-  "rang": 92
+  "rang": 92,
+  "dvf_jours_avant_dpe": 726,
+  "dvf_signal": "ancienne_vente"
  },
  {
   "id": "2613E0637034A",
@@ -5536,7 +5681,8 @@
   "confort_ete": "bon",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 93
+  "rang": 93,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E0432868M",
@@ -5591,7 +5737,8 @@
   "confort_ete": "moyen",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 94
+  "rang": 94,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E0353009Z",
@@ -5654,7 +5801,9 @@
   "dvf_prix_m2": 2462.0,
   "dvf_dist_m": 7.5,
   "dvf_adresse": "18 Che De La Sartan",
-  "rang": 95
+  "rang": 95,
+  "dvf_jours_avant_dpe": 658,
+  "dvf_signal": "ancienne_vente"
  },
  {
   "id": "2613E0247064E",
@@ -5717,7 +5866,9 @@
   "dvf_prix_m2": 4750.0,
   "dvf_dist_m": 13.1,
   "dvf_adresse": "27 Av De Chateau Gombert",
-  "rang": 96
+  "rang": 96,
+  "dvf_jours_avant_dpe": 559,
+  "dvf_signal": "ancienne_vente"
  },
  {
   "id": "2613E0040820S",
@@ -5780,7 +5931,9 @@
   "dvf_prix_m2": 4698.0,
   "dvf_dist_m": 28.5,
   "dvf_adresse": "19 Bd Du Pac",
-  "rang": 97
+  "rang": 97,
+  "dvf_jours_avant_dpe": 589,
+  "dvf_signal": "ancienne_vente"
  },
  {
   "id": "2613E0015193B",
@@ -5843,7 +5996,9 @@
   "dvf_prix_m2": 3560.0,
   "dvf_dist_m": 42.8,
   "dvf_adresse": "12 Imp De La Presentation",
-  "rang": 98
+  "rang": 98,
+  "dvf_jours_avant_dpe": 318,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2513E3876334L",
@@ -5906,7 +6061,9 @@
   "dvf_prix_m2": 4022.0,
   "dvf_dist_m": 25.4,
   "dvf_adresse": "66 Rue Des Chars",
-  "rang": 99
+  "rang": 99,
+  "dvf_jours_avant_dpe": 196,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2613E1001510I",
@@ -5969,7 +6126,9 @@
   "dvf_prix_m2": 4537.0,
   "dvf_dist_m": 52.7,
   "dvf_adresse": "55 Che De La Bastide Longue",
-  "rang": 100
+  "rang": 100,
+  "dvf_jours_avant_dpe": 193,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2613E0314385L",
@@ -6032,7 +6191,9 @@
   "dvf_prix_m2": 4151.0,
   "dvf_dist_m": 47.0,
   "dvf_adresse": "3 Bd Lacordaire",
-  "rang": 101
+  "rang": 101,
+  "dvf_jours_avant_dpe": 466,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2613E0973940Y",
@@ -6095,7 +6256,9 @@
   "dvf_prix_m2": 5136.0,
   "dvf_dist_m": 47.2,
   "dvf_adresse": "25 Bd Curie",
-  "rang": 102
+  "rang": 102,
+  "dvf_jours_avant_dpe": 226,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2613E0667688A",
@@ -6158,7 +6321,9 @@
   "dvf_prix_m2": 4734.0,
   "dvf_dist_m": 0.0,
   "dvf_adresse": "32 B Che Des Grives",
-  "rang": 103
+  "rang": 103,
+  "dvf_jours_avant_dpe": 364,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2613E0971356O",
@@ -6221,7 +6386,9 @@
   "dvf_prix_m2": 5405.0,
   "dvf_dist_m": 66.8,
   "dvf_adresse": "79 Tra De La Baume Loubiere",
-  "rang": 104
+  "rang": 104,
+  "dvf_jours_avant_dpe": 477,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2613E0819598S",
@@ -6284,7 +6451,9 @@
   "dvf_prix_m2": 2822.0,
   "dvf_dist_m": 50.0,
   "dvf_adresse": "2 Bd Curie",
-  "rang": 105
+  "rang": 105,
+  "dvf_jours_avant_dpe": 552,
+  "dvf_signal": "ancienne_vente"
  },
  {
   "id": "2613E0342190W",
@@ -6339,7 +6508,8 @@
   "confort_ete": "insuffisant",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 106
+  "rang": 106,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E0585612G",
@@ -6394,7 +6564,8 @@
   "confort_ete": "insuffisant",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 107
+  "rang": 107,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E0157941J",
@@ -6457,7 +6628,9 @@
   "dvf_prix_m2": 7667.0,
   "dvf_dist_m": 42.6,
   "dvf_adresse": "3 Che De La Grave",
-  "rang": 108
+  "rang": 108,
+  "dvf_jours_avant_dpe": 511,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2613E0659462Q",
@@ -6520,7 +6693,9 @@
   "dvf_prix_m2": 5951.0,
   "dvf_dist_m": 21.2,
   "dvf_adresse": "9 Bd Central",
-  "rang": 109
+  "rang": 109,
+  "dvf_jours_avant_dpe": 68,
+  "dvf_signal": "en_vente"
  },
  {
   "id": "2613E0546442S",
@@ -6575,7 +6750,8 @@
   "confort_ete": "moyen",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 110
+  "rang": 110,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E0316295X",
@@ -6630,7 +6806,8 @@
   "confort_ete": "insuffisant",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 111
+  "rang": 111,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E0423803V",
@@ -6685,7 +6862,8 @@
   "confort_ete": "insuffisant",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 112
+  "rang": 112,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E0963900U",
@@ -6748,7 +6926,9 @@
   "dvf_prix_m2": 5198.0,
   "dvf_dist_m": 0.0,
   "dvf_adresse": "16 Mte Milou",
-  "rang": 113
+  "rang": 113,
+  "dvf_jours_avant_dpe": 475,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2613E0636752E",
@@ -6803,7 +6983,8 @@
   "confort_ete": "insuffisant",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 114
+  "rang": 114,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E0413465F",
@@ -6866,7 +7047,9 @@
   "dvf_prix_m2": 4235.0,
   "dvf_dist_m": 49.9,
   "dvf_adresse": "96 Av Paul Dalbret",
-  "rang": 115
+  "rang": 115,
+  "dvf_jours_avant_dpe": 615,
+  "dvf_signal": "ancienne_vente"
  },
  {
   "id": "2613E1032517X",
@@ -6929,7 +7112,9 @@
   "dvf_prix_m2": 5095.0,
   "dvf_dist_m": 28.0,
   "dvf_adresse": "7 Av Lucien Allonge",
-  "rang": 116
+  "rang": 116,
+  "dvf_jours_avant_dpe": 812,
+  "dvf_signal": "ancienne_vente"
  },
  {
   "id": "2613E0974957B",
@@ -6984,7 +7169,8 @@
   "confort_ete": "moyen",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 117
+  "rang": 117,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E0810212S",
@@ -7039,7 +7225,8 @@
   "confort_ete": "bon",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 118
+  "rang": 118,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E0680618I",
@@ -7102,7 +7289,9 @@
   "dvf_prix_m2": 5227.0,
   "dvf_dist_m": 51.6,
   "dvf_adresse": "37 Bd Gemy",
-  "rang": 119
+  "rang": 119,
+  "dvf_jours_avant_dpe": 105,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2613E0333937L",
@@ -7157,7 +7346,8 @@
   "confort_ete": "moyen",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 120
+  "rang": 120,
+  "dvf_signal": "none"
  },
  {
   "id": "2513E3851995I",
@@ -7220,7 +7410,9 @@
   "dvf_prix_m2": 5483.0,
   "dvf_dist_m": 9.2,
   "dvf_adresse": "4 Av Des Roses",
-  "rang": 121
+  "rang": 121,
+  "dvf_jours_avant_dpe": 165,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2513E3837202J",
@@ -7275,7 +7467,8 @@
   "confort_ete": "insuffisant",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 122
+  "rang": 122,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E0204393Z",
@@ -7330,7 +7523,8 @@
   "confort_ete": "moyen",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 123
+  "rang": 123,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E0657132A",
@@ -7393,7 +7587,9 @@
   "dvf_prix_m2": 5951.0,
   "dvf_dist_m": 38.9,
   "dvf_adresse": "9 Bd Central",
-  "rang": 124
+  "rang": 124,
+  "dvf_jours_avant_dpe": 67,
+  "dvf_signal": "en_vente"
  },
  {
   "id": "2613E0549626E",
@@ -7456,7 +7652,9 @@
   "dvf_prix_m2": 4425.0,
   "dvf_dist_m": 0.0,
   "dvf_adresse": "35 Rue Niels Bohr",
-  "rang": 125
+  "rang": 125,
+  "dvf_jours_avant_dpe": 574,
+  "dvf_signal": "ancienne_vente"
  },
  {
   "id": "2613E0548776M",
@@ -7511,7 +7709,8 @@
   "confort_ete": "moyen",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 126
+  "rang": 126,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E0432403P",
@@ -7574,7 +7773,9 @@
   "dvf_prix_m2": 3800.0,
   "dvf_dist_m": 34.0,
   "dvf_adresse": "127 Che Du Cavaou",
-  "rang": 127
+  "rang": 127,
+  "dvf_jours_avant_dpe": 772,
+  "dvf_signal": "ancienne_vente"
  },
  {
   "id": "2613E0815242E",
@@ -7629,7 +7830,8 @@
   "confort_ete": "insuffisant",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 128
+  "rang": 128,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E0627003F",
@@ -7692,7 +7894,9 @@
   "dvf_prix_m2": 2357.0,
   "dvf_dist_m": 26.6,
   "dvf_adresse": "33 Rue Frederic Joliot Curie",
-  "rang": 129
+  "rang": 129,
+  "dvf_jours_avant_dpe": 131,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2613E0603372I",
@@ -7755,7 +7959,9 @@
   "dvf_prix_m2": 5298.0,
   "dvf_dist_m": 0.0,
   "dvf_adresse": "10 Rue Francois Canac",
-  "rang": 130
+  "rang": 130,
+  "dvf_jours_avant_dpe": 113,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2613E0381806O",
@@ -7818,7 +8024,9 @@
   "dvf_prix_m2": 4591.0,
   "dvf_dist_m": 0.0,
   "dvf_adresse": "50 Bd Bara",
-  "rang": 131
+  "rang": 131,
+  "dvf_jours_avant_dpe": 651,
+  "dvf_signal": "ancienne_vente"
  },
  {
   "id": "2513E3882559W",
@@ -7873,7 +8081,8 @@
   "confort_ete": "moyen",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 132
+  "rang": 132,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E0964245B",
@@ -7936,7 +8145,9 @@
   "dvf_prix_m2": 4031.0,
   "dvf_dist_m": 0.0,
   "dvf_adresse": "70 Che De Party",
-  "rang": 133
+  "rang": 133,
+  "dvf_jours_avant_dpe": 252,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2613E0864341P",
@@ -7991,7 +8202,8 @@
   "confort_ete": "bon",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 134
+  "rang": 134,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E0494398A",
@@ -8046,7 +8258,8 @@
   "confort_ete": "insuffisant",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 135
+  "rang": 135,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E0429011D",
@@ -8109,7 +8322,9 @@
   "dvf_prix_m2": 12071.0,
   "dvf_dist_m": 3.4,
   "dvf_adresse": "5001 F Av Paul Dalbret",
-  "rang": 136
+  "rang": 136,
+  "dvf_jours_avant_dpe": 393,
+  "dvf_signal": "vendu_recemment"
  },
  {
   "id": "2613E0849845B",
@@ -8164,7 +8379,8 @@
   "confort_ete": "moyen",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 137
+  "rang": 137,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E0563309L",
@@ -8219,7 +8435,8 @@
   "confort_ete": "bon",
   "modele_dpe": null,
   "version_dpe": null,
-  "rang": 138
+  "rang": 138,
+  "dvf_signal": "none"
  },
  {
   "id": "2613E0543487B",
@@ -8282,7 +8499,9 @@
   "dvf_prix_m2": 7016.0,
   "dvf_dist_m": 58.5,
   "dvf_adresse": "73 Av Des Olives",
-  "rang": 139
+  "rang": 139,
+  "dvf_jours_avant_dpe": 687,
+  "dvf_signal": "ancienne_vente"
  },
  {
   "id": "2613E0134401Z",
@@ -8345,6 +8564,8 @@
   "dvf_prix_m2": 4217.0,
   "dvf_dist_m": 16.8,
   "dvf_adresse": "11 Bd De La Begude",
-  "rang": 140
+  "rang": 140,
+  "dvf_jours_avant_dpe": 416,
+  "dvf_signal": "vendu_recemment"
  }
 ]

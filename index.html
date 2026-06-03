@@ -276,7 +276,18 @@ function filtered(){const now30=Date.now()-30*86400000;let d=DATA.filter(p=>(ft.
  else if(sortMode==='quartier')d=d.slice().sort((a,b)=>(a.q||'').localeCompare(b.q||'','fr')||b.score-a.score);
  else d=d.slice().sort((a,b)=>b.score-a.score);
  return d}
-function tagHTML(p){const r=rec(p.id);let h='';if(r.b)h+='<span class="tag bo">📭 boîté</span>';if(r.rdv)h+='<span class="tag rdv">📅 RDV '+fdate(r.rdv)+'</span>';if(r.rel)h+='<span class="tag rel">🔔 relance '+fdate(r.rel)+'</span>';if(r.s>0)h+='<span class="tag st">'+STAT[r.s]+'</span>';return h}
+function dvfSignalBadge(p){
+  const sig=p.dvf_signal;
+  if(!sig||sig==='none')return '';
+  const cfg={
+    en_vente:      {bg:'#d02828',fg:'#fff',ico:'🚨',lbl:'En vente / Vendu'},
+    vendu_recemment:{bg:'#e86030',fg:'#fff',ico:'🔴',lbl:'Vendu récemment'},
+    ancienne_vente: {bg:'#b07020',fg:'#fff',ico:'🟡',lbl:'Vente ancienne'},
+  };
+  const c=cfg[sig];if(!c)return '';
+  return '<span style="background:'+c.bg+';color:'+c.fg+';border-radius:5px;padding:2px 7px;font-size:11px;font-weight:800">'+c.ico+' '+c.lbl+'</span> ';
+}
+function tagHTML(p){const r=rec(p.id);let h=dvfSignalBadge(p);if(r.b)h+='<span class="tag bo">📭 boîté</span>';if(r.rdv)h+='<span class="tag rdv">📅 RDV '+fdate(r.rdv)+'</span>';if(r.rel)h+='<span class="tag rel">🔔 relance '+fdate(r.rel)+'</span>';if(r.s>0)h+='<span class="tag st">'+STAT[r.s]+'</span>';return h}
 // ── Swipe sur cartes ──
 function addSwipe(el, onLeft, onRight){
   let sx=0,sy=0,moved=false;
@@ -513,6 +524,16 @@ function ficheDvfHTML(p){
   if(!p.dvf_prix&&!p.dvf_date)return '';
   let h='<div class="block">';
   h+='<h3>💰 Marché DVF — Ventes réelles</h3>';
+  // Bandeau signal
+  const sigCfg={
+    en_vente:      {bg:'#d02828',ico:'🚨',msg:'DPE lié à la vente — bien probablement EN COURS DE VENTE'},
+    vendu_recemment:{bg:'#e86030',ico:'🔴',msg:'Vendu il y a moins de 18 mois — nouveau propriétaire probable'},
+    ancienne_vente: {bg:'#b07020',ico:'🟡',msg:'Vente ancienne (+18 mois) — DPE récent peut signaler une remise en vente'},
+  };
+  const sc=sigCfg[p.dvf_signal];
+  if(sc)h+='<div style="background:'+sc.bg+';color:#fff;border-radius:9px;padding:10px 14px;margin-bottom:10px;font-size:13px;font-weight:700">'+
+sc.ico+' '+sc.msg+
+(p.dvf_jours_avant_dpe!==undefined?'<br><span style="opacity:.8;font-size:11px">'+Math.abs(p.dvf_jours_avant_dpe)+'j entre la vente et le DPE</span>':'')+'</div>';
   // Vente principale
   h+='<div style="background:linear-gradient(135deg,#1c8b751a 0%,var(--cream) 100%);border:1.5px solid #1c8b7555;border-radius:10px;padding:12px;margin-bottom:10px">';
   if(p.dvf_prix){
@@ -527,6 +548,7 @@ function ficheDvfHTML(p){
   h+=infoLine('Surface terrain',p.dvf_terrain?p.dvf_terrain+' m²':'—');
   h+=infoLine('Pièces',p.dvf_pieces||'—');
   h+=infoLine('Distance DPE',p.dvf_dist_m?p.dvf_dist_m+' m':'—');
+  h+=infoLine('Écart DPE/vente',p.dvf_jours_avant_dpe!==undefined?(p.dvf_jours_avant_dpe>0?p.dvf_jours_avant_dpe+' j avant DPE':''+Math.abs(p.dvf_jours_avant_dpe)+' j après DPE'):'—');
   h+='</div>';
   // Contexte marché 13e
   h+='<div style="font-size:12px;color:var(--mut);padding:6px 0">Marché 13e (2024-2025) · Médiane maisons : <b style="color:var(--ink)">4 039 €/m²</b> · Moyenne : <b style="color:var(--ink)">4 247 €/m²</b></div>';
