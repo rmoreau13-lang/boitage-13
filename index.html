@@ -184,7 +184,7 @@ textarea.inp{resize:vertical;min-height:46px}
  </div>
  <div class="panel" id="panel"><div class="panelin">
   <span class="chip" data-t="chaud">🔥</span><span class="chip" data-t="tiede">♨️</span><span class="chip" data-t="froid">🌡️</span>
-  <span class="chip sun" id="cprio">⭐</span><span class="chip" id="cboite">📭 à boîter</span><span class="chip" id="crecent">🗓️ non boîté 30j</span><span class="chip" id="cdvf" style="background:#d0282815;border-color:#d02828;color:#c01818">🚨 DVF</span><span class="chip" id="chist" style="background:#1a3a6020;border-color:#1a3a60;color:#1a3a60">📅 Achat ancien</span>
+  <span class="chip sun" id="cprio">⭐</span><span class="chip" id="cboite">📭 à boîter</span><span class="chip" id="crecent">🗓️ non boîté 30j</span><span class="chip" id="cdvf" style="background:#d0282815;border-color:#d02828;color:#c01818">🚨 DVF</span><span class="chip" id="chist" style="background:#1a3a6020;border-color:#1a3a60;color:#1a3a60">📅 Achat ancien</span><span class="chip" id="cpv" style="background:#c8960c20;border-color:#c8960c;color:#8a6800">📈 PV +50%</span>
   <select class="sel" id="quart"></select>
   <select class="sel" id="sort"><option value="score">⇅ Score</option><option value="dvf">⇅ Ventes DVF</option><option value="hist">⇅ Achat ancien</option><option value="dpe">⇅ DPE récent</option><option value="quartier">⇅ Quartier</option></select>
  </div></div>
@@ -221,7 +221,7 @@ const store={get(k){try{return localStorage.getItem(k)}catch(e){return mem[k]??n
  del(k){try{localStorage.removeItem(k)}catch(e){delete mem[k]}}};
 let DATA=[],byId={},MAX=76;
 let state={},tours=[],tour=[],tourU='',travelMode='bicycling',startPos=null,phIndex={},ficheOpen=null,firstDismissed=false;
-let ft=new Set(),fq='all',prio=0,q='',fBoite=0,fRecent=0,fDvf=0,fHist=0,sortMode='score';
+let ft=new Set(),fq='all',prio=0,q='',fBoite=0,fRecent=0,fDvf=0,fHist=0,fPv=0,sortMode='score';
 // ---- état + horodatage par enregistrement ----
 function rec(id){let r=state[id];if(!r){r=state[id]={}}r.s=r.s||0;r.notes=r.notes||[];r.contact=r.contact||{};r.det=r.det||{};r.b=r.b||'';r.rdv=r.rdv||'';r.rel=r.rel||'';return r}
 function touch(id){rec(id).u=now()}
@@ -271,7 +271,7 @@ function drawMap(d){if(!map)return;baseLayer.clearLayers();
   m.addTo(baseLayer)});
  drawTour()}
 // ---- liste ----
-function filtered(){const now30=Date.now()-30*86400000;let d=DATA.filter(p=>(ft.size==0||ft.has(p.tier))&&(fq=='all'||p.q==fq||p.qoff===fq)&&(!prio||p.prio)&&(!fBoite||!rec(p.id).b)&&(!fRecent||!rec(p.id).b||new Date(rec(p.id).b)<new Date(Date.now()-30*86400000))&&(!q||p.adresse.toLowerCase().includes(q)||p.q.toLowerCase().includes(q)||(p.qoff||'').toLowerCase().includes(q))&&(!fDvf||p.dvf_signal==='en_vente'||p.dvf_signal==='vendu_recemment'||p.dvf_signal==='ancienne_vente')&&(!fHist||p.hist_maturite==='tres_mature'||p.hist_maturite==='mature'));
+function filtered(){const now30=Date.now()-30*86400000;let d=DATA.filter(p=>(ft.size==0||ft.has(p.tier))&&(fq=='all'||p.q==fq||p.qoff===fq)&&(!prio||p.prio)&&(!fBoite||!rec(p.id).b)&&(!fRecent||!rec(p.id).b||new Date(rec(p.id).b)<new Date(Date.now()-30*86400000))&&(!q||p.adresse.toLowerCase().includes(q)||p.q.toLowerCase().includes(q)||(p.qoff||'').toLowerCase().includes(q))&&(!fDvf||p.dvf_signal==='en_vente'||p.dvf_signal==='vendu_recemment'||p.dvf_signal==='ancienne_vente')&&(!fHist||p.hist_maturite==='tres_mature'||p.hist_maturite==='mature')&&(!fPv||p.pv_pct>=50));
  if(sortMode==='dpe')d=d.slice().sort((a,b)=>a.jours-b.jours);
  else if(sortMode==='quartier')d=d.slice().sort((a,b)=>(a.q||'').localeCompare(b.q||'','fr')||b.score-a.score);
  else if(sortMode==='dvf'){const P={en_vente:0,vendu_recemment:1,ancienne_vente:2,none:3};d=d.slice().sort((a,b)=>(P[a.dvf_signal||'none']||3)-(P[b.dvf_signal||'none']||3)||b.score-a.score);}
@@ -286,7 +286,8 @@ function histBadge(p){
     mature:{bg:'#2d5a7a',lbl:(p.hist_age_achat_ans||'?')+'ans'},
   };
   const cf=cfg[m];if(!cf)return '';
-  return '<span style="background:'+cf.bg+';color:#fff;border-radius:5px;padding:2px 7px;font-size:11px;font-weight:900">📅 '+cf.lbl+'</span> ';
+  const pvB=(p.pv_pct!=null&&p.pv_pct>=50)?'<span style="background:#f0c040;color:#222;border-radius:5px;padding:2px 5px;font-size:10px;font-weight:900;margin-left:2px">+'+p.pv_pct+'%</span>':'';
+  return '<span style="background:'+cf.bg+';color:#fff;border-radius:5px;padding:2px 7px;font-size:11px;font-weight:900">📅 '+cf.lbl+'</span>'+pvB+' ';
 }
 function dvfSignalBadge(p){
   const sig=p.dvf_signal;
@@ -339,6 +340,8 @@ function updateStats(){
  st+='<span class="stat"><b>'+todo+'</b>à visiter</span>';
  st+='<span class="stat" style="cursor:pointer;background:#d0282815;border-color:#d02828;color:#c01818" onclick="fDvf=1;if($(\'cdvf\'))$(\'cdvf\').classList.add(\'on\');sortMode=\'dvf\';$(\'sort\').value=\'dvf\';nav(\'liste\');refresh()" title="Ventes DVF">🚨 <b>'+dvfHot+'</b></span>';
  st+='<span class="stat" style="cursor:pointer;background:#1a3a6015;border-color:#1a3a60;color:#1a3a60" onclick="fHist=1;if($(\'chist\'))$(\'chist\').classList.add(\'on\');sortMode=\'hist\';$(\'sort\').value=\'hist\';nav(\'liste\');refresh()" title="Vendeurs potentiels">📅 <b>'+histHot+'</b></span>';
+ const pvHot=DATA.filter(p=>p.pv_pct>=50).length;
+ if(pvHot>0)st+='<span class="stat" style="cursor:pointer;background:#c8960c20;border-color:#c8960c;color:#8a6800" onclick="fPv=1;if($(\'cpv\'))$(\'cpv\').classList.add(\'on\');refresh()" title="Plus-value +50%">📈 <b>'+pvHot+'</b></span>';
  $('stats').innerHTML=st;
 }
 function autoTourDvf(){
@@ -600,9 +603,21 @@ function ficheHistHTML(p){
   const cf=cfg[m];if(!cf)return '';
   const prixAchat=p.hist_prix_achat?p.hist_prix_achat.toLocaleString('fr-FR')+' €':'';
   const prixM2=p.hist_prix_m2_achat?p.hist_prix_m2_achat.toLocaleString('fr-FR')+' €/m²':'';
+  const pvEst=p.pv_valeur_estimee?p.pv_valeur_estimee.toLocaleString('fr-FR')+' €':'';
+  const pvPct=p.pv_pct!=null?p.pv_pct:null;
+  const pvColor=pvPct>=50?'#f0c040':pvPct>=20?'#7ec87e':'#a0c8a0';
+  const pvLine=(pvEst&&prixAchat)?'<div style="margin-top:8px;background:rgba(255,255,255,0.13);border-radius:8px;padding:7px 10px">'
+    +'<div style="font-size:10px;opacity:.7;letter-spacing:.5px;margin-bottom:3px">PLUS-VALUE ESTIMÉE</div>'
+    +'<div style="display:flex;justify-content:space-between;align-items:center;gap:6px">'
+    +'<span style="font-size:12px;font-weight:700">'+prixAchat+' → '+pvEst+'</span>'
+    +(pvPct!=null?'<span style="background:'+pvColor+';color:#222;border-radius:5px;padding:2px 8px;font-size:13px;font-weight:900;white-space:nowrap">+'+pvPct+'%</span>':'')
+    +'</div></div>':'';
+  const periodeL=p.periode_label?'<div style="font-size:11px;opacity:.7;margin-top:5px">🏗 '+p.periode_label+'</div>':'';
   return '<div style="background:'+cf.bg+';color:#fff;padding:12px 14px;margin:0 0 10px;border-radius:12px">'
     +'<div style="font-weight:900;font-size:14px">'+cf.ico+' '+cf.tit+'</div>'
-    +(prixAchat?'<div style="font-size:12px;opacity:.88;margin-top:3px">Acheté '+prixAchat+(prixM2?' — '+prixM2:'')+(p.hist_annee_achat?' en '+p.hist_annee_achat:'')+'</div>':'')
+    +(prixAchat?'<div style="font-size:12px;opacity:.88;margin-top:3px">Acheté '+(prixM2?'à '+prixM2:'')+(p.hist_annee_achat?' en '+p.hist_annee_achat:'')+'</div>':'')
+    +pvLine
+    +periodeL
     +'</div>';
 }
 function ficheDvfTopHTML(p){
@@ -681,6 +696,7 @@ $('cboite').onclick=function(){fBoite=fBoite?0:1;this.classList.toggle('on');ref
 $('crecent').onclick=function(){fRecent=fRecent?0:1;this.classList.toggle('on');refresh()};
 $('cdvf').onclick=function(){fDvf=fDvf?0:1;this.classList.toggle('on');if(fDvf&&sortMode==='score')sortMode='dvf';else if(!fDvf)sortMode='score';$('sort').value=sortMode;refresh()};
 $('chist').onclick=function(){fHist=fHist?0:1;this.classList.toggle('on');if(fHist)sortMode='hist';else sortMode='score';$('sort').value=sortMode;refresh()};
+if($('cpv'))$('cpv').onclick=function(){fPv=fPv?0:1;this.classList.toggle('on');refresh()};
 $('quart').onchange=e=>{fq=e.target.value;refresh()};
 $('sort').onchange=e=>{sortMode=e.target.value;refresh()};
 document.querySelectorAll('#nav button').forEach(b=>b.onclick=()=>nav(b.dataset.s));
