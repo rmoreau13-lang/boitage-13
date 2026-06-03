@@ -184,9 +184,9 @@ textarea.inp{resize:vertical;min-height:46px}
  </div>
  <div class="panel" id="panel"><div class="panelin">
   <span class="chip" data-t="chaud">🔥</span><span class="chip" data-t="tiede">♨️</span><span class="chip" data-t="froid">🌡️</span>
-  <span class="chip sun" id="cprio">⭐</span><span class="chip" id="cboite">📭 à boîter</span><span class="chip" id="crecent">🗓️ non boîté 30j</span><span class="chip" id="cdvf" style="background:#d0282815;border-color:#d02828;color:#c01818">🚨 DVF</span>
+  <span class="chip sun" id="cprio">⭐</span><span class="chip" id="cboite">📭 à boîter</span><span class="chip" id="crecent">🗓️ non boîté 30j</span><span class="chip" id="cdvf" style="background:#d0282815;border-color:#d02828;color:#c01818">🚨 DVF</span><span class="chip" id="chist" style="background:#1a3a6020;border-color:#1a3a60;color:#1a3a60">📅 Achat ancien</span>
   <select class="sel" id="quart"></select>
-  <select class="sel" id="sort"><option value="score">⇅ Score</option><option value="dvf">⇅ Ventes DVF</option><option value="dpe">⇅ DPE récent</option><option value="quartier">⇅ Quartier</option></select>
+  <select class="sel" id="sort"><option value="score">⇅ Score</option><option value="dvf">⇅ Ventes DVF</option><option value="hist">⇅ Achat ancien</option><option value="dpe">⇅ DPE récent</option><option value="quartier">⇅ Quartier</option></select>
  </div></div>
 </div>
 <div id="banner"></div>
@@ -221,7 +221,7 @@ const store={get(k){try{return localStorage.getItem(k)}catch(e){return mem[k]??n
  del(k){try{localStorage.removeItem(k)}catch(e){delete mem[k]}}};
 let DATA=[],byId={},MAX=76;
 let state={},tours=[],tour=[],tourU='',travelMode='bicycling',startPos=null,phIndex={},ficheOpen=null,firstDismissed=false;
-let ft=new Set(),fq='all',prio=0,q='',fBoite=0,fRecent=0,fDvf=0,sortMode='score';
+let ft=new Set(),fq='all',prio=0,q='',fBoite=0,fRecent=0,fDvf=0,fHist=0,sortMode='score';
 // ---- état + horodatage par enregistrement ----
 function rec(id){let r=state[id];if(!r){r=state[id]={}}r.s=r.s||0;r.notes=r.notes||[];r.contact=r.contact||{};r.det=r.det||{};r.b=r.b||'';r.rdv=r.rdv||'';r.rel=r.rel||'';return r}
 function touch(id){rec(id).u=now()}
@@ -271,12 +271,23 @@ function drawMap(d){if(!map)return;baseLayer.clearLayers();
   m.addTo(baseLayer)});
  drawTour()}
 // ---- liste ----
-function filtered(){const now30=Date.now()-30*86400000;let d=DATA.filter(p=>(ft.size==0||ft.has(p.tier))&&(fq=='all'||p.q==fq||p.qoff===fq)&&(!prio||p.prio)&&(!fBoite||!rec(p.id).b)&&(!fRecent||!rec(p.id).b||new Date(rec(p.id).b)<new Date(Date.now()-30*86400000))&&(!q||p.adresse.toLowerCase().includes(q)||p.q.toLowerCase().includes(q)||(p.qoff||'').toLowerCase().includes(q))&&(!fDvf||p.dvf_signal==='en_vente'||p.dvf_signal==='vendu_recemment'||p.dvf_signal==='ancienne_vente'));
+function filtered(){const now30=Date.now()-30*86400000;let d=DATA.filter(p=>(ft.size==0||ft.has(p.tier))&&(fq=='all'||p.q==fq||p.qoff===fq)&&(!prio||p.prio)&&(!fBoite||!rec(p.id).b)&&(!fRecent||!rec(p.id).b||new Date(rec(p.id).b)<new Date(Date.now()-30*86400000))&&(!q||p.adresse.toLowerCase().includes(q)||p.q.toLowerCase().includes(q)||(p.qoff||'').toLowerCase().includes(q))&&(!fDvf||p.dvf_signal==='en_vente'||p.dvf_signal==='vendu_recemment'||p.dvf_signal==='ancienne_vente')&&(!fHist||p.hist_maturite==='tres_mature'||p.hist_maturite==='mature'));
  if(sortMode==='dpe')d=d.slice().sort((a,b)=>a.jours-b.jours);
  else if(sortMode==='quartier')d=d.slice().sort((a,b)=>(a.q||'').localeCompare(b.q||'','fr')||b.score-a.score);
  else if(sortMode==='dvf'){const P={en_vente:0,vendu_recemment:1,ancienne_vente:2,none:3};d=d.slice().sort((a,b)=>(P[a.dvf_signal||'none']||3)-(P[b.dvf_signal||'none']||3)||b.score-a.score);}
+ else if(sortMode==='hist'){const PH={tres_mature:0,mature:1,recente:2,nouveau:3};d=d.slice().sort((a,b)=>(PH[a.hist_maturite||'nouveau']||3)-(PH[b.hist_maturite||'nouveau']||3)||-(a.hist_age_achat_ans||0)+(b.hist_age_achat_ans||0));}
  else d=d.slice().sort((a,b)=>b.score-a.score);
  return d}
+function histBadge(p){
+  const m=p.hist_maturite;
+  if(!m||m==='nouveau'||m==='recente')return '';
+  const cfg={
+    tres_mature:{bg:'#1a3a60',lbl:(p.hist_age_achat_ans||'?')+'ans'},
+    mature:{bg:'#2d5a7a',lbl:(p.hist_age_achat_ans||'?')+'ans'},
+  };
+  const cf=cfg[m];if(!cf)return '';
+  return '<span style="background:'+cf.bg+';color:#fff;border-radius:5px;padding:2px 7px;font-size:11px;font-weight:900">📅 '+cf.lbl+'</span> ';
+}
 function dvfSignalBadge(p){
   const sig=p.dvf_signal;
   if(!sig||sig==='none')return '';
@@ -288,7 +299,7 @@ function dvfSignalBadge(p){
   const c=cfg[sig];if(!c)return '';
   return '<span style="background:'+c.bg+';color:'+c.fg+';border-radius:5px;padding:2px 7px;font-size:11px;font-weight:800">'+c.ico+' '+c.lbl+'</span> ';
 }
-function tagHTML(p){const r=rec(p.id);let h=dvfSignalBadge(p);if(r.b)h+='<span class="tag bo">📭 boîté</span>';if(r.rdv)h+='<span class="tag rdv">📅 RDV '+fdate(r.rdv)+'</span>';if(r.rel)h+='<span class="tag rel">🔔 relance '+fdate(r.rel)+'</span>';if(r.s>0)h+='<span class="tag st">'+STAT[r.s]+'</span>';return h}
+function tagHTML(p){const r=rec(p.id);let h=dvfSignalBadge(p)+histBadge(p);if(r.b)h+='<span class="tag bo">📭 boîté</span>';if(r.rdv)h+='<span class="tag rdv">📅 RDV '+fdate(r.rdv)+'</span>';if(r.rel)h+='<span class="tag rel">🔔 relance '+fdate(r.rel)+'</span>';if(r.s>0)h+='<span class="tag st">'+STAT[r.s]+'</span>';return h}
 // ── Swipe sur cartes ──
 function addSwipe(el, onLeft, onRight){
   let sx=0,sy=0,moved=false;
@@ -317,22 +328,19 @@ function quickNote(id){const v=prompt('Note — '+byId[id].adresse+' :');if(v==n
 // ---- stats / filtres ----
 function fdate(s){if(!s)return '';const p=s.split('-');return p.length===3?p[2]+'/'+p[1]:s}
 function boitesToday(){const t=new Date(),k=t.getFullYear()+'-'+(t.getMonth()+1)+'-'+t.getDate();return DATA.filter(p=>{const b=rec(p.id).b;if(!b)return false;const d=new Date(b);return (d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate())===k}).length}
-function updateStats(){const tot=DATA.length,star=DATA.filter(p=>p.prio).length,chaud=DATA.filter(p=>p.tier=='chaud').length,todo=DATA.filter(p=>rec(p.id).s==0).length,dvfHot=DATA.filter(p=>p.dvf_signal==='en_vente'||p.dvf_signal==='vendu_recemment').length;
- $('stats').innerHTML='<span class="stat"><b>'+tot+'</b>prospects</span><span class="stat"><b>'+star+'</b>⭐</span><span class="stat"><b>'+chaud+'</b>🔥</span><span class="stat"><b>'+boitesToday()+'</b>📭 auj.</span><span class="stat"><b>'+todo+'</b>à visiter</span>'+('<span class="stat" style="cursor:pointer;background:#d0282815;border-color:#d02828;color:#c01818" onclick="fDvf=1;if(typeof sortMode!==\'undefined\'){sortMode=\'dvf\'};nav(\'liste\');refresh()" title="Ventes DVF">🚨 <b>'+dvfHot+'</b></span>')}
-function populateQuartiers(){const qs=[...new Set(DATA.flatMap(p=>[p.q,p.qoff]).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'fr'));const s=$('quart');const cur=s.value;s.innerHTML='<option value="all">Tous quartiers</option>'+qs.map(x=>'<option>'+esc(x)+'</option>').join('');if([...s.options].some(o=>o.value===cur))s.value=cur}
-// ---- tournée ----
-function inTour(id){return tour.includes(id)}
-function toggleTour(id){const i=tour.indexOf(id);if(i<0)tour.push(id);else tour.splice(i,1);saveTour();refresh();if(map)map.closePopup();if(ficheOpen===id)syncFicheTour()}
-function tourStops(){return tour.map(id=>byId[id]).filter(Boolean)}
-function dist(a,b){const R=6371,r=Math.PI/180,dla=(b.lat-a.lat)*r,dlo=(b.lon-a.lon)*r;const h=Math.sin(dla/2)**2+Math.cos(a.lat*r)*Math.cos(b.lat*r)*Math.sin(dlo/2)**2;return 2*R*Math.asin(Math.sqrt(h))}
-function tourKm(){const s=tourStops();let pts=startPos?[startPos,...s]:s,d=0;for(let i=1;i<pts.length;i++)d+=dist(pts[i-1],pts[i]);return d}
-function optimize(){let s=tourStops();if(s.length<2)return;let cur=startPos||s[0],pool=startPos?[...s]:s.slice(1),ord=startPos?[]:[s[0]];while(pool.length){let bi=0,bd=1e9;pool.forEach((p,i)=>{const d=dist(cur,p);if(d<bd){bd=d;bi=i}});cur=pool[bi];ord.push(cur);pool.splice(bi,1)}tour=ord.map(p=>p.id);saveTour();renderTours();drawTour();fitTour()}
-function mapsUrl(){const s=tourStops();if(!s.length)return '#';let pts=startPos?[startPos,...s]:s;if(pts.length<2)return 'https://www.google.com/maps/dir/?api=1&destination='+pts[0].lat+','+pts[0].lon+'&travelmode='+travelMode;const o=pts[0],d=pts[pts.length-1],wp=pts.slice(1,-1).map(p=>p.lat+','+p.lon).join('|');let u='https://www.google.com/maps/dir/?api=1&travelmode='+travelMode+'&origin='+o.lat+','+o.lon+'&destination='+d.lat+','+d.lon;if(wp)u+='&waypoints='+encodeURIComponent(wp);return u}
-function fitTour(){const s=tourStops();if(!s.length||!map)return;const ll=s.map(p=>[p.lat,p.lon]);if(startPos)ll.unshift([startPos.lat,startPos.lon]);if($('scr-carte').classList.contains('on'))map.fitBounds(ll,{padding:[50,50],maxZoom:15})}
-function drawTour(){if(!tourLayer)return;tourLayer.clearLayers();const s=tourStops();if(!s.length)return;let pts=startPos?[startPos,...s]:s;const ll=pts.map(p=>[p.lat,p.lon]);
- L.polyline(ll,{color:'#d6552f',weight:4,opacity:.85,dashArray:'7 7'}).addTo(tourLayer);
- if(startPos)L.circleMarker([startPos.lat,startPos.lon],{radius:7,fillColor:'#1c8b75',color:'#fff',weight:2,fillOpacity:1}).bindTooltip('Départ').addTo(tourLayer);
- s.forEach((p,i)=>L.marker([p.lat,p.lon],{icon:L.divIcon({className:'',html:'<div style="background:#d6552f;color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3)">'+(i+1)+'</div>',iconSize:[24,24],iconAnchor:[12,12]})}).addTo(tourLayer))}
+function updateStats(){
+ const tot=DATA.length,star=DATA.filter(p=>p.prio).length,chaud=DATA.filter(p=>p.tier==='chaud').length,todo=DATA.filter(p=>rec(p.id).s==0).length;
+ const dvfHot=DATA.filter(p=>p.dvf_signal==='en_vente'||p.dvf_signal==='vendu_recemment').length;
+ const histHot=DATA.filter(p=>p.hist_maturite==='tres_mature'||p.hist_maturite==='mature').length;
+ let st='<span class="stat"><b>'+tot+'</b>prospects</span>';
+ st+='<span class="stat"><b>'+star+'</b>⭐</span>';
+ st+='<span class="stat"><b>'+chaud+'</b>🔥</span>';
+ st+='<span class="stat"><b>'+boitesToday()+'</b>💭 auj.</span>';
+ st+='<span class="stat"><b>'+todo+'</b>à visiter</span>';
+ st+='<span class="stat" style="cursor:pointer;background:#d0282815;border-color:#d02828;color:#c01818" onclick="fDvf=1;if($(\'cdvf\'))$(\'cdvf\').classList.add(\'on\');sortMode=\'dvf\';$(\'sort\').value=\'dvf\';nav(\'liste\');refresh()" title="Ventes DVF">🚨 <b>'+dvfHot+'</b></span>';
+ st+='<span class="stat" style="cursor:pointer;background:#1a3a6015;border-color:#1a3a60;color:#1a3a60" onclick="fHist=1;if($(\'chist\'))$(\'chist\').classList.add(\'on\');sortMode=\'hist\';$(\'sort\').value=\'hist\';nav(\'liste\');refresh()" title="Vendeurs potentiels">📅 <b>'+histHot+'</b></span>';
+ $('stats').innerHTML=st;
+}
 function autoTourDvf(){
   const PRIO=['en_vente','vendu_recemment','ancienne_vente'];
   const P={en_vente:0,vendu_recemment:1,ancienne_vente:2};
@@ -346,7 +354,7 @@ function autoTourDvf(){
   nav('tournees');
 }
 function renderTours(){const s=tourStops();const n=tour.length;$('navbdg').style.display=n?'flex':'none';$('navbdg').textContent=n;const saved=tours.filter(t=>!t.deleted);
- let h='<button onclick="autoTourDvf()" style="display:block;width:calc(100% - 28px);margin:10px 14px 2px;padding:13px;background:#d02828;color:#fff;border:none;border-radius:13px;font-family:Fraunces,serif;font-weight:900;font-size:15px;cursor:pointer;letter-spacing:.3px;box-shadow:0 2px 8px #d0282840">🚨 Tournée Ventes récentes</button><div class="sec" style="margin-top:8px">Tournée en cours</div>';
+ let h='<button onclick="autoTourDvf()" style="display:block;width:calc(100% - 28px);margin:10px 14px 2px;padding:13px;background:#d02828;color:#fff;border:none;border-radius:13px;font-family:Fraunces,serif;font-weight:900;font-size:15px;cursor:pointer;letter-spacing:.3px;box-shadow:0 2px 8px #d0282840">🚨 Tournée Ventes récentes</button><button onclick="autoTourHist()" style="display:block;width:calc(100% - 28px);margin:6px 14px 2px;padding:11px;background:#1a3a60;color:#fff;border:none;border-radius:13px;font-family:Fraunces,serif;font-weight:900;font-size:14px;cursor:pointer">📅 Tournée Achat ancien</button><div class="sec" style="margin-top:8px">Tournée en cours</div>';
  if(!s.length)h+='<div class="block"><p class="hint" style="margin:0">Ajoutez des adresses avec le bouton ＋ (liste ou carte) pour bâtir une tournée.</p></div>';
  else{h+='<div class="block"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><b style="font-family:Fraunces,serif">'+s.length+' arrêt'+(s.length>1?'s':'')+'</b><span style="font-family:Fraunces,serif;font-weight:700;color:var(--terra-d)">≈ '+tourKm().toFixed(1)+' km</span></div>';
   h+=s.map((p,i)=>'<div class="titem"><span class="tnum">'+(i+1)+'</span><div class="ta">'+esc(p.adresse)+'<br><small>'+esc(p.q)+' · '+EMO[p.tier]+' '+p.dpe+'</small></div><button class="rm" onclick="toggleTour(\''+p.id+'\')">✕</button></div>').join('');
@@ -581,9 +589,25 @@ sc.ico+' '+sc.msg+
   return h;
 }
 // ---- fiche ----
+function ficheHistHTML(p){
+  const m=p.hist_maturite;
+  if(!m||m==='nouveau')return '';
+  const cfg={
+    tres_mature:{bg:'#1a3a60',ico:'📅',tit:'Achat il y a '+p.hist_age_achat_ans+' ans — Vendeur très probable'},
+    mature:{bg:'#2d5a7a',ico:'📅',tit:'Achat il y a '+p.hist_age_achat_ans+' ans — En fenêtre de revente'},
+    recente:{bg:'#5580a0',ico:'📅',tit:'Achat il y a '+p.hist_age_achat_ans+' ans — Trop tôt mais à suivre'},
+  };
+  const cf=cfg[m];if(!cf)return '';
+  const prixAchat=p.hist_prix_achat?p.hist_prix_achat.toLocaleString('fr-FR')+' €':'';
+  const prixM2=p.hist_prix_m2_achat?p.hist_prix_m2_achat.toLocaleString('fr-FR')+' €/m²':'';
+  return '<div style="background:'+cf.bg+';color:#fff;padding:12px 14px;margin:0 0 10px;border-radius:12px">'
+    +'<div style="font-weight:900;font-size:14px">'+cf.ico+' '+cf.tit+'</div>'
+    +(prixAchat?'<div style="font-size:12px;opacity:.88;margin-top:3px">Acheté '+prixAchat+(prixM2?' — '+prixM2:'')+(p.hist_annee_achat?' en '+p.hist_annee_achat:'')+'</div>':'')
+    +'</div>';
+}
 function ficheDvfTopHTML(p){
   const sig=p.dvf_signal;
-  if(!sig||sig==='none')return '';
+  if(!sig||sig==='none')return ficheHistHTML(p);
   const cfg={
     en_vente:{bg:'#d02828',ico:'🚨',msg:'DPE lié à la vente — bien EN COURS DE VENTE',sub:'Prospect ultra-chaud — le propriétaire vend ou vient de vendre'},
     vendu_recemment:{bg:'#e86030',ico:'🔴',msg:'Vendu il y a moins de 18 mois',sub:'Nouveau propriétaire — cible idéale pour estimation / futur mandat'},
@@ -656,6 +680,7 @@ $('cprio').onclick=function(){prio=prio?0:1;this.classList.toggle('on');refresh(
 $('cboite').onclick=function(){fBoite=fBoite?0:1;this.classList.toggle('on');refresh()};
 $('crecent').onclick=function(){fRecent=fRecent?0:1;this.classList.toggle('on');refresh()};
 $('cdvf').onclick=function(){fDvf=fDvf?0:1;this.classList.toggle('on');if(fDvf&&sortMode==='score')sortMode='dvf';else if(!fDvf)sortMode='score';$('sort').value=sortMode;refresh()};
+$('chist').onclick=function(){fHist=fHist?0:1;this.classList.toggle('on');if(fHist)sortMode='hist';else sortMode='score';$('sort').value=sortMode;refresh()};
 $('quart').onchange=e=>{fq=e.target.value;refresh()};
 $('sort').onchange=e=>{sortMode=e.target.value;refresh()};
 document.querySelectorAll('#nav button').forEach(b=>b.onclick=()=>nav(b.dataset.s));
