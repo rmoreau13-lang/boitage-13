@@ -2,7 +2,7 @@
 <script>(function(){
   if(!('serviceWorker' in navigator))return;
   // Force clear : désinscrire TOUS les SW + vider TOUS les caches puis recharger
-  var FORCE_KEY='boitage13_sw_cleared_v18';
+  var FORCE_KEY='boitage13_sw_cleared_v19';
   if(!sessionStorage.getItem(FORCE_KEY)){
     sessionStorage.setItem(FORCE_KEY,'1');
     Promise.all([
@@ -130,6 +130,7 @@ body{
   border-radius:8px;padding:5px 10px;font-size:11px;
   font-weight:600;white-space:nowrap;flex:none;color:var(--ink2);
   cursor:default;transition:all var(--trans);
+  touch-action:manipulation;font-family:inherit;-webkit-appearance:none;appearance:none;
 }
 .stat b{font-weight:900;color:var(--ink);margin-right:2px;font-size:12px}
 .stat[style*="cursor:pointer"]{cursor:pointer}
@@ -970,26 +971,26 @@ function updateStats(){
 const dpeFraisHot=DATA.filter(p=>p.dpe_frais==='tres_frais').length;
 let st='';
 const venteHot=DATA.filter(function(p){return p.annonces_actives;}).length;
-if(venteHot>0)st+='<span class="stat" style="cursor:pointer;background:#0a6ebd;color:#fff;font-weight:900;border-color:#0a6ebd" onclick="fVente=fVente?0:1;if($(\'cvente\'))$(\'cvente\').classList.toggle(\'on\');refresh()" title="Biens en vente dans le secteur">🏷️ <b>'+venteHot+'</b> en vente</span>';
-if(topHot>0)st+='<span class="stat" style="cursor:pointer;background:#d0282820;border-color:#d02828;color:#c01818;font-weight:900" onclick="fTop=1;if($(\'ctop\'))$(\'ctop\').classList.add(\'on\');refresh()" title="Signal TOP">🔥 <b>'+topHot+'</b></span>';
-if(dpeFraisHot>0)st+='<span class="stat" style="cursor:pointer;background:#e0802020;border-color:#e08030;color:#b05010" onclick="fDpeFrais=1;if($(\'cdpefrais\'))$(\'cdpefrais\').classList.add(\'on\');refresh()" title="DPE &lt;30j">⚡ <b>'+dpeFraisHot+'</b></span>';
-st+='<span class="stat" style="cursor:pointer" onclick="fType=fType===\'maison\'?\'\':\'maison\';if($(\'cmaison\'))$(\'cmaison\').classList.toggle(\'on\',fType===\'maison\');if($(\'cappart\'))$(\'cappart\').classList.remove(\'on\');refresh()"><b>'+nbMaisons+'</b> 🏠</span>';
- st+='<span class="stat" style="cursor:pointer;background:#2563eb15;border-color:#2563eb;color:#1d4ed8" onclick="fType=fType===\'appartement\'?\'\':\'appartement\';if($(\'cappart\'))$(\'cappart\').classList.toggle(\'on\',fType===\'appartement\');if($(\'cmaison\'))$(\'cmaison\').classList.remove(\'on\');refresh()"><b>'+nbApparts+'</b> 🏢</span>';
+if(venteHot>0)st+='<button class="stat" style="background:#0a6ebd;color:#fff;font-weight:900;border-color:#0a6ebd" onclick="fVente=fVente?0:1;if($(\'cvente\'))$(\'cvente\').classList.toggle(\'on\');refresh()" title="Biens en vente dans le secteur">🏷️ <b>'+venteHot+'</b> en vente</button>';
+if(topHot>0)st+='<button class="stat" style="background:#d0282820;border-color:#d02828;color:#c01818;font-weight:900" onclick="fTop=1;if($(\'ctop\'))$(\'ctop\').classList.add(\'on\');refresh()" title="Signal TOP">🔥 <b>'+topHot+'</b></button>';
+if(dpeFraisHot>0)st+='<button class="stat" style="background:#e0802020;border-color:#e08030;color:#b05010" onclick="fDpeFrais=1;if($(\'cdpefrais\'))$(\'cdpefrais\').classList.add(\'on\');refresh()" title="DPE &lt;30j">⚡ <b>'+dpeFraisHot+'</b></button>';
+st+='<button class="stat" onclick="fType=fType===\'maison\'?\'\':\'maison\';if($(\'cmaison\'))$(\'cmaison\').classList.toggle(\'on\',fType===\'maison\');if($(\'cappart\'))$(\'cappart\').classList.remove(\'on\');refresh()"><b>'+nbMaisons+'</b> 🏠</button>';
+ st+='<button class="stat" style="background:#2563eb15;border-color:#2563eb;color:#1d4ed8" onclick="fType=fType===\'appartement\'?\'\':\'appartement\';if($(\'cappart\'))$(\'cappart\').classList.toggle(\'on\',fType===\'appartement\');if($(\'cmaison\'))$(\'cmaison\').classList.remove(\'on\');refresh()"><b>'+nbApparts+'</b> 🏢</button>';
  var nbFragile=DATA.filter(p=>p.copro_fragile).length;
- st+='<span class="stat" style="cursor:pointer;background:#ff990015;border-color:#ff9900;color:#ff9900" onclick="fCopro=fCopro===1?0:1;if($(\'ccoprof\'))$(\'ccoprof\').classList.toggle(\'on\',fCopro===1);refresh()"><b>'+nbFragile+'</b> 🏚️</span>';
+ st+='<button class="stat" style="background:#ff990015;border-color:#ff9900;color:#ff9900" onclick="fCopro=fCopro===1?0:1;if($(\'ccoprof\'))$(\'ccoprof\').classList.toggle(\'on\',fCopro===1);refresh()"><b>'+nbFragile+'</b> 🏚️</button>';
  st+='<span class="stat"><b>'+tot+'</b>prospects</span>';
  st+='<span class="stat"><b>'+star+'</b>⭐</span>';
  st+='<span class="stat"><b>'+chaud+'</b>🔥</span>';
  st+='<span class="stat"><b>'+boitesToday()+'</b>💭 auj.</span>';
  st+='<span class="stat"><b>'+todo+'</b>à visiter</span>';
- st+='<span class="stat" style="cursor:pointer;background:#d0282815;border-color:#d02828;color:#c01818" onclick="fDvf=1;if($(\'cdvf\'))$(\'cdvf\').classList.add(\'on\');sortMode=\'dvf\';$(\'sort\').value=\'dvf\';nav(\'liste\');refresh()" title="Ventes DVF">🚨 <b>'+dvfHot+'</b></span>';
- st+='<span class="stat" style="cursor:pointer;background:#1a3a6015;border-color:#1a3a60;color:#1a3a60" onclick="fHist=1;if($(\'chist\'))$(\'chist\').classList.add(\'on\');sortMode=\'hist\';$(\'sort\').value=\'hist\';nav(\'liste\');refresh()" title="Vendeurs potentiels">📅 <b>'+histHot+'</b></span>';
+ st+='<button class="stat" style="background:#d0282815;border-color:#d02828;color:#c01818" onclick="fDvf=1;if($(\'cdvf\'))$(\'cdvf\').classList.add(\'on\');sortMode=\'dvf\';$(\'sort\').value=\'dvf\';nav(\'liste\');refresh()" title="Ventes DVF">🚨 <b>'+dvfHot+'</b></button>';
+ st+='<button class="stat" style="background:#1a3a6015;border-color:#1a3a60;color:#1a3a60" onclick="fHist=1;if($(\'chist\'))$(\'chist\').classList.add(\'on\');sortMode=\'hist\';$(\'sort\').value=\'hist\';nav(\'liste\');refresh()" title="Vendeurs potentiels">📅 <b>'+histHot+'</b></button>';
  const pvHot=DATA.filter(p=>p.pv_pct>=50).length;
- if(pvHot>0)st+='<span class="stat" style="cursor:pointer;background:#c8960c20;border-color:#c8960c;color:#8a6800" onclick="fPv=1;if($(\'cpv\'))$(\'cpv\').classList.add(\'on\');refresh()" title="Plus-value +50%">📈 <b>'+pvHot+'</b></span>';
+ if(pvHot>0)st+='<button class="stat" style="background:#c8960c20;border-color:#c8960c;color:#8a6800" onclick="fPv=1;if($(\'cpv\'))$(\'cpv\').classList.add(\'on\');refresh()" title="Plus-value +50%">📈 <b>'+pvHot+'</b></button>';
  const terrainHot=DATA.filter(p=>p.terrain_divisible).length;
- if(terrainHot>0)st+='<span class="stat" style="cursor:pointer;background:#1a6e2e20;border-color:#1a6e2e;color:#145a26" onclick="fTerrain=1;if($(\'cterrain\'))$(\'cterrain\').classList.add(\'on\');refresh()" title="Terrain divisible">🌳 <b>'+terrainHot+'</b></span>';
+ if(terrainHot>0)st+='<button class="stat" style="background:#1a6e2e20;border-color:#1a6e2e;color:#145a26" onclick="fTerrain=1;if($(\'cterrain\'))$(\'cterrain\').classList.add(\'on\');refresh()" title="Terrain divisible">🌳 <b>'+terrainHot+'</b></button>';
  const sciHot=DATA.filter(p=>p.sci_proche).length;
- if(sciHot>0)st+='<span class="stat" style="cursor:pointer;background:#6b21a820;border-color:#6b21a8;color:#4c1579;font-weight:900" onclick="fSci=fSci?0:1;if($(\'csci\'))$(\'csci\').classList.toggle(\'on\');refresh()" title="Propriétaire SCI identifié">🏢 <b>'+sciHot+'</b> SCI</span>';
+ if(sciHot>0)st+='<button class="stat" style="background:#6b21a820;border-color:#6b21a8;color:#4c1579;font-weight:900" onclick="fSci=fSci?0:1;if($(\'csci\'))$(\'csci\').classList.toggle(\'on\');refresh()" title="Propriétaire SCI identifié">🏢 <b>'+sciHot+'</b> SCI</button>';
  $('stats').innerHTML=st;
 }
 function autoTourDvf(){
@@ -1024,6 +1025,8 @@ function autoTourPrio(){
 }
 function optimizeAndMaps(){optimize();setTimeout(function(){window.open(mapsUrl(),'_blank');},400);}
 function tourSavedKm(t){var s=t.stops.map(function(id){return byId[id];}).filter(Boolean);var d=0;for(var i=1;i<s.length;i++)d+=dist(s[i-1],s[i]);return d.toFixed(1);}
+function setMode(m){travelMode=m;store.set('boitage13_mode',m);renderTours();drawTour();}
+function usePos(){if(!navigator.geolocation){toast('Géoloc non disponible');return;}navigator.geolocation.getCurrentPosition(function(pos){startPos={id:'__start__',lat:pos.coords.latitude,lon:pos.coords.longitude};toast('📍 Position définie');renderTours();drawTour();fitTour();},function(){toast('⚠️ Géoloc refusée');},{enableHighAccuracy:true,timeout:6000});}
 function renderTours(){
   var s=tourStops();var n=tour.length;
   $('navbdg').style.display=n?'flex':'none';$('navbdg').textContent=n;
