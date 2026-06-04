@@ -98,7 +98,18 @@
         "source": "seloger",
         "titre": "Achat maison"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "JABRIN",
+      "siren": "821757457",
+      "adresse": "LA BASTIDE 2 AVENUE DU CONSUL 13013 MARSEILLE",
+      "dist_m": 97,
+      "dirigeants": [
+        "JABRIN MATHIEU"
+      ],
+      "date_creation": "2016-07-18"
+    },
+    "sci_count": 2
   },
   {
     "id": "2613E1458128O",
@@ -217,7 +228,20 @@
         "source": "stephaneplazaimmobilier",
         "titre": "Maison à vendre"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI SEMM",
+      "siren": "917759300",
+      "adresse": "58 CHEMIN DU MERLAN A LA ROSE 13013 MARSEILLE",
+      "dist_m": 5,
+      "dirigeants": [
+        "SISEK (METIN) ENGUL",
+        "SISEK MUHAMMED",
+        "SISEK MUHAMMED SAID"
+      ],
+      "date_creation": "2022-04-19"
+    },
+    "sci_count": 2
   },
   {
     "id": "2613E1448520A",
@@ -337,7 +361,19 @@
         "source": "leboncoin",
         "titre": "Maison 4 pièces 88 m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI LA PERUSSONNE",
+      "siren": "428608335",
+      "adresse": "50 TRAVERSE DES NODINS 13013 MARSEILLE",
+      "dist_m": 24,
+      "dirigeants": [
+        "SERRA (MAUDIRE) SANDRINE LAURENCE JACQUELINE",
+        "SERRA PHILIPPE JEAN-FRANCOIS"
+      ],
+      "date_creation": "1999-09-30"
+    },
+    "sci_count": 7
   },
   {
     "id": "2613E1376873J",
@@ -474,7 +510,20 @@
         "source": "logic-immo",
         "titre": "Maison Plain pied Marseille Château Gombert 4 pièces 79m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "TAPOU",
+      "siren": "839792728",
+      "adresse": "MARSEILLE TRAVERSE COLLET REDON 13013 MARSEILLE",
+      "dist_m": 50,
+      "dirigeants": [
+        "MASSONI (CHAUDIERE) EVELYNE",
+        "MASSONI JACQUES",
+        "MASSONI JULIEN"
+      ],
+      "date_creation": "2018-05-23"
+    },
+    "sci_count": 7
   },
   {
     "id": "2613E1328055T",
@@ -566,7 +615,20 @@
         "source": "leboncoin",
         "titre": "vente - maison"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "NOVACT",
+      "siren": "389739020",
+      "adresse": "LES MEDECINS 101 CHEMIN DES PAROYES 13013 MARSEILLE",
+      "dist_m": 3,
+      "dirigeants": [
+        "TOUBOUL (BELTRANDO) MARIE-CHRISTINE",
+        "TOUBOUL DELPHINE",
+        "TOUBOUL JEAN MARIE"
+      ],
+      "date_creation": "1993-01-04"
+    },
+    "sci_count": 10
   },
   {
     "id": "2613E1307038K",
@@ -703,7 +765,20 @@
         "source": "seloger",
         "titre": "Achat maison"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI L R",
+      "siren": "800798035",
+      "adresse": "24 BOULEVARD DE CAZORAN 13013 MARSEILLE",
+      "dist_m": 55,
+      "dirigeants": [
+        "LEROCH (LE ROCH) ANTONY JEAN DANIEL",
+        "LE ROCH (LE ROCH) JEAN LUC BERNARD JOSE",
+        "OROSCO (OROSCO) MARTINE"
+      ],
+      "date_creation": "2014-01-28"
+    },
+    "sci_count": 8
   },
   {
     "id": "2613E1409709H",
@@ -840,7 +915,18 @@
         "source": "bienici",
         "titre": "Vente maison 5 pièces de 120 m² à Marseille (13013) - 169162"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI AUREMI",
+      "siren": "423978121",
+      "adresse": "VILLA PALAMA NO 3 119 CHEMIN DE PALAMA 13013 MARSEILLE",
+      "dist_m": 35,
+      "dirigeants": [
+        "RIGAT NICOLAS"
+      ],
+      "date_creation": "1999-07-01"
+    },
+    "sci_count": 1
   },
   {
     "id": "2613E1393058W",
@@ -977,7 +1063,9 @@
         "source": "century21",
         "titre": "Maison à vendre - 4 pièces - 87,65 m2 - Marseille - 13013 - "
       }
-    ]
+    ],
+    "sci_proche": null,
+    "sci_count": 0
   },
   {
     "id": "2613E1380031V",
@@ -1105,7 +1193,19 @@
         "source": "paruvendu",
         "titre": "Maison 163m2"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI BAUER AMV",
+      "siren": "898941422",
+      "adresse": "55 TRAVERSE DE LA BALME 13013 MARSEILLE",
+      "dist_m": 54,
+      "dirigeants": [
+        "BAUER ANNIE YVONNE",
+        "BAUER MATHIEU"
+      ],
+      "date_creation": "2021-02-05"
+    },
+    "sci_count": 2
   },
   {
     "id": "2613E1453678K",
@@ -1242,7 +1342,19 @@
         "source": "leboncoin",
         "titre": "Maison château Gombert"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "LYA",
+      "siren": "833406317",
+      "adresse": "5 BOULEVARD BERNARD VERGE 13013 MARSEILLE",
+      "dist_m": 47,
+      "dirigeants": [
+        "AIUTI PASCALE",
+        "MAIZE MORGAN"
+      ],
+      "date_creation": "2017-11-17"
+    },
+    "sci_count": 2
   },
   {
     "id": "2613E1403458W",
@@ -1370,7 +1482,18 @@
         "source": "leboncoin",
         "titre": "Maison de ville à vendre"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI SA SY",
+      "siren": "451302715",
+      "adresse": "LES PRAIRIES 153 IMP GOMBERT 13013 MARSEILLE 13",
+      "dist_m": 69,
+      "dirigeants": [
+        "RAHOU NOREDINE"
+      ],
+      "date_creation": "2003-11-19"
+    },
+    "sci_count": 10
   },
   {
     "id": "2613E1386376W",
@@ -1498,7 +1621,9 @@
         "source": "seloger",
         "titre": "achat maison 1 étage"
       }
-    ]
+    ],
+    "sci_proche": null,
+    "sci_count": 0
   },
   {
     "id": "2613E1348030A",
@@ -1635,7 +1760,19 @@
         "source": "leboncoin",
         "titre": "Villa 5 pièces 170 m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI SOLEIL DU SUD",
+      "siren": "824643035",
+      "adresse": "96 AVENUE PAUL DALBRET 13013 MARSEILLE",
+      "dist_m": 6,
+      "dirigeants": [
+        "AULNER AURELIA MARIE DILVA",
+        "ROLLANDIN LAURENT JEAN MICHEL"
+      ],
+      "date_creation": "2016-12-02"
+    },
+    "sci_count": 6
   },
   {
     "id": "2613E1235088C",
@@ -1737,7 +1874,9 @@
         "source": "century21",
         "titre": "Maison à vendre - 4 pièces - 83,16 m2 - Marseille - 13013 - "
       }
-    ]
+    ],
+    "sci_proche": null,
+    "sci_count": 0
   },
   {
     "id": "2613E1159275F",
@@ -1865,7 +2004,19 @@
         "source": "avendrealouer",
         "titre": "Achat maison de plain-pied"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI AMY",
+      "siren": "433405461",
+      "adresse": "68 AVENUE DE SAINT JEROME 13013 MARSEILLE",
+      "dist_m": 39,
+      "dirigeants": [
+        "PAIN LAETITIA CECILE",
+        "RICCI PAIN (RICCI) MARIE BERNADETTE"
+      ],
+      "date_creation": "2000-09-25"
+    },
+    "sci_count": 10
   },
   {
     "id": "2613E1376980M",
@@ -1993,7 +2144,19 @@
         "source": "bienici",
         "titre": "Vente maison 6 pièces 127 m² Marseille 13ème - Superimmo"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI LA SARRATIERE",
+      "siren": "332588300",
+      "adresse": "432 CHE DE LA ROSE A LA GRAVE 13013 MARSEILLE 13",
+      "dist_m": 32,
+      "dirigeants": [
+        "LLORET JACQUELINE MARIE FRANCE ",
+        "SARRAT MONIQUE MARIE "
+      ],
+      "date_creation": "1985-03-25"
+    },
+    "sci_count": 3
   },
   {
     "id": "2613E1286940K",
@@ -2130,7 +2293,20 @@
         "source": "logic-immo",
         "titre": "Villa 5 pièces 110 m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "BC",
+      "siren": "487431173",
+      "adresse": "25 RUE DES POLYTRES 13013 MARSEILLE",
+      "dist_m": 22,
+      "dirigeants": [
+        "BUREAU EMMANUEL",
+        "CHAVE LUDOVIC",
+        "BUREAU (FOUCHERAND) MARIE PIERRE"
+      ],
+      "date_creation": "2005-12-01"
+    },
+    "sci_count": 7
   },
   {
     "id": "2613E1400602A",
@@ -2231,7 +2407,19 @@
         "source": "bienici",
         "titre": "Maison 4 pièces"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI DOLISI",
+      "siren": "402378384",
+      "adresse": "120 TRAVERSE DE LA BAUME LOUBIERE 13013 MARSEILLE",
+      "dist_m": 2,
+      "dirigeants": [
+        "SIDOLI JEAN-FRANCOIS EDOUARD",
+        "SIDOLI MARION STEPHANIE"
+      ],
+      "date_creation": "1995-06-15"
+    },
+    "sci_count": 2
   },
   {
     "id": "2613E1249870Q",
@@ -2368,7 +2556,18 @@
         "source": "paruvendu",
         "titre": "vente - maison"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI DES ALLOBROGES",
+      "siren": "391448339",
+      "adresse": "15 BD FERNAND DURBEC 13013 MARSEILLE 13",
+      "dist_m": 8,
+      "dirigeants": [
+        "TOROSSIAN HENRI ALBERT "
+      ],
+      "date_creation": "1993-05-05"
+    },
+    "sci_count": 11
   },
   {
     "id": "2513E3874066F",
@@ -2496,7 +2695,20 @@
         "source": "iadfrance",
         "titre": "Maison à vendre"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "A.Y",
+      "siren": "438926420",
+      "adresse": "CHEZ M SECCIA ALBERT LA MO 42 BOULEVARD FERNAND DURBEC 13013 MARSEILLE",
+      "dist_m": 53,
+      "dirigeants": [
+        "SECCIA ALBERT",
+        "CAMPILLO (SECCIA) FLORIANE",
+        "SECCIA SEBASTIEN FRANCIS DANIEL"
+      ],
+      "date_creation": "2001-05-18"
+    },
+    "sci_count": 3
   },
   {
     "id": "2613E1437454K",
@@ -2616,7 +2828,20 @@
         "source": "avendrealouer",
         "titre": "Maison 5 pièces 89 m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI LA MELIORA",
+      "siren": "343619763",
+      "adresse": "LA BATARELLE 46 RUE DE LA GARDIETTE 13013 MARSEILLE",
+      "dist_m": 36,
+      "dirigeants": [
+        "DRUGEON GABRIEL JEAN FERNAND",
+        "LE HIR JEAN-MICHEL LOUIS",
+        "MANFREDI STEPHANE PAUL"
+      ],
+      "date_creation": "1988-03-01"
+    },
+    "sci_count": 9
   },
   {
     "id": "2613E1259018M",
@@ -2753,7 +2978,18 @@
         "source": "bienici",
         "titre": "Vente maison 5 pièces de 120 m² à Marseille (13013) - 169162"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI AUREMI",
+      "siren": "423978121",
+      "adresse": "VILLA PALAMA NO 3 119 CHEMIN DE PALAMA 13013 MARSEILLE",
+      "dist_m": 39,
+      "dirigeants": [
+        "RIGAT NICOLAS"
+      ],
+      "date_creation": "1999-07-01"
+    },
+    "sci_count": 1
   },
   {
     "id": "2613E1216652A",
@@ -2890,7 +3126,20 @@
         "source": "avendrealouer",
         "titre": "Maison 5 pièces 117 m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "ABEMENA",
+      "siren": "530217306",
+      "adresse": "43 RUE DES ECUYERS 13013 MARSEILLE",
+      "dist_m": 33,
+      "dirigeants": [
+        "BENDERBOUS NADIA",
+        "FOSSE ADRIEN",
+        "FOSSE BETTINA"
+      ],
+      "date_creation": "2011-02-01"
+    },
+    "sci_count": 7
   },
   {
     "id": "2613E1075893F",
@@ -3027,7 +3276,20 @@
         "source": "prado.kwfrance",
         "titre": "Marseille - 559000"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI MARINERIK",
+      "siren": "489729020",
+      "adresse": "TRAVERSE DE LA BAUME LOUBIERE 13013 MARSEILLE",
+      "dist_m": 7,
+      "dirigeants": [
+        "BONADIES ERIK",
+        "EFREMOV NIKOLAY",
+        "BONADIES (EFREMOVA) MARINA"
+      ],
+      "date_creation": "2006-04-01"
+    },
+    "sci_count": 8
   },
   {
     "id": "2613E1140405L",
@@ -3156,7 +3418,18 @@
         "source": "leboncoin",
         "titre": "Villa 5 pièces 158 m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI PECCHINI 27",
+      "siren": "379092489",
+      "adresse": "8 BOULEVARD EMILE RAMBAUD 13013 MARSEILLE",
+      "dist_m": 43,
+      "dirigeants": [
+        "ROUCHE MAXIME ALBERT FRANCIS "
+      ],
+      "date_creation": "1990-08-21"
+    },
+    "sci_count": 11
   },
   {
     "id": "2613E1043513V",
@@ -3293,7 +3566,20 @@
         "source": "squarehabitat",
         "titre": "Achat : Maison Marseille 14ème (13014)"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "LOU CARVAZO",
+      "siren": "920765443",
+      "adresse": "55 RUE DES CHARS 13013 MARSEILLE",
+      "dist_m": 62,
+      "dirigeants": [
+        "GIORDANI CARLA",
+        "GIORDANI ENZO",
+        "GIORDANI EVA"
+      ],
+      "date_creation": "2022-10-20"
+    },
+    "sci_count": 4
   },
   {
     "id": "2613E1167439F",
@@ -3430,7 +3716,18 @@
         "source": "leboncoin",
         "titre": "Maison - 5 pièce(s) - 101 m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SOMIA VENDOME",
+      "siren": "453717795",
+      "adresse": "52 TRAVERSE GRAND JEAN AVENUE DE CHATEAU GOMBERT 13013 MARSEILLE",
+      "dist_m": 68,
+      "dirigeants": [
+        "KACHETEL (MEZI) FATIHA"
+      ],
+      "date_creation": "2004-05-14"
+    },
+    "sci_count": 1
   },
   {
     "id": "2613E1132273R",
@@ -3567,7 +3864,20 @@
         "source": "leboncoin",
         "titre": "Maison 4 pièces 110 m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI DU MOULIN DE L'ETANG",
+      "siren": "433662707",
+      "adresse": "3 IMPASSE GOMBERT 13013 MARSEILLE",
+      "dist_m": 3,
+      "dirigeants": [
+        "COMBY PATRICK",
+        "COMBY (SAURET) ELISE",
+        "SAURET PHILIPPE EDMOND"
+      ],
+      "date_creation": "2000-10-01"
+    },
+    "sci_count": 16
   },
   {
     "id": "2613E1089083N",
@@ -3695,7 +4005,19 @@
         "source": "bellesdemeures",
         "titre": "None"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "NONCE",
+      "siren": "828881532",
+      "adresse": "11 IMPASSE COULOMB 13013 MARSEILLE",
+      "dist_m": 54,
+      "dirigeants": [
+        "COLOMBANI NICOLE MARIE PIERRE",
+        "GUSTINELLI SERGE JACQUES"
+      ],
+      "date_creation": "2017-03-29"
+    },
+    "sci_count": 3
   },
   {
     "id": "2613E1084353P",
@@ -3832,7 +4154,19 @@
         "source": "leboncoin",
         "titre": "Villa à vendre"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI ALLOBROGES",
+      "siren": "833416381",
+      "adresse": "195 CHEMIN DE CHATEAU GOMBERT 13013 MARSEILLE",
+      "dist_m": 17,
+      "dirigeants": [
+        "GACHE CHARLES",
+        "GACHE THIBAULT ANDRE"
+      ],
+      "date_creation": "2017-12-15"
+    },
+    "sci_count": 2
   },
   {
     "id": "2613E0376377T",
@@ -3960,7 +4294,20 @@
         "source": "logic-immo",
         "titre": "Achat maison"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SC LES 2 EPHES",
+      "siren": "380147710",
+      "adresse": "TRAVERSE TASTEVIN 13013 MARSEILLE",
+      "dist_m": 62,
+      "dirigeants": [
+        "TISSOT GEORGES",
+        "TISSOT MAXIME",
+        "TISSOT ROGER"
+      ],
+      "date_creation": "1990-11-28"
+    },
+    "sci_count": 4
   },
   {
     "id": "2613E0334772O",
@@ -4097,7 +4444,19 @@
         "source": "seloger",
         "titre": "Maison à vendre"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI ALLOBROGES",
+      "siren": "833416381",
+      "adresse": "195 CHEMIN DE CHATEAU GOMBERT 13013 MARSEILLE",
+      "dist_m": 69,
+      "dirigeants": [
+        "GACHE CHARLES",
+        "GACHE THIBAULT ANDRE"
+      ],
+      "date_creation": "2017-12-15"
+    },
+    "sci_count": 2
   },
   {
     "id": "2613E0233356Y",
@@ -4225,7 +4584,19 @@
         "source": "bienici",
         "titre": "Appartement 3 pièces 68 m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI LAETI",
+      "siren": "488944679",
+      "adresse": "25 AVENUE SOLE MIO 13013 MARSEILLE",
+      "dist_m": 72,
+      "dirigeants": [
+        "CARAVAS DENIS NICOLAS",
+        "CARAVAS LAETITIA THEODORE JEANNINE"
+      ],
+      "date_creation": "2006-03-02"
+    },
+    "sci_count": 6
   },
   {
     "id": "2613E1294345F",
@@ -4318,7 +4689,18 @@
         "source": "seloger",
         "titre": "Achat maison"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "LEVISA",
+      "siren": "803086784",
+      "adresse": "LE CLOS JARDINS BAT C RUE CHALUSSET 13013 MARSEILLE 13",
+      "dist_m": 46,
+      "dirigeants": [
+        "DRAPS (LOUIS) MARIE-JOSEE NELLA"
+      ],
+      "date_creation": "2014-06-24"
+    },
+    "sci_count": 4
   },
   {
     "id": "2613E1039644A",
@@ -4455,7 +4837,19 @@
         "source": "bienici",
         "titre": "Appartement 3 pièces 68 m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI RYASSANDRO",
+      "siren": "907895502",
+      "adresse": "TRAVERSE DES OMNIBUS QUARTIER DE CHATE 22 AVENUE DE CHATEAU GOMBERT 13013 MARSEILLE",
+      "dist_m": 46,
+      "dirigeants": [
+        "ARDILLY JENNIFER",
+        "PLOCICA JONATHAN"
+      ],
+      "date_creation": "2021-12-06"
+    },
+    "sci_count": 6
   },
   {
     "id": "2513E3990139O",
@@ -4583,7 +4977,19 @@
         "source": "avendrealouer",
         "titre": "Achat maison"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "BB-ROC",
+      "siren": "848019592",
+      "adresse": "54 CHEMIN DE ROUSSET 13013 MARSEILLE",
+      "dist_m": 1,
+      "dirigeants": [
+        "BAGNOL THIERRY",
+        "BERNERT FREDERIC"
+      ],
+      "date_creation": "2019-01-30"
+    },
+    "sci_count": 6
   },
   {
     "id": "2613E1155255P",
@@ -4711,7 +5117,20 @@
         "source": "immobilier.lefigaro",
         "titre": "Achat maison"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "LES ETERLOUS",
+      "siren": "791979024",
+      "adresse": "14 CHEMIN DE ROUSSET 13013 MARSEILLE",
+      "dist_m": 66,
+      "dirigeants": [
+        "FERAUD CLÉMENT",
+        "FERAUD FLORIAN",
+        "FERAUD MICHEL"
+      ],
+      "date_creation": "2013-03-20"
+    },
+    "sci_count": 4
   },
   {
     "id": "2513E3956068D",
@@ -4839,7 +5258,19 @@
         "source": "seloger",
         "titre": "achat maison 1 étage"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI MARENGO",
+      "siren": "491559324",
+      "adresse": "95 AVENUE DE SAINT JEROME 13013 MARSEILLE",
+      "dist_m": 1,
+      "dirigeants": [
+        "MARENGO (ANDRE) PATRICIA",
+        "MARENGO DOMINIQUE"
+      ],
+      "date_creation": "2006-09-01"
+    },
+    "sci_count": 11
   },
   {
     "id": "2613E0347309T",
@@ -4976,7 +5407,18 @@
         "source": "leboncoin",
         "titre": "Propriété 7 pièces 278 m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI PERSOR",
+      "siren": "419324868",
+      "adresse": "LOT LE QUATUOR N  3 229 CHEMIN DE CHATEAU GOMBERT 13013 MARSEILLE",
+      "dist_m": 41,
+      "dirigeants": [
+        "PEROTTI BERNARD FRANCOIS"
+      ],
+      "date_creation": "1998-05-19"
+    },
+    "sci_count": 2
   },
   {
     "id": "2613E0217908U",
@@ -5095,7 +5537,20 @@
         "source": "bellesdemeures",
         "titre": "Plan-de-Cuques - 1170000"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI TMF II",
+      "siren": "507577062",
+      "adresse": "170 CHEMIN DE LA GRAVE 13013 MARSEILLE",
+      "dist_m": 52,
+      "dirigeants": [
+        "MARTIN (FAVIER) CORINNE",
+        "MARTIN ERIC",
+        "MARTIN THIBAULT"
+      ],
+      "date_creation": "2008-07-21"
+    },
+    "sci_count": 3
   },
   {
     "id": "2613E0916729N",
@@ -5232,7 +5687,20 @@
         "source": "agencesprivees",
         "titre": "Maison \r\n 5 pièces"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "ABEMENA",
+      "siren": "530217306",
+      "adresse": "43 RUE DES ECUYERS 13013 MARSEILLE",
+      "dist_m": 28,
+      "dirigeants": [
+        "BENDERBOUS NADIA",
+        "FOSSE ADRIEN",
+        "FOSSE BETTINA"
+      ],
+      "date_creation": "2011-02-01"
+    },
+    "sci_count": 7
   },
   {
     "id": "2613E0882945D",
@@ -5369,7 +5837,20 @@
         "source": "avendrealouer",
         "titre": "Marseille 13ème - 537000"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI ADA FRA",
+      "siren": "490129822",
+      "adresse": "16 IMPASSE DES ALVERGNES 13013 MARSEILLE",
+      "dist_m": 35,
+      "dirigeants": [
+        "ADANALIAN CORINNE",
+        "ADANALIAN ROBERT",
+        "ADANALIAN STEPHANE"
+      ],
+      "date_creation": "2006-04-28"
+    },
+    "sci_count": 3
   },
   {
     "id": "2613E0204459N",
@@ -5488,7 +5969,19 @@
         "source": "avendrealouer",
         "titre": "La Rose : Villa individuelle T4 + studio Jardin 634m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "RK-IMMO",
+      "siren": "907571814",
+      "adresse": "13 TRAVERSE DE LA SARTAN 13013 MARSEILLE",
+      "dist_m": 56,
+      "dirigeants": [
+        "RAHMAN KAHDAN HARON JOAQUIM",
+        "RAHMAN KAHDAN MEHDI"
+      ],
+      "date_creation": "2021-11-10"
+    },
+    "sci_count": 2
   },
   {
     "id": "2613E0397784C",
@@ -5580,7 +6073,9 @@
         "source": "superimmo",
         "titre": "Maison 4 pièces 105 m²"
       }
-    ]
+    ],
+    "sci_proche": null,
+    "sci_count": 0
   },
   {
     "id": "2513E3985169K",
@@ -5708,7 +6203,20 @@
         "source": "leboncoin",
         "titre": "Maison 4 pièces 72 m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "DENTEVE",
+      "siren": "398347377",
+      "adresse": "15 TRA CHARLES SUSINI 13013 MARSEILLE 13",
+      "dist_m": 90,
+      "dirigeants": [
+        "BLACHERE EVE",
+        "BLACHERE JACQUES LEONCE JEAN-LOUIS",
+        "LAURENT MARTINE"
+      ],
+      "date_creation": "1994-09-15"
+    },
+    "sci_count": 1
   },
   {
     "id": "2613E1239397V",
@@ -5837,7 +6345,20 @@
         "source": "leboncoin",
         "titre": "Maison mitoyenne r+1 avec garage"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "MILAGROS",
+      "siren": "979788221",
+      "adresse": "15 RESIDENCE LES CYTISES 33 RUE FREDERIC JOLIOT-CURIE 13013 MARSEILLE",
+      "dist_m": 91,
+      "dirigeants": [
+        "ARZANO CHRISTELLE AUDREY ANNIE",
+        "ARZANO GUILLAUME CHRISTOPHE DANIEL",
+        "ARZANO LIONEL FRANCOIS JEAN-NOEL"
+      ],
+      "date_creation": "2023-09-17"
+    },
+    "sci_count": 2
   },
   {
     "id": "2613E0447268I",
@@ -5965,7 +6486,20 @@
         "source": "orpi",
         "titre": "Marseille 4ème - 360000"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "LOISIR",
+      "siren": "504667841",
+      "adresse": "18 TRAVERSE LAURENT MAERO 13013 MARSEILLE",
+      "dist_m": 20,
+      "dirigeants": [
+        "ROUBIN ELISE",
+        "ROUBIN JEAN-YVES",
+        "ROUBIN LUCIE"
+      ],
+      "date_creation": "2008-05-05"
+    },
+    "sci_count": 4
   },
   {
     "id": "2613E0031524E",
@@ -6093,7 +6627,20 @@
         "source": "leboncoin",
         "titre": "Maison 4 pièces 72 m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "DENTEVE",
+      "siren": "398347377",
+      "adresse": "15 TRA CHARLES SUSINI 13013 MARSEILLE 13",
+      "dist_m": 86,
+      "dirigeants": [
+        "BLACHERE EVE",
+        "BLACHERE JACQUES LEONCE JEAN-LOUIS",
+        "LAURENT MARTINE"
+      ],
+      "date_creation": "1994-09-15"
+    },
+    "sci_count": 5
   },
   {
     "id": "2613E1256550O",
@@ -6230,7 +6777,19 @@
         "source": "leboncoin",
         "titre": "vente - maison"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI SIKY",
+      "siren": "848953618",
+      "adresse": "MARSEILLE 3 ALLEE DES CYGNES 13013 MARSEILLE",
+      "dist_m": 44,
+      "dirigeants": [
+        "MARTINEZ BARTHELEMY MAXIME",
+        "PEDROLA (PEDROLA) ANNE-MARIE CLAUDE"
+      ],
+      "date_creation": "2019-03-06"
+    },
+    "sci_count": 7
   },
   {
     "id": "2613E0887933Z",
@@ -6358,7 +6917,19 @@
         "source": "seloger",
         "titre": "Achat maison 1 étage"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SANNA",
+      "siren": "529132151",
+      "adresse": "37 AVENUE DU MERLAN 13014 MARSEILLE",
+      "dist_m": 44,
+      "dirigeants": [
+        "KHALED-BRAHMI MEHIDI",
+        "MAIMOUN SAMIA"
+      ],
+      "date_creation": "2010-12-07"
+    },
+    "sci_count": 5
   },
   {
     "id": "2613E0862533B",
@@ -6486,7 +7057,19 @@
         "source": "orpi",
         "titre": "Marseille 4ème - 360000"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI AMY",
+      "siren": "433405461",
+      "adresse": "68 AVENUE DE SAINT JEROME 13013 MARSEILLE",
+      "dist_m": 28,
+      "dirigeants": [
+        "PAIN LAETITIA CECILE",
+        "RICCI PAIN (RICCI) MARIE BERNADETTE"
+      ],
+      "date_creation": "2000-09-25"
+    },
+    "sci_count": 11
   },
   {
     "id": "2613E0069747H",
@@ -6623,7 +7206,19 @@
         "source": "leboncoin",
         "titre": "Maison 4 pièces 125 m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "LUMAJERE",
+      "siren": "792903320",
+      "adresse": "RESIDENCE LES ALLEES DE PALAMA 18 CHEMIN DE PALAMA 13013 MARSEILLE",
+      "dist_m": 2,
+      "dirigeants": [
+        "ESCOUBAS LUDOVIC SEBASTIEN",
+        "ESCOUBAS MATHIEU"
+      ],
+      "date_creation": "2013-04-08"
+    },
+    "sci_count": 6
   },
   {
     "id": "2613E1035051J",
@@ -6760,7 +7355,18 @@
         "source": "bienici",
         "titre": "Vente maison 5 pièces de 120 m² à Marseille (13013) - 169162"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI AUREMI",
+      "siren": "423978121",
+      "adresse": "VILLA PALAMA NO 3 119 CHEMIN DE PALAMA 13013 MARSEILLE",
+      "dist_m": 54,
+      "dirigeants": [
+        "RIGAT NICOLAS"
+      ],
+      "date_creation": "1999-07-01"
+    },
+    "sci_count": 1
   },
   {
     "id": "2513E3961987U",
@@ -6888,7 +7494,18 @@
         "source": "squarehabitat",
         "titre": "Achat : Maison Marseille 14ème (13014)"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "ASK IMMO",
+      "siren": "890158454",
+      "adresse": "IMPASSE POUSSET 104 CHEMIN DE PALAMA 13013 MARSEILLE",
+      "dist_m": 53,
+      "dirigeants": [
+        "ALCARAZ KEVIN"
+      ],
+      "date_creation": "2020-09-29"
+    },
+    "sci_count": 8
   },
   {
     "id": "2613E0981499R",
@@ -7025,7 +7642,18 @@
         "source": "avendrealouer",
         "titre": "Maison 5 pièces 117 m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "ASK IMMO",
+      "siren": "890158454",
+      "adresse": "IMPASSE POUSSET 104 CHEMIN DE PALAMA 13013 MARSEILLE",
+      "dist_m": 47,
+      "dirigeants": [
+        "ALCARAZ KEVIN"
+      ],
+      "date_creation": "2020-09-29"
+    },
+    "sci_count": 8
   },
   {
     "id": "2613E0300749Z",
@@ -7154,7 +7782,19 @@
         "source": "leboncoin",
         "titre": "Maison 5 pièces 190 m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "JARAMO",
+      "siren": "898378393",
+      "adresse": "131 CHEMIN DU MERLAN A LA ROSE 13013 MARSEILLE",
+      "dist_m": 3,
+      "dirigeants": [
+        "EL KHAMLICHI (BOUKHAIMA) RANDA",
+        "EL KHAMLICHI MOHAMMED"
+      ],
+      "date_creation": "2021-04-12"
+    },
+    "sci_count": 8
   },
   {
     "id": "2613E0189712I",
@@ -7291,7 +7931,18 @@
         "source": "avendrealouer",
         "titre": "LA ROSE : immeuble R+1 avec local commercial et garage"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI 96 LA ROSE",
+      "siren": "400826293",
+      "adresse": "96 IMPASSE DE LA ROSE 13013 MARSEILLE",
+      "dist_m": 25,
+      "dirigeants": [
+        "TAKELYAN JACQUES"
+      ],
+      "date_creation": "1995-04-11"
+    },
+    "sci_count": 6
   },
   {
     "id": "2613E1176421R",
@@ -7419,7 +8070,20 @@
         "source": "avendrealouer",
         "titre": "Vends villa sur le chemin du cavaou 13013"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "MARYANACA",
+      "siren": "808626618",
+      "adresse": "1 RUE NICOLAS COPERNIC 13013 MARSEILLE",
+      "dist_m": 30,
+      "dirigeants": [
+        "KALOUDJIAN ANAHID SABRINA ALEXANDRA",
+        "KALOUDJIAN CARINE GARINE",
+        "KALOUDJIAN (MINASSIAN) MARYSE"
+      ],
+      "date_creation": "2014-12-08"
+    },
+    "sci_count": 6
   },
   {
     "id": "2613E1084776W",
@@ -7547,7 +8211,19 @@
         "source": "leboncoin",
         "titre": "Lacordaire - Maison de maitre - 7 pièces avec dépendances"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "LOLO2B",
+      "siren": "830289013",
+      "adresse": "137 RUE ALPHONSE DAUDET 13013 MARSEILLE",
+      "dist_m": 26,
+      "dirigeants": [
+        "CHAUMERY LAURENCE",
+        "CHAUMERY (PIETRI) MARIE-JOSE"
+      ],
+      "date_creation": "2017-06-03"
+    },
+    "sci_count": 31
   },
   {
     "id": "2613E0902203V",
@@ -7666,7 +8342,20 @@
         "source": "stephaneplazaimmobilier",
         "titre": ""
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "STELLA",
+      "siren": "494559099",
+      "adresse": "124 CHEMIN N-D DE CONSOLATION 13013 MARSEILLE",
+      "dist_m": 61,
+      "dirigeants": [
+        "CICCO ANTHONY",
+        "CICCO PATRICE",
+        "FATA MARCELLE"
+      ],
+      "date_creation": "2007-02-22"
+    },
+    "sci_count": 4
   },
   {
     "id": "2613E0886672M",
@@ -7803,7 +8492,18 @@
         "source": "leboncoin",
         "titre": "Maison 4 pièces 110 m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI GOMBERT",
+      "siren": "504931080",
+      "adresse": "24 RUE DES BRUS 13013 MARSEILLE 13",
+      "dist_m": 8,
+      "dirigeants": [
+        "DELAIRE MIREILLE"
+      ],
+      "date_creation": "2008-06-17"
+    },
+    "sci_count": 10
   },
   {
     "id": "2613E0445911D",
@@ -7922,7 +8622,18 @@
         "source": "logic-immo",
         "titre": "Achat maison"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI ISIS",
+      "siren": "429705700",
+      "adresse": "LES ALLEES DE PALAMA 1 RUE LOUIS FEUILLEE 13013 MARSEILLE",
+      "dist_m": 92,
+      "dirigeants": [
+        "HERRERO BOUE (D APICE) LOUISE"
+      ],
+      "date_creation": "2000-01-04"
+    },
+    "sci_count": 2
   },
   {
     "id": "2613E0506506S",
@@ -8059,7 +8770,19 @@
         "source": "avendrealouer",
         "titre": "Marseille 13ème - 450000"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SOCIETE CIVILE DU NEUF BD BARA",
+      "siren": "492408810",
+      "adresse": "24 TRAVERSE DES OMNIBUS 13013 MARSEILLE",
+      "dist_m": 48,
+      "dirigeants": [
+        "FERY LOIC",
+        "SIRAGUSA SANDRINE"
+      ],
+      "date_creation": "2006-10-03"
+    },
+    "sci_count": 4
   },
   {
     "id": "2613E0381408G",
@@ -8196,7 +8919,19 @@
         "source": "immobilier.lefigaro",
         "titre": "Maison mitoyenne T4 de 78m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI MILI",
+      "siren": "819328261",
+      "adresse": "BAT E LE VILLECROZE LOT LE MAS DES OLIVIERS 13013 MARSEILLE 13",
+      "dist_m": 61,
+      "dirigeants": [
+        "BADIANE NABYLE",
+        "OUADAH MAEL"
+      ],
+      "date_creation": "2016-03-24"
+    },
+    "sci_count": 3
   },
   {
     "id": "2613E0051664U",
@@ -8324,7 +9059,19 @@
         "source": "avendrealouer",
         "titre": "Maison t4 de 82m2 + studio de 13m2 sur terrain de 320m2 quar"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "PIDOM",
+      "siren": "894688308",
+      "adresse": "PATIO SAINT-JUST 26 AVENUE COROT 13013 MARSEILLE",
+      "dist_m": 47,
+      "dirigeants": [
+        "MUFRAGGI ALBERT TOUSSAINT",
+        "MUFRAGGI MICHELE DOMINIQUE"
+      ],
+      "date_creation": "2021-02-24"
+    },
+    "sci_count": 10
   },
   {
     "id": "2613E1119717T",
@@ -8443,7 +9190,20 @@
         "source": "seloger",
         "titre": "Achat maison"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "FLOMACH",
+      "siren": "838004059",
+      "adresse": "9 BOULEVARD MARIE LOUISE 13013 MARSEILLE",
+      "dist_m": 51,
+      "dirigeants": [
+        "LE BRIS FLORENT",
+        "LEBRIS CHRISTIAN",
+        "LE BRIS (TANCHIS) MARIE-FRANCE"
+      ],
+      "date_creation": "2018-02-10"
+    },
+    "sci_count": 3
   },
   {
     "id": "2613E0944407B",
@@ -8580,7 +9340,20 @@
         "source": "agencesprivees",
         "titre": "Maison \r\n 5 pièces"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "BBA",
+      "siren": "843524182",
+      "adresse": "LOT SAINT ELOI N 21 96 CHEMIN DE PALAMA 13013 MARSEILLE",
+      "dist_m": 79,
+      "dirigeants": [
+        "CUSTODE CHRISTIAN",
+        "CUSTODE JULIEN",
+        "CUSTODE NICOLAS"
+      ],
+      "date_creation": "2018-09-03"
+    },
+    "sci_count": 7
   },
   {
     "id": "2613E0864901D",
@@ -8717,7 +9490,20 @@
         "source": "logic-immo",
         "titre": "Achat maison 1 étage"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI IMOMEL",
+      "siren": "499054146",
+      "adresse": "73 CHEMIN DES XAVIERS 13013 MARSEILLE",
+      "dist_m": 45,
+      "dirigeants": [
+        "MELLOULT CANDICE",
+        "MELLOULT MICHEL",
+        "MELLOULT SABRINA"
+      ],
+      "date_creation": "2007-07-12"
+    },
+    "sci_count": 6
   },
   {
     "id": "2613E0662042W",
@@ -8854,7 +9640,19 @@
         "source": "bienici",
         "titre": "Rare à la vente - Maison Neuve de 96 m2 avec son jardin"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI FERNESS",
+      "siren": "419786488",
+      "adresse": "14 AVENUE GRACIEUSE 13013 MARSEILLE",
+      "dist_m": 13,
+      "dirigeants": [
+        "CHAMLA (ATTON) ANNIE CAMILLE",
+        "CHAMLA DAVID"
+      ],
+      "date_creation": "1998-08-05"
+    },
+    "sci_count": 10
   },
   {
     "id": "2613E0254257V",
@@ -8991,7 +9789,18 @@
         "source": "century21",
         "titre": "Villa 6 pièces 238 m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI AUREMI",
+      "siren": "423978121",
+      "adresse": "VILLA PALAMA NO 3 119 CHEMIN DE PALAMA 13013 MARSEILLE",
+      "dist_m": 61,
+      "dirigeants": [
+        "RIGAT NICOLAS"
+      ],
+      "date_creation": "1999-07-01"
+    },
+    "sci_count": 4
   },
   {
     "id": "2613E0057449H",
@@ -9111,7 +9920,19 @@
         "source": "seloger",
         "titre": "Maison à vendre"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "OPHTAGHIP",
+      "siren": "794985044",
+      "adresse": "57 BOULEVARD BARA 13013 MARSEILLE",
+      "dist_m": 89,
+      "dirigeants": [
+        "GHIPPONI JEAN PIERRE",
+        "GHIPPONI (JERALD) VALERIE"
+      ],
+      "date_creation": "2013-08-01"
+    },
+    "sci_count": 1
   },
   {
     "id": "2513E3943647K",
@@ -9203,7 +10024,19 @@
         "source": "seloger",
         "titre": "Achat maison"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "CYNA",
+      "siren": "842071672",
+      "adresse": "L'OLIVERAIE D'AMPE 56 CHEMIN DES XAVIERS 13013 MARSEILLE",
+      "dist_m": 36,
+      "dirigeants": [
+        "BROS CYRIL",
+        "MAMAN NATACHA"
+      ],
+      "date_creation": "2018-08-01"
+    },
+    "sci_count": 3
   },
   {
     "id": "2613E1155329L",
@@ -9323,7 +10156,19 @@
         "source": "logic-immo",
         "titre": "vente - maison"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "LE VENTOSE",
+      "siren": "493648943",
+      "adresse": "RESIDENCE PARC LES VIEUX CYPRES 6 RUE VENTOSE 13013 MARSEILLE 13",
+      "dist_m": 83,
+      "dirigeants": [
+        "GALLO CEDRIC",
+        "MOUSSA MICHELE"
+      ],
+      "date_creation": "2006-12-27"
+    },
+    "sci_count": 6
   },
   {
     "id": "2613E0600752O",
@@ -9460,7 +10305,19 @@
         "source": "leboncoin",
         "titre": "Maison 4 pièces 125 m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "LUMAJERE",
+      "siren": "792903320",
+      "adresse": "RESIDENCE LES ALLEES DE PALAMA 18 CHEMIN DE PALAMA 13013 MARSEILLE",
+      "dist_m": 49,
+      "dirigeants": [
+        "ESCOUBAS LUDOVIC SEBASTIEN",
+        "ESCOUBAS MATHIEU"
+      ],
+      "date_creation": "2013-04-08"
+    },
+    "sci_count": 6
   },
   {
     "id": "2613E0396183N",
@@ -9588,7 +10445,19 @@
         "source": "avendrealouer",
         "titre": "La Rose : Villa individuelle T4 + studio Jardin 634m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI MILI",
+      "siren": "819328261",
+      "adresse": "BAT E LE VILLECROZE LOT LE MAS DES OLIVIERS 13013 MARSEILLE 13",
+      "dist_m": 37,
+      "dirigeants": [
+        "BADIANE NABYLE",
+        "OUADAH MAEL"
+      ],
+      "date_creation": "2016-03-24"
+    },
+    "sci_count": 4
   },
   {
     "id": "2613E0236317V",
@@ -9725,7 +10594,19 @@
         "source": "avendrealouer",
         "titre": "Maison 6 pièces"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "ZAZIA AYA (ZAZIA AYA)",
+      "siren": "944832252",
+      "adresse": "20 RUE ALPHONSE DAUDET 13013 MARSEILLE",
+      "dist_m": 14,
+      "dirigeants": [
+        "JOHRY ABDELAZIZ",
+        "KHACHIA MERYEM"
+      ],
+      "date_creation": "2025-05-12"
+    },
+    "sci_count": 15
   },
   {
     "id": "2613E0239042Q",
@@ -9835,7 +10716,18 @@
         "source": "leboncoin",
         "titre": "vente - maison"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "J.P.N.",
+      "siren": "433930906",
+      "adresse": "109 CHE DES PAROYES 13013 MARSEILLE 13",
+      "dist_m": 28,
+      "dirigeants": [
+        "NAPOLITANO (CALISTRI) NICOLE MARIE LOUIS"
+      ],
+      "date_creation": "2000-10-30"
+    },
+    "sci_count": 10
   },
   {
     "id": "2513E4005405S",
@@ -9972,7 +10864,19 @@
         "source": "offimmo.agency",
         "titre": "Une maison à usage d'habitation"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "COSMO",
+      "siren": "903566438",
+      "adresse": "10 AVENUE CAMPAGNE BARIELLE 13013 MARSEILLE",
+      "dist_m": 11,
+      "dirigeants": [
+        "BASTIANI (DUGAT) LAURENCE RACHEL PAULE",
+        "LACROIX JEAN-LUC GERARD"
+      ],
+      "date_creation": "2021-09-24"
+    },
+    "sci_count": 4
   },
   {
     "id": "2513E3992275S",
@@ -10109,7 +11013,20 @@
         "source": "logic-immo",
         "titre": "Achat maison 1 étage"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI ESPACE SAINT LOUIS",
+      "siren": "379885825",
+      "adresse": "1 AVENUE DE FUVEAU 13013 MARSEILLE",
+      "dist_m": 71,
+      "dirigeants": [
+        "BROUQUIER ARNAUD BERNARD HUBERT",
+        "PLASSAIS (BROUQUIER) CARINE ODILE",
+        "BROUQUIER (PINELLI) GENEVIEVE"
+      ],
+      "date_creation": "1990-10-19"
+    },
+    "sci_count": 3
   },
   {
     "id": "2513E3912418H",
@@ -10228,7 +11145,9 @@
         "source": "seloger",
         "titre": "Maison 5 pièces 132 m²"
       }
-    ]
+    ],
+    "sci_proche": null,
+    "sci_count": 0
   },
   {
     "id": "2613E0950354U",
@@ -10338,7 +11257,19 @@
         "source": "seloger",
         "titre": "Achat maison 2 étages"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "LE MONTCALM",
+      "siren": "479505968",
+      "adresse": "15 AVENUE MONTCALM 13013 MARSEILLE",
+      "dist_m": 25,
+      "dirigeants": [
+        "BIAIS PATRICK",
+        "LUCCHESI CHANTAL HENRIETTE"
+      ],
+      "date_creation": "2004-11-09"
+    },
+    "sci_count": 7
   },
   {
     "id": "2613E0788725H",
@@ -10466,7 +11397,20 @@
         "source": "api-v4.geoimmo",
         "titre": ""
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI PALAMA",
+      "siren": "340258839",
+      "adresse": "CTRE CIAL CHATEAU GOMBERT CHEMIN DE PALAMA 13013 MARSEILLE",
+      "dist_m": 42,
+      "dirigeants": [
+        "CIOTTA CARMELO",
+        "CIOTTA LUIGI",
+        "CIOTTA MARIA"
+      ],
+      "date_creation": "1987-01-28"
+    },
+    "sci_count": 3
   },
   {
     "id": "2613E0658510A",
@@ -10603,7 +11547,20 @@
         "source": "seloger",
         "titre": "Maison 10 pièces 308 m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "B.D.E.2I.",
+      "siren": "914374186",
+      "adresse": "32 CHEMIN DE LA GRAVE 13013 MARSEILLE",
+      "dist_m": 25,
+      "dirigeants": [
+        "MANAI BILEL",
+        "MANAI DJIBRIL",
+        "MANAI EMNA"
+      ],
+      "date_creation": "2022-06-02"
+    },
+    "sci_count": 2
   },
   {
     "id": "2613E0541387H",
@@ -10740,7 +11697,19 @@
         "source": "bienici",
         "titre": "Villa familiale T8 avec beaucoup de charme entre Château-Gom"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI BUDY (SCI BUDY)",
+      "siren": "479231037",
+      "adresse": "CHATEAU GOMBERT 223 CHEMIN DE LA GRAVE 13013 MARSEILLE",
+      "dist_m": 87,
+      "dirigeants": [
+        "CASARI-BERCANE (BERCANE) SERGE JEAN-MARIE",
+        "DUCCI CHRISTEL SYLVIE"
+      ],
+      "date_creation": "2004-10-18"
+    },
+    "sci_count": 3
   },
   {
     "id": "2613E0453415T",
@@ -10860,7 +11829,19 @@
         "source": "immobilier.lefigaro",
         "titre": "vente - villa"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI MONTAIGNE",
+      "siren": "801859141",
+      "adresse": "31 CHEMIN DE ROUSSET 13013 MARSEILLE",
+      "dist_m": 67,
+      "dirigeants": [
+        "BOCCACCIO AURELIE DESIREE",
+        "BOCCACCIO EMMANUEL ANDRE"
+      ],
+      "date_creation": "2014-04-14"
+    },
+    "sci_count": 3
   },
   {
     "id": "2613E0341499H",
@@ -10997,7 +11978,20 @@
         "source": "bienici",
         "titre": "Maison Marseille 4 pièces 102.19 m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI NATHANAEL",
+      "siren": "413435512",
+      "adresse": "SAINT MITRE 76 CHEMIN DES SERENS 13013 MARSEILLE",
+      "dist_m": 6,
+      "dirigeants": [
+        "BENSOUSSAN CHARLES",
+        "BENSOUSSAN CHARLINE",
+        "BENSOUSSAN NATHALIE"
+      ],
+      "date_creation": "1997-07-31"
+    },
+    "sci_count": 11
   },
   {
     "id": "2613E0295007D",
@@ -11125,7 +12119,20 @@
         "source": "avendrealouer",
         "titre": "Maison de village 4 pièces 74 m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI SAINT PAUL",
+      "siren": "349767707",
+      "adresse": "MOURGUES 9 CHEMIN DES MOURETS 13013 MARSEILLE",
+      "dist_m": 13,
+      "dirigeants": [
+        "MERCURIO GIOVANNI",
+        "MERCURIO JOSEPH",
+        "MERCURIO ROBERT"
+      ],
+      "date_creation": "1988-10-25"
+    },
+    "sci_count": 3
   },
   {
     "id": "2513E3908102H",
@@ -11217,7 +12224,19 @@
         "source": "leboncoin",
         "titre": "Maison 5 pièces 119 m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "EDEN",
+      "siren": "392108320",
+      "adresse": "VILLA BERNARD 26 RUE SIMONE WEIL 13013 MARSEILLE",
+      "dist_m": 52,
+      "dirigeants": [
+        "MAURY HERVE CLAUDE JEAN-MARIE",
+        "MAURY MAE MARGAUX ROMANE"
+      ],
+      "date_creation": "1993-07-30"
+    },
+    "sci_count": 9
   },
   {
     "id": "2613E1096613D",
@@ -11354,7 +12373,20 @@
         "source": "bienici",
         "titre": "Maison de village 4 pièces 85 m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI AMA",
+      "siren": "105194443",
+      "adresse": "DOMAINE DES PRATS VILLA 2 44 BOULEVARD BARA 13013 MARSEILLE",
+      "dist_m": 0,
+      "dirigeants": [
+        "SIMONDIN AGATHE ZOÉ CHLOÉ",
+        "SIMONDIN ALICE ELISE VICTORIA",
+        "SIMONDIN MARTIN ANTOINE PAUL"
+      ],
+      "date_creation": "2026-05-13"
+    },
+    "sci_count": 10
   },
   {
     "id": "2613E1049224M",
@@ -11482,7 +12514,19 @@
         "source": "paruvendu",
         "titre": "Maison - 4 pièce(s) - 130 m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "IMMOSUD",
+      "siren": "808645261",
+      "adresse": "91 CHEMIN DES AMPHOUX 13013 MARSEILLE",
+      "dist_m": 52,
+      "dirigeants": [
+        "BOUNAUD JEAN PIERRE",
+        "CASALE ROSELYNE"
+      ],
+      "date_creation": "2015-01-01"
+    },
+    "sci_count": 9
   },
   {
     "id": "2613E0894122A",
@@ -11619,7 +12663,19 @@
         "source": "bienici",
         "titre": "Appartement 3 pièces 68 m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI RYASSANDRO",
+      "siren": "907895502",
+      "adresse": "TRAVERSE DES OMNIBUS QUARTIER DE CHATE 22 AVENUE DE CHATEAU GOMBERT 13013 MARSEILLE",
+      "dist_m": 35,
+      "dirigeants": [
+        "ARDILLY JENNIFER",
+        "PLOCICA JONATHAN"
+      ],
+      "date_creation": "2021-12-06"
+    },
+    "sci_count": 6
   },
   {
     "id": "2613E0818875X",
@@ -11738,7 +12794,19 @@
         "source": "immobilier.lefigaro",
         "titre": "vente - maison"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI MG (MG)",
+      "siren": "489858431",
+      "adresse": "27 RUE DU TROUBADOUR 13013 MARSEILLE",
+      "dist_m": 73,
+      "dirigeants": [
+        "GOUJON THIBAUD",
+        "MALABRERA GERALDINE"
+      ],
+      "date_creation": "2006-04-14"
+    },
+    "sci_count": 7
   },
   {
     "id": "2613E0637034A",
@@ -11866,7 +12934,19 @@
         "source": "etreproprio",
         "titre": "Maison contemporaine de 155m2 de 6 pièces, piscine, garage, "
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "PIDOM",
+      "siren": "894688308",
+      "adresse": "PATIO SAINT-JUST 26 AVENUE COROT 13013 MARSEILLE",
+      "dist_m": 54,
+      "dirigeants": [
+        "MUFRAGGI ALBERT TOUSSAINT",
+        "MUFRAGGI MICHELE DOMINIQUE"
+      ],
+      "date_creation": "2021-02-24"
+    },
+    "sci_count": 8
   },
   {
     "id": "2613E0432868M",
@@ -11994,7 +13074,20 @@
         "source": "leboncoin",
         "titre": "Achat maison"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI CAMPY",
+      "siren": "824119168",
+      "adresse": "30 RUE MARC DONADILLE 13013 MARSEILLE",
+      "dist_m": 86,
+      "dirigeants": [
+        "BARTHELEMY ERIC",
+        "BRANDY JOHN",
+        "DANIELE LAURENT"
+      ],
+      "date_creation": "2016-11-22"
+    },
+    "sci_count": 7
   },
   {
     "id": "2613E0353009Z",
@@ -12131,7 +13224,19 @@
         "source": "avendrealouer",
         "titre": "Maison de caractère avec son jardin ensoleillé"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI LOMBARD INVESTISSEMENTS",
+      "siren": "494376528",
+      "adresse": "20 CHEMIN DE LA SARTAN 13013 MARSEILLE",
+      "dist_m": 16,
+      "dirigeants": [
+        "LOMBARD OLIVIER ALEXANDRE CLAUDE",
+        "LOMBARD (RABINO) ANDREE"
+      ],
+      "date_creation": "2007-01-01"
+    },
+    "sci_count": 18
   },
   {
     "id": "2613E0247064E",
@@ -12268,7 +13373,19 @@
         "source": "avendrealouer",
         "titre": "Maison 5 pièces 117 m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI RYASSANDRO",
+      "siren": "907895502",
+      "adresse": "TRAVERSE DES OMNIBUS QUARTIER DE CHATE 22 AVENUE DE CHATEAU GOMBERT 13013 MARSEILLE",
+      "dist_m": 51,
+      "dirigeants": [
+        "ARDILLY JENNIFER",
+        "PLOCICA JONATHAN"
+      ],
+      "date_creation": "2021-12-06"
+    },
+    "sci_count": 4
   },
   {
     "id": "2613E0040820S",
@@ -12405,7 +13522,19 @@
         "source": "leboncoin",
         "titre": "Belle Maison T4/5 de 94m2 Jardin Secteur Saint Mitre"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "DADI",
+      "siren": "844398941",
+      "adresse": "19 BOULEVARD DU PAC 13013 MARSEILLE",
+      "dist_m": 27,
+      "dirigeants": [
+        "ASENCIO DAVID",
+        "ASENCIO  (CASU ) ANTONIA"
+      ],
+      "date_creation": "2018-11-14"
+    },
+    "sci_count": 10
   },
   {
     "id": "2613E0015193B",
@@ -12496,7 +13625,20 @@
     "annonce_date": null,
     "annonce_source": null,
     "annonce_jours": null,
-    "annonces_details": []
+    "annonces_details": [],
+    "sci_proche": {
+      "nom": "STELAE",
+      "siren": "753103068",
+      "adresse": "8 A BOULEVARD DE LA PRESENTATION 13013 MARSEILLE",
+      "dist_m": 94,
+      "dirigeants": [
+        "DAGHURIAN (BARBERIS) MIREILLE",
+        "DAGHURIAN BERNARD",
+        "DAGHURIAN LAETITIA"
+      ],
+      "date_creation": "2012-08-01"
+    },
+    "sci_count": 2
   },
   {
     "id": "2513E3876334L",
@@ -12633,7 +13775,19 @@
         "source": "avendrealouer",
         "titre": "Maison 5 pièces 117 m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI LES BOUIBOUIS",
+      "siren": "993560226",
+      "adresse": "34 RUE DES CHARS 13013 MARSEILLE",
+      "dist_m": 10,
+      "dirigeants": [
+        "BROUCHERY FLORENT JOËL BERNARD",
+        "ELLENA ELISABETH MARIE PAULE"
+      ],
+      "date_creation": "2025-10-28"
+    },
+    "sci_count": 6
   },
   {
     "id": "2613E1001510I",
@@ -12770,7 +13924,19 @@
         "source": "bellesdemeures",
         "titre": "vente - villa"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI RONACO",
+      "siren": "834925505",
+      "adresse": "65 CHE DE LA BASTIDE LONGUE 13013 MARSEILLE 13",
+      "dist_m": 61,
+      "dirigeants": [
+        "GERMAIN RONALD",
+        "SALVI CORALINE NELLY SOPHIE"
+      ],
+      "date_creation": "2017-11-27"
+    },
+    "sci_count": 2
   },
   {
     "id": "2613E0314385L",
@@ -12907,7 +14073,20 @@
         "source": "avendrealouer",
         "titre": "Achat pavillon"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "RIDOUALA",
+      "siren": "933478786",
+      "adresse": "3 BOULEVARD LACORDAIRE 13013 MARSEILLE",
+      "dist_m": 45,
+      "dirigeants": [
+        "LADOUARI LAURENT PHILIPPE",
+        "LADOUARI LIONEL THOMAS",
+        "FERRAS (LADOUARI) MALIKA ANNE"
+      ],
+      "date_creation": "2024-09-22"
+    },
+    "sci_count": 3
   },
   {
     "id": "2613E0973940Y",
@@ -13044,7 +14223,18 @@
         "source": "bienici",
         "titre": "Maison à vendre - 4 pièces - 103 m2 - Marseille - 13013 - PR"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI LE MANOIR",
+      "siren": "440726701",
+      "adresse": "LES MOURETS HAUTS 23 BOULEVARD BERNARD VERGE 13013 MARSEILLE",
+      "dist_m": 5,
+      "dirigeants": [
+        "DESTEFANIS (BILLIA) CHRISTEL"
+      ],
+      "date_creation": "2002-01-02"
+    },
+    "sci_count": 9
   },
   {
     "id": "2613E0667688A",
@@ -13181,7 +14371,19 @@
         "source": "avendrealouer",
         "titre": "Maison a rehabiliter chateau gombert"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "MAREP",
+      "siren": "445020985",
+      "adresse": "55 CHEMIN DES GRIVES 13013 MARSEILLE",
+      "dist_m": 10,
+      "dirigeants": [
+        "TOROMANIAN (KADJOIAN) MARGUERITE",
+        "TOROMANIAN EVELYNE"
+      ],
+      "date_creation": "2003-01-07"
+    },
+    "sci_count": 1
   },
   {
     "id": "2613E0971356O",
@@ -13318,7 +14520,9 @@
         "source": "avendrealouer",
         "titre": "Type 2 dernier étage Château-Gombert 13013"
       }
-    ]
+    ],
+    "sci_proche": null,
+    "sci_count": 0
   },
   {
     "id": "2613E0819598S",
@@ -13455,7 +14659,20 @@
         "source": "iadfrance",
         "titre": "vente - maison"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI INFI CEDRES",
+      "siren": "489151720",
+      "adresse": "1 IMPASSE DES INDEPENDANTS 13013 MARSEILLE",
+      "dist_m": 31,
+      "dirigeants": [
+        "ATTID SOUAD",
+        "BAVIOUL (RODRIGUEZ) CHRISTIANE",
+        "VIGNOLO EMMANUELLE"
+      ],
+      "date_creation": "2006-03-01"
+    },
+    "sci_count": 8
   },
   {
     "id": "2613E0342190W",
@@ -13565,7 +14782,19 @@
         "source": "logic-immo",
         "titre": "Achat villa"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "YUKA",
+      "siren": "438900441",
+      "adresse": "131 CHEMIN DE CHATEAU GOMBERT 13013 MARSEILLE",
+      "dist_m": 44,
+      "dirigeants": [
+        "AGGUINI MOKRANE",
+        "AGGUINI RABAH"
+      ],
+      "date_creation": "2001-06-13"
+    },
+    "sci_count": 8
   },
   {
     "id": "2613E0585612G",
@@ -13693,7 +14922,19 @@
         "source": "avendrealouer",
         "titre": "Maison t4 de 82m2 + studio de 13m2 sur terrain de 320m2 quar"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "NALO PATRIMOINE",
+      "siren": "901949990",
+      "adresse": "13 BOULEVARD LACORDAIRE 13013 MARSEILLE",
+      "dist_m": 13,
+      "dirigeants": [
+        "PARODI NATHALIE",
+        "TRABUCATO OLIVIER"
+      ],
+      "date_creation": "2021-07-28"
+    },
+    "sci_count": 10
   },
   {
     "id": "2613E0157941J",
@@ -13812,7 +15053,19 @@
         "source": "bienici",
         "titre": "Achat villa"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "ARKO INVEST",
+      "siren": "831056163",
+      "adresse": "49 TRA RENE RICHAUD 13013 MARSEILLE 13",
+      "dist_m": 68,
+      "dirigeants": [
+        "BIRGIN ARAS",
+        "BIRGIN CHRISTIAN SEVAN"
+      ],
+      "date_creation": "2017-07-21"
+    },
+    "sci_count": 1
   },
   {
     "id": "2613E0659462Q",
@@ -13949,7 +15202,19 @@
         "source": "leboncoin",
         "titre": "Maison 5 pièces 135 m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "THEJU",
+      "siren": "831193842",
+      "adresse": "18 BOULEVARD CENTRAL 13013 MARSEILLE",
+      "dist_m": 16,
+      "dirigeants": [
+        "KLETZLEN JEAN",
+        "LEBRE SABINE"
+      ],
+      "date_creation": "2017-06-29"
+    },
+    "sci_count": 4
   },
   {
     "id": "2613E0546442S",
@@ -14077,7 +15342,19 @@
         "source": "leboncoin",
         "titre": "Villa T5 + Studio indépendant"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SPINA 2",
+      "siren": "812572998",
+      "adresse": "LOT 206 BAT B6 HELIOPOLIS 2 117 BOULEVARD BARA 13013 MARSEILLE",
+      "dist_m": 90,
+      "dirigeants": [
+        "SPINA FREDERIC",
+        "SPINA STEPHANE"
+      ],
+      "date_creation": "2015-07-01"
+    },
+    "sci_count": 1
   },
   {
     "id": "2613E0316295X",
@@ -14205,7 +15482,19 @@
         "source": "seloger",
         "titre": "Maison à vendre"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "DAVIA",
+      "siren": "829292861",
+      "adresse": "86 CHEMIN DES AMPHOUX 13013 MARSEILLE",
+      "dist_m": 0,
+      "dirigeants": [
+        "BALLOCCHI AXEL",
+        "BASCIANO (BALLOCCHI) JULIE"
+      ],
+      "date_creation": "2017-04-24"
+    },
+    "sci_count": 7
   },
   {
     "id": "2613E0423803V",
@@ -14315,7 +15604,20 @@
         "source": "avendrealouer",
         "titre": "13013 Château Gombert: Beau T4 avec terrasse, balcon et deux"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI GSMT",
+      "siren": "482526985",
+      "adresse": "14 BD HOPPER 13013 MARSEILLE 13",
+      "dist_m": 53,
+      "dirigeants": [
+        "RISCATTO (COMBARNOUS) SABINE",
+        "RISCATTO GILLES",
+        "RISCATTO MATHIEU"
+      ],
+      "date_creation": "2005-05-26"
+    },
+    "sci_count": 4
   },
   {
     "id": "2613E0963900U",
@@ -14452,7 +15754,19 @@
         "source": "avendrealouer",
         "titre": "Maison avec revenus locatif Marseille 9 pièce(s) 285m2"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI CHATEAU 20",
+      "siren": "503880882",
+      "adresse": "CHEMIN DES MOURETS 10 MTE MILOU 13013 MARSEILLE 13",
+      "dist_m": 40,
+      "dirigeants": [
+        "DOZOL GILLES",
+        "DOZOL HERVE"
+      ],
+      "date_creation": "2008-04-22"
+    },
+    "sci_count": 2
   },
   {
     "id": "2613E0636752E",
@@ -14580,7 +15894,20 @@
         "source": "orpi",
         "titre": "Marseille 13ème - 1265000"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI PASYLAUVA",
+      "siren": "450916481",
+      "adresse": "CHATEAU GOMBERT 52 CHEMIN DE ROUSSET 13013 MARSEILLE",
+      "dist_m": 51,
+      "dirigeants": [
+        "ANGELINI LAURIS",
+        "ANGELINI VALERIE",
+        "CESSOU SYLVAIN"
+      ],
+      "date_creation": "2002-05-03"
+    },
+    "sci_count": 8
   },
   {
     "id": "2613E0413465F",
@@ -14717,7 +16044,19 @@
         "source": "seloger",
         "titre": "Marseille 13ème - 1190000"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI SOLEIL DU SUD",
+      "siren": "824643035",
+      "adresse": "96 AVENUE PAUL DALBRET 13013 MARSEILLE",
+      "dist_m": 52,
+      "dirigeants": [
+        "AULNER AURELIA MARIE DILVA",
+        "ROLLANDIN LAURENT JEAN MICHEL"
+      ],
+      "date_creation": "2016-12-02"
+    },
+    "sci_count": 6
   },
   {
     "id": "2613E1032517X",
@@ -14854,7 +16193,18 @@
         "source": "entreparticuliers",
         "titre": "vente - maison"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI CURTEL",
+      "siren": "437978794",
+      "adresse": "45 AVENUE JEAN ALBERTINI 13013 MARSEILLE",
+      "dist_m": 55,
+      "dirigeants": [
+        "FARRUGIA CHRISTIAN"
+      ],
+      "date_creation": "2001-05-28"
+    },
+    "sci_count": 1
   },
   {
     "id": "2613E0974957B",
@@ -14964,7 +16314,19 @@
         "source": "leboncoin",
         "titre": "Maison 3 pièces 74 m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "MDB 26",
+      "siren": "829421577",
+      "adresse": "130 CHEMIN DE ST MITRE A FOUR DE BUZE 13013 MARSEILLE",
+      "dist_m": 0,
+      "dirigeants": [
+        "BONNEFOUS BENJAMIN",
+        "ZENOU FORTUNEE"
+      ],
+      "date_creation": "2017-05-02"
+    },
+    "sci_count": 4
   },
   {
     "id": "2613E0810212S",
@@ -15084,7 +16446,19 @@
         "source": "logic-immo",
         "titre": "vente - villa"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "LE VENTOSE",
+      "siren": "493648943",
+      "adresse": "RESIDENCE PARC LES VIEUX CYPRES 6 RUE VENTOSE 13013 MARSEILLE 13",
+      "dist_m": 40,
+      "dirigeants": [
+        "GALLO CEDRIC",
+        "MOUSSA MICHELE"
+      ],
+      "date_creation": "2006-12-27"
+    },
+    "sci_count": 2
   },
   {
     "id": "2613E0680618I",
@@ -15221,7 +16595,18 @@
         "source": "leboncoin",
         "titre": "Terrain+maison+permis accepté Marseille 13e"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "AYAIDA INVEST",
+      "siren": "477658314",
+      "adresse": "21 BOULEVARD GEMY 13013 MARSEILLE",
+      "dist_m": 28,
+      "dirigeants": [
+        "AYAIDA KAMEL"
+      ],
+      "date_creation": "2004-06-14"
+    },
+    "sci_count": 5
   },
   {
     "id": "2613E0333937L",
@@ -15322,7 +16707,18 @@
         "source": "seloger",
         "titre": "Achat maison 1 étage"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI MONTCALM RAGUSE",
+      "siren": "398403659",
+      "adresse": "143 AVENUE DES CHUTES LAVIE 13013 MARSEILLE",
+      "dist_m": 38,
+      "dirigeants": [
+        "LIEUTAUD BENJAMIN OLIVIER MARIE"
+      ],
+      "date_creation": "1964-11-13"
+    },
+    "sci_count": 14
   },
   {
     "id": "2513E3851995I",
@@ -15459,7 +16855,19 @@
         "source": "fr.foncia",
         "titre": "Vente maison 4 pièces 130 m² Plan-de-Cuques (13380) - Superi"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "A.L INVEST (A.L INVEST) (A.L INVEST)",
+      "siren": "953196920",
+      "adresse": "7 AVENUE DES ROSES 13013 MARSEILLE",
+      "dist_m": 14,
+      "dirigeants": [
+        "HARFI (AMATRUDA) ALEXANDRA SYLVIE",
+        "MAILLARD LEA CATHERINE"
+      ],
+      "date_creation": "2023-05-26"
+    },
+    "sci_count": 4
   },
   {
     "id": "2513E3837202J",
@@ -15587,7 +16995,20 @@
         "source": "gensdeconfiance",
         "titre": "Vends Saint Just - Maison Avec Piscine - 5 chambres, 247m², "
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "ROMALEX",
+      "siren": "538296179",
+      "adresse": "3 BOULEVARD VERD 13013 MARSEILLE",
+      "dist_m": 33,
+      "dirigeants": [
+        "ARAPOGLOU JEAN LOUIS",
+        "GIAZZI-ARAPOGLOU (GIAZZI) ALEXANDRA",
+        "ARAPOGLOU (LANFRANCHI) LAURENCE"
+      ],
+      "date_creation": "2011-11-07"
+    },
+    "sci_count": 10
   },
   {
     "id": "2613E0204393Z",
@@ -15707,7 +17128,19 @@
         "source": "logic-immo",
         "titre": "vente - villa"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "LE VENTOSE",
+      "siren": "493648943",
+      "adresse": "RESIDENCE PARC LES VIEUX CYPRES 6 RUE VENTOSE 13013 MARSEILLE 13",
+      "dist_m": 51,
+      "dirigeants": [
+        "GALLO CEDRIC",
+        "MOUSSA MICHELE"
+      ],
+      "date_creation": "2006-12-27"
+    },
+    "sci_count": 2
   },
   {
     "id": "2613E0657132A",
@@ -15844,7 +17277,19 @@
         "source": "leboncoin",
         "titre": "Maison 5 pièces 135 m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "THEJU",
+      "siren": "831193842",
+      "adresse": "18 BOULEVARD CENTRAL 13013 MARSEILLE",
+      "dist_m": 9,
+      "dirigeants": [
+        "KLETZLEN JEAN",
+        "LEBRE SABINE"
+      ],
+      "date_creation": "2017-06-29"
+    },
+    "sci_count": 3
   },
   {
     "id": "2613E0549626E",
@@ -15981,7 +17426,19 @@
         "source": "paruvendu",
         "titre": "Maison - 4 pièce(s) - 130 m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "I.J.A",
+      "siren": "831246053",
+      "adresse": "RESIDENCE ATHENAS 35 RUE NIELS BOHR 13013 MARSEILLE",
+      "dist_m": 2,
+      "dirigeants": [
+        "IKHERBANE ISSA",
+        "IKHERBANE (KERBADOU) KAHINA"
+      ],
+      "date_creation": "2017-07-28"
+    },
+    "sci_count": 13
   },
   {
     "id": "2613E0548776M",
@@ -16101,7 +17558,19 @@
         "source": "avendrealouer",
         "titre": "Maison 5 pièces 89 m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "2S CAMILLERI (2SC)",
+      "siren": "751333063",
+      "adresse": "19 RUE DE LA GARDIETTE 13013 MARSEILLE",
+      "dist_m": 30,
+      "dirigeants": [
+        "CAMILLERI SERGE",
+        "CAMILLERI (GAUSSEN) SYLVIE"
+      ],
+      "date_creation": "2012-04-25"
+    },
+    "sci_count": 8
   },
   {
     "id": "2613E0432403P",
@@ -16238,7 +17707,9 @@
         "source": "seloger",
         "titre": "Achat maison"
       }
-    ]
+    ],
+    "sci_proche": null,
+    "sci_count": 0
   },
   {
     "id": "2613E0815242E",
@@ -16366,7 +17837,19 @@
         "source": "leboncoin",
         "titre": "Maison 5 pièces 160 m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SAIHI IMMOBILIER",
+      "siren": "933882474",
+      "adresse": "LE CLOS DU CHATEAU VILLA 8 10 RUE BENJAMIN CREMIEUX 13013 MARSEILLE",
+      "dist_m": 15,
+      "dirigeants": [
+        "LICCIA CANDICE",
+        "SAIHI YAHYA"
+      ],
+      "date_creation": "2024-09-01"
+    },
+    "sci_count": 3
   },
   {
     "id": "2613E0627003F",
@@ -16495,7 +17978,9 @@
         "source": "seloger",
         "titre": "achat maison"
       }
-    ]
+    ],
+    "sci_proche": null,
+    "sci_count": 0
   },
   {
     "id": "2613E0603372I",
@@ -16632,7 +18117,19 @@
         "source": "stephaneplazaimmobilier",
         "titre": "Maison à vendre"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "LMDB",
+      "siren": "814575825",
+      "adresse": "LE BELVEDERE DU HARAS VILLA 9 9 RUE FRANCOIS CANAC 13013 MARSEILLE 13",
+      "dist_m": 29,
+      "dirigeants": [
+        "BATTESTINI CEDRIC",
+        "SCIANNELLI-RIBBE (SCIANNELLI) FLORENCE"
+      ],
+      "date_creation": "2015-09-25"
+    },
+    "sci_count": 3
   },
   {
     "id": "2613E0381806O",
@@ -16769,7 +18266,20 @@
         "source": "seloger",
         "titre": "Maison - 7 pièce(s) - 193 m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "ADRILESS",
+      "siren": "444495121",
+      "adresse": "LES FRENES 50 BOULEVARD BARA 13013 MARSEILLE",
+      "dist_m": 1,
+      "dirigeants": [
+        "ALVAREZ ADRIEN",
+        "ALVAREZ LESLIE",
+        "ALVAREZ SERGE"
+      ],
+      "date_creation": "2002-12-11"
+    },
+    "sci_count": 11
   },
   {
     "id": "2513E3882559W",
@@ -16897,7 +18407,19 @@
         "source": "leboncoin",
         "titre": "Maison T4 au calme avec jardin + 1 dépendance et places de p"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SENE INVEST",
+      "siren": "910596204",
+      "adresse": "18 RUE GERMINAL 13013 MARSEILLE",
+      "dist_m": 64,
+      "dirigeants": [
+        "SENE OMAR",
+        "SENE SOFIANE"
+      ],
+      "date_creation": "2022-01-31"
+    },
+    "sci_count": 3
   },
   {
     "id": "2613E0964245B",
@@ -17034,7 +18556,9 @@
         "source": "bienici",
         "titre": "Villa Château Gombert 5 pièces 144 m²"
       }
-    ]
+    ],
+    "sci_proche": null,
+    "sci_count": 0
   },
   {
     "id": "2613E0864341P",
@@ -17154,7 +18678,20 @@
         "source": "logic-immo",
         "titre": "Villa 5 pièces 300 m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI MATHYS",
+      "siren": "889556841",
+      "adresse": "47 RUE GERMINAL 13013 MARSEILLE",
+      "dist_m": 60,
+      "dirigeants": [
+        "PALMISANO EMILIE",
+        "WEIL MATHYS",
+        "WEIL NICOLAS"
+      ],
+      "date_creation": "2020-09-02"
+    },
+    "sci_count": 2
   },
   {
     "id": "2613E0494398A",
@@ -17282,7 +18819,18 @@
         "source": "etreproprio",
         "titre": "Maison contemporaine de 155m2 de 6 pièces, piscine, garage, "
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI JORDANA",
+      "siren": "448099176",
+      "adresse": "11 AV COROT 13013 MARSEILLE 13",
+      "dist_m": 19,
+      "dirigeants": [
+        "NFON EPEE EMMANUEL"
+      ],
+      "date_creation": "2003-03-05"
+    },
+    "sci_count": 21
   },
   {
     "id": "2613E0429011D",
@@ -17419,7 +18967,19 @@
         "source": "gensdeconfiance",
         "titre": "Villa neuve 190m² Chateau Gombert"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "ANACLO",
+      "siren": "995075025",
+      "adresse": "N 1 AVENUE PAUL DALBRET 13013 MARSEILLE",
+      "dist_m": 75,
+      "dirigeants": [
+        "GAGU (BEDU) CECILE MARIE AMANDINE",
+        "GAGU RENAUD"
+      ],
+      "date_creation": "2025-12-11"
+    },
+    "sci_count": 2
   },
   {
     "id": "2613E0849845B",
@@ -17539,7 +19099,18 @@
         "source": "superimmo",
         "titre": "Maison moderne avec jardin à vendre à Marseille - La Batarel"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI AURORE",
+      "siren": "418394235",
+      "adresse": "86 TRA DE PARTY 13013 MARSEILLE 13",
+      "dist_m": 32,
+      "dirigeants": [
+        "ADAM GEORGES PIERRE"
+      ],
+      "date_creation": "1998-02-11"
+    },
+    "sci_count": 1
   },
   {
     "id": "2613E0563309L",
@@ -17667,7 +19238,20 @@
         "source": "leboncoin",
         "titre": "Maison 5 pièces 145 m²"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "SCI LYOUM",
+      "siren": "849202247",
+      "adresse": "6 BOULEVARD BARTILLAT 13013 MARSEILLE",
+      "dist_m": 31,
+      "dirigeants": [
+        "BOLBAERT DOMINIQUE DANIELLE COLETTE",
+        "MEJRI HICHEM",
+        "MEJRI LISA ARMANDINE MARHYA"
+      ],
+      "date_creation": "2019-03-11"
+    },
+    "sci_count": 8
   },
   {
     "id": "2613E0543487B",
@@ -17804,7 +19388,20 @@
         "source": "bienici",
         "titre": "Vente maison 5 pièces de 148 m² à Marseille (13013) - 164768"
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "ROSE THIE",
+      "siren": "482032687",
+      "adresse": "7 TRAVERSE DES BAUDILLONS 13013 MARSEILLE",
+      "dist_m": 18,
+      "dirigeants": [
+        "CONSTANTATOS (CERVERO) ROSE MARIE",
+        "CONSTANTATOS ALEXIS",
+        "CONSTANTATOS DIMITRI"
+      ],
+      "date_creation": "2005-04-21"
+    },
+    "sci_count": 12
   },
   {
     "id": "2613E0134401Z",
@@ -17941,6 +19538,19 @@
         "source": "etreproprio",
         "titre": "Maison contemporaine de 155m2 de 6 pièces, piscine, garage, "
       }
-    ]
+    ],
+    "sci_proche": {
+      "nom": "MARSEILLE REAL INVEST (MRI)",
+      "siren": "841859655",
+      "adresse": "SAINT JUST 3 TRAVERSE DE LA CROIX DE FER 13013 MARSEILLE",
+      "dist_m": 66,
+      "dirigeants": [
+        "BRU (BRU) ANTONY FRANK",
+        "BRU (BRU) FANNY VALENTINE",
+        "BRU (BRU) JEREMY ANTONY VALENTIN"
+      ],
+      "date_creation": "2018-08-20"
+    },
+    "sci_count": 20
   }
 ]
