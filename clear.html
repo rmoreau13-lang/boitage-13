@@ -2,46 +2,144 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Réinitialiser l'app</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Réinitialiser</title>
 <style>
-  body{font-family:Inter,Arial,sans-serif;background:#0f1117;color:#e8eaf0;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;margin:0;padding:20px;text-align:center}
-  h1{font-size:22px;font-weight:900;margin-bottom:8px}
-  p{color:#9ba3b8;font-size:14px;margin-bottom:24px}
-  .btn{background:#e0552a;color:#fff;border:none;border-radius:12px;padding:14px 32px;font-size:16px;font-weight:700;cursor:pointer;width:100%;max-width:320px;margin-bottom:12px}
-  .btn2{background:#1d2130;color:#e8eaf0;border:1px solid #2a2f3e;border-radius:12px;padding:14px 32px;font-size:16px;font-weight:700;cursor:pointer;width:100%;max-width:320px}
-  .status{margin-top:20px;font-size:13px;color:#0ea5a0;min-height:20px}
+  :root{
+    --bg:#0f1117;--bg2:#161a24;--border:#2a2f3e;
+    --ink:#e8eaf0;--ink2:#9ba3b8;
+    --accent:#e0552a;--teal:#0ea5a0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;background:var(--bg)}
+  body{
+    font-family:-apple-system,Inter,Arial,sans-serif;
+    color:var(--ink);
+    display:flex;flex-direction:column;
+    align-items:center;justify-content:center;
+    padding:24px 20px;
+    padding-top:calc(24px + env(safe-area-inset-top));
+    padding-bottom:calc(24px + env(safe-area-inset-bottom));
+    text-align:center;
+    min-height:100vh;
+  }
+
+  .icon{font-size:56px;margin-bottom:20px;display:block}
+
+  h1{
+    font-size:24px;font-weight:900;
+    margin-bottom:10px;letter-spacing:-0.3px;
+  }
+  p{
+    color:var(--ink2);font-size:15px;line-height:1.5;
+    margin-bottom:36px;max-width:300px;
+  }
+
+  .btn{
+    background:var(--accent);color:#fff;
+    border:none;border-radius:14px;
+    padding:16px 24px;
+    font-size:17px;font-weight:700;
+    cursor:pointer;
+    width:100%;max-width:340px;
+    margin-bottom:12px;
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    -webkit-appearance:none;
+    transition:opacity .15s;
+    min-height:54px;
+  }
+  .btn:active{opacity:.75}
+
+  .btn2{
+    background:var(--bg2);color:var(--ink);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:16px 24px;
+    font-size:17px;font-weight:600;
+    cursor:pointer;
+    width:100%;max-width:340px;
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    -webkit-appearance:none;
+    transition:opacity .15s;
+    min-height:54px;
+  }
+  .btn2:active{opacity:.75}
+
+  .status{
+    margin-top:28px;
+    font-size:14px;color:var(--teal);
+    min-height:22px;font-weight:600;
+    max-width:320px;line-height:1.4;
+  }
+  .status.err{color:#ff6b6b}
+
+  /* spinner */
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .spinner{
+    display:inline-block;width:18px;height:18px;
+    border:2px solid rgba(255,255,255,.3);
+    border-top-color:#fff;
+    border-radius:50%;
+    animation:spin .7s linear infinite;
+    flex-shrink:0;
+  }
 </style>
 </head>
 <body>
-<h1>🔄 Réinitialiser l'app</h1>
-<p>Si la carte ou les prospects ne s'affichent pas, utilise ce bouton pour vider le cache et forcer le rechargement.</p>
-<button class="btn" onclick="clearAll()">🗑️ Vider le cache SW</button>
-<button class="btn2" onclick="location.href='/boitage-13/'">← Retour à l'app</button>
+
+<span class="icon">🔄</span>
+<h1>Réinitialiser l'app</h1>
+<p>La carte ou les prospects ne s'affichent pas&nbsp;? Vide le cache pour forcer le rechargement.</p>
+
+<button class="btn" id="btnClear" onclick="clearAll()">
+  <span>🗑️</span><span>Vider le cache</span>
+</button>
+<button class="btn2" onclick="location.href='/boitage-13/'">
+  <span>←</span><span>Retour à l'app</span>
+</button>
+
 <div class="status" id="st"></div>
+
 <script>
 async function clearAll(){
   const st = document.getElementById('st');
-  st.textContent = '⏳ Suppression des caches…';
+  const btn = document.getElementById('btnClear');
+
+  btn.innerHTML = '<span class="spinner"></span><span>Nettoyage…</span>';
+  btn.disabled = true;
+  st.className = 'status';
+  st.textContent = '';
+
   try {
-    // Dérégistrer tous les SW
+    let swCount = 0, cacheCount = 0;
+
     if('serviceWorker' in navigator){
       const regs = await navigator.serviceWorker.getRegistrations();
       await Promise.all(regs.map(r => r.unregister()));
-      st.textContent = '✓ ' + regs.length + ' Service Worker(s) supprimé(s)';
+      swCount = regs.length;
     }
-    // Vider tous les caches
-    const keys = await caches.keys();
-    await Promise.all(keys.map(k => caches.delete(k)));
-    st.textContent += ' | ✓ ' + keys.length + ' cache(s) vidé(s)';
-    
+
+    if('caches' in window){
+      const keys = await caches.keys();
+      await Promise.all(keys.map(k => caches.delete(k)));
+      cacheCount = keys.length;
+    }
+
+    st.textContent = '✓ ' + swCount + ' SW supprimé(s) · ' + cacheCount + ' cache(s) vidé(s)';
+
+    btn.innerHTML = '<span>✅</span><span>Rechargement…</span>';
+
     setTimeout(() => {
-      st.textContent += ' | Rechargement…';
-      // Forcer rechargement depuis le réseau
-      location.href = '/boitage-13/?nocache=' + Date.now();
-    }, 1500);
-  } catch(e) {
-    st.textContent = '⚠️ Erreur: ' + e.message;
+      location.href = '/boitage-13/?t=' + Date.now();
+    }, 1200);
+
+  } catch(e){
+    st.className = 'status err';
+    st.textContent = '⚠️ ' + e.message;
+    btn.innerHTML = '<span>🗑️</span><span>Réessayer</span>';
+    btn.disabled = false;
   }
 }
 </script>
