@@ -19,6 +19,7 @@
   --sh:0 2px 12px rgba(60,30,15,.12);--sh2:0 8px 32px rgba(60,30,15,.18);
   --r:16px;--r2:12px;--safe-top:env(safe-area-inset-top,0px);
   --safe-bot:env(safe-area-inset-bottom,0px);
+  --vente:#0a6ebd;--vente-d:#064e8a;
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;overscroll-behavior:none}
@@ -184,7 +185,7 @@ textarea.inp{resize:vertical;min-height:46px}
  </div>
  <div class="panel" id="panel"><div class="panelin">
   <span class="chip" data-t="chaud">🔥</span><span class="chip" data-t="tiede">♨️</span><span class="chip" data-t="froid">🌡️</span>
-  <span class="chip sun" id="cprio">⭐</span><span class="chip" id="cboite">📭 à boîter</span><span class="chip" id="crecent">🗓️ non boîté 30j</span><span class="chip" id="ctop" style="background:#d0282820;border-color:#d02828;color:#c01818">🔥 Signal TOP</span><span class="chip" id="cdpefrais" style="background:#e0802020;border-color:#e08030;color:#b05010">⚡ DPE &lt;30j</span><span class="chip" id="cdvf" style="background:#d0282815;border-color:#d02828;color:#c01818">🚨 DVF</span><span class="chip" id="chist" style="background:#1a3a6020;border-color:#1a3a60;color:#1a3a60">📅 Achat ancien</span><span class="chip" id="cpv" style="background:#c8960c20;border-color:#c8960c;color:#8a6800">📈 PV +50%</span><span class="chip" id="cterrain" style="background:#1a6e2e20;border-color:#1a6e2e;color:#145a26">🌳 Terrain +400m²</span>
+  <span class="chip sun" id="cprio">⭐</span><span class="chip" id="cboite">📭 à boîter</span><span class="chip" id="crecent">🗓️ non boîté 30j</span><span class="chip" id="ctop" style="background:#d0282820;border-color:#d02828;color:#c01818">🔥 Signal TOP</span><span class="chip" id="cdpefrais" style="background:#e0802020;border-color:#e08030;color:#b05010">⚡ DPE &lt;30j</span><span class="chip" id="cvente" style="background:#0a6ebd20;border-color:#0a6ebd;color:#064e8a">🏷️ En vente</span><span class="chip" id="cdvf" style="background:#d0282815;border-color:#d02828;color:#c01818">🚨 DVF</span><span class="chip" id="chist" style="background:#1a3a6020;border-color:#1a3a60;color:#1a3a60">📅 Achat ancien</span><span class="chip" id="cpv" style="background:#c8960c20;border-color:#c8960c;color:#8a6800">📈 PV +50%</span><span class="chip" id="cterrain" style="background:#1a6e2e20;border-color:#1a6e2e;color:#145a26">🌳 Terrain +400m²</span>
   <select class="sel" id="quart"></select>
   <select class="sel" id="sort"><option value="score">⇅ Score</option><option value="dvf">⇅ Ventes DVF</option><option value="hist">⇅ Achat ancien</option><option value="dpe">⇅ DPE récent</option><option value="quartier">⇅ Quartier</option></select>
  </div></div>
@@ -221,7 +222,7 @@ const store={get(k){try{return localStorage.getItem(k)}catch(e){return mem[k]??n
  del(k){try{localStorage.removeItem(k)}catch(e){delete mem[k]}}};
 let DATA=[],byId={},MAX=76;
 let state={},tours=[],tour=[],tourU='',travelMode='bicycling',startPos=null,phIndex={},ficheOpen=null,firstDismissed=false;
-let ft=new Set(),fq='all',prio=0,q='',fBoite=0,fRecent=0,fDvf=0,fHist=0,fPv=0,fTerrain=0,fDpeFrais=0,fTop=0,sortMode='score';
+let ft=new Set(),fq='all',prio=0,q='',fBoite=0,fRecent=0,fDvf=0,fHist=0,fPv=0,fTerrain=0,fDpeFrais=0,fTop=0,fVente=0,sortMode='score';
 // ---- état + horodatage par enregistrement ----
 function rec(id){let r=state[id];if(!r){r=state[id]={}}r.s=r.s||0;r.notes=r.notes||[];r.contact=r.contact||{};r.det=r.det||{};r.b=r.b||'';r.rdv=r.rdv||'';r.rel=r.rel||'';return r}
 function touch(id){rec(id).u=now()}
@@ -271,7 +272,7 @@ function drawMap(d){if(!map)return;baseLayer.clearLayers();
   m.addTo(baseLayer)});
  drawTour()}
 // ---- liste ----
-function filtered(){const now30=Date.now()-30*86400000;let d=DATA.filter(p=>(ft.size==0||ft.has(p.tier))&&(fq=='all'||p.q==fq||p.qoff===fq)&&(!prio||p.prio)&&(!fBoite||!rec(p.id).b)&&(!fRecent||!rec(p.id).b||new Date(rec(p.id).b)<new Date(Date.now()-30*86400000))&&(!q||p.adresse.toLowerCase().includes(q)||p.q.toLowerCase().includes(q)||(p.qoff||'').toLowerCase().includes(q))&&(!fDvf||p.dvf_signal==='en_vente'||p.dvf_signal==='vendu_recemment'||p.dvf_signal==='ancienne_vente')&&(!fHist||p.hist_maturite==='tres_mature'||p.hist_maturite==='mature')&&(!fPv||p.pv_pct>=50)&&(!fTerrain||p.terrain_divisible)&&(!fDpeFrais||p.dpe_frais==='tres_frais'||p.dpe_frais==='frais')&&(!fTop||p.signal_top));
+function filtered(){const now30=Date.now()-30*86400000;let d=DATA.filter(p=>(ft.size==0||ft.has(p.tier))&&(fq=='all'||p.q==fq||p.qoff===fq)&&(!prio||p.prio)&&(!fBoite||!rec(p.id).b)&&(!fRecent||!rec(p.id).b||new Date(rec(p.id).b)<new Date(Date.now()-30*86400000))&&(!q||p.adresse.toLowerCase().includes(q)||p.q.toLowerCase().includes(q)||(p.qoff||'').toLowerCase().includes(q))&&(!fDvf||p.dvf_signal==='en_vente'||p.dvf_signal==='vendu_recemment'||p.dvf_signal==='ancienne_vente')&&(!fHist||p.hist_maturite==='tres_mature'||p.hist_maturite==='mature')&&(!fPv||p.pv_pct>=50)&&(!fTerrain||p.terrain_divisible)&&(!fDpeFrais||p.dpe_frais==='tres_frais'||p.dpe_frais==='frais')&&(!fTop||p.signal_top)&&(!fVente||p.annonces_actives));
  if(sortMode==='dpe')d=d.slice().sort((a,b)=>a.jours-b.jours);
  else if(sortMode==='quartier')d=d.slice().sort((a,b)=>(a.q||'').localeCompare(b.q||'','fr')||b.score-a.score);
  else if(sortMode==='dvf'){const P={en_vente:0,vendu_recemment:1,ancienne_vente:2,none:3};d=d.slice().sort((a,b)=>(P[a.dvf_signal||'none']||3)-(P[b.dvf_signal||'none']||3)||b.score-a.score);}
@@ -304,6 +305,14 @@ function terrainBadge(p){
   if(!p.terrain_divisible)return '';
   return '<span style="background:#1a6e2e;color:#fff;border-radius:5px;padding:2px 6px;font-size:10px;font-weight:800;margin-left:2px">🌳 '+Math.round(p.terrain_m2||0)+'m²</span> ';
 }
+function venteBadge(p){
+  if(!p.annonces_actives)return '';
+  var j=p.annonce_jours,prix=p.annonce_prix?p.annonce_prix.toLocaleString('fr-FR')+'€':'';
+  var jL=j!=null?(j<7?'<7j':j<30?j+'j':j<90?Math.round(j/7)+'sem':Math.round(j/30)+'mois'):'?';
+  var SM={leboncoin:'LBC',seloger:'SL',bienici:'BI','logic-immo':'LI',avendrealouer:'AVA',entreparticuliers:'EP',pap:'PAP',century21:'C21',orpi:'ORPI',iadfrance:'IAD'};
+  var sL=(SM[p.annonce_source||'']||'').substring(0,4).toUpperCase()||p.annonce_source||'';
+  return '<span style="background:#0a6ebd;color:#fff;border-radius:5px;padding:2px 7px;font-size:11px;font-weight:900">🏷️'+(prix?' '+prix:'')+(jL?'·'+jL:'')+(sL?' '+sL:'')+'</span> ';
+}
 function dpeFraisBadge(p){
   const f=p.dpe_frais;if(!f||f==='normal')return '';
   if(p.signal_top&&f==='tres_frais')return '<span style="background:#d02828;color:#fff;border-radius:5px;padding:2px 7px;font-size:11px;font-weight:900">🔥 TOP '+p.dpe_age_jours+'j</span> ';
@@ -311,7 +320,7 @@ function dpeFraisBadge(p){
   if(f==='tres_frais')return '<span style="background:#c01010;color:#fff;border-radius:5px;padding:2px 7px;font-size:11px;font-weight:900">🔥 DPE '+p.dpe_age_jours+'j</span> ';
   return '<span style="background:#e08030;color:#fff;border-radius:5px;padding:2px 7px;font-size:11px;font-weight:900">⚡ DPE '+p.dpe_age_jours+'j</span> ';
 }
-function tagHTML(p){const r=rec(p.id);let h=dpeFraisBadge(p)+dvfSignalBadge(p)+histBadge(p)+terrainBadge(p);if(r.b)h+='<span class="tag bo">📭 boîté</span>';if(r.rdv)h+='<span class="tag rdv">📅 RDV '+fdate(r.rdv)+'</span>';if(r.rel)h+='<span class="tag rel">🔔 relance '+fdate(r.rel)+'</span>';if(r.s>0)h+='<span class="tag st">'+STAT[r.s]+'</span>';return h}
+function tagHTML(p){const r=rec(p.id);let h=venteBadge(p)+dpeFraisBadge(p)+dvfSignalBadge(p)+histBadge(p)+terrainBadge(p);if(r.b)h+='<span class="tag bo">📭 boîté</span>';if(r.rdv)h+='<span class="tag rdv">📅 RDV '+fdate(r.rdv)+'</span>';if(r.rel)h+='<span class="tag rel">🔔 relance '+fdate(r.rel)+'</span>';if(r.s>0)h+='<span class="tag st">'+STAT[r.s]+'</span>';return h}
 // ── Swipe sur cartes ──
 function addSwipe(el, onLeft, onRight){
   let sx=0,sy=0,moved=false;
@@ -345,6 +354,8 @@ function updateStats(){
  const dvfHot=DATA.filter(p=>p.dvf_signal==='en_vente'||p.dvf_signal==='vendu_recemment').length;
  const histHot=DATA.filter(p=>p.hist_maturite==='tres_mature'||p.hist_maturite==='mature').length;
  const topHot=DATA.filter(p=>p.signal_top).length;
+const venteHot=DATA.filter(function(p){return p.annonces_actives;}).length;
+if(venteHot>0)st+='<span class="stat" style="cursor:pointer;background:#0a6ebd20;border-color:#0a6ebd;color:#064e8a;font-weight:900" onclick="fVente=1;if($(\'cvente\'))$(\'cvente\').classList.add(\'on\');refresh()" title="Annonces">🏷️ <b>'+venteHot+'</b></span>';
 const dpeFraisHot=DATA.filter(p=>p.dpe_frais==='tres_frais').length;
 let st='';
 if(topHot>0)st+='<span class="stat" style="cursor:pointer;background:#d0282820;border-color:#d02828;color:#c01818;font-weight:900" onclick="fTop=1;if($(\'ctop\'))$(\'ctop\').classList.add(\'on\');refresh()" title="Signal TOP">🔥 <b>'+topHot+'</b></span>';
@@ -620,6 +631,40 @@ sc.ico+' '+sc.msg+
   return h;
 }
 // ---- fiche ----
+function ficheVenteHTML(p){
+  if(!p.annonces_actives)return '';
+  var j=p.annonce_jours;
+  var jLbl=j!=null?(j<7?"depuis <1 sem.":j<30?"depuis "+j+"j":j<90?"depuis "+Math.round(j/7)+" sem.":"depuis "+Math.round(j/30)+" mois"):"?";
+  var SN={leboncoin:'LeBonCoin',seloger:'SeLoger',bienici:'Bienici','logic-immo':'Logic-Immo',avendrealouer:'À Vendre À Louer',entreparticuliers:'Entre Particuliers',pap:'PAP',century21:'Century 21',orpi:'Orpi',iadfrance:'IAD France',squarehabitat:'Square Habitat',safti:'Safti',erafrance:'ERA',efficity:'Efficity',nestenn:'Nestenn','fr.foncia':'Foncia','api-v4.geoimmo':'GeoImmo',superimmo:'SuperImmo',gensdeconfiance:'Gens de Confiance'};
+  var SL=function(n){return SN[n]||n;};
+  var dets=p.annonces_details||[];
+  var prix=p.annonce_prix?p.annonce_prix.toLocaleString('fr-FR')+' €':'';
+  var h='<div class="block" style="border-color:#0a6ebd55;background:#f0f7ff">';
+  h+='<h3 style="color:var(--vente-d)">🏷️ Annonce(s) en vente</h3>';
+  h+='<div style="background:#0a6ebd;color:#fff;border-radius:10px;padding:11px 14px;margin-bottom:10px">';
+  h+='<div style="font-weight:900;font-size:16px">'+(prix||'Prix non communiqué')+'</div>';
+  h+='<div style="font-size:12px;opacity:.88;margin-top:3px">📅 '+jLbl+' via '+SL(p.annonce_source||'')+'</div>';
+  h+='<a href="'+esc(p.annonce_url||'#')+'" target="_blank" rel="noopener" style="display:inline-block;margin-top:8px;background:rgba(255,255,255,.22);color:#fff;border:1.5px solid rgba(255,255,255,.5);border-radius:8px;padding:7px 14px;font-size:12px;font-weight:800;text-decoration:none">🔗 Voir annonce</a>';
+  h+='</div>';
+  h+='<div style="background:#fff8e0;border:1px solid #f0d060;border-radius:8px;padding:8px 11px;font-size:11.5px;color:#7a5a00;margin-bottom:10px">⚠️ Rayon 150m — annonce dans ce secteur, pas forcément ce bien exact.</div>';
+  if(dets.length>1){
+    h+='<div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin-bottom:8px">'+dets.length+' annonce(s) dans le secteur</div>';
+    dets.forEach(function(d,i){
+      var dj=d.jours,djL=dj!=null?(dj<7?'<7j':dj<30?dj+'j':dj<90?Math.round(dj/7)+'sem':Math.round(dj/30)+'mois'):'?';
+      var dp=d.prix?d.prix.toLocaleString('fr-FR')+' €':'',ds=d.surface?d.surface+' m²':'';
+      h+='<a href="'+esc(d.url||'#')+'" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:9px 10px;border:1.5px solid var(--line);border-radius:10px;margin-bottom:6px;background:var(--paper);text-decoration:none;color:var(--ink)">';
+      h+='<div style="font-size:18px;flex:none">'+(i===0?'🏠':'🏡')+'</div>';
+      h+='<div style="flex:1;min-width:0">';
+      h+='<div style="font-weight:800;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+(d.titre?esc(d.titre.substring(0,45)):SL(d.source||''))+'</div>';
+      h+='<div style="font-size:11px;color:var(--mut);margin-top:1px">'+SL(d.source||'')+(dp?' · '+dp:'')+(ds?' · '+ds:'')+'</div>';
+      h+='</div>';
+      h+='<div style="text-align:right;flex:none"><div style="font-size:11px;font-weight:800;color:#0a6ebd">'+djL+'</div><div style="font-size:10px;color:var(--mut)">en ligne</div></div>';
+      h+='</a>';
+    });
+  }
+  h+='</div>';
+  return h;
+}
 function ficheHistHTML(p){
   const m=p.hist_maturite;
   if(!m||m==='nouveau')return '';
@@ -678,7 +723,7 @@ function openFiche(id){ficheOpen=id;const p=byId[id];if(!p)return;const r=rec(id
  +'<div class="block"><h3>🏠 Détails du bien / visite</h3><div class="two"><div class="fld"><label>Prix estimé</label><input class="inp" placeholder="€" value="'+esc(r.det.prix)+'" onchange="setD(\''+id+'\',\'prix\',this.value)"></div><div class="fld"><label>Type</label><input class="inp" placeholder="Maison T4" value="'+esc(r.det.type)+'" onchange="setD(\''+id+'\',\'type\',this.value)"></div></div><div class="fld"><label>État</label><input class="inp" placeholder="Bon / à rafraîchir…" value="'+esc(r.det.etat)+'" onchange="setD(\''+id+'\',\'etat\',this.value)"></div><div class="fld"><label>Observations</label><textarea class="inp" rows="2" onchange="setD(\''+id+'\',\'obs\',this.value)">'+esc(r.det.obs)+'</textarea></div></div>'
  +'<div class="block"><h3>📝 Notes (horodatées)</h3><div style="display:flex;gap:7px"><input class="inp" id="newnote" placeholder="Note de passage…"><button class="cb tel" style="flex:none;width:48px;height:52px;min-height:52px" onclick="addNote(\''+id+'\')">+</button></div><div id="notes" style="margin-top:6px">'+notesHTML(id)+'</div></div>'
  +'<div class="block"><h3>📷 Photos</h3><div class="phgrid" id="phgrid"></div></div>'
- +ficheAdemeHTML(p)+ficheDvfHTML(p)
+ +ficheVenteHTML(p)+ficheAdemeHTML(p)+ficheDvfHTML(p)
  +'</div>';
  const fd=$('fiche');fd.classList.add('show');requestAnimationFrame(()=>fd.classList.add('open'));renderPhotos(id);bindFicheInputs(id)}
 function closeFiche(){saveState();const fd=$('fiche');fd.classList.remove('open');ficheOpen=null;setTimeout(()=>fd.classList.remove('show'),260);refresh()}
@@ -729,6 +774,7 @@ if($('cpv'))$('cpv').onclick=function(){fPv=fPv?0:1;this.classList.toggle('on');
 if($('cterrain'))$('cterrain').onclick=function(){fTerrain=fTerrain?0:1;this.classList.toggle('on');refresh()};
 if($('ctop'))$('ctop').onclick=function(){fTop=fTop?0:1;this.classList.toggle('on');refresh()};
 if($('cdpefrais'))$('cdpefrais').onclick=function(){fDpeFrais=fDpeFrais?0:1;this.classList.toggle('on');refresh()};
+if($('cvente'))$('cvente').onclick=function(){fVente=fVente?0:1;this.classList.toggle('on');refresh()};
 $('quart').onchange=e=>{fq=e.target.value;refresh()};
 $('sort').onchange=e=>{sortMode=e.target.value;refresh()};
 document.querySelectorAll('#nav button').forEach(b=>b.onclick=()=>nav(b.dataset.s));
