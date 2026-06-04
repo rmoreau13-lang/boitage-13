@@ -2,7 +2,7 @@
 <script>(function(){
   if(!('serviceWorker' in navigator))return;
   // Force clear : désinscrire TOUS les SW + vider TOUS les caches puis recharger
-  var FORCE_KEY='boitage13_sw_cleared_v31';
+  var FORCE_KEY='boitage13_sw_cleared_v32';
   if(!sessionStorage.getItem(FORCE_KEY)){
     sessionStorage.setItem(FORCE_KEY,'1');
     Promise.all([
@@ -1227,11 +1227,11 @@ function renderTours(){
         '<a href="'+navUrl+'" target="_blank" rel="noopener" '+
         'style="flex:none;padding:7px 10px;background:rgba(26,115,232,.12);'+
         'border:1.5px solid rgba(26,115,232,.25);border-radius:9px;'+
-        'color:#60a5fa;font-size:13px;text-decoration:none;margin-right:5px" '+
+        'color:#1d4ed8;font-size:13px;text-decoration:none;margin-right:5px" '+
         'title="Naviguer vers ce point">📍</a>'+
         '<button class="rm" onclick="toggleTour(\''+p.id+'\')">✕</button></div>';
     }).join('');
-    h+='<button class="big" style="background:#2d5a7a;margin-top:10px" onclick="smsMasse()">💬 SMS en masse</button>';
+    h+='<button class="big" style="background:#1a4e6e;color:#fff;margin-top:10px" onclick="smsMasse()">💬 SMS en masse</button>';
     h+='<button class="big ghost" style="margin-top:8px" onclick="saveCurrentTour()">💾 Enregistrer cette tournée</button>';
     h+='</div>';
   }
