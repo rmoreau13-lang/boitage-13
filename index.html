@@ -2,7 +2,7 @@
 <script>(function(){
   if(!('serviceWorker' in navigator))return;
   // Force clear : désinscrire TOUS les SW + vider TOUS les caches puis recharger
-  var FORCE_KEY='boitage13_sw_cleared_v24';
+  var FORCE_KEY='boitage13_sw_cleared_v25';
   if(!sessionStorage.getItem(FORCE_KEY)){
     sessionStorage.setItem(FORCE_KEY,'1');
     Promise.all([
@@ -191,11 +191,12 @@ body{
   border:1px solid var(--border);background:var(--bg3);
   border-radius:var(--r2);padding:9px 12px;
   font-family:inherit;font-weight:600;font-size:13px;
-  min-height:40px;color:var(--ink);
+  min-height:44px;color:var(--ink);
   appearance:none;-webkit-appearance:none;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239ba3b8' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
   background-repeat:no-repeat;background-position:right 12px center;
   padding-right:32px;
+  width:100%;touch-action:manipulation;cursor:pointer;
 }
 
 /* ── BANNER ── */
