@@ -2,7 +2,7 @@
 <script>(function(){
   if(!('serviceWorker' in navigator))return;
   // Force clear : désinscrire TOUS les SW + vider TOUS les caches puis recharger
-  var FORCE_KEY='boitage13_sw_cleared_v32';
+  var FORCE_KEY='boitage13_sw_cleared_v33';
   if(!sessionStorage.getItem(FORCE_KEY)){
     sessionStorage.setItem(FORCE_KEY,'1');
     Promise.all([
@@ -1152,7 +1152,7 @@ function optimizeAndMaps(){optimize();setTimeout(function(){window.open(mapsUrl(
 function tourSavedKm(t){var s=t.stops.map(function(id){return byId[id];}).filter(Boolean);var d=0;for(var i=1;i<s.length;i++)d+=dist(s[i-1],s[i]);return d.toFixed(1);}
 function setMode(m){travelMode=m;store.set('boitage13_mode',m);renderTours();drawTour();}
 function usePos(){if(!navigator.geolocation){toast('Géoloc non disponible');return;}navigator.geolocation.getCurrentPosition(function(pos){startPos={id:'__start__',lat:pos.coords.latitude,lon:pos.coords.longitude};toast('📍 Position définie');renderTours();drawTour();fitTour();},function(){toast('⚠️ Géoloc refusée');},{enableHighAccuracy:true,timeout:6000});}
-function renderTours(){
+function renderTours(){try{
   var s=tourStops();var n=tour.length;
   $('navbdg').style.display=n?'flex':'none';$('navbdg').textContent=n;
   var saved=tours.filter(function(t){return !t.deleted;});
@@ -1254,7 +1254,7 @@ function renderTours(){
     }).join('');
   }
   $('scr-tournees').innerHTML=h;
-}
+}catch(e){$('scr-tournees').innerHTML='<div class="block" style="color:red;font-size:13px;padding:16px">⚠️ Erreur renderTours : '+e.message+'<br><pre style="font-size:10px;overflow:auto">'+e.stack+'</pre></div>';console.error('renderTours error',e);}}
 function tourMapsUrl(t){const s=t.stops.map(id=>byId[id]).filter(Boolean);if(!s.length)return '#';if(s.length<2)return 'https://www.google.com/maps/dir/?api=1&destination='+s[0].lat+','+s[0].lon;const o=s[0],d=s[s.length-1],wp=s.slice(1,-1).map(p=>p.lat+','+p.lon).join('|');let u='https://www.google.com/maps/dir/?api=1&origin='+o.lat+','+o.lon+'&destination='+d.lat+','+d.lon;if(wp)u+='&waypoints='+encodeURIComponent(wp);return u}
 function saveCurrentTour(){if(!tour.length)return;const nm=prompt('Nom de la tournée :','Tournée '+new Date().toLocaleDateString('fr-FR'));if(nm===null)return;tours.unshift({id:'t'+Date.now(),name:nm||'Tournée',date:new Date().toLocaleDateString('fr-FR'),stops:[...tour],u:now()});saveTours();renderTours();toast('💾 Tournée enregistrée')}
 function openTourSaved(id){const t=tours.find(x=>x.id===id);if(!t)return;tour=[...t.stops];saveTour();refresh();toast('Tournée chargée')}
