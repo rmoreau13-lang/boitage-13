@@ -581,7 +581,7 @@ function annBtnHTML(p){
 }
 function annURL(p){const rue=p.adresse.replace(/^\d+\s*/,'');return 'https://www.google.com/search?q='+encodeURIComponent('"'+rue+'" 13013 Marseille maison à vendre')}
 function earthURL(p){return 'https://earth.google.com/web/@'+p.lat+','+p.lon+',120a,350d,35y,0h,45t,0r'}
-function pappersURL(p){return 'https://immobilier.pappers.fr/?q='+encodeURIComponent(p.adresse+' 13013 Marseille')}
+function pappersURL(p){return p.pappers_url||'https://immobilier.pappers.fr/?q='+encodeURIComponent(p.adresse+' 13013 Marseille')}
 function initMap(){map=L.map('map',{zoomControl:true}).setView([43.345,5.432],13);
  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
  baseLayer=L.layerGroup().addTo(map);tourLayer=L.layerGroup().addTo(map)}
@@ -1105,7 +1105,7 @@ function openFiche(id){ficheOpen=id;const p=byId[id];if(!p)return;const r=rec(id
  +'<div class="block"><h3>🏠 Détails du bien / visite</h3><div class="two"><div class="fld"><label>Prix estimé</label><input class="inp" placeholder="€" value="'+esc(r.det.prix)+'" onchange="setD(\''+id+'\',\'prix\',this.value)"></div><div class="fld"><label>Type</label><input class="inp" placeholder="Maison T4" value="'+esc(r.det.type)+'" onchange="setD(\''+id+'\',\'type\',this.value)"></div></div><div class="fld"><label>État</label><input class="inp" placeholder="Bon / à rafraîchir…" value="'+esc(r.det.etat)+'" onchange="setD(\''+id+'\',\'etat\',this.value)"></div><div class="fld"><label>Observations</label><textarea class="inp" rows="2" onchange="setD(\''+id+'\',\'obs\',this.value)">'+esc(r.det.obs)+'</textarea></div></div>'
  +'<div class="block"><h3>📝 Notes (horodatées)</h3><div style="display:flex;gap:7px"><input class="inp" id="newnote" placeholder="Note de passage…"><button class="cb tel" style="flex:none;width:48px;height:52px;min-height:52px" onclick="addNote(\''+id+'\')">+</button></div><div id="notes" style="margin-top:6px">'+notesHTML(id)+'</div></div>'
  +'<div class="block"><h3>📷 Photos</h3><div class="phgrid" id="phgrid"></div></div>'
- +ficheSciHTML(p)+ficheVenteHTML(p)+ficheAdemeHTML(p)+ficheDvfHTML(p)
+ +fichePappersHTML(p)+ficheSciHTML(p)+ficheVenteHTML(p)+ficheAdemeHTML(p)+ficheDvfHTML(p)
  +'</div>';
  const fd=$('fiche');fd.classList.add('show');requestAnimationFrame(()=>fd.classList.add('open'));renderPhotos(id);bindFicheInputs(id)}
 function closeFiche(){saveState();const fd=$('fiche');fd.classList.remove('open');ficheOpen=null;setTimeout(()=>fd.classList.remove('show'),260);refresh()}
@@ -1273,6 +1273,48 @@ function printFiche(id){
   w.document.close();
 }
 
+function fichePappersHTML(p){
+  if(!p.pappers_idu)return '';
+  var rows=[];
+  if(p.pappers_contenance)rows.push(['Parcelle',p.pappers_contenance+' m²']);
+  if(p.pappers_surface_batie)rows.push(['Bâti',p.pappers_surface_batie+' m²',(p.pappers_surface_dispo?' / dispo '+p.pappers_surface_dispo+' m²':'')]);
+  if(p.pappers_annee_construction)rows.push(['Année construction',p.pappers_annee_construction]);
+  if(p.pappers_materiaux_mur)rows.push(['Matériaux mur',p.pappers_materiaux_mur+(p.pappers_materiaux_toit?' / toit: '+p.pappers_materiaux_toit:'')]);
+  if(p.pappers_hauteur)rows.push(['Hauteur',p.pappers_hauteur+' m']);
+  if(p.pappers_nb_logements)rows.push(['Logements',p.pappers_nb_logements]);
+  if(p.pappers_usages&&p.pappers_usages.length)rows.push(['Usage',p.pappers_usages.join(', ')]);
+
+  // Stats
+  var stats=[];
+  if(p.pappers_nb_ventes)stats.push('<span style="background:#0ea5a018;border:1px solid #0ea5a0;border-radius:6px;padding:3px 8px;font-size:11px;color:#0ea5a0;font-weight:700">'+p.pappers_nb_ventes+' vente'+(p.pappers_nb_ventes>1?'s':'')+'</span>');
+  if(p.pappers_nb_proprietaires)stats.push('<span style="background:#f0a50018;border:1px solid #f0a500;border-radius:6px;padding:3px 8px;font-size:11px;color:#f0a500;font-weight:700">'+p.pappers_nb_proprietaires+' proprio</span>');
+  if(p.pappers_nb_permis)stats.push('<span style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:6px;padding:3px 8px;font-size:11px;color:var(--ink2)">'+p.pappers_nb_permis+' permis</span>');
+  if(p.pappers_amenagements&&p.pappers_amenagements.length)stats.push('<span style="background:#e0552a18;border:1px solid #e0552a;border-radius:6px;padding:3px 8px;font-size:11px;color:#e0552a;font-weight:700">'+p.pappers_amenagements.map(function(a){return a==='piscine'?'🏊 piscine':a}).join(', ')+'</span>');
+
+  // PLU zones
+  var plu='';
+  if(p.pappers_zones_plu&&p.pappers_zones_plu.length){
+    plu='<div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:4px">';
+    p.pappers_zones_plu.forEach(function(z){
+      plu+='<span style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:5px;padding:2px 7px;font-size:10.5px;color:var(--ink2)">📋 '+esc(z)+'</span>';
+    });
+    plu+='</div>';
+  }
+
+  var grid=rows.map(function(r){return '<div class="fld"><label>'+r[0]+'</label><div style="font-size:12px;font-weight:600">'+(r[1]||'')+(r[2]||'')+'</div></div>';}).join('');
+
+  return '<div class="block" style="border-color:rgba(14,165,160,.3);background:rgba(14,165,160,.04)">'  
+    +'<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">'  
+    +'<h3 style="margin:0;color:#0ea5a0">🗺️ Parcelle cadastrale</h3>'  
+    +'<a href="'+esc(p.pappers_url||'#')+'" target="_blank" rel="noopener" '  
+    +'style="background:#0ea5a0;color:#fff;border-radius:8px;padding:5px 11px;font-size:11.5px;font-weight:800;text-decoration:none;white-space:nowrap">Pappers →</a>'  
+    +'</div>'  
+    +(stats.length?'<div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px">'+stats.join('')+'</div>':'')
+    +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">'+grid+'</div>'
+    +plu
+    +'<div style="font-size:10px;opacity:.4;margin-top:8px;font-family:monospace">'+esc(p.pappers_idu)+'</div>'
+    +'</div>';
+}
 function coproHTML(p){
   if(!p.copro_nom)return '';
   var sc2=p.copro_syndic_type==='non connu'?'#ff9900':p.copro_syndic_type==='bénévole'?'#ffbf00':'#0ea5a0';
