@@ -2,7 +2,7 @@
 <script>(function(){
   if(!('serviceWorker' in navigator))return;
   // Force clear : désinscrire TOUS les SW + vider TOUS les caches puis recharger
-  var FORCE_KEY='boitage13_sw_cleared_v17';
+  var FORCE_KEY='boitage13_sw_cleared_v18';
   if(!sessionStorage.getItem(FORCE_KEY)){
     sessionStorage.setItem(FORCE_KEY,'1');
     Promise.all([
@@ -173,8 +173,19 @@ body{
   font-family:inherit;-webkit-appearance:none;appearance:none;
 }
 .chip:hover{border-color:var(--border2);color:var(--ink)}
-.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.chip.sun.on{background:var(--gold);color:#1a1209;border-color:var(--gold)}
+.chip.on{
+  background:var(--ink) !important;
+  color:var(--bg) !important;
+  border-color:var(--ink) !important;
+  box-shadow:0 0 0 2px var(--ink);
+  opacity:1 !important;
+}
+.chip.sun.on{
+  background:var(--gold) !important;
+  color:#1a1209 !important;
+  border-color:var(--gold) !important;
+  box-shadow:0 0 0 2px var(--gold);
+}
 .sel{
   border:1px solid var(--border);background:var(--bg3);
   border-radius:var(--r2);padding:9px 12px;
