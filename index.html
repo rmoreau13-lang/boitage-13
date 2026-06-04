@@ -2,7 +2,7 @@
 <script>(function(){
   if(!('serviceWorker' in navigator))return;
   // Force clear : désinscrire TOUS les SW + vider TOUS les caches puis recharger
-  var FORCE_KEY='boitage13_sw_cleared_v26';
+  var FORCE_KEY='boitage13_sw_cleared_v27';
   if(!sessionStorage.getItem(FORCE_KEY)){
     sessionStorage.setItem(FORCE_KEY,'1');
     Promise.all([
@@ -650,7 +650,7 @@ textarea.inp{resize:vertical;min-height:46px}
   .top .stats{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px}
   .stat{font-size:12px;padding:5px 9px;border-radius:7px}
   .stat b{font-size:13px}
-  .top .srow{gap:7px;margin-bottom:6px}
+  .top .srow{gap:7px;margin-bottom:6px;flex-direction:column}
   .search{font-size:14px;padding:10px 12px}
   .fbtn{font-size:13px;padding:10px 12px}
   .panel.open{max-height:none;overflow:visible}
