@@ -415,6 +415,7 @@ body{
 .act.earth{background:#1a2535;color:#60a5fa;border:1px solid rgba(96,165,250,.2)}
 .act.ann{background:rgba(224,85,42,.18);color:var(--accent);border:1px solid rgba(224,85,42,.3)}
 .act.papers{background:rgba(22,163,74,.15);color:#4ade80;border:1px solid rgba(22,163,74,.25)}
+.act.pb{background:rgba(14,165,160,.12);color:#2dd4bf;border:1px solid rgba(14,165,160,.25)}
 .act.tour{background:rgba(14,165,160,.15);color:#2dd4bf;border:1px solid rgba(14,165,160,.25)}
 .act.tour.in{background:rgba(240,165,0,.2);color:var(--gold);border:1px solid rgba(240,165,0,.35)}
 .fbody{flex:1;overflow-y:auto;padding:13px;-webkit-overflow-scrolling:touch;background:var(--bg)}
@@ -582,6 +583,7 @@ function annBtnHTML(p){
 function annURL(p){const rue=p.adresse.replace(/^\d+\s*/,'');return 'https://www.google.com/search?q='+encodeURIComponent('"'+rue+'" 13013 Marseille maison à vendre')}
 function earthURL(p){return 'https://earth.google.com/web/@'+p.lat+','+p.lon+',120a,350d,35y,0h,45t,0r'}
 function pappersURL(p){return p.pappers_url||'https://immobilier.pappers.fr/?q='+encodeURIComponent(p.adresse+' 13013 Marseille')}
+function pbURL(p){return 'https://www.pagesjaunes.fr/pagesblanches/recherche?quoiqui=&ou='+encodeURIComponent(p.adresse+' 13013 Marseille')}
 function initMap(){map=L.map('map',{zoomControl:true}).setView([43.345,5.432],13);
  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
  baseLayer=L.layerGroup().addTo(map);tourLayer=L.layerGroup().addTo(map)}
@@ -1223,7 +1225,7 @@ function openFiche(id){ficheOpen=id;const p=byId[id];if(!p)return;const r=rec(id
  const off=p.qoff&&p.qoff!==p.q?' · 🏛 '+esc(p.qoff):'';
  $('fiche').innerHTML='<div class="fhead"><div class="fbar"><button class="back" onclick="closeFiche()">‹</button><div class="ftt"><h2>'+esc(p.adresse)+'</h2><div class="fq">'+(p.prio?'⭐ ':'')+esc(p.q)+' · '+EMO[p.tier]+' '+p.tier+off+(p.lieu_dit&&p.lieu_dit!==p.q?' <span style="opacity:.6;font-size:10px">· '+esc(p.lieu_dit)+'</span>':'')+'</div></div><div class="fsc">'+p.score+'</div></div>'
  +'<button class="copyaddr" onclick="copyAddr(\''+id+'\',this)">📋 Copier l\'adresse</button>'
- +'<div class="facts"><a class="act map" href="'+p.gmaps+'" target="_blank"><span class="ai">📍</span>Maps</a><a class="act earth" href="'+earthURL(p)+'" target="_blank"><span class="ai">🌍</span>Earth</a>'+annBtnHTML(p)+'<a class="act papers" href="'+pappersURL(p)+'" target="_blank"><span class="ai">🏠</span>Pappers</a><button class="act tour '+(inTour(id)?'in':'')+'" id="ftour" onclick="toggleTour(\''+id+'\')">'+(inTour(id)?'<span class=\"ai\">✓</span>Tournée':'<span class=\"ai\">＋</span>Tournée')+'</button><button class=\"act fiche\" onclick=\"printFiche(\''+id+'\')\">\U0001F4C4 Fiche</button><button class=\"act print\" onclick=\"printFiche(\''+id+'\')\">\U0001F5A8\uFE0F Imprimer</button></div></div>'
+ +'<div class="facts"><a class="act map" href="'+p.gmaps+'" target="_blank"><span class="ai">📍</span>Maps</a><a class="act earth" href="'+earthURL(p)+'" target="_blank"><span class="ai">🌍</span>Earth</a>'+annBtnHTML(p)+'<a class="act papers" href="'+pappersURL(p)+'" target="_blank"><span class="ai">🏠</span>Pappers</a>'+'<a class="act pb" href="'+pbURL(p)+'" target="_blank"><span class="ai">📞</span>Pages Blanches</a>'<button class="act tour '+(inTour(id)?'in':'')+'" id="ftour" onclick="toggleTour(\''+id+'\')">'+(inTour(id)?'<span class=\"ai\">✓</span>Tournée':'<span class=\"ai\">＋</span>Tournée')+'</button><button class=\"act fiche\" onclick=\"printFiche(\''+id+'\')\">\U0001F4C4 Fiche</button><button class=\"act print\" onclick=\"printFiche(\''+id+'\')\">\U0001F5A8\uFE0F Imprimer</button></div></div>'
  +'<div class="fbody">'
  +coproHTML(p)
  +'<div id="dvf-top">'+ficheDvfTopHTML(p)+'</div>'
