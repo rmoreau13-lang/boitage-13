@@ -2,7 +2,7 @@
 <script>(function(){
   if(!('serviceWorker' in navigator))return;
   // Force clear : désinscrire TOUS les SW + vider TOUS les caches puis recharger
-  var FORCE_KEY='boitage13_sw_cleared_v23';
+  var FORCE_KEY='boitage13_sw_cleared_v24';
   if(!sessionStorage.getItem(FORCE_KEY)){
     sessionStorage.setItem(FORCE_KEY,'1');
     Promise.all([
@@ -744,6 +744,7 @@ textarea.inp{resize:vertical;min-height:46px}
  <div class="srow" id="srow">
   <input class="search" id="q" placeholder="🔎 rue / quartier">
   <button class="fbtn" id="fbtn">⚙︎ Filtres</button>
+  <button class="fbtn" id="reset-btn" onclick="resetFilters()" title="Effacer tous les filtres" style="display:none;background:var(--accent);color:#fff;border-color:var(--accent)">✕ Reset</button>
  </div>
  <div class="panel" id="panel"><div class="panelin">
   <button class="chip" data-t="chaud">🔥</button><button class="chip" data-t="tiede">♨️</button><button class="chip" data-t="froid">🌡️</button>
@@ -844,6 +845,28 @@ function drawMap(d){if(!map)return;baseLayer.clearLayers();
   m.addTo(baseLayer)});
  drawTour()}
 // ---- liste ----
+function hasActiveFilters(){
+  return ft.size>0||prio||fBoite||fRecent||fDvf||fHist||fPv||fTerrain||fDpeFrais||fTop||fVente||fSci||fSciUrg||fType||fCopro||q||fq!=='all'||sortMode!=='score';
+}
+function updateResetBtn(){
+  const btn=$('reset-btn');if(!btn)return;
+  btn.style.display=hasActiveFilters()?'':'none';
+}
+function resetFilters(){
+  ft.clear();prio=0;fBoite=0;fRecent=0;fDvf=0;fHist=0;fPv=0;fTerrain=0;fDpeFrais=0;fTop=0;fVente=0;fSci=0;fSciUrg=0;fType='';fCopro=0;sortMode='score';q='';
+  // reset input + select
+  const qi=$('q');if(qi)qi.value='';
+  const si=$('sort');if(si)si.value='score';
+  fq='all';const sq=$('quart');if(sq)sq.value='all';
+  // retirer toutes les classes .on des chips
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));
+  // fermer le panel
+  const panel=$('panel');if(panel)panel.classList.remove('open');
+  const fbtn=$('fbtn');if(fbtn)fbtn.classList.remove('on');
+  updateResetBtn();
+  refresh();
+  toast('✓ Tous les filtres effacés — '+DATA.length+' prospects');
+}
 function filtered(){const now30=Date.now()-30*86400000;let d=DATA.filter(p=>(ft.size==0||ft.has(p.tier))&&(fq=='all'||(fq.startsWith('ld:')?p.lieu_dit===fq.slice(3):p.q==fq||p.qoff===fq))&&(!prio||p.prio)&&(!fBoite||!rec(p.id).b)&&(!fRecent||!rec(p.id).b||new Date(rec(p.id).b)<new Date(Date.now()-30*86400000))&&(!q||p.adresse.toLowerCase().includes(q)||p.q.toLowerCase().includes(q)||(p.qoff||'').toLowerCase().includes(q)||(p.lieu_dit||'').toLowerCase().includes(q))&&(!fDvf||p.dvf_signal==='en_vente'||p.dvf_signal==='vendu_recemment'||p.dvf_signal==='ancienne_vente')&&(!fHist||p.hist_maturite==='tres_mature'||p.hist_maturite==='mature')&&(!fPv||p.pv_pct>=50)&&(!fTerrain||p.terrain_divisible)&&(!fDpeFrais||p.dpe_frais==='tres_frais'||p.dpe_frais==='frais')&&(!fTop||p.signal_top)&&(!fVente||p.annonces_actives)&&(!fSci||p.sci_proche)&&(!fSciUrg||(p.sci_score||0)>=50)&&(!fType||p.type_bien===fType)&&(!fCopro||(fCopro===1&&p.copro_fragile)||(fCopro===2&&!!p.copro_nom)));
  if(sortMode==='dpe')d=d.slice().sort((a,b)=>a.jours-b.jours);
  else if(sortMode==='quartier')d=d.slice().sort((a,b)=>(a.q||'').localeCompare(b.q||'','fr')||b.score-a.score);
@@ -1653,10 +1676,10 @@ function renderDonnees(){let h='<div class="sec">Sauvegarde cloud</div>'+sbBlock
 async function exportData(){toast('Préparation…');const photos=await idbAll();const o={v:4,date:now(),state,tours,tour,tourU,mode:travelMode,phIndex,photos};const blob=new Blob([JSON.stringify(o)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='boitage13-sauvegarde-'+now().slice(0,10)+'.json';a.click();toast('Export prêt ✓')}
 function importData(input){const f=input.files&&input.files[0];if(!f)return;const fr=new FileReader();fr.onload=async()=>{try{const o=JSON.parse(fr.result);if(o.state){state=mergeRecs(state,o.state);saveStateRaw()}if(o.tours){tours=mergeTours(tours,o.tours);saveToursRaw()}if(o.tour&&(!tourU||(o.tourU||'')>tourU)){tour=o.tour;tourU=o.tourU||now();saveTourRaw()}if(o.mode){travelMode=o.mode;store.set('boitage13_mode',o.mode)}if(o.phIndex){phIndex=o.phIndex;store.set('boitage13_phidx',JSON.stringify(phIndex))}if(o.photos){for(const k in o.photos)await idbSet(k,o.photos[k])}if(sbUser)syncPush();refresh();renderDonnees();toast('Sauvegarde importée ✓')}catch(e){toast('⚠️ Fichier invalide')}};fr.readAsText(f)}
 // ---- navigation / refresh ----
-function refresh(){const d=filtered();drawList(d);drawMap(d);updateStats();if($('scr-tournees').classList.contains('on'))renderTours();else{const n=tour.length;$('navbdg').style.display=n?'flex':'none';$('navbdg').textContent=n}if($('scr-donnees').classList.contains('on'))renderDonnees()}
+function refresh(){const d=filtered();drawList(d);drawMap(d);updateStats();updateResetBtn();if($('scr-tournees').classList.contains('on'))renderTours();else{const n=tour.length;$('navbdg').style.display=n?'flex':'none';$('navbdg').textContent=n}if($('scr-donnees').classList.contains('on'))renderDonnees()}
 function nav(s){document.querySelectorAll('.scr').forEach(e=>e.classList.remove('on'));$('scr-'+s).classList.add('on');document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('on',b.dataset.s===s));$('srow').style.display=(s==='carte'||s==='liste')?'flex':'none';if($('panel').classList.contains('open')){$('panel').classList.remove('open');$('fbtn').classList.remove('on')}if(s==='carte')setTimeout(()=>{map&&map.invalidateSize()},120);if(s==='tournees')renderTours();if(s==='donnees')renderDonnees()}
 $('fbtn').onclick=function(){$('panel').classList.toggle('open');this.classList.toggle('on')};
-$('q').oninput=e=>{q=e.target.value.trim().toLowerCase();drawList(filtered());drawMap(filtered())};
+$('q').oninput=e=>{q=e.target.value.trim().toLowerCase();drawList(filtered());drawMap(filtered());updateResetBtn()};
 document.querySelectorAll('.chip[data-t]').forEach(c=>c.onclick=()=>{const t=c.dataset.t;c.classList.toggle('on');ft.has(t)?ft.delete(t):ft.add(t);refresh()});
 $('cprio').onclick=function(){prio=prio?0:1;this.classList.toggle('on');refresh()};
 $('cboite').onclick=function(){fBoite=fBoite?0:1;this.classList.toggle('on');refresh()};
