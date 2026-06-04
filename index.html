@@ -2,7 +2,7 @@
 <script>(function(){
   if(!('serviceWorker' in navigator))return;
   // Force clear : désinscrire TOUS les SW + vider TOUS les caches puis recharger
-  var FORCE_KEY='boitage13_sw_cleared_v15';
+  var FORCE_KEY='boitage13_sw_cleared_v16';
   if(!sessionStorage.getItem(FORCE_KEY)){
     sessionStorage.setItem(FORCE_KEY,'1');
     Promise.all([
@@ -480,6 +480,115 @@ textarea.inp{resize:vertical;min-height:46px}
 .phadd{aspect-ratio:1;border:1.5px dashed var(--accent);border-radius:var(--r2);background:rgba(224,85,42,.08);color:var(--accent);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-weight:700;font-size:12px;cursor:pointer}
 .phadd input{display:none}
 
+/* ── DAILY BADGE (C) ── */
+#daily-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:4px 10px;border-radius:999px;
+  font-size:12px;font-weight:800;cursor:pointer;
+  border:1.5px solid var(--border);
+  background:var(--bg3);color:var(--ink2);
+  transition:background .2s,color .2s,border-color .2s;
+  white-space:nowrap;
+}
+#daily-badge.done{
+  background:#16a34a22;color:#4ade80;
+  border-color:#4ade8044;
+}
+#daily-badge.near{
+  background:#f0a50022;color:#f0a500;
+  border-color:#f0a50044;
+}
+/* ── MODAL OBJECTIF (C) ── */
+#goal-modal{
+  position:fixed;inset:0;z-index:3000;
+  background:rgba(0,0,0,.65);backdrop-filter:blur(4px);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .2s;
+}
+#goal-modal.open{opacity:1;pointer-events:all}
+#goal-modal .gbox{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:20px;padding:24px 22px;width:calc(100% - 40px);
+  max-width:320px;box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+/* ── TERRAIN OVERLAY (B) ── */
+#terrain-overlay{
+  position:fixed;inset:0;z-index:4000;
+  background:var(--bg);display:flex;flex-direction:column;
+  opacity:0;pointer-events:none;transition:opacity .22s;
+}
+#terrain-overlay.open{opacity:1;pointer-events:all}
+#terrain-overlay .to-head{
+  background:var(--bg2);border-bottom:1px solid var(--border);
+  padding:calc(12px + var(--safe-top)) 16px 12px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+#terrain-overlay .to-body{
+  flex:1;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:24px 20px;text-align:center;
+  user-select:none;
+  overflow-y:auto;
+}
+#terrain-overlay .to-addr{
+  font-family:var(--font);font-weight:900;
+  font-size:clamp(18px,4.5vw,26px);line-height:1.2;
+  color:var(--ink);margin-bottom:6px;
+}
+#terrain-overlay .to-meta{
+  font-size:13px;color:var(--ink2);margin-bottom:20px;
+}
+#terrain-overlay .to-score{
+  font-family:var(--font);font-size:56px;font-weight:900;
+  line-height:1;margin-bottom:6px;
+}
+#terrain-overlay .to-dpe{
+  font-size:16px;font-weight:800;padding:4px 14px;
+  border-radius:999px;margin-bottom:24px;
+  display:inline-block;
+}
+#terrain-overlay .to-btn-boite{
+  width:100%;max-width:340px;padding:20px;
+  background:var(--teal);border:none;border-radius:18px;
+  color:#fff;font-size:20px;font-weight:900;cursor:pointer;
+  box-shadow:0 6px 24px rgba(14,165,160,.4);
+  transition:background .15s,transform .1s;
+  margin-bottom:16px;
+}
+#terrain-overlay .to-btn-boite:active{transform:scale(.96)}
+#terrain-overlay .to-btn-boite.done{
+  background:#16a34a;
+  box-shadow:0 6px 24px rgba(22,163,74,.4);
+}
+#terrain-overlay .to-nav{
+  display:flex;align-items:center;gap:14px;
+  margin-bottom:10px;
+}
+#terrain-overlay .to-nav button{
+  flex:none;width:52px;height:52px;
+  background:var(--bg3);border:1.5px solid var(--border);
+  border-radius:14px;color:var(--ink);font-size:22px;
+  cursor:pointer;
+}
+#terrain-overlay .to-nav button:disabled{opacity:.3;cursor:default}
+#terrain-overlay .to-nav span{
+  font-size:13px;font-weight:800;color:var(--ink2);
+  min-width:60px;text-align:center;
+}
+#terrain-overlay .to-flash{
+  position:absolute;inset:0;
+  background:#4ade80;opacity:0;pointer-events:none;
+  z-index:1;transition:opacity .05s;
+}
+#terrain-overlay .to-gps{
+  display:flex;align-items:center;justify-content:center;
+  gap:8px;
+  padding:12px 20px;background:rgba(26,115,232,.12);
+  border:1.5px solid rgba(26,115,232,.25);
+  border-radius:12px;color:#60a5fa;
+  font-size:13px;font-weight:800;
+  text-decoration:none;max-width:340px;width:100%;
+}
 /* ── TOAST ── */
 .toast{
   position:fixed;left:50%;
@@ -503,8 +612,22 @@ textarea.inp{resize:vertical;min-height:46px}
 /* Leaflet dark mode */
 .leaflet-tile{filter:brightness(.85) contrast(1.1) saturate(.8)}
 </style></head><body>
+<!-- MODAL OBJECTIF (C) -->
+<div id="goal-modal" onclick="if(event.target===this)$('goal-modal').classList.remove('open')">
+  <div class="gbox"><div id="goal-box-inner"></div><button onclick="$('goal-modal').classList.remove('open')" style="width:100%;margin-top:12px;padding:10px;background:var(--bg3);color:var(--ink2);border:1.5px solid var(--border);border-radius:10px;font-size:13px;font-weight:700;cursor:pointer">Fermer</button></div>
+</div>
+<!-- OVERLAY TERRAIN (B) -->
+<div id="terrain-overlay">
+  <div class="to-flash"></div>
+  <div class="to-head">
+    <span style="font-family:var(--font);font-weight:900;font-size:14px">🚴 Mode terrain</span>
+    <span id="to-tour-count" style="font-size:12px;color:var(--ink2)"></span>
+    <button onclick="closeTerrainMode()" style="background:var(--bg3);border:1.5px solid var(--border);border-radius:10px;padding:6px 12px;color:var(--ink);font-size:14px;font-weight:700;cursor:pointer">✕ Fermer</button>
+  </div>
+  <div class="to-body" id="terrain-body"></div>
+</div>
 <div class="top">
- <div class="brand"><h1><span class="logo-mark">🏠</span>Boîtage <em>13e</em></h1><span class="pill ok" id="status">✓ Sauvegardé</span></div>
+ <div class="brand"><h1><span class="logo-mark">🏠</span>Boîtage <em>13e</em></h1><button id="daily-badge" onclick="openGoalModal()" title="Boîtages aujourd'hui">📭 0 auj.</button><span class="pill ok" id="status">✓ Sauvegardé</span></div>
  <div class="stats" id="stats"></div>
  <div class="srow" id="srow">
   <input class="search" id="q" placeholder="🔎 rue / quartier">
@@ -691,11 +814,140 @@ function getEmailTpl(){return store.get('boitage13_email_tpl')||'Bonjour,\n\nJe 
 function drawList(d){$('scr-liste').innerHTML=d.map(p=>{const r=rec(p.id);const off=p.qoff&&p.qoff!==p.q?' · 🏛 '+esc(p.qoff):'';
  return '<div class="card '+p.tier+(r.s>0?' done':'')+'" data-id="'+p.id+'" onclick="openFiche(\''+p.id+'\')"><span class="rg">'+p.rang+'</span><div class="mn"><div class="ad">'+(p.prio?'⭐ ':'')+esc(p.adresse)+(phIndex[p.id]?' 📷':'')+'</div><div class="mt">'+esc(p.q)+' · DPE '+p.dpe+'/'+p.ges+' · '+p.surface+' m² · J-'+p.jours+off+'</div><div class="tags">'+tagHTML(p)+'</div></div><div class="sc">'+p.score+'</div><div class="qcol" onclick="event.stopPropagation()"><button class="qbtn '+(inTour(p.id)?'in':'')+'" title="Tournée" onclick="toggleTour(\''+p.id+'\')">'+(inTour(p.id)?'✓':'＋')+'</button><button class="qbtn bo '+(r.b?'on':'')+'" title="Boîté" onclick="quickBoite(\''+p.id+'\')">📭</button><button class="qbtn" title="Note" onclick="quickNote(\''+p.id+'\')">📝</button></div></div>'
  }).join('')||'<div style="padding:30px;text-align:center;color:var(--ink2)">Aucun prospect 🤷</div>';requestAnimationFrame(bindSwipes)}
-function quickBoite(id){const r=rec(id);r.b=r.b?'':now();touch(id);saveState();refresh();if(ficheOpen===id&&$('boitebox'))$('boitebox').innerHTML=boiteHTML(id);toast(r.b?'📭 Boîté ✓':'Boîté annulé');if(map)map.closePopup()}
+function quickBoite(id){
+  const r=rec(id);r.b=r.b?'':now();touch(id);saveState();refresh();
+  if(ficheOpen===id&&$('boitebox'))$('boitebox').innerHTML=boiteHTML(id);
+  toast(r.b?'📭 Boîté ✓':'Boîté annulé');
+  if(map)map.closePopup();
+  updateDailyBadge();
+  if(r.b&&$('terrain-overlay')&&$('terrain-overlay').classList.contains('open')){
+    terrainFlash();
+  }
+}
 function quickNote(id){const v=prompt('Note — '+byId[id].adresse+' :');if(v==null||!v.trim())return;rec(id).notes.unshift({t:now(),x:v.trim()});touch(id);saveState();refresh();toast('📝 Note ajoutée')}
 // ---- stats / filtres ----
 function fdate(s){if(!s)return '';const p=s.split('-');return p.length===3?p[2]+'/'+p[1]:s}
 function boitesToday(){const t=new Date(),k=t.getFullYear()+'-'+(t.getMonth()+1)+'-'+t.getDate();return DATA.filter(p=>{const b=rec(p.id).b;if(!b)return false;const d=new Date(b);return (d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate())===k}).length}
+// ── C : DAILY BADGE ──
+function updateDailyBadge(){
+  const badge=$('daily-badge');if(!badge)return;
+  const n=boitesToday();
+  const goal=parseInt(store.get('boitage13_goal')||'5');
+  badge.textContent='📭 '+n+' auj.';
+  badge.classList.remove('done','near');
+  if(n>=goal)badge.classList.add('done');
+  else if(n>=Math.ceil(goal*0.6))badge.classList.add('near');
+}
+function openGoalModal(){
+  const goal=parseInt(store.get('boitage13_goal')||'5');
+  const n=boitesToday();
+  const pct=Math.round(n/goal*100);
+  const m=$('goal-modal');if(!m)return;
+  $('goal-box-inner').innerHTML=
+    '<div style="font-family:var(--font);font-weight:900;font-size:20px;margin-bottom:4px">📭 Objectif journalier</div>'+
+    '<div style="font-size:42px;font-weight:900;font-family:var(--font);color:'+(n>=goal?'#4ade80':n>0?'var(--accent)':'var(--ink2)')+';margin:10px 0">'+(n>=goal?'✓ '+n:n+'<span style="font-size:18px;color:var(--ink2);font-weight:700">&#160;/ '+goal+'</span>')+'</div>'+
+    '<div style="height:8px;background:var(--bg3);border-radius:4px;overflow:hidden;margin-bottom:16px"><div style="height:100%;width:'+Math.min(100,pct)+'%;background:'+(n>=goal?'#4ade80':'var(--teal)')+';border-radius:4px;transition:width .4s"></div></div>'+
+    '<label style="font-size:12px;font-weight:700;color:var(--ink2)">Objectif / jour</label>'+
+    '<div style="display:flex;align-items:center;gap:10px;margin-top:6px">'+
+    '<input class="inp" id="goal-inp" type="number" min="1" max="99" value="'+goal+'" style="width:80px;font-size:18px;font-weight:800;text-align:center;padding:8px">'+
+    '<button onclick="saveGoal()" style="flex:1;padding:10px;background:var(--accent);color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:800;cursor:pointer">Valider</button>'+
+    '</div>';
+  m.classList.add('open');
+}
+function saveGoal(){
+  const v=parseInt($('goal-inp').value)||5;
+  store.set('boitage13_goal',String(v));
+  $('goal-modal').classList.remove('open');
+  updateDailyBadge();
+  toast('Objectif : '+v+' boîtages/jour ✓');
+}
+// ── B : MODE TERRAIN ──
+var terrainIdx=0;
+function openTerrainMode(){
+  var s=tourStops();if(!s.length){toast('Aucun arrêt dans la tournée');return;}
+  terrainIdx=0;
+  var firstNotDone=s.findIndex(function(p){return !rec(p.id).b;});
+  if(firstNotDone>=0)terrainIdx=firstNotDone;
+  var tc=$('to-tour-count');if(tc){var d2=s.filter(function(p){return rec(p.id).b;}).length;tc.textContent=d2+' / '+s.length+' boîtés';}
+  renderTerrainCard();
+  $('terrain-overlay').classList.add('open');
+}
+function closeTerrainMode(){
+  $('terrain-overlay').classList.remove('open');
+  refresh();
+}
+function renderTerrainCard(){
+  var s=tourStops();if(!s.length)return;
+  if(terrainIdx<0)terrainIdx=0;
+  if(terrainIdx>=s.length)terrainIdx=s.length-1;
+  var p=s[terrainIdx];
+  var r=rec(p.id);
+  var done=!!r.b;
+  var dpeColor={A:'#22c55e',B:'#84cc16',C:'#eab308',D:'#f97316',E:'#ef4444',F:'#dc2626',G:'#991b1b'};
+  var col=dpeColor[p.dpe]||'#9ba3b8';
+  var navUrl='https://www.google.com/maps/dir/?api=1&destination='+p.lat+','+p.lon+'&travelmode=bicycling';
+  var tc=$('to-tour-count');
+  if(tc){var d2=s.filter(function(pp){return rec(pp.id).b;}).length;tc.textContent=d2+' / '+s.length+' boîtés';}
+  $('terrain-body').innerHTML=
+    '<div class="to-score" style="color:'+(done?'#4ade80':'var(--accent)')+'">'+p.score+'</div>'+
+    '<div class="to-dpe" style="background:'+col+'22;color:'+col+';border:1.5px solid '+col+'44">DPE '+p.dpe+' / GES '+p.ges+'</div>'+
+    '<div class="to-addr">'+(p.prio?'⭐ ':'')+esc(p.adresse)+'</div>'+
+    '<div class="to-meta">'+esc(p.q)+' · '+p.surface+' m²'+(p.sci_score>0?' · 🏢 SCI '+p.sci_score:'')+(p.pv_pct>0?' · PV +'+p.pv_pct+'%':'')+'  · score <b>'+p.score+'</b></div>'+
+    '<button id="to-boite-btn" class="to-btn-boite'+(done?' done':'')+'" onclick="terrainBoite()">'+(done?'✓ Boîté !':'📭 Boîté !')+'</button>'+
+    '<div class="to-nav">'+
+    '<button onclick="terrainPrev()"'+(terrainIdx===0?' disabled style="opacity:.3"':'')+'>&#8592;</button>'+
+    '<span>'+(terrainIdx+1)+' / '+s.length+'</span>'+
+    '<button onclick="terrainNext()"'+(terrainIdx===s.length-1?' disabled style="opacity:.3"':'')+'>&#8594;</button>'+
+    '</div>'+
+    '<a class="to-gps" href="'+navUrl+'" target="_blank" rel="noopener">📍 Naviguer vers ce point</a>';
+}
+function terrainBoite(){
+  var s=tourStops();if(!s.length)return;
+  var p=s[terrainIdx];
+  var r=rec(p.id);
+  r.b=r.b?'':now();touch(p.id);saveState();
+  updateDailyBadge();terrainFlash();
+  renderTerrainCard();
+  if(r.b){
+    setTimeout(function(){
+      var s2=tourStops();
+      var next=-1;
+      for(var i=terrainIdx+1;i<s2.length;i++){if(!rec(s2[i].id).b){next=i;break;}}
+      if(next>=0){terrainIdx=next;renderTerrainCard();}
+      else if(terrainIdx<s2.length-1){terrainIdx++;renderTerrainCard();}
+      else{toast('🎉 Tournée complète !🎉');}
+    },550);
+  }
+}
+function terrainNext(){
+  var s=tourStops();
+  if(terrainIdx<s.length-1){terrainIdx++;renderTerrainCard();}
+}
+function terrainPrev(){
+  if(terrainIdx>0){terrainIdx--;renderTerrainCard();}
+}
+function terrainFlash(){
+  var fl=document.querySelector('#terrain-overlay .to-flash');if(!fl)return;
+  fl.style.opacity='0.28';
+  setTimeout(function(){fl.style.opacity='0';},220);
+}
+// swipe touch sur l'overlay terrain
+(function(){
+  var sx=null;
+  document.addEventListener('touchstart',function(e){
+    if(!$('terrain-overlay').classList.contains('open'))return;
+    sx=e.touches[0].clientX;
+  },{passive:true});
+  document.addEventListener('touchend',function(e){
+    if(!$('terrain-overlay').classList.contains('open')||sx===null)return;
+    var dx=e.changedTouches[0].clientX-sx;
+    if(Math.abs(dx)>55){
+      if(dx<0)terrainBoite(); // swipe gauche = boîté
+      else terrainPrev();      // swipe droite = précédent
+    }
+    sx=null;
+  },{passive:true});
+})();
 function updateStats(){
  const tot=DATA.length,star=DATA.filter(p=>p.prio).length,chaud=DATA.filter(p=>p.tier==='chaud').length,todo=DATA.filter(p=>rec(p.id).s==0).length;
  const nbMaisons=DATA.filter(p=>!p.type_bien||p.type_bien==='maison').length;
@@ -774,6 +1026,7 @@ function renderTours(){
   h+='<button onclick="autoTourHist()" style="padding:12px 8px;background:#1a3a60;color:#fff;border:none;border-radius:12px;font-size:12px;font-weight:800;cursor:pointer;line-height:1.4;text-align:center">📅 Achat ancien<br><span style=\'font-size:10px;opacity:.8\'>Maturité élevée</span></button>';
   h+='<button onclick="tour=[];saveTour();renderTours();drawTour();toast(\'Tournée vidée\')" style="padding:12px 8px;background:var(--bg3);color:var(--ink2);border:1.5px solid var(--border);border-radius:12px;font-size:12px;font-weight:700;cursor:pointer;line-height:1.4;text-align:center">🗑️ Vider<br><span style=\'font-size:10px;opacity:.7\'>tout effacer</span></button>';
   h+='</div></div>';
+  if(s.length){h+='<div style="padding:0 14px 4px"><button onclick="openTerrainMode()" style="display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:15px;background:linear-gradient(135deg,#0ea5a0,#0d8a85);color:#fff;border:none;border-radius:14px;font-size:15px;font-weight:900;cursor:pointer;box-shadow:0 4px 18px rgba(14,165,160,.4)">🚴️ Mode terrain — Boîtage actif</button></div>';}
   h+='<div class="sec" style="margin-top:8px">Tournée en cours</div>';
   if(!s.length){
     h+='<div class="block"><p class="hint" style="margin:0">Utilisez un bouton ci-dessus ou ajoutez des adresses avec <b>＋</b> depuis la liste ou la carte.</p></div>';
@@ -1505,5 +1758,5 @@ function populateQuartiers(){
   sel.value=fq;
   sel.onchange=()=>{fq=sel.value;refresh()};
 }
-load();renderBanner();initMap();sbInit();migratePhotos();initData().then(()=>{populateQuartiers();refresh();setStatus('ok');setTimeout(()=>{if(map){map.invalidateSize();if(DATA.length){const lats=DATA.filter(p=>p.lat).map(p=>p.lat),lons=DATA.filter(p=>p.lon).map(p=>p.lon);if(lats.length)map.fitBounds([[Math.min(...lats)-0.005,Math.min(...lons)-0.005],[Math.max(...lats)+0.005,Math.max(...lons)+0.005]],{maxZoom:15});}}}  ,300)});
+load();renderBanner();initMap();sbInit();migratePhotos();initData().then(()=>{populateQuartiers();refresh();updateDailyBadge();setStatus('ok');setTimeout(()=>{if(map){map.invalidateSize();if(DATA.length){const lats=DATA.filter(p=>p.lat).map(p=>p.lat),lons=DATA.filter(p=>p.lon).map(p=>p.lon);if(lats.length)map.fitBounds([[Math.min(...lats)-0.005,Math.min(...lons)-0.005],[Math.max(...lats)+0.005,Math.max(...lons)+0.005]],{maxZoom:15});}}}  ,300)});
 </script></body></html>
