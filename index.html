@@ -1293,6 +1293,7 @@ function coproHTML(p){
   sc+='</div>';
   return sc;
 }
+function tagHTML(p){const r=rec(p.id);let h=dvfSignalBadge(p);if(r.b)h+='<span class="tag bo">📭 boîté</span>';if(r.rdv)h+='<span class="tag rdv">📅 RDV '+fdate(r.rdv)+'</span>';if(r.rel)h+='<span class="tag rel">🔔 relance '+fdate(r.rel)+'</span>';if(r.s>0)h+='<span class="tag st">'+STAT[r.s]+'</span>';return h}
 // boot
 function populateQuartiers(){const sel=$('quart');if(!sel)return;const qs=[...new Set(DATA.map(p=>p.q).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'fr'));sel.innerHTML='<option value="all">Tous quartiers</option>'+qs.map(q=>'<option value="'+q+'">'+q+'</option>').join('');sel.value=fq;sel.onchange=()=>{fq=sel.value;refresh()};}
 load();renderBanner();initMap();sbInit();migratePhotos();initData().then(()=>{populateQuartiers();refresh();setStatus('ok');setTimeout(()=>{if(map){map.invalidateSize();if(DATA.length){const lats=DATA.filter(p=>p.lat).map(p=>p.lat),lons=DATA.filter(p=>p.lon).map(p=>p.lon);if(lats.length)map.fitBounds([[Math.min(...lats)-0.005,Math.min(...lons)-0.005],[Math.max(...lats)+0.005,Math.max(...lons)+0.005]],{maxZoom:15});}}}  ,300)});
