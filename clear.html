@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Réinitialiser l'app</title>
+<style>
+  body{font-family:Inter,Arial,sans-serif;background:#0f1117;color:#e8eaf0;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;margin:0;padding:20px;text-align:center}
+  h1{font-size:22px;font-weight:900;margin-bottom:8px}
+  p{color:#9ba3b8;font-size:14px;margin-bottom:24px}
+  .btn{background:#e0552a;color:#fff;border:none;border-radius:12px;padding:14px 32px;font-size:16px;font-weight:700;cursor:pointer;width:100%;max-width:320px;margin-bottom:12px}
+  .btn2{background:#1d2130;color:#e8eaf0;border:1px solid #2a2f3e;border-radius:12px;padding:14px 32px;font-size:16px;font-weight:700;cursor:pointer;width:100%;max-width:320px}
+  .status{margin-top:20px;font-size:13px;color:#0ea5a0;min-height:20px}
+</style>
+</head>
+<body>
+<h1>🔄 Réinitialiser l'app</h1>
+<p>Si la carte ou les prospects ne s'affichent pas, utilise ce bouton pour vider le cache et forcer le rechargement.</p>
+<button class="btn" onclick="clearAll()">🗑️ Vider le cache SW</button>
+<button class="btn2" onclick="location.href='/boitage-13/'">← Retour à l'app</button>
+<div class="status" id="st"></div>
+<script>
+async function clearAll(){
+  const st = document.getElementById('st');
+  st.textContent = '⏳ Suppression des caches…';
+  try {
+    // Dérégistrer tous les SW
+    if('serviceWorker' in navigator){
+      const regs = await navigator.serviceWorker.getRegistrations();
+      await Promise.all(regs.map(r => r.unregister()));
+      st.textContent = '✓ ' + regs.length + ' Service Worker(s) supprimé(s)';
+    }
+    // Vider tous les caches
+    const keys = await caches.keys();
+    await Promise.all(keys.map(k => caches.delete(k)));
+    st.textContent += ' | ✓ ' + keys.length + ' cache(s) vidé(s)';
+    
+    setTimeout(() => {
+      st.textContent += ' | Rechargement…';
+      // Forcer rechargement depuis le réseau
+      location.href = '/boitage-13/?nocache=' + Date.now();
+    }, 1500);
+  } catch(e) {
+    st.textContent = '⚠️ Erreur: ' + e.message;
+  }
+}
+</script>
+</body>
+</html>
