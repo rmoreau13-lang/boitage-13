@@ -49,8 +49,8 @@ body{font-family:'Hanken Grotesk',system-ui,sans-serif;color:var(--ink);backgrou
 .fbtn.on{background:var(--ink);color:var(--cream);border-color:var(--ink)}
 
 /* filter panel */
-.panel{max-height:0;overflow:hidden;transition:max-height .28s cubic-bezier(.4,0,.2,1)}.panel.open{max-height:260px}
-.panelin{padding:10px 0 4px;display:flex;flex-wrap:wrap;gap:7px}
+.panel{max-height:0;overflow:hidden;transition:max-height .28s cubic-bezier(.4,0,.2,1)}.panel.open{max-height:380px}
+.panelin{padding:10px 0 4px;display:flex;flex-wrap:wrap;gap:7px;overflow-y:auto;max-height:340px}
 .chip{border:1.5px solid var(--line);background:var(--cream);border-radius:999px;padding:9px 15px;font-size:13px;font-weight:700;cursor:pointer;user-select:none;touch-action:manipulation;min-height:44px;display:inline-flex;align-items:center;transition:all .15s}
 .chip.on{background:var(--ink);color:var(--cream);border-color:var(--ink)}.chip.sun.on{background:var(--sun);color:var(--ink);border-color:var(--sun)}
 .sel{border:1.5px solid var(--line);background:var(--cream);border-radius:12px;padding:10px 12px;font-family:inherit;font-weight:700;font-size:13px;min-height:44px}
@@ -354,10 +354,10 @@ function updateStats(){
  const dvfHot=DATA.filter(p=>p.dvf_signal==='en_vente'||p.dvf_signal==='vendu_recemment').length;
  const histHot=DATA.filter(p=>p.hist_maturite==='tres_mature'||p.hist_maturite==='mature').length;
  const topHot=DATA.filter(p=>p.signal_top).length;
-const venteHot=DATA.filter(function(p){return p.annonces_actives;}).length;
-if(venteHot>0)st+='<span class="stat" style="cursor:pointer;background:#0a6ebd20;border-color:#0a6ebd;color:#064e8a;font-weight:900" onclick="fVente=1;if($(\'cvente\'))$(\'cvente\').classList.add(\'on\');refresh()" title="Annonces">🏷️ <b>'+venteHot+'</b></span>';
 const dpeFraisHot=DATA.filter(p=>p.dpe_frais==='tres_frais').length;
 let st='';
+const venteHot=DATA.filter(function(p){return p.annonces_actives;}).length;
+if(venteHot>0)st+='<span class="stat" style="cursor:pointer;background:#0a6ebd;color:#fff;font-weight:900;border-color:#0a6ebd" onclick="fVente=fVente?0:1;if($(\'cvente\'))$(\'cvente\').classList.toggle(\'on\');refresh()" title="Biens en vente dans le secteur">🏷️ <b>'+venteHot+'</b> en vente</span>';
 if(topHot>0)st+='<span class="stat" style="cursor:pointer;background:#d0282820;border-color:#d02828;color:#c01818;font-weight:900" onclick="fTop=1;if($(\'ctop\'))$(\'ctop\').classList.add(\'on\');refresh()" title="Signal TOP">🔥 <b>'+topHot+'</b></span>';
 if(dpeFraisHot>0)st+='<span class="stat" style="cursor:pointer;background:#e0802020;border-color:#e08030;color:#b05010" onclick="fDpeFrais=1;if($(\'cdpefrais\'))$(\'cdpefrais\').classList.add(\'on\');refresh()" title="DPE &lt;30j">⚡ <b>'+dpeFraisHot+'</b></span>';
 st+='<span class="stat"><b>'+tot+'</b>prospects</span>';
