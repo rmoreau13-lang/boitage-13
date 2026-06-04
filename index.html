@@ -1096,7 +1096,7 @@ function openFiche(id){ficheOpen=id;const p=byId[id];if(!p)return;const r=rec(id
  const off=p.qoff&&p.qoff!==p.q?' · 🏛 '+esc(p.qoff):'';
  $('fiche').innerHTML='<div class="fhead"><div class="fbar"><button class="back" onclick="closeFiche()">‹</button><div class="ftt"><h2>'+esc(p.adresse)+'</h2><div class="fq">'+(p.prio?'⭐ ':'')+esc(p.q)+' · '+EMO[p.tier]+' '+p.tier+off+'</div></div><div class="fsc">'+p.score+'</div></div>'
  +'<button class="copyaddr" onclick="copyAddr(\''+id+'\',this)">📋 Copier l\'adresse</button>'
- +'<div class="facts"><a class="act map" href="'+p.gmaps+'" target="_blank"><span class="ai">📍</span>Maps</a><a class="act earth" href="'+earthURL(p)+'" target="_blank"><span class="ai">🌍</span>Earth</a>'+annBtnHTML(p)+'<a class="act papers" href="'+pappersURL(p)+'" target="_blank"><span class="ai">🏠</span>Pappers</a><button class="act tour '+(inTour(id)?'in':'')+'" id="ftour" onclick="toggleTour(\''+id+'\')">'+(inTour(id)?'<span class=\"ai\">✓</span>Tournée':'<span class=\"ai\">＋</span>Tournée')+'</button></div></div>'
+ +'<div class="facts"><a class="act map" href="'+p.gmaps+'" target="_blank"><span class="ai">📍</span>Maps</a><a class="act earth" href="'+earthURL(p)+'" target="_blank"><span class="ai">🌍</span>Earth</a>'+annBtnHTML(p)+'<a class="act papers" href="'+pappersURL(p)+'" target="_blank"><span class="ai">🏠</span>Pappers</a><button class="act tour '+(inTour(id)?'in':'')+'" id="ftour" onclick="toggleTour(\''+id+'\')">'+(inTour(id)?'<span class=\"ai\">✓</span>Tournée':'<span class=\"ai\">＋</span>Tournée')+'</button><button class=\"act fiche\" onclick=\"printFiche(\''+id+'\')\">\U0001F4C4 Fiche</button><button class=\"act print\" onclick=\"printFiche(\''+id+'\')\">\U0001F5A8\uFE0F Imprimer</button></div></div>'
  +'<div class="fbody">'
  +'<div id="dvf-top">'+ficheDvfTopHTML(p)+'</div>'
  +'<div class="block"><h3>👤 Contact propriétaire</h3><div class="fld"><label>Nom</label><input class="inp" placeholder="ex. M. Martin" value="'+esc(r.contact.nom)+'" onchange="setC(\''+id+'\',\'nom\',this.value)"></div><div class="fld"><label>Téléphone</label><input class="inp" inputmode="tel" placeholder="06…" value="'+esc(r.contact.tel)+'" onchange="setC(\''+id+'\',\'tel\',this.value)"></div><div class="callrow"><a class="cb tel" href="'+(r.contact.tel?'tel:'+encodeURIComponent(r.contact.tel):'#')+'">📞 Appeler</a><a class="cb sms" href="'+(r.contact.tel?'sms:'+encodeURIComponent(r.contact.tel):'#')+'">💬 SMS</a></div><div class="fld" style="margin-top:9px"><label>E-mail</label><input class="inp" placeholder="@" value="'+esc(r.contact.email)+'" onchange="setC(\''+id+'\',\'email\',this.value)"></div></div>'
@@ -1198,6 +1198,80 @@ function autoTourHist(){
   saveTour();renderTours();
   toast('✅ '+added+' prospect(s) ajouté(s) à la tournée (achat ancien)');
 }
+function printFiche(id){
+  var p=DATA.find(function(x){return x.id===id});
+  if(!p)return;
+  var r=rec(id)||{};
+  var dc={A:'#00b050',B:'#92d050',C:'#c6e000',D:'#ffbf00',E:'#ff9900',F:'#ff0000',G:'#c00000'}[p.dpe]||'#888';
+  var pv=p.prix_estime?Math.round(p.prix_estime).toLocaleString('fr-FR')+'€':'—';
+  var pvM2=(p.prix_estime&&p.surface)?Math.round(p.prix_estime/p.surface).toLocaleString('fr-FR')+' €/m²':'—';
+  var signal=p.signal_top?'🔥 TOP':'';
+  var w=window.open('','_blank','width=820,height=950');
+  if(!w)return;
+  var nom=(r.contact&&r.contact.nom)||'—';
+  var tel=(r.contact&&r.contact.tel)||'—';
+  var mail=(r.contact&&r.contact.email)||'—';
+  var note=(r.note||'Aucune note').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  var typeLbl=p.type_bien==='appartement'?'🏢 Appart'+(p.etage!=null?' · Ét.'+p.etage:''):'🏠 Maison';
+  var dvfDate=p.dvf_date||'—';
+  var dvfPrix=p.dvf_prix?Math.round(p.dvf_prix).toLocaleString('fr-FR')+' €':'—';
+  var annonces=(p.annonces_actives>0)?'✅ '+p.annonces_actives+' annonce(s)':'❌ Non';
+  var sci=p.sci_name||'—';
+  var surface=p.surface?p.surface+' m²':'—';
+  var dpeDt=p.date_dpe?'<div style="font-size:11px;color:#888">'+p.date_dpe+'</div>':'';
+  var sigHtml=signal?'<div style="background:#fff3cd;border:1px solid #ffc107;border-radius:6px;padding:8px 12px;margin-bottom:12px;font-weight:700">'+signal+'</div>':'';
+  var css=[
+    '*{box-sizing:border-box;margin:0;padding:0}',
+    'body{font-family:Inter,Arial,sans-serif;background:#fff;color:#111;padding:20px 24px 80px;max-width:740px;margin:0 auto}',
+    'h1{font-size:18px;font-weight:900;margin-bottom:4px;color:#1a1a2e}',
+    '.sub{font-size:13px;color:#666;margin-bottom:14px}',
+    '.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}',
+    '.card{border:1px solid #e0e0e0;border-radius:8px;padding:10px}',
+    '.card h2{font-size:10px;font-weight:800;text-transform:uppercase;color:#aaa;margin-bottom:4px}',
+    '.big{font-size:20px;font-weight:900;color:#1a1a2e}',
+    '.sm{font-size:14px;font-weight:700;color:#1a1a2e}',
+    '.dpe{display:inline-block;background:'+dc+';color:#fff;font-size:22px;font-weight:900;padding:3px 14px;border-radius:6px}',
+    '.row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #f0f0f0;font-size:13px}',
+    '.row:last-child{border:none}',
+    '.lbl{color:#888;font-weight:600}',
+    '.sec{margin-bottom:14px}',
+    '.sec h3{font-size:11px;font-weight:800;text-transform:uppercase;color:#aaa;margin-bottom:6px;border-bottom:2px solid #eee;padding-bottom:4px}',
+    '.note{background:#f8f9fa;border-radius:8px;padding:10px;font-size:13px;white-space:pre-wrap;min-height:50px}',
+    '.btns{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e0e0e0;padding:10px 24px;display:flex;gap:8px;justify-content:center}',
+    '.btn{padding:9px 24px;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer}',
+    '.bp{background:#e0552a;color:#fff}',
+    '.bc{background:#eee;color:#333}',
+    '@media print{.btns{display:none}body{padding:12px}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}'
+  ].join('');
+  var body='<h1>'+(p.adresse||p.id)+'</h1>'
+    +'<div class="sub">'+(p.q||'—')+' · '+(p.cp||'')+' Marseille</div>'
+    +sigHtml
+    +'<div class="g2">'
+      +'<div class="card"><h2>DPE</h2><span class="dpe">'+(p.dpe||'?')+'</span>'+dpeDt+'</div>'
+      +'<div class="card"><h2>Valeur estimée</h2><div class="sm">'+pv+'</div><div style="font-size:11px;color:#888">'+pvM2+'</div></div>'
+      +'<div class="card"><h2>Surface</h2><div class="big">'+surface+'</div></div>'
+      +'<div class="card"><h2>Type</h2><div class="sm">'+typeLbl+'</div></div>'
+    +'</div>'
+    +'<div class="sec"><h3>Informations</h3>'
+      +'<div class="row"><span class="lbl">Dernière vente</span><span>'+dvfDate+'</span></div>'
+      +'<div class="row"><span class="lbl">Prix vente</span><span>'+dvfPrix+'</span></div>'
+      +'<div class="row"><span class="lbl">Annonces</span><span>'+annonces+'</span></div>'
+      +'<div class="row"><span class="lbl">SCI</span><span>'+sci+'</span></div>'
+    +'</div>'
+    +'<div class="sec"><h3>Contact</h3>'
+      +'<div class="row"><span class="lbl">Nom</span><span>'+nom+'</span></div>'
+      +'<div class="row"><span class="lbl">Tél</span><span>'+tel+'</span></div>'
+      +'<div class="row"><span class="lbl">Email</span><span>'+mail+'</span></div>'
+    +'</div>'
+    +'<div class="sec"><h3>Note</h3><div class="note">'+note+'</div></div>'
+    +'<div class="btns">'
+      +'<button class="btn bp" onclick="window.print()">🖨️ Imprimer</button>'
+      +'<button class="btn bc" onclick="window.close()">Fermer</button>'
+    +'</div>';
+  w.document.write('<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><title>Fiche</title><style>'+css+'</style></head><body>'+body+'</body></html>');
+  w.document.close();
+}
+
 // boot
 function populateQuartiers(){const sel=$('quart');if(!sel)return;const qs=[...new Set(DATA.map(p=>p.q).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'fr'));sel.innerHTML='<option value="all">Tous quartiers</option>'+qs.map(q=>'<option value="'+q+'">'+q+'</option>').join('');sel.value=fq;sel.onchange=()=>{fq=sel.value;refresh()};}
 load();renderBanner();initMap();sbInit();migratePhotos();initData().then(()=>{populateQuartiers();refresh();setStatus('ok');setTimeout(()=>{if(map){map.invalidateSize();if(DATA.length){const lats=DATA.filter(p=>p.lat).map(p=>p.lat),lons=DATA.filter(p=>p.lon).map(p=>p.lon);if(lats.length)map.fitBounds([[Math.min(...lats)-0.005,Math.min(...lons)-0.005],[Math.max(...lats)+0.005,Math.max(...lons)+0.005]],{maxZoom:15});}}}  ,300)});

@@ -1,4 +1,4 @@
-const CACHE = 'boitage13-v5';
+const CACHE = 'boitage13-v6';
 const ASSETS = [
   '/boitage-13/',
   '/boitage-13/index.html',
