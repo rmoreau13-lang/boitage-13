@@ -104,3 +104,4 @@ la tournée et **autorisez la caméra** pour les photos de fiche.
 - Vos **notes terrain, statuts et photos** sont stockés uniquement dans le navigateur de
   l'appareil (localStorage) — ils ne partent pas sur GitHub.
 - Démarche **signal-based** : aucune pige, aucun cold-calling.
+# rebuilt 03:43:58
