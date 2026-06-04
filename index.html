@@ -592,7 +592,7 @@ function drawMap(d){if(!map)return;baseLayer.clearLayers();
   m.addTo(baseLayer)});
  drawTour()}
 // ---- liste ----
-function filtered(){const now30=Date.now()-30*86400000;let d=DATA.filter(p=>(ft.size==0||ft.has(p.tier))&&(fq=='all'||p.q==fq||p.qoff===fq)&&(!prio||p.prio)&&(!fBoite||!rec(p.id).b)&&(!fRecent||!rec(p.id).b||new Date(rec(p.id).b)<new Date(Date.now()-30*86400000))&&(!q||p.adresse.toLowerCase().includes(q)||p.q.toLowerCase().includes(q)||(p.qoff||'').toLowerCase().includes(q))&&(!fDvf||p.dvf_signal==='en_vente'||p.dvf_signal==='vendu_recemment'||p.dvf_signal==='ancienne_vente')&&(!fHist||p.hist_maturite==='tres_mature'||p.hist_maturite==='mature')&&(!fPv||p.pv_pct>=50)&&(!fTerrain||p.terrain_divisible)&&(!fDpeFrais||p.dpe_frais==='tres_frais'||p.dpe_frais==='frais')&&(!fTop||p.signal_top)&&(!fVente||p.annonces_actives)&&(!fSci||p.sci_proche)&&(!fType||p.type_bien===fType)&&(!fCopro||(fCopro===1&&p.copro_fragile)||(fCopro===2&&!!p.copro_nom)));
+function filtered(){const now30=Date.now()-30*86400000;let d=DATA.filter(p=>(ft.size==0||ft.has(p.tier))&&(fq=='all'||(fq.startsWith('ld:')?p.lieu_dit===fq.slice(3):p.q==fq||p.qoff===fq))&&(!prio||p.prio)&&(!fBoite||!rec(p.id).b)&&(!fRecent||!rec(p.id).b||new Date(rec(p.id).b)<new Date(Date.now()-30*86400000))&&(!q||p.adresse.toLowerCase().includes(q)||p.q.toLowerCase().includes(q)||(p.qoff||'').toLowerCase().includes(q)||(p.lieu_dit||'').toLowerCase().includes(q))&&(!fDvf||p.dvf_signal==='en_vente'||p.dvf_signal==='vendu_recemment'||p.dvf_signal==='ancienne_vente')&&(!fHist||p.hist_maturite==='tres_mature'||p.hist_maturite==='mature')&&(!fPv||p.pv_pct>=50)&&(!fTerrain||p.terrain_divisible)&&(!fDpeFrais||p.dpe_frais==='tres_frais'||p.dpe_frais==='frais')&&(!fTop||p.signal_top)&&(!fVente||p.annonces_actives)&&(!fSci||p.sci_proche)&&(!fType||p.type_bien===fType)&&(!fCopro||(fCopro===1&&p.copro_fragile)||(fCopro===2&&!!p.copro_nom)));
  if(sortMode==='dpe')d=d.slice().sort((a,b)=>a.jours-b.jours);
  else if(sortMode==='quartier')d=d.slice().sort((a,b)=>(a.q||'').localeCompare(b.q||'','fr')||b.score-a.score);
  else if(sortMode==='dvf'){const P={en_vente:0,vendu_recemment:1,ancienne_vente:2,none:3};d=d.slice().sort((a,b)=>(P[a.dvf_signal||'none']||3)-(P[b.dvf_signal||'none']||3)||b.score-a.score);}
@@ -1094,7 +1094,7 @@ function ficheDvfTopHTML(p){
 function openFiche(id){ficheOpen=id;const p=byId[id];if(!p)return;const r=rec(id);
  const seg=STAT.map((t,k)=>'<button class="'+(r.s==k?'on':'')+'" onclick="setS(\''+id+'\','+k+')">'+t+'</button>').join('');
  const off=p.qoff&&p.qoff!==p.q?' · 🏛 '+esc(p.qoff):'';
- $('fiche').innerHTML='<div class="fhead"><div class="fbar"><button class="back" onclick="closeFiche()">‹</button><div class="ftt"><h2>'+esc(p.adresse)+'</h2><div class="fq">'+(p.prio?'⭐ ':'')+esc(p.q)+' · '+EMO[p.tier]+' '+p.tier+off+'</div></div><div class="fsc">'+p.score+'</div></div>'
+ $('fiche').innerHTML='<div class="fhead"><div class="fbar"><button class="back" onclick="closeFiche()">‹</button><div class="ftt"><h2>'+esc(p.adresse)+'</h2><div class="fq">'+(p.prio?'⭐ ':'')+esc(p.q)+' · '+EMO[p.tier]+' '+p.tier+off+(p.lieu_dit&&p.lieu_dit!==p.q?' <span style="opacity:.6;font-size:10px">· '+esc(p.lieu_dit)+'</span>':'')+'</div></div><div class="fsc">'+p.score+'</div></div>'
  +'<button class="copyaddr" onclick="copyAddr(\''+id+'\',this)">📋 Copier l\'adresse</button>'
  +'<div class="facts"><a class="act map" href="'+p.gmaps+'" target="_blank"><span class="ai">📍</span>Maps</a><a class="act earth" href="'+earthURL(p)+'" target="_blank"><span class="ai">🌍</span>Earth</a>'+annBtnHTML(p)+'<a class="act papers" href="'+pappersURL(p)+'" target="_blank"><span class="ai">🏠</span>Pappers</a><button class="act tour '+(inTour(id)?'in':'')+'" id="ftour" onclick="toggleTour(\''+id+'\')">'+(inTour(id)?'<span class=\"ai\">✓</span>Tournée':'<span class=\"ai\">＋</span>Tournée')+'</button><button class=\"act fiche\" onclick=\"printFiche(\''+id+'\')\">\U0001F4C4 Fiche</button><button class=\"act print\" onclick=\"printFiche(\''+id+'\')\">\U0001F5A8\uFE0F Imprimer</button></div></div>'
  +'<div class="fbody">'
@@ -1343,6 +1343,21 @@ function addSwipe(el,onLeft,onRight){
   el.addEventListener('touchend',function(e){el.style.transition='transform .2s';el.style.transform='';const dx=e.changedTouches[0].clientX-sx;if(moved&&Math.abs(dx)>55){if(dx<0)onLeft();else onRight()}moved=false});
 }
 // boot
-function populateQuartiers(){const sel=$('quart');if(!sel)return;const qs=[...new Set(DATA.map(p=>p.q).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'fr'));sel.innerHTML='<option value="all">Tous quartiers</option>'+qs.map(q=>'<option value="'+q+'">'+q+'</option>').join('');sel.value=fq;sel.onchange=()=>{fq=sel.value;refresh()};}
+function populateQuartiers(){
+  const sel=$('quart');
+  if(!sel)return;
+  // Quartiers existants (q)
+  const qs=[...new Set(DATA.map(p=>p.q).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'fr'));
+  // Lieux-dits (lieu_dit) non déjà présents dans qs
+  const ldsSet=new Set(qs);
+  const lds=[...new Set(DATA.map(p=>p.lieu_dit).filter(Boolean))]
+    .filter(l=>!ldsSet.has(l))
+    .sort((a,b)=>a.localeCompare(b,'fr'));
+  sel.innerHTML='<option value="all">Tous secteurs</option>'
+    +'<optgroup label="— Quartiers —">'+qs.map(q=>'<option value="'+q+'">'+q+'</option>').join('')+'</optgroup>'
+    +(lds.length?'<optgroup label="— Lieux-dits —">'+lds.map(l=>'<option value="ld:'+l+'">📍 '+l+'</option>').join('')+'</optgroup>':'');
+  sel.value=fq;
+  sel.onchange=()=>{fq=sel.value;refresh()};
+}
 load();renderBanner();initMap();sbInit();migratePhotos();initData().then(()=>{populateQuartiers();refresh();setStatus('ok');setTimeout(()=>{if(map){map.invalidateSize();if(DATA.length){const lats=DATA.filter(p=>p.lat).map(p=>p.lat),lons=DATA.filter(p=>p.lon).map(p=>p.lon);if(lats.length)map.fitBounds([[Math.min(...lats)-0.005,Math.min(...lons)-0.005],[Math.max(...lats)+0.005,Math.max(...lons)+0.005]],{maxZoom:15});}}}  ,300)});
 </script></body></html>
