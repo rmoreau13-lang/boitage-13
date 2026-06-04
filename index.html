@@ -225,14 +225,14 @@ body{
 /* contenu principal */
 .mn{flex:1;min-width:0;padding-left:8px}
 .ad{
-  font-weight:700;font-size:13.5px;line-height:1.25;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  font-weight:700;font-size:13.5px;line-height:1.3;
+  white-space:normal;word-break:break-word;
   color:var(--ink);
 }
 .mt{
   font-size:11px;color:var(--ink2);margin-top:2px;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-  font-weight:500;
+  white-space:normal;
+  font-weight:500;line-height:1.3;
 }
 .tags{margin-top:5px;display:flex;gap:3px;flex-wrap:wrap;min-height:0}
 .tag{
@@ -246,15 +246,15 @@ body{
 
 /* score */
 .sc{
-  font-family:var(--font);font-weight:900;font-size:17px;
-  color:var(--accent);min-width:28px;text-align:right;flex:none;
+  font-family:var(--font);font-weight:900;font-size:16px;
+  color:var(--accent);min-width:26px;text-align:right;flex:none;
   padding-right:2px;
 }
 /* boutons actions rapides carte */
-.qcol{display:flex;flex-direction:row;gap:4px;flex:none;align-items:center;padding-right:4px}
+.qcol{display:flex;flex-direction:row;gap:3px;flex:none;align-items:center;padding-right:4px}
 .qbtn{
   border:1px solid var(--border);background:var(--bg3);
-  border-radius:8px;width:38px;height:38px;font-size:15px;
+  border-radius:8px;width:34px;height:34px;font-size:14px;
   font-weight:700;font-family:inherit;cursor:pointer;
   display:flex;align-items:center;justify-content:center;
   line-height:1;touch-action:manipulation;transition:all var(--trans);
