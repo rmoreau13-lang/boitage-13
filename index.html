@@ -2,7 +2,7 @@
 <script>(function(){
   if(!('serviceWorker' in navigator))return;
   // Force clear : désinscrire TOUS les SW + vider TOUS les caches puis recharger
-  var FORCE_KEY='boitage13_sw_cleared_v22';
+  var FORCE_KEY='boitage13_sw_cleared_v23';
   if(!sessionStorage.getItem(FORCE_KEY)){
     sessionStorage.setItem(FORCE_KEY,'1');
     Promise.all([
@@ -493,6 +493,9 @@ textarea.inp{resize:vertical;min-height:46px}
 .phadd{aspect-ratio:1;border:1.5px dashed var(--accent);border-radius:var(--r2);background:rgba(224,85,42,.08);color:var(--accent);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-weight:700;font-size:12px;cursor:pointer}
 .phadd input{display:none}
 
+/* ── BANNER (sorti du flux) ── */
+#banner{position:fixed;top:0;left:0;right:0;z-index:2001;pointer-events:none}
+#banner>*{pointer-events:all}
 /* ── DAILY BADGE (C) ── */
 #daily-badge{
   display:inline-flex;align-items:center;gap:5px;
@@ -714,18 +717,8 @@ textarea.inp{resize:vertical;min-height:46px}
   #terrain-overlay .to-btn-boite{max-width:380px}
 
   /* ── BANNER ── */
-  #banner{
-    position:fixed;top:0;left:300px;right:0;
-    z-index:500;
-  }
+  #banner{left:300px;top:0}
   #banner>div{font-size:13px;padding:10px 20px}
-
-  /* Sidebar prend toute la hauteur — banner sorti du flux */
-  .top{order:-1}
-  
-  /* Main commence bien à gauche de la sidebar */
-  body{gap:0}
-  .main{margin-left:0}
 }
 
 /* Leaflet dark mode */
