@@ -1179,6 +1179,25 @@ function dynamicScore(p){const r=rec(p.id);let s=p.score;if(r.b){const days=(Dat
 // ── Export CSV ──
 function exportCSV(){const rows=[['Adresse','Quartier','Score','Tier','Priorité','Statut','Boîté le','RDV','Relance','Tél','Email','Notes']];DATA.forEach(p=>{const r=rec(p.id);rows.push([p.adresse,p.q,p.score,p.tier,p.prio?'Oui':'Non',r.s>0?(require_STAT||STAT)[r.s]:'À visiter',r.b?new Date(r.b).toLocaleDateString('fr-FR'):'',r.rdv||'',r.rel||'',r.contact?.tel||'',r.contact?.email||'',r.notes?.map(n=>n.x).join(' | ')||''])});const csv=rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(';')).join('\n');const blob=new Blob(['﻿'+csv],{type:'text/csv;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='prospects-13-'+new Date().toISOString().slice(0,10)+'.csv';a.click();toast('📊 Export CSV prêt')}
 
+
+// ── Fonctions tournée ──
+function inTour(id){return tour.includes(id)}
+function drawTour(){if(!tourLayer)return;tourLayer.clearLayers();const s=tourStops();if(!s.length)return;let pts=startPos?[startPos,...s]:s;const ll=pts.map(p=>[p.lat,p.lon]);
+ L.polyline(ll,{color:'#d6552f',weight:4,opacity:.85,dashArray:'7 7'}).addTo(tourLayer);
+ if(startPos)L.circleMarker([startPos.lat,startPos.lon],{radius:7,fillColor:'#1c8b75',color:'#fff',weight:2,fillOpacity:1}).bindTooltip('Départ').addTo(tourLayer);
+ s.forEach((p,i)=>L.marker([p.lat,p.lon],{icon:L.divIcon({className:'',html:'<div style="background:#d6552f;color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3)">'+(i+1)+'</div>',iconSize:[24,24],iconAnchor:[12,12]})}).addTo(tourLayer))}
+function fitTour(){const s=tourStops();if(!s.length||!map)return;const ll=s.map(p=>[p.lat,p.lon]);if(startPos)ll.unshift([startPos.lat,startPos.lon]);if($('scr-carte').classList.contains('on'))map.fitBounds(ll,{padding:[50,50],maxZoom:15})}
+function tourKm(){const s=tourStops();let pts=startPos?[startPos,...s]:s,d=0;for(let i=1;i<pts.length;i++)d+=dist(pts[i-1],pts[i]);return d}
+function tourStops(){return tour.map(id=>byId[id]).filter(Boolean)}
+function mapsUrl(){const s=tourStops();if(!s.length)return '#';let pts=startPos?[startPos,...s]:s;if(pts.length<2)return 'https://www.google.com/maps/dir/?api=1&destination='+pts[0].lat+','+pts[0].lon+'&travelmode='+travelMode;const o=pts[0],d=pts[pts.length-1],wp=pts.slice(1,-1).map(p=>p.lat+','+p.lon).join('|');let u='https://www.google.com/maps/dir/?api=1&travelmode='+travelMode+'&origin='+o.lat+','+o.lon+'&destination='+d.lat+','+d.lon;if(wp)u+='&waypoints='+encodeURIComponent(wp);return u}
+function optimize(){let s=tourStops();if(s.length<2)return;let cur=startPos||s[0],pool=startPos?[...s]:s.slice(1),ord=startPos?[]:[s[0]];while(pool.length){let bi=0,bd=1e9;pool.forEach((p,i)=>{const d=dist(cur,p);if(d<bd){bd=d;bi=i}});cur=pool[bi];ord.push(cur);pool.splice(bi,1)}tour=ord.map(p=>p.id);saveTour();renderTours();drawTour();fitTour()}
+function autoTourHist(){
+  const candidates=DATA.filter(p=>p.hist_maturite==='tres_mature'||p.hist_maturite==='mature').slice(0,20);
+  let added=0;
+  candidates.forEach(p=>{if(!inTour(p.id)){tour.push(p.id);added++}});
+  saveTour();renderTours();
+  toast('✅ '+added+' prospect(s) ajouté(s) à la tournée (achat ancien)');
+}
 // boot
 function populateQuartiers(){const sel=$('quart');if(!sel)return;const qs=[...new Set(DATA.map(p=>p.q).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'fr'));sel.innerHTML='<option value="all">Tous quartiers</option>'+qs.map(q=>'<option value="'+q+'">'+q+'</option>').join('');sel.value=fq;sel.onchange=()=>{fq=sel.value;refresh()};}
 load();renderBanner();initMap();sbInit();migratePhotos();initData().then(()=>{populateQuartiers();refresh();setStatus('ok');setTimeout(()=>{if(map){map.invalidateSize();if(DATA.length){const lats=DATA.filter(p=>p.lat).map(p=>p.lat),lons=DATA.filter(p=>p.lon).map(p=>p.lon);if(lats.length)map.fitBounds([[Math.min(...lats)-0.005,Math.min(...lons)-0.005],[Math.max(...lats)+0.005,Math.max(...lons)+0.005]],{maxZoom:15});}}}  ,300)});
