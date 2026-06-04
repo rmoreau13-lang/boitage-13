@@ -2,7 +2,7 @@
 <script>(function(){
   if(!('serviceWorker' in navigator))return;
   // Force clear : désinscrire TOUS les SW + vider TOUS les caches puis recharger
-  var FORCE_KEY='boitage13_sw_cleared_v29';
+  var FORCE_KEY='boitage13_sw_cleared_v30';
   if(!sessionStorage.getItem(FORCE_KEY)){
     sessionStorage.setItem(FORCE_KEY,'1');
     Promise.all([
@@ -1342,7 +1342,7 @@ function ficheAdemeHTML(p){
   h+='<div style="font-weight:900;font-size:15px;color:'+dpeFrColor+'">'+(p.date||'?').substring(0,10)+'</div>';
   h+=(dpeAgeStr?'<div style="font-size:11px;color:'+dpeFrColor+';font-weight:600">'+dpeAgeStr+'</div>':'');
   h+='</div>'+dpeTopBadge+'</div>';
-  h+='<h3>📄 Diagnostic ADEME <a href="https://observatoire-dpe-audit.ademe.fr/logement/'+p.id+'" target="_blank" rel="noopener" style="font-size:12px;font-weight:700;color:var(--accent);text-decoration:none;vertical-align:middle;margin-left:8px">🔗 Voir fiche ADEME</a></h3>';
+  h+='<h3>📄 Diagnostic ADEME <a href="https://observatoire-dpe-audit.ademe.fr/donnees-dpe-audit/logement-existant?numero_dpe='+p.id+'" target="_blank" rel="noopener" style="font-size:12px;font-weight:700;color:var(--accent);text-decoration:none;vertical-align:middle;margin-left:8px">🔗 Voir fiche ADEME</a></h3>';
 
   // KPI principaux : DPE / GES / Conso EP / Émission GES
   h+='<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:12px">';
