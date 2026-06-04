@@ -2,7 +2,7 @@
 <script>(function(){
   if(!('serviceWorker' in navigator))return;
   // Force clear : désinscrire TOUS les SW + vider TOUS les caches puis recharger
-  var FORCE_KEY='boitage13_sw_cleared_v20';
+  var FORCE_KEY='boitage13_sw_cleared_v21';
   if(!sessionStorage.getItem(FORCE_KEY)){
     sessionStorage.setItem(FORCE_KEY,'1');
     Promise.all([
@@ -624,105 +624,96 @@ textarea.inp{resize:vertical;min-height:46px}
 
 /* ── DESKTOP LAYOUT (≥1024px) ── */
 @media(min-width:1024px){
-  /* Police et taille de base */
-  body{font-size:15px}
+  body{font-size:15px;flex-direction:row;overflow:hidden;align-items:stretch}
 
-  /* Structure générale : sidebar gauche + contenu principal */
-  body{flex-direction:row;overflow:hidden}
-
-  /* Top bar → sidebar gauche fixe */
+  /* ── SIDEBAR : top bar + nav fusionnés ── */
   .top{
-    width:320px;flex:none;
-    height:100vh;overflow-y:auto;
+    width:300px;flex:none;
+    height:100vh;
     border-bottom:none;border-right:1px solid var(--border);
     display:flex;flex-direction:column;
-    padding:20px 16px 16px;
-    box-shadow:2px 0 12px rgba(0,0,0,.18);
-    position:relative;z-index:100;
+    padding:18px 14px 0;
+    box-shadow:2px 0 16px rgba(0,0,0,.22);
+    position:relative;z-index:200;
+    overflow-y:auto;
+    padding-bottom:64px; /* réserve pour nav */
   }
-  .top .brand{margin-bottom:14px}
-  .top .brand h1{font-size:20px}
+  .top .brand{margin-bottom:12px;gap:8px}
+  .top .brand h1{font-size:19px}
   .top .brand h1 .logo-mark{width:32px;height:32px;font-size:17px}
   #daily-badge{font-size:13px;padding:5px 12px}
-  .top .stats{
-    display:flex;flex-wrap:wrap;gap:5px;
-    margin-bottom:12px;
-  }
-  .stat{font-size:12px;padding:5px 10px}
+  #status{font-size:11px;padding:4px 10px}
+  .top .stats{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px}
+  .stat{font-size:12px;padding:5px 9px;border-radius:7px}
   .stat b{font-size:13px}
-  .top .srow{gap:8px;margin-bottom:8px}
-  .search{font-size:14px;padding:10px 14px}
-  .fbtn{font-size:13px;padding:10px 14px}
-  .panel.open{max-height:none}
-  .panelin{max-height:none;overflow-y:visible}
-  .chip{font-size:13px;padding:8px 14px;min-height:38px}
+  .top .srow{gap:7px;margin-bottom:6px}
+  .search{font-size:14px;padding:10px 12px}
+  .fbtn{font-size:13px;padding:10px 12px}
+  .panel.open{max-height:none;overflow:visible}
+  .panelin{max-height:none;overflow-y:visible;gap:5px}
+  .chip{font-size:12px;padding:6px 12px;min-height:36px}
 
-  /* Main : prend tout l'espace restant */
-  .main{flex:1;position:relative;overflow:hidden;height:100vh}
-  .scr{position:absolute;inset:0}
-
-  /* Nav → barre en bas de la sidebar */
+  /* ── NAV : collée en bas de la sidebar ── */
   .nav{
-    flex-direction:column;
-    width:320px;flex:none;
-    height:auto;
-    border-top:1px solid var(--border);
-    padding:0;margin-top:auto;
-    position:absolute;bottom:0;left:0;
-    background:var(--bg2);
-    z-index:101;
-  }
-  /* Masquer la nav fixe du bas et la mettre dans la sidebar */
-  body > .nav{
     position:fixed;bottom:0;left:0;
-    width:320px;
+    width:300px;
     flex-direction:row;
     border-top:1px solid var(--border);
     border-right:1px solid var(--border);
-    padding:0;
+    background:var(--bg2);
+    padding-bottom:0;
+    z-index:300;
+    box-shadow:0 -1px 0 var(--border);
   }
   .nav button{
-    font-size:11px;padding:12px 0 10px;
-    flex-direction:row;gap:8px;justify-content:flex-start;
-    padding:12px 18px;
+    font-size:10.5px;padding:10px 0 8px;
+    flex-direction:column;
   }
-  .nav button .ic{font-size:18px}
+  .nav button .ic{font-size:19px}
 
-  /* Carte plein espace */
+  /* ── MAIN : tout l'espace restant ── */
+  .main{
+    flex:1;
+    position:relative;
+    overflow:hidden;
+    height:100vh;
+    min-width:0;
+  }
+  .scr{position:absolute;inset:0}
   #scr-carte{padding:0}
   #map{position:absolute;inset:0}
 
-  /* Liste et tournées avec scroll */
+  /* ── LISTE / TOURNÉES / DONNÉES ── */
   #scr-liste.pad,#scr-tournees.pad,#scr-donnees.pad{
-    padding:16px 20px;
-    max-width:860px;
-    margin:0 auto;
+    padding:20px 28px;
+    overflow-y:auto;
   }
-  #scr-liste.pad{column-count:2;column-gap:12px}
-  .card{font-size:14px;padding:13px 14px 13px 0;margin-bottom:8px}
+  #scr-liste.pad{column-count:2;column-gap:14px;max-width:none}
+  .card{font-size:14px;padding:13px 14px 13px 0;margin-bottom:9px}
   .ad{font-size:14px}
   .mt{font-size:12.5px}
   .sc{font-size:22px}
+  .qbtn{min-width:36px;min-height:36px;font-size:15px}
 
-  /* Cards : 3 colonnes à partir de 1400px */
-  @media(min-width:1400px){
+  /* 3 colonnes sur grand écran */
+  @media(min-width:1440px){
     #scr-liste.pad{column-count:3}
-    #scr-tournees.pad,#scr-donnees.pad{max-width:1100px}
   }
 
-  /* Fiche prospect : plus large */
-  .fiche{max-width:560px}
+  /* ── FICHE ── */
+  .fiche{max-width:600px}
+  .facts{grid-template-columns:repeat(5,1fr)}
 
-  /* Sections */
-  .sec{font-size:11px;margin:18px 0 10px}
+  /* ── SECTIONS ── */
+  .sec{font-size:11px;margin:18px 0 10px;padding:0 2px}
   .block{padding:16px}
 
-  /* Modals */
-  #goal-modal .gbox{max-width:420px}
-  #terrain-overlay .to-body{max-width:500px;margin:0 auto;width:100%}
-  #terrain-overlay .to-btn-boite{max-width:400px}
+  /* ── MODALS ── */
+  #goal-modal .gbox{max-width:380px}
+  #terrain-overlay .to-body{max-width:480px;margin:0 auto;width:100%}
+  #terrain-overlay .to-btn-boite{max-width:380px}
 
-  /* Banner sauvegarde cloud */
+  /* ── BANNER ── */
   #banner>div{font-size:13px;padding:10px 20px}
 }
 
