@@ -2,7 +2,7 @@
 <script>(function(){
   if(!('serviceWorker' in navigator))return;
   // Force clear : désinscrire TOUS les SW + vider TOUS les caches puis recharger
-  var FORCE_KEY='boitage13_sw_cleared_v33';
+  var FORCE_KEY='boitage13_sw_cleared_v34';
   if(!sessionStorage.getItem(FORCE_KEY)){
     sessionStorage.setItem(FORCE_KEY,'1');
     Promise.all([
@@ -1149,6 +1149,7 @@ function autoTourPrio(){
   else toast('Tous les prioritaires sont déjà dans la tournée');
 }
 function optimizeAndMaps(){optimize();setTimeout(function(){window.open(mapsUrl(),'_blank');},400);}
+function dist(a,b){var R=6371;var dLat=(b.lat-a.lat)*Math.PI/180;var dLon=(b.lon-a.lon)*Math.PI/180;var x=Math.sin(dLat/2)*Math.sin(dLat/2)+Math.cos(a.lat*Math.PI/180)*Math.cos(b.lat*Math.PI/180)*Math.sin(dLon/2)*Math.sin(dLon/2);return R*2*Math.atan2(Math.sqrt(x),Math.sqrt(1-x));}
 function tourSavedKm(t){var s=t.stops.map(function(id){return byId[id];}).filter(Boolean);var d=0;for(var i=1;i<s.length;i++)d+=dist(s[i-1],s[i]);return d.toFixed(1);}
 function setMode(m){travelMode=m;store.set('boitage13_mode',m);renderTours();drawTour();}
 function usePos(){if(!navigator.geolocation){toast('Géoloc non disponible');return;}navigator.geolocation.getCurrentPosition(function(pos){startPos={id:'__start__',lat:pos.coords.latitude,lon:pos.coords.longitude};toast('📍 Position définie');renderTours();drawTour();fitTour();},function(){toast('⚠️ Géoloc refusée');},{enableHighAccuracy:true,timeout:6000});}
