@@ -1166,7 +1166,7 @@ document.querySelectorAll('#nav button').forEach(b=>b.onclick=()=>nav(b.dataset.
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden'){saveStateRaw();saveToursRaw();saveTourRaw();if(sbUser)syncPush(true)}});
 window.addEventListener('pagehide',()=>{saveStateRaw();saveToursRaw();saveTourRaw()});
 // ── Service Worker (PWA offline) ──
-if('serviceWorker' in navigator){navigator.serviceWorker.register('/boitage-13/sw.js').then(()=>{}).catch(()=>{})}
+if('serviceWorker' in navigator){navigator.serviceWorker.getRegistrations().then(function(regs){regs.forEach(function(r){if(r.active&&!r.active.scriptURL.includes('sw2.js'))r.unregister();else if(!r.active)r.unregister();})});navigator.serviceWorker.register('/boitage-13/sw2.js').catch(function(){});}
 
 // ── Géoloc temps réel ──
 let geoWatch=null,geoMarker=null;
