@@ -569,6 +569,15 @@ function renderBanner(){const b=$('banner');let h='';
 function dismissFirst(){firstDismissed=true;store.set('boitage13_dismiss','1');renderBanner()}
 // ---- carte ----
 let map,baseLayer,tourLayer;
+function annBtnHTML(p){
+  if(p.annonces_actives){
+    var j=p.annonce_jours,prix=p.annonce_prix?p.annonce_prix.toLocaleString('fr-FR')+' €':'';
+    var jL=j!=null?(j<7?'<7j':j<30?j+'j':j<90?Math.round(j/7)+'sem':Math.round(j/30)+'mois'):'';
+    var label='🏷️ En vente'+(prix?' · '+prix:'')+(jL?' · '+jL:'');
+    return '<a class="act ann on" href="'+esc(p.annonce_url||annURL(p))+'" target="_blank" rel="noopener" style="background:rgba(34,197,94,.18);color:#4ade80;border:1px solid rgba(34,197,94,.35)"><span class="ai">🏷️</span>'+label+'</a>';
+  }
+  return '<a class="act ann" href="'+annURL(p)+'" target="_blank" rel="noopener"><span class="ai">🔍</span>Chercher</a>';
+}
 function annURL(p){const rue=p.adresse.replace(/^\d+\s*/,'');return 'https://www.google.com/search?q='+encodeURIComponent('"'+rue+'" 13013 Marseille maison à vendre')}
 function earthURL(p){return 'https://earth.google.com/web/@'+p.lat+','+p.lon+',120a,350d,35y,0h,45t,0r'}
 function pappersURL(p){return 'https://immobilier.pappers.fr/?q='+encodeURIComponent(p.adresse+' 13013 Marseille')}
@@ -1053,7 +1062,7 @@ function openFiche(id){ficheOpen=id;const p=byId[id];if(!p)return;const r=rec(id
  const off=p.qoff&&p.qoff!==p.q?' · 🏛 '+esc(p.qoff):'';
  $('fiche').innerHTML='<div class="fhead"><div class="fbar"><button class="back" onclick="closeFiche()">‹</button><div class="ftt"><h2>'+esc(p.adresse)+'</h2><div class="fq">'+(p.prio?'⭐ ':'')+esc(p.q)+' · '+EMO[p.tier]+' '+p.tier+off+'</div></div><div class="fsc">'+p.score+'</div></div>'
  +'<button class="copyaddr" onclick="copyAddr(\''+id+'\',this)">📋 Copier l\'adresse</button>'
- +'<div class="facts"><a class="act map" href="'+p.gmaps+'" target="_blank"><span class="ai">📍</span>Maps</a><a class="act earth" href="'+earthURL(p)+'" target="_blank"><span class="ai">🌍</span>Earth</a><a class="act ann" href="'+annURL(p)+'" target="_blank"><span class="ai">🔗</span>Annonces</a><a class="act papers" href="'+pappersURL(p)+'" target="_blank"><span class="ai">🏠</span>Pappers</a><button class="act tour '+(inTour(id)?'in':'')+'" id="ftour" onclick="toggleTour(\''+id+'\')">'+(inTour(id)?'<span class=\"ai\">✓</span>Tournée':'<span class=\"ai\">＋</span>Tournée')+'</button></div></div>'
+ +'<div class="facts"><a class="act map" href="'+p.gmaps+'" target="_blank"><span class="ai">📍</span>Maps</a><a class="act earth" href="'+earthURL(p)+'" target="_blank"><span class="ai">🌍</span>Earth</a>'+annBtnHTML(p)+'<a class="act papers" href="'+pappersURL(p)+'" target="_blank"><span class="ai">🏠</span>Pappers</a><button class="act tour '+(inTour(id)?'in':'')+'" id="ftour" onclick="toggleTour(\''+id+'\')">'+(inTour(id)?'<span class=\"ai\">✓</span>Tournée':'<span class=\"ai\">＋</span>Tournée')+'</button></div></div>'
  +'<div class="fbody">'
  +'<div id="dvf-top">'+ficheDvfTopHTML(p)+'</div>'
  +'<div class="block"><h3>👤 Contact propriétaire</h3><div class="fld"><label>Nom</label><input class="inp" placeholder="ex. M. Martin" value="'+esc(r.contact.nom)+'" onchange="setC(\''+id+'\',\'nom\',this.value)"></div><div class="fld"><label>Téléphone</label><input class="inp" inputmode="tel" placeholder="06…" value="'+esc(r.contact.tel)+'" onchange="setC(\''+id+'\',\'tel\',this.value)"></div><div class="callrow"><a class="cb tel" href="'+(r.contact.tel?'tel:'+encodeURIComponent(r.contact.tel):'#')+'">📞 Appeler</a><a class="cb sms" href="'+(r.contact.tel?'sms:'+encodeURIComponent(r.contact.tel):'#')+'">💬 SMS</a></div><div class="fld" style="margin-top:9px"><label>E-mail</label><input class="inp" placeholder="@" value="'+esc(r.contact.email)+'" onchange="setC(\''+id+'\',\'email\',this.value)"></div></div>'
