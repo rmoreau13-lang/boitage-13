@@ -69,7 +69,10 @@
     "periode_cat": "recent",
     "periode_label": "1983-2000",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 8,
+    "dpe_frais": "tres_frais",
+    "signal_top": false
   },
   {
     "id": "2613E1458128O",
@@ -141,7 +144,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 2,
+    "dpe_frais": "tres_frais",
+    "signal_top": false
   },
   {
     "id": "2613E1448520A",
@@ -205,7 +211,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 4,
+    "dpe_frais": "tres_frais",
+    "signal_top": false
   },
   {
     "id": "2613E1376873J",
@@ -286,7 +295,10 @@
     "periode_cat": "recent",
     "periode_label": "1983-2000",
     "terrain_m2": 850.0,
-    "terrain_divisible": true
+    "terrain_divisible": true,
+    "dpe_age_jours": 12,
+    "dpe_frais": "tres_frais",
+    "signal_top": true
   },
   {
     "id": "2613E1328055T",
@@ -358,7 +370,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 16,
+    "dpe_frais": "tres_frais",
+    "signal_top": false
   },
   {
     "id": "2613E1307038K",
@@ -439,7 +454,10 @@
     "periode_cat": "moyen",
     "periode_label": "1948-1974",
     "terrain_m2": 188.0,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 21,
+    "dpe_frais": "tres_frais",
+    "signal_top": true
   },
   {
     "id": "2613E1409709H",
@@ -520,7 +538,10 @@
     "periode_cat": "recent",
     "periode_label": "1983-2000",
     "terrain_m2": 455.0,
-    "terrain_divisible": true
+    "terrain_divisible": true,
+    "dpe_age_jours": 7,
+    "dpe_frais": "tres_frais",
+    "signal_top": true
   },
   {
     "id": "2613E1393058W",
@@ -601,7 +622,10 @@
     "periode_cat": "neuf",
     "periode_label": "2001-2012",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 9,
+    "dpe_frais": "tres_frais",
+    "signal_top": true
   },
   {
     "id": "2613E1380031V",
@@ -673,7 +697,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 12,
+    "dpe_frais": "tres_frais",
+    "signal_top": false
   },
   {
     "id": "2613E1453678K",
@@ -754,7 +781,10 @@
     "periode_cat": "moyen",
     "periode_label": "1948-1974",
     "terrain_m2": 544.0,
-    "terrain_divisible": true
+    "terrain_divisible": true,
+    "dpe_age_jours": 2,
+    "dpe_frais": "tres_frais",
+    "signal_top": true
   },
   {
     "id": "2613E1403458W",
@@ -826,7 +856,10 @@
     "periode_cat": "moyen",
     "periode_label": "1948-1974",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 8,
+    "dpe_frais": "tres_frais",
+    "signal_top": false
   },
   {
     "id": "2613E1386376W",
@@ -898,7 +931,10 @@
     "periode_cat": "neuf",
     "periode_label": "Après 2013",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 12,
+    "dpe_frais": "tres_frais",
+    "signal_top": false
   },
   {
     "id": "2613E1348030A",
@@ -979,7 +1015,10 @@
     "periode_cat": "moyen",
     "periode_label": "1975-1982",
     "terrain_m2": 500.0,
-    "terrain_divisible": true
+    "terrain_divisible": true,
+    "dpe_age_jours": 14,
+    "dpe_frais": "tres_frais",
+    "signal_top": true
   },
   {
     "id": "2613E1235088C",
@@ -1043,7 +1082,10 @@
     "periode_cat": "recent",
     "periode_label": "1983-2000",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 29,
+    "dpe_frais": "tres_frais",
+    "signal_top": false
   },
   {
     "id": "2613E1159275F",
@@ -1115,7 +1157,10 @@
     "periode_cat": "moyen",
     "periode_label": "1948-1974",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 37,
+    "dpe_frais": "frais",
+    "signal_top": false
   },
   {
     "id": "2613E1376980M",
@@ -1187,7 +1232,10 @@
     "periode_cat": "moyen",
     "periode_label": "1975-1982",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 12,
+    "dpe_frais": "tres_frais",
+    "signal_top": false
   },
   {
     "id": "2613E1286940K",
@@ -1268,7 +1316,10 @@
     "periode_cat": "neuf",
     "periode_label": "2001-2012",
     "terrain_m2": 188.0,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 22,
+    "dpe_frais": "tres_frais",
+    "signal_top": true
   },
   {
     "id": "2613E1400602A",
@@ -1349,7 +1400,10 @@
     "periode_cat": "moyen",
     "periode_label": "1948-1974",
     "terrain_m2": 350.0,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 8,
+    "dpe_frais": "tres_frais",
+    "signal_top": true
   },
   {
     "id": "2613E1249870Q",
@@ -1430,7 +1484,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": 208.0,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 27,
+    "dpe_frais": "tres_frais",
+    "signal_top": true
   },
   {
     "id": "2513E3874066F",
@@ -1502,7 +1559,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 175,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E1437454K",
@@ -1566,7 +1626,10 @@
     "periode_cat": "moyen",
     "periode_label": "1948-1974",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 5,
+    "dpe_frais": "tres_frais",
+    "signal_top": false
   },
   {
     "id": "2613E1259018M",
@@ -1647,7 +1710,10 @@
     "periode_cat": "moyen",
     "periode_label": "1975-1982",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 27,
+    "dpe_frais": "tres_frais",
+    "signal_top": true
   },
   {
     "id": "2613E1216652A",
@@ -1728,7 +1794,10 @@
     "periode_cat": "moyen",
     "periode_label": "1948-1974",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 30,
+    "dpe_frais": "tres_frais",
+    "signal_top": true
   },
   {
     "id": "2613E1075893F",
@@ -1809,7 +1878,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": 1041.0,
-    "terrain_divisible": true
+    "terrain_divisible": true,
+    "dpe_age_jours": 46,
+    "dpe_frais": "frais",
+    "signal_top": true
   },
   {
     "id": "2613E1140405L",
@@ -1882,7 +1954,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": 448.0,
-    "terrain_divisible": true
+    "terrain_divisible": true,
+    "dpe_age_jours": 40,
+    "dpe_frais": "frais",
+    "signal_top": true
   },
   {
     "id": "2613E1043513V",
@@ -1963,7 +2038,10 @@
     "periode_cat": "moyen",
     "periode_label": "1948-1974",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 49,
+    "dpe_frais": "frais",
+    "signal_top": true
   },
   {
     "id": "2613E1167439F",
@@ -2044,7 +2122,10 @@
     "periode_cat": "recent",
     "periode_label": "1983-2000",
     "terrain_m2": 320.0,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 36,
+    "dpe_frais": "frais",
+    "signal_top": true
   },
   {
     "id": "2613E1132273R",
@@ -2125,7 +2206,10 @@
     "periode_cat": "moyen",
     "periode_label": "1975-1982",
     "terrain_m2": 45.0,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 40,
+    "dpe_frais": "frais",
+    "signal_top": true
   },
   {
     "id": "2613E1089083N",
@@ -2197,7 +2281,10 @@
     "periode_cat": "recent",
     "periode_label": "1983-2000",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 44,
+    "dpe_frais": "frais",
+    "signal_top": false
   },
   {
     "id": "2613E1084353P",
@@ -2278,7 +2365,10 @@
     "periode_cat": "neuf",
     "periode_label": "2001-2012",
     "terrain_m2": 690.0,
-    "terrain_divisible": true
+    "terrain_divisible": true,
+    "dpe_age_jours": 44,
+    "dpe_frais": "frais",
+    "signal_top": true
   },
   {
     "id": "2613E0376377T",
@@ -2350,7 +2440,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 114,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0334772O",
@@ -2431,7 +2524,10 @@
     "periode_cat": "moyen",
     "periode_label": "1948-1974",
     "terrain_m2": 690.0,
-    "terrain_divisible": true
+    "terrain_divisible": true,
+    "dpe_age_jours": 119,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0233356Y",
@@ -2503,7 +2599,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 127,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E1294345F",
@@ -2567,7 +2666,10 @@
     "periode_cat": "neuf",
     "periode_label": "2001-2012",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 22,
+    "dpe_frais": "tres_frais",
+    "signal_top": false
   },
   {
     "id": "2613E1039644A",
@@ -2648,7 +2750,10 @@
     "periode_cat": "neuf",
     "periode_label": "2001-2012",
     "terrain_m2": 345.0,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 49,
+    "dpe_frais": "frais",
+    "signal_top": true
   },
   {
     "id": "2513E3990139O",
@@ -2720,7 +2825,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 164,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E1155255P",
@@ -2792,7 +2900,10 @@
     "periode_cat": "moyen",
     "periode_label": "1948-1974",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 37,
+    "dpe_frais": "frais",
+    "signal_top": false
   },
   {
     "id": "2513E3956068D",
@@ -2873,7 +2984,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": 272.0,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 168,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0347309T",
@@ -2954,7 +3068,10 @@
     "periode_cat": "recent",
     "periode_label": "1983-2000",
     "terrain_m2": 1100.0,
-    "terrain_divisible": true
+    "terrain_divisible": true,
+    "dpe_age_jours": 118,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0217908U",
@@ -3026,7 +3143,10 @@
     "periode_cat": "moyen",
     "periode_label": "1948-1974",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 128,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0916729N",
@@ -3107,7 +3227,10 @@
     "periode_cat": "moyen",
     "periode_label": "1948-1974",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 63,
+    "dpe_frais": "frais",
+    "signal_top": true
   },
   {
     "id": "2613E0882945D",
@@ -3188,7 +3311,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": 618.0,
-    "terrain_divisible": true
+    "terrain_divisible": true,
+    "dpe_age_jours": 65,
+    "dpe_frais": "frais",
+    "signal_top": true
   },
   {
     "id": "2613E0204459N",
@@ -3260,7 +3386,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 131,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0397784C",
@@ -3332,7 +3461,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 112,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2513E3985169K",
@@ -3404,7 +3536,10 @@
     "periode_cat": "recent",
     "periode_label": "1983-2000",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 166,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E1239397V",
@@ -3477,7 +3612,10 @@
     "periode_cat": "recent",
     "periode_label": "1983-2000",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 28,
+    "dpe_frais": "tres_frais",
+    "signal_top": true
   },
   {
     "id": "2613E0447268I",
@@ -3549,7 +3687,10 @@
     "periode_cat": "moyen",
     "periode_label": "1975-1982",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 107,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0031524E",
@@ -3621,7 +3762,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 147,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E1256550O",
@@ -3702,7 +3846,10 @@
     "periode_cat": "moyen",
     "periode_label": "1948-1974",
     "terrain_m2": 254.0,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 27,
+    "dpe_frais": "tres_frais",
+    "signal_top": true
   },
   {
     "id": "2613E0887933Z",
@@ -3774,7 +3921,10 @@
     "periode_cat": "moyen",
     "periode_label": "1948-1974",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 65,
+    "dpe_frais": "frais",
+    "signal_top": false
   },
   {
     "id": "2613E0862533B",
@@ -3846,7 +3996,10 @@
     "periode_cat": "moyen",
     "periode_label": "1948-1974",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 69,
+    "dpe_frais": "frais",
+    "signal_top": false
   },
   {
     "id": "2613E0069747H",
@@ -3927,7 +4080,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": 573.0,
-    "terrain_divisible": true
+    "terrain_divisible": true,
+    "dpe_age_jours": 142,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E1035051J",
@@ -4008,7 +4164,10 @@
     "periode_cat": "moyen",
     "periode_label": "1975-1982",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 50,
+    "dpe_frais": "frais",
+    "signal_top": true
   },
   {
     "id": "2513E3961987U",
@@ -4080,7 +4239,10 @@
     "periode_cat": "moyen",
     "periode_label": "1948-1974",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 167,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0981499R",
@@ -4161,7 +4323,10 @@
     "periode_cat": "moyen",
     "periode_label": "1975-1982",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 56,
+    "dpe_frais": "frais",
+    "signal_top": true
   },
   {
     "id": "2613E0300749Z",
@@ -4234,7 +4399,10 @@
     "periode_cat": "neuf",
     "periode_label": "Après 2013",
     "terrain_m2": 394.0,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 121,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0189712I",
@@ -4315,7 +4483,10 @@
     "periode_cat": "neuf",
     "periode_label": "2001-2012",
     "terrain_m2": 366.0,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 132,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E1176421R",
@@ -4387,7 +4558,10 @@
     "periode_cat": "moyen",
     "periode_label": "1948-1974",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 35,
+    "dpe_frais": "frais",
+    "signal_top": false
   },
   {
     "id": "2613E1084776W",
@@ -4468,7 +4642,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 44,
+    "dpe_frais": "frais",
+    "signal_top": true
   },
   {
     "id": "2613E0902203V",
@@ -4549,7 +4726,10 @@
     "periode_cat": "recent",
     "periode_label": "1983-2000",
     "terrain_m2": 343.0,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 64,
+    "dpe_frais": "frais",
+    "signal_top": true
   },
   {
     "id": "2613E0886672M",
@@ -4630,7 +4810,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": 83.0,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 65,
+    "dpe_frais": "frais",
+    "signal_top": true
   },
   {
     "id": "2613E0445911D",
@@ -4702,7 +4885,10 @@
     "periode_cat": "neuf",
     "periode_label": "2001-2012",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 107,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0506506S",
@@ -4783,7 +4969,10 @@
     "periode_cat": "neuf",
     "periode_label": "2001-2012",
     "terrain_m2": 388.0,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 103,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0381408G",
@@ -4864,7 +5053,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": 290.0,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 114,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0051664U",
@@ -4936,7 +5128,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 146,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E1119717T",
@@ -5017,7 +5212,10 @@
     "periode_cat": "moyen",
     "periode_label": "1948-1974",
     "terrain_m2": 208.0,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 41,
+    "dpe_frais": "frais",
+    "signal_top": true
   },
   {
     "id": "2613E0944407B",
@@ -5098,7 +5296,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": 600.0,
-    "terrain_divisible": true
+    "terrain_divisible": true,
+    "dpe_age_jours": 61,
+    "dpe_frais": "frais",
+    "signal_top": true
   },
   {
     "id": "2613E0864901D",
@@ -5179,7 +5380,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": 46.0,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 68,
+    "dpe_frais": "frais",
+    "signal_top": true
   },
   {
     "id": "2613E0662042W",
@@ -5260,7 +5464,10 @@
     "periode_cat": "recent",
     "periode_label": "1983-2000",
     "terrain_m2": 178.0,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 86,
+    "dpe_frais": "frais",
+    "signal_top": true
   },
   {
     "id": "2613E0254257V",
@@ -5341,7 +5548,10 @@
     "periode_cat": "neuf",
     "periode_label": "Après 2013",
     "terrain_m2": 455.0,
-    "terrain_divisible": true
+    "terrain_divisible": true,
+    "dpe_age_jours": 126,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0057449H",
@@ -5405,7 +5615,10 @@
     "periode_cat": "moyen",
     "periode_label": "1948-1974",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 145,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2513E3943647K",
@@ -5477,7 +5690,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 168,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E1155329L",
@@ -5541,7 +5757,10 @@
     "periode_cat": "moyen",
     "periode_label": "1948-1974",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 37,
+    "dpe_frais": "frais",
+    "signal_top": false
   },
   {
     "id": "2613E0600752O",
@@ -5622,7 +5841,10 @@
     "periode_cat": "neuf",
     "periode_label": "2001-2012",
     "terrain_m2": 471.0,
-    "terrain_divisible": true
+    "terrain_divisible": true,
+    "dpe_age_jours": 93,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0396183N",
@@ -5703,7 +5925,10 @@
     "periode_cat": "neuf",
     "periode_label": "2001-2012",
     "terrain_m2": 290.0,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 113,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0236317V",
@@ -5784,7 +6009,10 @@
     "periode_cat": "recent",
     "periode_label": "1983-2000",
     "terrain_m2": 260.0,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 127,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0239042Q",
@@ -5865,7 +6093,10 @@
     "periode_cat": "moyen",
     "periode_label": "1948-1974",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 127,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2513E4005405S",
@@ -5946,7 +6177,10 @@
     "periode_cat": "neuf",
     "periode_label": "Après 2013",
     "terrain_m2": 592.0,
-    "terrain_divisible": true
+    "terrain_divisible": true,
+    "dpe_age_jours": 163,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2513E3992275S",
@@ -6027,7 +6261,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": 89.0,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 164,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2513E3912418H",
@@ -6108,7 +6345,10 @@
     "periode_cat": "neuf",
     "periode_label": "2001-2012",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 171,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0950354U",
@@ -6180,7 +6420,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 61,
+    "dpe_frais": "frais",
+    "signal_top": false
   },
   {
     "id": "2613E0788725H",
@@ -6252,7 +6495,10 @@
     "periode_cat": "moyen",
     "periode_label": "1948-1974",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 76,
+    "dpe_frais": "frais",
+    "signal_top": false
   },
   {
     "id": "2613E0658510A",
@@ -6333,7 +6579,10 @@
     "periode_cat": "moyen",
     "periode_label": "1948-1974",
     "terrain_m2": 297.0,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 87,
+    "dpe_frais": "frais",
+    "signal_top": true
   },
   {
     "id": "2613E0541387H",
@@ -6414,7 +6663,10 @@
     "periode_cat": "recent",
     "periode_label": "1983-2000",
     "terrain_m2": 349.0,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 98,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0453415T",
@@ -6478,7 +6730,10 @@
     "periode_cat": "neuf",
     "periode_label": "2001-2012",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 107,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0341499H",
@@ -6559,7 +6814,10 @@
     "periode_cat": "moyen",
     "periode_label": "1948-1974",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 118,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0295007D",
@@ -6631,7 +6889,10 @@
     "periode_cat": "recent",
     "periode_label": "1983-2000",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 122,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2513E3908102H",
@@ -6703,7 +6964,10 @@
     "periode_cat": "recent",
     "periode_label": "1983-2000",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 173,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E1096613D",
@@ -6784,7 +7048,10 @@
     "periode_cat": "recent",
     "periode_label": "1983-2000",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 43,
+    "dpe_frais": "frais",
+    "signal_top": true
   },
   {
     "id": "2613E1049224M",
@@ -6856,7 +7123,10 @@
     "periode_cat": "recent",
     "periode_label": "1983-2000",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 49,
+    "dpe_frais": "frais",
+    "signal_top": false
   },
   {
     "id": "2613E0894122A",
@@ -6937,7 +7207,10 @@
     "periode_cat": "recent",
     "periode_label": "1983-2000",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 65,
+    "dpe_frais": "frais",
+    "signal_top": true
   },
   {
     "id": "2613E0818875X",
@@ -7018,7 +7291,10 @@
     "periode_cat": "moyen",
     "periode_label": "1975-1982",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 72,
+    "dpe_frais": "frais",
+    "signal_top": true
   },
   {
     "id": "2613E0637034A",
@@ -7090,7 +7366,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 90,
+    "dpe_frais": "frais",
+    "signal_top": false
   },
   {
     "id": "2613E0432868M",
@@ -7162,7 +7441,10 @@
     "periode_cat": "recent",
     "periode_label": "1983-2000",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 110,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0353009Z",
@@ -7243,7 +7525,10 @@
     "periode_cat": "moyen",
     "periode_label": "1948-1974",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 117,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0247064E",
@@ -7324,7 +7609,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": 68.0,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 127,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0040820S",
@@ -7405,7 +7693,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": 464.0,
-    "terrain_divisible": true
+    "terrain_divisible": true,
+    "dpe_age_jours": 147,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0015193B",
@@ -7486,7 +7777,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 149,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2513E3876334L",
@@ -7567,7 +7861,10 @@
     "periode_cat": "moyen",
     "periode_label": "1975-1982",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 175,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E1001510I",
@@ -7648,7 +7945,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": 548.0,
-    "terrain_divisible": true
+    "terrain_divisible": true,
+    "dpe_age_jours": 54,
+    "dpe_frais": "frais",
+    "signal_top": true
   },
   {
     "id": "2613E0314385L",
@@ -7729,7 +8029,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": 235.0,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 120,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0973940Y",
@@ -7810,7 +8113,10 @@
     "periode_cat": "recent",
     "periode_label": "1983-2000",
     "terrain_m2": 547.0,
-    "terrain_divisible": true
+    "terrain_divisible": true,
+    "dpe_age_jours": 56,
+    "dpe_frais": "frais",
+    "signal_top": true
   },
   {
     "id": "2613E0667688A",
@@ -7891,7 +8197,10 @@
     "periode_cat": "neuf",
     "periode_label": "Après 2013",
     "terrain_m2": 1010.0,
-    "terrain_divisible": true
+    "terrain_divisible": true,
+    "dpe_age_jours": 86,
+    "dpe_frais": "frais",
+    "signal_top": true
   },
   {
     "id": "2613E0971356O",
@@ -7972,7 +8281,10 @@
     "periode_cat": "recent",
     "periode_label": "1983-2000",
     "terrain_m2": 606.0,
-    "terrain_divisible": true
+    "terrain_divisible": true,
+    "dpe_age_jours": 56,
+    "dpe_frais": "frais",
+    "signal_top": true
   },
   {
     "id": "2613E0819598S",
@@ -8053,7 +8365,10 @@
     "periode_cat": "moyen",
     "periode_label": "1948-1974",
     "terrain_m2": 370.0,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 71,
+    "dpe_frais": "frais",
+    "signal_top": true
   },
   {
     "id": "2613E0342190W",
@@ -8125,7 +8440,10 @@
     "periode_cat": "moyen",
     "periode_label": "1948-1974",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 118,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0585612G",
@@ -8197,7 +8515,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 95,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0157941J",
@@ -8278,7 +8599,10 @@
     "periode_cat": "moyen",
     "periode_label": "1948-1974",
     "terrain_m2": 540.0,
-    "terrain_divisible": true
+    "terrain_divisible": true,
+    "dpe_age_jours": 134,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0659462Q",
@@ -8359,7 +8683,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": 269.0,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 87,
+    "dpe_frais": "frais",
+    "signal_top": true
   },
   {
     "id": "2613E0546442S",
@@ -8431,7 +8758,10 @@
     "periode_cat": "recent",
     "periode_label": "1983-2000",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 98,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0316295X",
@@ -8503,7 +8833,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 120,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0423803V",
@@ -8575,7 +8908,10 @@
     "periode_cat": "moyen",
     "periode_label": "1948-1974",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 111,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0963900U",
@@ -8656,7 +8992,10 @@
     "periode_cat": "moyen",
     "periode_label": "1975-1982",
     "terrain_m2": 610.0,
-    "terrain_divisible": true
+    "terrain_divisible": true,
+    "dpe_age_jours": 57,
+    "dpe_frais": "frais",
+    "signal_top": true
   },
   {
     "id": "2613E0636752E",
@@ -8728,7 +9067,10 @@
     "periode_cat": "neuf",
     "periode_label": "2001-2012",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 90,
+    "dpe_frais": "frais",
+    "signal_top": false
   },
   {
     "id": "2613E0413465F",
@@ -8809,7 +9151,10 @@
     "periode_cat": "recent",
     "periode_label": "1983-2000",
     "terrain_m2": 500.0,
-    "terrain_divisible": true
+    "terrain_divisible": true,
+    "dpe_age_jours": 111,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E1032517X",
@@ -8890,7 +9235,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 50,
+    "dpe_frais": "frais",
+    "signal_top": true
   },
   {
     "id": "2613E0974957B",
@@ -8962,7 +9310,10 @@
     "periode_cat": "neuf",
     "periode_label": "2001-2012",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 56,
+    "dpe_frais": "frais",
+    "signal_top": false
   },
   {
     "id": "2613E0810212S",
@@ -9026,7 +9377,10 @@
     "periode_cat": "moyen",
     "periode_label": "1948-1974",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 72,
+    "dpe_frais": "frais",
+    "signal_top": false
   },
   {
     "id": "2613E0680618I",
@@ -9107,7 +9461,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 85,
+    "dpe_frais": "frais",
+    "signal_top": true
   },
   {
     "id": "2613E0333937L",
@@ -9179,7 +9536,10 @@
     "periode_cat": "moyen",
     "periode_label": "1948-1974",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 119,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2513E3851995I",
@@ -9260,7 +9620,10 @@
     "periode_cat": "moyen",
     "periode_label": "1948-1974",
     "terrain_m2": 349.0,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 177,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2513E3837202J",
@@ -9332,7 +9695,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 178,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0204393Z",
@@ -9396,7 +9762,10 @@
     "periode_cat": "moyen",
     "periode_label": "1948-1974",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 131,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0657132A",
@@ -9477,7 +9846,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": 269.0,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 88,
+    "dpe_frais": "frais",
+    "signal_top": true
   },
   {
     "id": "2613E0549626E",
@@ -9558,7 +9930,10 @@
     "periode_cat": "recent",
     "periode_label": "1983-2000",
     "terrain_m2": 332.0,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 98,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0548776M",
@@ -9622,7 +9997,10 @@
     "periode_cat": "moyen",
     "periode_label": "1975-1982",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 98,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0432403P",
@@ -9703,7 +10081,10 @@
     "periode_cat": "neuf",
     "periode_label": "Après 2013",
     "terrain_m2": 342.0,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 110,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0815242E",
@@ -9775,7 +10156,10 @@
     "periode_cat": "neuf",
     "periode_label": "Après 2013",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 72,
+    "dpe_frais": "frais",
+    "signal_top": false
   },
   {
     "id": "2613E0627003F",
@@ -9848,7 +10232,10 @@
     "periode_cat": "recent",
     "periode_label": "1983-2000",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 91,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0603372I",
@@ -9929,7 +10316,10 @@
     "periode_cat": "neuf",
     "periode_label": "2001-2012",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 92,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0381806O",
@@ -10010,7 +10400,10 @@
     "periode_cat": "recent",
     "periode_label": "1983-2000",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 114,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2513E3882559W",
@@ -10082,7 +10475,10 @@
     "periode_cat": "moyen",
     "periode_label": "1948-1974",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 174,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0964245B",
@@ -10163,7 +10559,10 @@
     "periode_cat": "neuf",
     "periode_label": "2001-2012",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 57,
+    "dpe_frais": "frais",
+    "signal_top": true
   },
   {
     "id": "2613E0864341P",
@@ -10227,7 +10626,10 @@
     "periode_cat": "moyen",
     "periode_label": "1948-1974",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 68,
+    "dpe_frais": "frais",
+    "signal_top": false
   },
   {
     "id": "2613E0494398A",
@@ -10299,7 +10701,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 104,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0429011D",
@@ -10380,7 +10785,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": 604.0,
-    "terrain_divisible": true
+    "terrain_divisible": true,
+    "dpe_age_jours": 110,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0849845B",
@@ -10444,7 +10852,10 @@
     "periode_cat": "neuf",
     "periode_label": "Après 2013",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 69,
+    "dpe_frais": "frais",
+    "signal_top": false
   },
   {
     "id": "2613E0563309L",
@@ -10516,7 +10927,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": null,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 97,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0543487B",
@@ -10597,7 +11011,10 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": 368.0,
-    "terrain_divisible": false
+    "terrain_divisible": false,
+    "dpe_age_jours": 98,
+    "dpe_frais": "recents",
+    "signal_top": false
   },
   {
     "id": "2613E0134401Z",
@@ -10678,6 +11095,9 @@
     "periode_cat": "ancien",
     "periode_label": "Avant 1948",
     "terrain_m2": 424.0,
-    "terrain_divisible": true
+    "terrain_divisible": true,
+    "dpe_age_jours": 138,
+    "dpe_frais": "recents",
+    "signal_top": false
   }
 ]
