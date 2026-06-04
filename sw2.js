@@ -1,5 +1,5 @@
 // SW v1 — network-first pour index.html et prospects.json
-const CACHE = 'boitage13-v11';
+const CACHE = 'boitage13-v12';
 const STATIC = [
   '/boitage-13/prospects.json',
   '/boitage-13/manifest.json',

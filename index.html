@@ -723,21 +723,128 @@ function autoTourDvf(){
   toast('✅ '+added+' prospects DVF ajoutés');
   nav('tournees');
 }
-function renderTours(){const s=tourStops();const n=tour.length;$('navbdg').style.display=n?'flex':'none';$('navbdg').textContent=n;const saved=tours.filter(t=>!t.deleted);
- let h='<button onclick="autoTourDvf()" style="display:block;width:calc(100% - 28px);margin:10px 14px 2px;padding:13px;background:#d02828;color:#fff;border:none;border-radius:13px;font-family:Fraunces,serif;font-weight:900;font-size:15px;cursor:pointer;letter-spacing:.3px;box-shadow:0 2px 8px #d0282840">🚨 Tournée Ventes récentes</button><button onclick="autoTourHist()" style="display:block;width:calc(100% - 28px);margin:6px 14px 2px;padding:11px;background:#1a3a60;color:#fff;border:none;border-radius:13px;font-family:Fraunces,serif;font-weight:900;font-size:14px;cursor:pointer">📅 Tournée Achat ancien</button><div class="sec" style="margin-top:8px">Tournée en cours</div>';
- if(!s.length)h+='<div class="block"><p class="hint" style="margin:0">Ajoutez des adresses avec le bouton ＋ (liste ou carte) pour bâtir une tournée.</p></div>';
- else{h+='<div class="block"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><b style="font-family:Fraunces,serif">'+s.length+' arrêt'+(s.length>1?'s':'')+'</b><span style="font-family:Fraunces,serif;font-weight:700;color:var(--accent)">≈ '+tourKm().toFixed(1)+' km</span></div>';
-  h+=s.map((p,i)=>'<div class="titem"><span class="tnum">'+(i+1)+'</span><div class="ta">'+esc(p.adresse)+'<br><small>'+esc(p.q)+' · '+EMO[p.tier]+' '+p.dpe+'</small></div><button class="rm" onclick="toggleTour(\''+p.id+'\')">✕</button></div>').join('');
-  h+='<div class="modeseg" style="margin:10px 0"><button class="'+(travelMode==='bicycling'?'on':'')+'" onclick="setMode(\'bicycling\')">🚲 Vélo</button><button class="'+(travelMode==='driving'?'on':'')+'" onclick="setMode(\'driving\')">🛵 Scooter</button></div>';
-  h+='<div class="trow"><button onclick="usePos()">📍 Partir d\'ici</button><button onclick="optimize()">↘️ Optimiser</button></div>';
-  h+='<a class="big terra" style="display:block;text-align:center;text-decoration:none;margin-top:8px" href="'+mapsUrl()+'" target="_blank">Ouvrir dans Google Maps</a><button class="big" style="background:#2d5a7a;margin-top:8px" onclick="smsMasse()">💬 SMS en masse à la tournée</button>';
-  h+='<button class="big ghost" style="margin-top:8px" onclick="saveCurrentTour()">💾 Enregistrer cette tournée</button></div>'}
- h+='<div class="sec">Tournées enregistrées</div>';
- if(!saved.length)h+='<div class="block"><p class="hint" style="margin:0">Aucune tournée enregistrée.</p></div>';
- else h+=saved.map(t=>'<div class="tourcard"><div class="tn">🧭 '+esc(t.name)+'</div><div class="tmm">'+esc(t.date)+' · '+t.stops.length+' arrêt'+(t.stops.length>1?'s':'')+'</div><div class="trow"><button onclick="openTourSaved(\''+t.id+'\')">Charger</button><button onclick="dupTour(\''+t.id+'\')">Dupliquer</button><a class="big ghost" style="flex:1;padding:9px 4px;font-size:12px" href="'+tourMapsUrl(t)+'" target="_blank">Maps</a><button onclick="delTour(\''+t.id+'\')">🗑️</button></div></div>').join('');
- $('scr-tournees').innerHTML=h}
-function setMode(m){travelMode=m;store.set('boitage13_mode',m);saveTour();renderTours()}
-function usePos(){if(!navigator.geolocation){toast('⚠️ Géoloc non supportée');return}toast('Localisation…');navigator.geolocation.getCurrentPosition(pos=>{startPos={lat:pos.coords.latitude,lon:pos.coords.longitude};toast('Position prise');renderTours();drawTour();fitTour()},()=>alert('Position indisponible (autorisez la géoloc).'),{enableHighAccuracy:true,timeout:8000})}
+function autoTourPrio(){
+  function hasPiscine(p){return (p.pappers_amenagements||[]).some(function(a){return String(a).toLowerCase().includes('piscine')});}
+  function nbSig(p){return [p.signal_top,hasPiscine(p),p.copro_fragile,(p.sci_score||0)>=30,(p.pv_pct||0)>=50,(p.hist_age_achat_ans||0)>=8,p.dpe_frais==='tres_frais'].filter(Boolean).length;}
+  var segs=[
+    DATA.filter(function(p){return p.signal_top&&!p.annonces_actives;}),
+    DATA.filter(function(p){return hasPiscine(p)&&p.tier==='chaud'&&!p.annonces_actives;}),
+    DATA.filter(function(p){return (p.sci_score||0)>=50&&!p.annonces_actives;}),
+    DATA.filter(function(p){return nbSig(p)>=3&&!p.annonces_actives&&(p.tier==='chaud'||p.tier==='tiede');}),
+  ];
+  var seen=new Set(tour);var added=0;
+  segs.forEach(function(seg){
+    seg.sort(function(a,b){return (b.score||0)-(a.score||0);});
+    seg.forEach(function(p){if(!seen.has(p.id)){seen.add(p.id);tour.push(p.id);added++;}});
+  });
+  saveTour();renderTours();drawTour();fitTour();
+  if(added)toast('✅ '+added+' ajouté(s) — tournée prioritaire');
+  else toast('Tous les prioritaires sont déjà dans la tournée');
+}
+function optimizeAndMaps(){optimize();setTimeout(function(){window.open(mapsUrl(),'_blank');},400);}
+function tourSavedKm(t){var s=t.stops.map(function(id){return byId[id];}).filter(Boolean);var d=0;for(var i=1;i<s.length;i++)d+=dist(s[i-1],s[i]);return d.toFixed(1);}
+function renderTours(){
+  var s=tourStops();var n=tour.length;
+  $('navbdg').style.display=n?'flex':'none';$('navbdg').textContent=n;
+  var saved=tours.filter(function(t){return !t.deleted;});
+  var h='';
+  // ── Chargement rapide ──
+  h+='<div style="padding:10px 14px 4px">';
+  h+='<div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--ink2);margin-bottom:7px">Chargement rapide</div>';
+  h+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:7px">';
+  h+='<button onclick="autoTourPrio()" style="padding:12px 8px;background:var(--accent);color:#fff;border:none;border-radius:12px;font-size:12px;font-weight:800;cursor:pointer;line-height:1.4;text-align:center">🎯 Tournée prioritaire<br><span style=\'font-size:10px;opacity:.8\'>TOP · Piscines · SCI</span></button>';
+  h+='<button onclick="autoTourDvf()" style="padding:12px 8px;background:#d02828;color:#fff;border:none;border-radius:12px;font-size:12px;font-weight:800;cursor:pointer;line-height:1.4;text-align:center">🚨 Ventes récentes<br><span style=\'font-size:10px;opacity:.8\'>Signal DVF actif</span></button>';
+  h+='<button onclick="autoTourHist()" style="padding:12px 8px;background:#1a3a60;color:#fff;border:none;border-radius:12px;font-size:12px;font-weight:800;cursor:pointer;line-height:1.4;text-align:center">📅 Achat ancien<br><span style=\'font-size:10px;opacity:.8\'>Maturité élevée</span></button>';
+  h+='<button onclick="tour=[];saveTour();renderTours();drawTour();toast(\'Tournée vidée\')" style="padding:12px 8px;background:var(--bg3);color:var(--ink2);border:1.5px solid var(--border);border-radius:12px;font-size:12px;font-weight:700;cursor:pointer;line-height:1.4;text-align:center">🗑️ Vider<br><span style=\'font-size:10px;opacity:.7\'>tout effacer</span></button>';
+  h+='</div></div>';
+  h+='<div class="sec" style="margin-top:8px">Tournée en cours</div>';
+  if(!s.length){
+    h+='<div class="block"><p class="hint" style="margin:0">Utilisez un bouton ci-dessus ou ajoutez des adresses avec <b>＋</b> depuis la liste ou la carte.</p></div>';
+  } else {
+    var done=s.filter(function(p){return rec(p.id).b;}).length;
+    var pct=Math.round(done/s.length*100);
+    h+='<div class="block">';
+    // Résumé + km
+    h+='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">';
+    h+='<b style="font-family:Fraunces,serif;font-size:15px">'+s.length+' arrêt'+(s.length>1?'s':'')+'</b>';
+    h+='<span style="font-family:Fraunces,serif;font-weight:700;color:var(--accent)">≈ '+tourKm().toFixed(1)+' km</span>';
+    h+='</div>';
+    // Barre de progression
+    h+='<div style="margin-bottom:12px">';
+    h+='<div style="display:flex;justify-content:space-between;font-size:11px;color:var(--ink2);margin-bottom:5px">';
+    h+='<span>Boîtés : '+done+' / '+s.length+'</span>';
+    h+='<span style="font-weight:800;color:'+(pct===100?'#4ade80':pct>50?'var(--teal)':'var(--ink2)')+'">'+pct+'%</span>';
+    h+='</div>';
+    h+='<div style="height:7px;background:var(--bg3);border-radius:4px;overflow:hidden">';
+    h+='<div style="height:100%;width:'+pct+'%;background:'+(pct===100?'#4ade80':pct>50?'var(--teal)':'var(--accent)')+';border-radius:4px;transition:width .4s ease"></div>';
+    h+='</div></div>';
+    // Mode transport
+    h+='<div class="modeseg" style="margin-bottom:10px">';
+    h+='<button class="'+(travelMode==='bicycling'?'on':'')+'" onclick="setMode(\'bicycling\')">🚲 Vélo</button>';
+    h+='<button class="'+(travelMode==='driving'?'on':'')+'" onclick="setMode(\'driving\')">🛵 Scooter</button>';
+    h+='<button class="'+(travelMode==='walking'?'on':'')+'" onclick="setMode(\'walking\')">🚶 Pied</button>';
+    h+='</div>';
+    // Actions
+    h+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:10px">';
+    h+='<button onclick="usePos()" style="padding:10px 6px;background:var(--bg3);border:1.5px solid var(--border);border-radius:10px;color:var(--ink);font-size:12px;font-weight:700;cursor:pointer">📍 Partir d\'ici</button>';
+    h+='<button onclick="optimize();renderTours();drawTour();fitTour();toast(\'Optimisé ✓\')" style="padding:10px 6px;background:rgba(14,165,160,.12);border:1.5px solid rgba(14,165,160,.3);border-radius:10px;color:#2dd4bf;font-size:12px;font-weight:700;cursor:pointer">↘️ Optimiser</button>';
+    h+='</div>';
+    // Bouton Maps Google principal
+    h+='<a href="'+mapsUrl()+'" target="_blank" rel="noopener" ';
+    h+='style="display:flex;align-items:center;justify-content:center;gap:10px;padding:14px 10px;';
+    h+='background:linear-gradient(135deg,#1a73e8,#0d47a1);color:#fff;border-radius:13px;';
+    h+='text-decoration:none;font-size:14px;font-weight:900;margin-bottom:8px;';
+    h+='box-shadow:0 4px 16px rgba(26,115,232,.4)">';
+    h+='<svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>';
+    h+='Ouvrir dans Google Maps</a>';
+    // Bouton optimiser + lancer navigation
+    h+='<button onclick="optimizeAndMaps()" ';
+    h+='style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;';
+    h+='padding:13px;background:linear-gradient(135deg,#e0552a,#b03010);color:#fff;';
+    h+='border:none;border-radius:13px;font-size:13px;font-weight:900;cursor:pointer;';
+    h+='margin-bottom:10px;box-shadow:0 3px 14px rgba(224,85,42,.4)">';
+    h+='⚡ Optimiser &amp; Lancer la navigation</button>';
+    // Liste arrêts
+    h+=s.map(function(p,i){
+      var b=rec(p.id).b;
+      var navUrl='https://www.google.com/maps/dir/?api=1&destination='+p.lat+','+p.lon+'&travelmode='+travelMode;
+      var sci=p.sci_score>0?' · SCI '+p.sci_score:'';
+      return '<div class="titem" style="'+(b?'opacity:.5':'')+'">'+
+        '<span class="tnum" style="'+(b?'background:#4ade8022;color:#4ade80;border-color:#4ade8044':'')+'">'+
+        (b?'✓':i+1)+'</span>'+
+        '<div class="ta">'+esc(p.adresse)+
+        '<br><small>'+esc(p.q)+' · '+EMO[p.tier]+' '+p.dpe+sci+'</small></div>'+
+        '<a href="'+navUrl+'" target="_blank" rel="noopener" '+
+        'style="flex:none;padding:7px 10px;background:rgba(26,115,232,.12);'+
+        'border:1.5px solid rgba(26,115,232,.25);border-radius:9px;'+
+        'color:#60a5fa;font-size:13px;text-decoration:none;margin-right:5px" '+
+        'title="Naviguer vers ce point">📍</a>'+
+        '<button class="rm" onclick="toggleTour(\''+p.id+'\')">✕</button></div>';
+    }).join('');
+    h+='<button class="big" style="background:#2d5a7a;margin-top:10px" onclick="smsMasse()">💬 SMS en masse</button>';
+    h+='<button class="big ghost" style="margin-top:8px" onclick="saveCurrentTour()">💾 Enregistrer cette tournée</button>';
+    h+='</div>';
+  }
+  // Tournées enregistrées
+  h+='<div class="sec">Tournées enregistrées</div>';
+  if(!saved.length){
+    h+='<div class="block"><p class="hint" style="margin:0">Aucune tournée enregistrée.</p></div>';
+  } else {
+    h+=saved.map(function(t){
+      return '<div class="tourcard">'+
+        '<div class="tn">🧭 '+esc(t.name)+'</div>'+
+        '<div class="tmm">'+esc(t.date)+' · '+t.stops.length+' arrêt'+(t.stops.length>1?'s':'')+
+        '<span style="color:var(--teal);font-weight:700;margin-left:8px">· ≈'+tourSavedKm(t)+' km</span></div>'+
+        '<div class="trow">'+
+        '<button onclick="openTourSaved(\''+t.id+'\')">⬇️ Charger</button>'+
+        '<button onclick="dupTour(\''+t.id+'\')">⎘ Dupliquer</button>'+
+        '<a class="big ghost" style="flex:1;padding:9px 4px;font-size:12px;text-align:center;text-decoration:none;display:flex;align-items:center;justify-content:center" href="'+tourMapsUrl(t)+'" target="_blank">🗺 Maps</a>'+
+        '<button onclick="delTour(\''+t.id+'\')">🗑️</button>'+
+        '</div></div>';
+    }).join('');
+  }
+  $('scr-tournees').innerHTML=h;
+}
 function tourMapsUrl(t){const s=t.stops.map(id=>byId[id]).filter(Boolean);if(!s.length)return '#';if(s.length<2)return 'https://www.google.com/maps/dir/?api=1&destination='+s[0].lat+','+s[0].lon;const o=s[0],d=s[s.length-1],wp=s.slice(1,-1).map(p=>p.lat+','+p.lon).join('|');let u='https://www.google.com/maps/dir/?api=1&origin='+o.lat+','+o.lon+'&destination='+d.lat+','+d.lon;if(wp)u+='&waypoints='+encodeURIComponent(wp);return u}
 function saveCurrentTour(){if(!tour.length)return;const nm=prompt('Nom de la tournée :','Tournée '+new Date().toLocaleDateString('fr-FR'));if(nm===null)return;tours.unshift({id:'t'+Date.now(),name:nm||'Tournée',date:new Date().toLocaleDateString('fr-FR'),stops:[...tour],u:now()});saveTours();renderTours();toast('💾 Tournée enregistrée')}
 function openTourSaved(id){const t=tours.find(x=>x.id===id);if(!t)return;tour=[...t.stops];saveTour();refresh();toast('Tournée chargée')}
@@ -1204,6 +1311,7 @@ function exportCSV(){const rows=[['Adresse','Quartier','Score','Tier','Priorité
 
 // ── Fonctions tournée ──
 function inTour(id){return tour.includes(id)}
+function toggleTour(id){var i=tour.indexOf(id);if(i>=0)tour.splice(i,1);else tour.push(id);saveTour();syncFicheTour();refresh();if($('scr-tournees').classList.contains('on'))renderTours();drawTour();toast(inTour(id)?'✓ Ajouté à la tournée':'Retiré de la tournée')}
 function drawTour(){if(!tourLayer)return;tourLayer.clearLayers();const s=tourStops();if(!s.length)return;let pts=startPos?[startPos,...s]:s;const ll=pts.map(p=>[p.lat,p.lon]);
  L.polyline(ll,{color:'#d6552f',weight:4,opacity:.85,dashArray:'7 7'}).addTo(tourLayer);
  if(startPos)L.circleMarker([startPos.lat,startPos.lon],{radius:7,fillColor:'#1c8b75',color:'#fff',weight:2,fillOpacity:1}).bindTooltip('Départ').addTo(tourLayer);
