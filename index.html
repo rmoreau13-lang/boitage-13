@@ -2,7 +2,7 @@
 <script>(function(){
   if(!('serviceWorker' in navigator))return;
   // Force clear : désinscrire TOUS les SW + vider TOUS les caches puis recharger
-  var FORCE_KEY='boitage13_sw_cleared_v25';
+  var FORCE_KEY='boitage13_sw_cleared_v26';
   if(!sessionStorage.getItem(FORCE_KEY)){
     sessionStorage.setItem(FORCE_KEY,'1');
     Promise.all([
@@ -750,8 +750,10 @@ textarea.inp{resize:vertical;min-height:46px}
  <div class="panel" id="panel"><div class="panelin">
   <button class="chip" data-t="chaud">🔥</button><button class="chip" data-t="tiede">♨️</button><button class="chip" data-t="froid">🌡️</button>
   <button class="chip sun" id="cprio">⭐</button><button class="chip" id="cboite">📭 à boîter</button><button class="chip" id="crecent">🗓️ non boîté 30j</button><button class="chip" id="ctop" style="background:#d0282820;border-color:#d02828;color:#c01818">🔥 Signal TOP</button><button class="chip" id="cdpefrais" style="background:#e0802020;border-color:#e08030;color:#b05010">⚡ DPE &lt;30j</button><button class="chip" id="cvente" style="background:#0a6ebd20;border-color:#0a6ebd;color:#064e8a">🏷️ En vente</button><button class="chip" id="cdvf" style="background:#d0282815;border-color:#d02828;color:#c01818">🚨 DVF</button><button class="chip" id="chist" style="background:#1a3a6020;border-color:#1a3a60;color:#1a3a60">📅 Achat ancien</button><button class="chip" id="cpv" style="background:#c8960c20;border-color:#c8960c;color:#8a6800">📈 PV +50%</button><button class="chip" id="cterrain" style="background:#1a6e2e20;border-color:#1a6e2e;color:#145a26">🌳 Terrain +400m²</button><button class="chip" id="csci" style="background:#6b21a820;border-color:#6b21a8;color:#4c1579">🏢 SCI</button><button class="chip" id="csciurg" style="background:#7c1d6f20;border-color:#7c1d6f;color:#5b1450">🔴 SCI urgente</button><button class="chip" id="cmaison" style="background:#16a34a20;border-color:#16a34a;color:#15803d">🏠 Maison</button><button class="chip" id="cappart" style="background:#2563eb20;border-color:#2563eb;color:#1d4ed8">🏢 Appart</button>
+  <div style="width:100%;display:flex;flex-direction:column;gap:8px;margin-top:2px">
   <select class="sel" id="quart"></select>
   <select class="sel" id="sort"><option value="score">⇅ Score</option><option value="sci">⇅ SCI urgente</option><option value="dvf">⇅ Ventes DVF</option><option value="hist">⇅ Achat ancien</option><option value="dpe">⇅ DPE récent</option><option value="quartier">⇅ Quartier</option></select>
+  </div>
  </div></div>
 </div>
 <div id="banner"></div>
