@@ -495,7 +495,7 @@ textarea.inp{resize:vertical;min-height:46px}
  </div>
  <div class="panel" id="panel"><div class="panelin">
   <span class="chip" data-t="chaud">🔥</span><span class="chip" data-t="tiede">♨️</span><span class="chip" data-t="froid">🌡️</span>
-  <span class="chip sun" id="cprio">⭐</span><span class="chip" id="cboite">📭 à boîter</span><span class="chip" id="crecent">🗓️ non boîté 30j</span><span class="chip" id="ctop" style="background:#d0282820;border-color:#d02828;color:#c01818">🔥 Signal TOP</span><span class="chip" id="cdpefrais" style="background:#e0802020;border-color:#e08030;color:#b05010">⚡ DPE &lt;30j</span><span class="chip" id="cvente" style="background:#0a6ebd20;border-color:#0a6ebd;color:#064e8a">🏷️ En vente</span><span class="chip" id="cdvf" style="background:#d0282815;border-color:#d02828;color:#c01818">🚨 DVF</span><span class="chip" id="chist" style="background:#1a3a6020;border-color:#1a3a60;color:#1a3a60">📅 Achat ancien</span><span class="chip" id="cpv" style="background:#c8960c20;border-color:#c8960c;color:#8a6800">📈 PV +50%</span><span class="chip" id="cterrain" style="background:#1a6e2e20;border-color:#1a6e2e;color:#145a26">🌳 Terrain +400m²</span><span class="chip" id="csci" style="background:#6b21a820;border-color:#6b21a8;color:#4c1579">🏢 SCI</span>
+  <span class="chip sun" id="cprio">⭐</span><span class="chip" id="cboite">📭 à boîter</span><span class="chip" id="crecent">🗓️ non boîté 30j</span><span class="chip" id="ctop" style="background:#d0282820;border-color:#d02828;color:#c01818">🔥 Signal TOP</span><span class="chip" id="cdpefrais" style="background:#e0802020;border-color:#e08030;color:#b05010">⚡ DPE &lt;30j</span><span class="chip" id="cvente" style="background:#0a6ebd20;border-color:#0a6ebd;color:#064e8a">🏷️ En vente</span><span class="chip" id="cdvf" style="background:#d0282815;border-color:#d02828;color:#c01818">🚨 DVF</span><span class="chip" id="chist" style="background:#1a3a6020;border-color:#1a3a60;color:#1a3a60">📅 Achat ancien</span><span class="chip" id="cpv" style="background:#c8960c20;border-color:#c8960c;color:#8a6800">📈 PV +50%</span><span class="chip" id="cterrain" style="background:#1a6e2e20;border-color:#1a6e2e;color:#145a26">🌳 Terrain +400m²</span><span class="chip" id="csci" style="background:#6b21a820;border-color:#6b21a8;color:#4c1579">🏢 SCI</span><span class="chip" id="cmaison" style="background:#16a34a20;border-color:#16a34a;color:#15803d">🏠 Maison</span><span class="chip" id="cappart" style="background:#2563eb20;border-color:#2563eb;color:#1d4ed8">🏢 Appart</span>
   <select class="sel" id="quart"></select>
   <select class="sel" id="sort"><option value="score">⇅ Score</option><option value="dvf">⇅ Ventes DVF</option><option value="hist">⇅ Achat ancien</option><option value="dpe">⇅ DPE récent</option><option value="quartier">⇅ Quartier</option></select>
  </div></div>
@@ -532,7 +532,7 @@ const store={get(k){try{return localStorage.getItem(k)}catch(e){return mem[k]??n
  del(k){try{localStorage.removeItem(k)}catch(e){delete mem[k]}}};
 let DATA=[],byId={},MAX=76;
 let state={},tours=[],tour=[],tourU='',travelMode='bicycling',startPos=null,phIndex={},ficheOpen=null,firstDismissed=false;
-let ft=new Set(),fq='all',prio=0,q='',fBoite=0,fRecent=0,fDvf=0,fHist=0,fPv=0,fTerrain=0,fDpeFrais=0,fTop=0,fVente=0,fSci=0,sortMode='score';
+let ft=new Set(),fq='all',prio=0,q='',fBoite=0,fRecent=0,fDvf=0,fHist=0,fPv=0,fTerrain=0,fDpeFrais=0,fTop=0,fVente=0,fSci=0,fType='',sortMode='score';
 // ---- état + horodatage par enregistrement ----
 function rec(id){let r=state[id];if(!r){r=state[id]={}}r.s=r.s||0;r.notes=r.notes||[];r.contact=r.contact||{};r.det=r.det||{};r.b=r.b||'';r.rdv=r.rdv||'';r.rel=r.rel||'';return r}
 function touch(id){rec(id).u=now()}
@@ -591,7 +591,7 @@ function drawMap(d){if(!map)return;baseLayer.clearLayers();
   m.addTo(baseLayer)});
  drawTour()}
 // ---- liste ----
-function filtered(){const now30=Date.now()-30*86400000;let d=DATA.filter(p=>(ft.size==0||ft.has(p.tier))&&(fq=='all'||p.q==fq||p.qoff===fq)&&(!prio||p.prio)&&(!fBoite||!rec(p.id).b)&&(!fRecent||!rec(p.id).b||new Date(rec(p.id).b)<new Date(Date.now()-30*86400000))&&(!q||p.adresse.toLowerCase().includes(q)||p.q.toLowerCase().includes(q)||(p.qoff||'').toLowerCase().includes(q))&&(!fDvf||p.dvf_signal==='en_vente'||p.dvf_signal==='vendu_recemment'||p.dvf_signal==='ancienne_vente')&&(!fHist||p.hist_maturite==='tres_mature'||p.hist_maturite==='mature')&&(!fPv||p.pv_pct>=50)&&(!fTerrain||p.terrain_divisible)&&(!fDpeFrais||p.dpe_frais==='tres_frais'||p.dpe_frais==='frais')&&(!fTop||p.signal_top)&&(!fVente||p.annonces_actives)&&(!fSci||p.sci_proche));
+function filtered(){const now30=Date.now()-30*86400000;let d=DATA.filter(p=>(ft.size==0||ft.has(p.tier))&&(fq=='all'||p.q==fq||p.qoff===fq)&&(!prio||p.prio)&&(!fBoite||!rec(p.id).b)&&(!fRecent||!rec(p.id).b||new Date(rec(p.id).b)<new Date(Date.now()-30*86400000))&&(!q||p.adresse.toLowerCase().includes(q)||p.q.toLowerCase().includes(q)||(p.qoff||'').toLowerCase().includes(q))&&(!fDvf||p.dvf_signal==='en_vente'||p.dvf_signal==='vendu_recemment'||p.dvf_signal==='ancienne_vente')&&(!fHist||p.hist_maturite==='tres_mature'||p.hist_maturite==='mature')&&(!fPv||p.pv_pct>=50)&&(!fTerrain||p.terrain_divisible)&&(!fDpeFrais||p.dpe_frais==='tres_frais'||p.dpe_frais==='frais')&&(!fTop||p.signal_top)&&(!fVente||p.annonces_actives)&&(!fSci||p.sci_proche)&&(!fType||p.type_bien===fType));
  if(sortMode==='dpe')d=d.slice().sort((a,b)=>a.jours-b.jours);
  else if(sortMode==='quartier')d=d.slice().sort((a,b)=>(a.q||'').localeCompare(b.q||'','fr')||b.score-a.score);
  else if(sortMode==='dvf'){const P={en_vente:0,vendu_recemment:1,ancienne_vente:2,none:3};d=d.slice().sort((a,b)=>(P[a.dvf_signal||'none']||3)-(P[b.dvf_signal||'none']||3)||b.score-a.score);}
@@ -645,7 +645,8 @@ function dpeFraisBadge(p){
   if(f==='tres_frais')return '<span style="background:#c01010;color:#fff;border-radius:5px;padding:2px 7px;font-size:11px;font-weight:900">🔥 DPE '+p.dpe_age_jours+'j</span> ';
   return '<span style="background:#e08030;color:#fff;border-radius:5px;padding:2px 7px;font-size:11px;font-weight:900">⚡ DPE '+p.dpe_age_jours+'j</span> ';
 }
-function tagHTML(p){const r=rec(p.id);let h=venteBadge(p)+dpeFraisBadge(p)+dvfSignalBadge(p)+histBadge(p)+terrainBadge(p)+sciBadge(p);if(r.b)h+='<span class="tag bo">📭 boîté</span>';if(r.rdv)h+='<span class="tag rdv">📅 RDV '+fdate(r.rdv)+'</span>';if(r.rel)h+='<span class="tag rel">🔔 relance '+fdate(r.rel)+'</span>';if(r.s>0)h+='<span class="tag st">'+STAT[r.s]+'</span>';return h}
+function typeBadge(p){if(!p.type_bien||p.type_bien==='maison')return '';return '<span style="background:#2563eb;color:#fff;border-radius:5px;padding:2px 6px;font-size:10px;font-weight:700">🏢 Appart'+(p.etage!=null?' Ét.'+p.etage:'')+'</span> ';}
+function tagHTML(p){const r=rec(p.id);let h=typeBadge(p)+venteBadge(p)+dpeFraisBadge(p)+dvfSignalBadge(p)+histBadge(p)+terrainBadge(p)+sciBadge(p);if(r.b)h+='<span class="tag bo">📭 boîté</span>';if(r.rdv)h+='<span class="tag rdv">📅 RDV '+fdate(r.rdv)+'</span>';if(r.rel)h+='<span class="tag rel">🔔 relance '+fdate(r.rel)+'</span>';if(r.s>0)h+='<span class="tag st">'+STAT[r.s]+'</span>';return h}
 // ── Swipe sur cartes ──
 function addSwipe(el, onLeft, onRight){
   let sx=0,sy=0,moved=false;
@@ -676,6 +677,8 @@ function fdate(s){if(!s)return '';const p=s.split('-');return p.length===3?p[2]+
 function boitesToday(){const t=new Date(),k=t.getFullYear()+'-'+(t.getMonth()+1)+'-'+t.getDate();return DATA.filter(p=>{const b=rec(p.id).b;if(!b)return false;const d=new Date(b);return (d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate())===k}).length}
 function updateStats(){
  const tot=DATA.length,star=DATA.filter(p=>p.prio).length,chaud=DATA.filter(p=>p.tier==='chaud').length,todo=DATA.filter(p=>rec(p.id).s==0).length;
+ const nbMaisons=DATA.filter(p=>!p.type_bien||p.type_bien==='maison').length;
+ const nbApparts=DATA.filter(p=>p.type_bien==='appartement').length;
  const dvfHot=DATA.filter(p=>p.dvf_signal==='en_vente'||p.dvf_signal==='vendu_recemment').length;
  const histHot=DATA.filter(p=>p.hist_maturite==='tres_mature'||p.hist_maturite==='mature').length;
  const topHot=DATA.filter(p=>p.signal_top).length;
@@ -685,7 +688,9 @@ const venteHot=DATA.filter(function(p){return p.annonces_actives;}).length;
 if(venteHot>0)st+='<span class="stat" style="cursor:pointer;background:#0a6ebd;color:#fff;font-weight:900;border-color:#0a6ebd" onclick="fVente=fVente?0:1;if($(\'cvente\'))$(\'cvente\').classList.toggle(\'on\');refresh()" title="Biens en vente dans le secteur">🏷️ <b>'+venteHot+'</b> en vente</span>';
 if(topHot>0)st+='<span class="stat" style="cursor:pointer;background:#d0282820;border-color:#d02828;color:#c01818;font-weight:900" onclick="fTop=1;if($(\'ctop\'))$(\'ctop\').classList.add(\'on\');refresh()" title="Signal TOP">🔥 <b>'+topHot+'</b></span>';
 if(dpeFraisHot>0)st+='<span class="stat" style="cursor:pointer;background:#e0802020;border-color:#e08030;color:#b05010" onclick="fDpeFrais=1;if($(\'cdpefrais\'))$(\'cdpefrais\').classList.add(\'on\');refresh()" title="DPE &lt;30j">⚡ <b>'+dpeFraisHot+'</b></span>';
-st+='<span class="stat"><b>'+tot+'</b>prospects</span>';
+st+='<span class="stat" style="cursor:pointer" onclick="fType=fType===\'maison\'?\'\':\'maison\';if($(\'cmaison\'))$(\'cmaison\').classList.toggle(\'on\',fType===\'maison\');if($(\'cappart\'))$(\'cappart\').classList.remove(\'on\');refresh()"><b>'+nbMaisons+'</b> 🏠</span>';
+ st+='<span class="stat" style="cursor:pointer;background:#2563eb15;border-color:#2563eb;color:#1d4ed8" onclick="fType=fType===\'appartement\'?\'\':\'appartement\';if($(\'cappart\'))$(\'cappart\').classList.toggle(\'on\',fType===\'appartement\');if($(\'cmaison\'))$(\'cmaison\').classList.remove(\'on\');refresh()"><b>'+nbApparts+'</b> 🏢</span>';
+ st+='<span class="stat"><b>'+tot+'</b>prospects</span>';
  st+='<span class="stat"><b>'+star+'</b>⭐</span>';
  st+='<span class="stat"><b>'+chaud+'</b>🔥</span>';
  st+='<span class="stat"><b>'+boitesToday()+'</b>💭 auj.</span>';
@@ -1152,6 +1157,8 @@ if($('ctop'))$('ctop').onclick=function(){fTop=fTop?0:1;this.classList.toggle('o
 if($('cdpefrais'))$('cdpefrais').onclick=function(){fDpeFrais=fDpeFrais?0:1;this.classList.toggle('on');refresh()};
 if($('cvente'))$('cvente').onclick=function(){fVente=fVente?0:1;this.classList.toggle('on');refresh()};
 if($('csci'))$('csci').onclick=function(){fSci=fSci?0:1;this.classList.toggle('on');refresh()};
+if($('cmaison'))$('cmaison').onclick=function(){if(fType==='maison'){fType='';this.classList.remove('on');if($('cappart'))$('cappart').classList.remove('on');}else{fType='maison';this.classList.add('on');if($('cappart')){$('cappart').classList.remove('on');}}refresh()};
+if($('cappart'))$('cappart').onclick=function(){if(fType==='appartement'){fType='';this.classList.remove('on');if($('cmaison'))$('cmaison').classList.remove('on');}else{fType='appartement';this.classList.add('on');if($('cmaison')){$('cmaison').classList.remove('on');}}refresh()};
 $('quart').onchange=e=>{fq=e.target.value;refresh()};
 $('sort').onchange=e=>{sortMode=e.target.value;refresh()};
 document.querySelectorAll('#nav button').forEach(b=>b.onclick=()=>nav(b.dataset.s));
