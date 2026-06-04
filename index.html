@@ -246,7 +246,7 @@ function load(){
  firstDismissed=store.get('boitage13_dismiss')==='1';
 }
 async function initData(){
- try{const r=await fetch('/boitage-13/prospects.json?v='+Date.now(),{cache:'no-store'});if(r.ok){const j=await r.json();const a=Array.isArray(j)?j:(j&&j.prospects);if(a&&a.length){DATA=a;store.set('boitage13_cache',JSON.stringify(a))}}}catch(e){}
+ try{const r=await fetch('prospects.json',{cache:'no-store'});if(r.ok){const j=await r.json();const a=Array.isArray(j)?j:(j&&j.prospects);if(a&&a.length){DATA=a;store.set('boitage13_cache',JSON.stringify(a))}}}catch(e){}
  if(!DATA.length){const c=store.get('boitage13_cache');if(c){try{DATA=JSON.parse(c)}catch(e){}}}
  DATA=DATA.filter(p=>!EXCLU.has(p.q)).sort((a,b)=>b.score-a.score);DATA.forEach((p,i)=>p.rang=i+1);
  byId={};DATA.forEach(p=>byId[p.id]=p);MAX=Math.max(76,...DATA.map(p=>p.score||0));
