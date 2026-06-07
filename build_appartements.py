@@ -235,12 +235,16 @@ def main():
         rows = json.load(f)
     print(f"-> {len(rows)} DPE appartements chargés")
 
-    # Charger DVF appart
+    # Charger DVF appart (optionnel — fichier absent = pas d'enrichissement DVF)
     dvf_path = HERE / "dvf_appart_geocoded.json"
-    with open(dvf_path, encoding='utf-8') as f:
-        dvf_list = json.load(f)
-    dvf_with_gps = [v for v in dvf_list if v.get('lat') and v.get('lon')]
-    print(f"-> {len(dvf_with_gps)}/{len(dvf_list)} DVF appart avec GPS")
+    if dvf_path.exists():
+        with open(dvf_path, encoding='utf-8') as f:
+            dvf_list = json.load(f)
+        dvf_with_gps = [v for v in dvf_list if v.get('lat') and v.get('lon')]
+        print(f"-> {len(dvf_with_gps)}/{len(dvf_list)} DVF appart avec GPS")
+    else:
+        dvf_with_gps = []
+        print("-> dvf_appart_geocoded.json absent — enrichissement DVF appart désactivé")
 
     # Construire prospects
     seen, prospects = set(), []
