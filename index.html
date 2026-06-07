@@ -1716,8 +1716,65 @@ function stopGeoWatch(){if(geoWatch){navigator.geolocation.clearWatch(geoWatch);
 // ── Score dynamique ──
 function dynamicScore(p){const r=rec(p.id);let s=p.score;if(r.b){const days=(Date.now()-new Date(r.b))/(86400000);if(days<7)s-=30;else if(days<30)s-=15}if(r.s>=3)s-=20;if(r.s===4||r.s===5||r.s===6)s-=50;return Math.max(0,s)}
 
-// ── Export CSV ──
-function exportCSV(){const rows=[['Adresse','Quartier','Score','Tier','Priorité','Statut','Boîté le','RDV','Relance','Tél','Email','Notes']];DATA.forEach(p=>{const r=rec(p.id);rows.push([p.adresse,p.q,p.score,p.tier,p.prio?'Oui':'Non',r.s>0?(require_STAT||STAT)[r.s]:'À visiter',r.b?new Date(r.b).toLocaleDateString('fr-FR'):'',r.rdv||'',r.rel||'',(r.contact&&r.contact.tel)||'',(r.contact&&r.contact.email)||'',(r.notes?r.notes.map(function(n){return n.x}).join(' | '):'')||''])});const csv=rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(';')).join('\n');const blob=new Blob(['﻿'+csv],{type:'text/csv;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='prospects-13-'+new Date().toISOString().slice(0,10)+'.csv';a.click();toast('📊 Export CSV prêt')}
+// ── Export CSV enrichi (CRM / Notion / Excel) ──
+function exportCSV(){
+  var entete=[
+    'Adresse','Code postal','Quartier','Quartier officiel','Type','Etage',
+    'Score','Tier','Prioritaire','Statut','Boite le','Jours depuis DPE',
+    'DPE','GES','Surface m2','Annee construction','Energie chauffage','Conso EP kWh/m2',
+    'DVF date vente','DVF prix','DVF prix m2','DVF signal',
+    'SCI nom','SCI siren','SCI score',
+    'Hist achat annee','Hist prix achat','Plus-value pct',
+    'Signal TOP','En vente annonce','Prix annonce',
+    'RDV','Relance','Tel','Email','Notes',
+    'Lat','Lon','Google Maps','N DPE'
+  ];
+  var lignes=[entete];
+  DATA.forEach(function(p){
+    var r=rec(p.id);
+    var statut=r.s>0?STAT[r.s]:'A visiter';
+    var notes=(r.notes?r.notes.map(function(n){return n.x}).join(' | '):'')||'';
+    var cp=p.code_postal_ban||'13013';
+    var etage=p.etage!=null?p.etage:'';
+    var dvfDate=p.dvf_date||'';
+    var dvfPrix=p.dvf_prix||'';
+    var dvfPrixM2=p.dvf_prix_m2||'';
+    var dvfSig=p.dvf_signal||'';
+    var sciNom=p.sci_proche?p.sci_proche.nom:'';
+    var sciSiren=p.sci_proche?p.sci_proche.siren:'';
+    var sciSc=p.sci_score||'';
+    var histAn=p.hist_annee_achat||'';
+    var histPrix=p.hist_prix_achat||'';
+    var pvPct=p.pv_pct!=null?p.pv_pct:'';
+    var top=p.signal_top?'Oui':'';
+    var enVente=p.annonces_actives?'Oui':'';
+    var prixAnn=p.annonce_prix||'';
+    lignes.push([
+      p.adresse, cp, p.q, p.qoff||'', p.type_bien||'maison', etage,
+      p.score, p.tier, p.prio?'Oui':'Non', statut,
+      r.b?new Date(r.b).toLocaleDateString('fr-FR'):'', p.jours||'',
+      p.dpe||'', p.ges||'', p.surface||'', p.annee||'', p.chauf||'', p.conso||'',
+      dvfDate, dvfPrix, dvfPrixM2, dvfSig,
+      sciNom, sciSiren, sciSc,
+      histAn, histPrix, pvPct,
+      top, enVente, prixAnn,
+      r.rdv||'', r.rel||'',
+      (r.contact&&r.contact.tel)||'',
+      (r.contact&&r.contact.email)||'',
+      notes,
+      p.lat||'', p.lon||'', p.gmaps||'', p.id||''
+    ]);
+  });
+  var csv=lignes.map(function(r){
+    return r.map(function(v){return '"'+String(v==null?'':v).replace(/"/g,'""')+'"';}).join(';');
+  }).join('\n');
+  var blob=new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8'});
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='prospects-13-'+new Date().toISOString().slice(0,10)+'.csv';
+  a.click();
+  toast('Exports CSV : '+DATA.length+' prospects');
+}
 
 
 // ── Fonctions tournée ──

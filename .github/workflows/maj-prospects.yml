@@ -1,6 +1,13 @@
-name: MAJ prospects (ADEME)
+name: MAJ prospects (ADEME + DVF + Apparts)
 
-# Régénère prospects.json depuis l'open data ADEME et le commit, chaque jour à 9h (Europe/Paris).
+# Régénère prospects.json chaque jour à 9h (Europe/Paris).
+# Pipeline complet :
+#   1. DVF maisons : extraction open data API DVF + géocodage BAN
+#   2. Maisons ADEME : refresh depuis data.ademe.fr
+#   3. Appartements ADEME : refresh depuis data.ademe.fr (13013 + 13004 + 13014)
+#   4. build_prospects.py : croisement DPE maisons × DVF → prospects maisons
+#   5. build_appartements_ci.py : croisement DPE apparts × DVF hist → prospects apparts
+#   6. Fusion maisons + apparts → prospects.json final
 on:
   schedule:
     - cron: '0 7 * * *'   # 09:00 Paris en été  (CEST = UTC+2)
@@ -22,9 +29,13 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Installer dependances Python
+        run: pip install requests --quiet
+
       - name: Regenerer prospects.json et pousser
         run: |
           set -e
+
           # Garde fuseau : sur declenchement planifie, ne continuer qu'a 9h heure de Paris
           H=$(TZ=Europe/Paris date +%H)
           echo "Heure Europe/Paris : ${H}h - evenement : ${{ github.event_name }}"
@@ -33,16 +44,43 @@ jobs:
             exit 0
           fi
 
-          # Extraction ADEME (si echec ou trop peu de resultats : on garde l'ancien fichier)
-          python3 refresh_prospects.py || { echo "Extraction interrompue : fichier conserve."; exit 0; }
+          DATE_MAJ=$(TZ=Europe/Paris date +%F)
+          echo "=== Lancement pipeline complet : ${DATE_MAJ} ==="
 
-          if git diff --quiet -- prospects.json; then
-            echo "Aucun changement dans prospects.json."
+          # ── ÉTAPE 1 : DVF maisons via API ouverte data.gouv.fr ──────────────
+          echo "--- Etape 1 : Refresh DVF maisons (API DVF data.gouv.fr) ---"
+          python3 refresh_dvf.py || {
+            echo "DVF refresh echoue — on conserve dvf_geocoded.json existant"
+          }
+
+          # ── ÉTAPE 2 : Maisons ADEME + croisement DVF ─────────────────────
+          echo "--- Etape 2 : Maisons ADEME ---"
+          python3 refresh_prospects.py || {
+            echo "Extraction maisons interrompue : fichier conserve."
+            exit 0
+          }
+
+          # ── ÉTAPE 3 : Appartements ADEME ──────────────────────────────────
+          echo "--- Etape 3 : Appartements ADEME ---"
+          python3 refresh_apparts_ci.py || {
+            echo "Extraction apparts interrompue — on conserve l'existant."
+          }
+
+          # ── ÉTAPE 4 : Fusion maisons + apparts ────────────────────────────
+          echo "--- Etape 4 : Fusion maisons + apparts ---"
+          python3 fusion_prospects.py || {
+            echo "Fusion echouee."
+            exit 0
+          }
+
+          # ── Commit si changements ──────────────────────────────────────────
+          if git diff --quiet -- prospects.json dvf_geocoded.json; then
+            echo "Aucun changement dans prospects.json ou dvf_geocoded.json."
             exit 0
           fi
 
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add prospects.json
-          git commit -m "MAJ auto prospects (ADEME) - $(TZ=Europe/Paris date +%F)"
+          git add prospects.json dvf_geocoded.json
+          git commit -m "MAJ auto prospects (ADEME + DVF) - ${DATE_MAJ}"
           git push

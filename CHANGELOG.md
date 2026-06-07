@@ -1,5 +1,27 @@
 # CHANGELOG — Cockpit Boîtage 13ᵉ
 
+## v3.2 — 2026-06-08 — Pipeline auto DVF + apparts + export CRM
+
+### Feature 1 : Pipeline appartements automatique
+- `refresh_apparts_ci.py` : récupère les DPE appartements ADEME (13013 / 13004 / 13014) depuis l’API data.ademe.fr, sauvegarde dans `dpe_appart_raw.json`.
+- `fusion_prospects.py` : fusionne maisons + apparts après chaque génération, re-numérote les rangs, sauvegarde `prospects.json`.
+- Workflow GitHub Actions mis à jour pour exécuter tout le pipeline en séquence (DVF → maisons ADEME → apparts ADEME → fusion).
+
+### Feature 2 : Refresh DVF automatique
+- `refresh_dvf.py` : régénère `dvf_geocoded.json` depuis l’API DVF open data (dvf.data.gouv.fr) pour 13013 / 13004 / 13014, géocode via l’API BAN batch.
+- Appelé chaque matin par le workflow avant la génération ADEME.
+- Garde-fou : si l’API renvoie < 50 ventes, le fichier existant est conservé.
+
+### Feature 3 : Export CSV enrichi (CRM / Notion)
+- La fonction `exportCSV` dans `index.html` passe de 12 à 40 colonnes :
+  adresse, CP, quartier officiel, type, étage, score, statut,
+  DPE/GES/surface/année/énergie/conso, DVF (date/prix/signal),
+  SCI (nom/siren/score), historique achat, plus-value %,
+  signal TOP, annonce en vente, coordonnées GPS, N° DPE.
+- Encodage UTF-8 BOM pour import Notion / Excel sans réglage.
+
+---
+
 ## v3.1 — 2026-06-03 — Fiabilisation de la sauvegarde + ergonomie terrain
 
 ### Priorité 1 — Sauvegarde fiable (plus de perte silencieuse)
