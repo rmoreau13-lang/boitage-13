@@ -120,21 +120,31 @@ body{
 
 /* ── STATS KPI BAR ── */
 .stats{
-  display:flex;gap:5px;overflow-x:auto;
-  -webkit-overflow-scrolling:touch;scrollbar-width:none;
-  padding-bottom:2px;margin-bottom:8px;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(72px,1fr));
+  gap:5px;margin-bottom:8px;
 }
-.stats::-webkit-scrollbar{display:none}
 .stat{
   background:var(--bg3);border:1px solid var(--border);
-  border-radius:8px;padding:5px 10px;font-size:11px;
-  font-weight:600;white-space:nowrap;flex:none;color:var(--ink2);
+  border-radius:10px;padding:7px 6px 6px;font-size:10px;
+  font-weight:700;color:var(--ink2);
   cursor:default;transition:all var(--trans);
   touch-action:manipulation;font-family:inherit;-webkit-appearance:none;appearance:none;
+  display:flex;flex-direction:column;align-items:center;gap:1px;
+  text-align:center;white-space:nowrap;
 }
-.stat b{font-weight:900;color:var(--ink);margin-right:2px;font-size:12px}
-.stat[style*="cursor:pointer"]{cursor:pointer}
-.stat[style*="cursor:pointer"]:active{transform:scale(.96)}
+.stat b{font-weight:900;color:var(--ink);font-size:16px;line-height:1.1;display:block}
+.stat[style*="cursor:pointer"]:active{transform:scale(.94)}
+.stat.kpi-hot{background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.25);color:#b91c1c}
+.stat.kpi-hot b{color:#dc2626}
+.stat.kpi-warm{background:rgba(245,158,11,.08);border-color:rgba(245,158,11,.25);color:#92600a}
+.stat.kpi-warm b{color:#d97706}
+.stat.kpi-blue{background:rgba(59,130,246,.08);border-color:rgba(59,130,246,.25);color:#1d4ed8}
+.stat.kpi-blue b{color:#2563eb}
+.stat.kpi-purple{background:rgba(139,92,246,.08);border-color:rgba(139,92,246,.25);color:#5b21b6}
+.stat.kpi-purple b{color:#7c3aed}
+.stat.kpi-green{background:rgba(22,163,74,.08);border-color:rgba(22,163,74,.25);color:#15803d}
+.stat.kpi-green b{color:#16a34a}
 
 /* ── SEARCH ROW ── */
 .srow{display:flex;gap:8px}
@@ -159,33 +169,34 @@ body{
 .fbtn:hover{border-color:var(--border2)}
 
 /* ── FILTER PANEL ── */
-.panel{max-height:0;overflow:hidden;transition:max-height .28s cubic-bezier(.4,0,.2,1)}
-.panel.open{max-height:700px}
-.panelin{
-  padding:12px 0 6px;display:flex;flex-wrap:wrap;
-  gap:7px;overflow-y:auto;max-height:360px;
+.panel{max-height:0;overflow:hidden;transition:max-height .32s cubic-bezier(.4,0,.2,1)}
+.panel.open{max-height:900px}
+.panelin{padding:10px 0 6px;overflow-y:auto;max-height:420px}
+.fgrp{margin-bottom:10px}
+.fgrp-label{
+  font-size:9.5px;font-weight:800;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--ink3);margin-bottom:6px;
+  padding-left:2px;
 }
+.fgrp-row{display:flex;flex-wrap:wrap;gap:5px}
 .chip{
   border:1px solid var(--border);background:var(--bg3);
-  border-radius:999px;padding:8px 14px;font-size:12.5px;font-weight:600;
+  border-radius:8px;padding:6px 12px;font-size:12px;font-weight:700;
   color:var(--ink2);cursor:pointer;user-select:none;touch-action:manipulation;
-  min-height:44px;display:inline-flex;align-items:center;gap:5px;
+  min-height:36px;display:inline-flex;align-items:center;gap:4px;
   transition:all var(--trans);
   font-family:inherit;-webkit-appearance:none;appearance:none;
 }
-.chip:hover{border-color:var(--border2);color:var(--ink)}
+.chip:active{transform:scale(.93)}
 .chip.on{
   background:var(--ink) !important;
-  color:var(--bg) !important;
+  color:#fff !important;
   border-color:var(--ink) !important;
-  box-shadow:0 0 0 2px var(--ink);
-  opacity:1 !important;
 }
 .chip.sun.on{
   background:var(--gold) !important;
   color:#1a1209 !important;
   border-color:var(--gold) !important;
-  box-shadow:0 0 0 2px var(--gold);
 }
 .sel{
   border:1px solid var(--border);background:var(--bg3);
@@ -226,14 +237,15 @@ body{
 /* ── CARDS ── */
 .card{
   background:var(--bg2);border:1px solid var(--border);
-  border-radius:var(--r);padding:11px 12px 11px 0;
-  margin-bottom:6px;display:flex;align-items:center;
+  border-radius:12px;padding:10px 10px 10px 0;
+  margin-bottom:5px;display:flex;align-items:stretch;
   gap:0;cursor:pointer;position:relative;overflow:hidden;
-  box-shadow:var(--sh);transition:border-color var(--trans),transform .1s;
+  box-shadow:0 1px 3px rgba(0,0,0,.07);
+  transition:border-color var(--trans),box-shadow var(--trans),transform .1s;
   -webkit-user-select:none;
 }
-.card:active{transform:scale(.985);border-color:var(--border2)}
-.card:hover{border-color:var(--border2)}
+.card:active{transform:scale(.982);box-shadow:none}
+.card.done{opacity:.4}
 
 /* barre couleur gauche */
 .card::before{
@@ -243,30 +255,34 @@ body{
 .card.chaud::before{background:var(--sig-hot)}
 .card.tiede::before{background:var(--sig-warm)}
 .card.froid::before{background:var(--sig-cool)}
-.card.done{opacity:.45}
 
-/* rang */
-.rg{
-  font-family:var(--font);font-weight:700;font-size:11px;
-  color:var(--ink3);min-width:32px;padding-left:14px;text-align:center;
-  flex:none;
+/* DPE badge latéral gauche */
+.dpe-col{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  width:28px;flex:none;margin-left:10px;gap:2px;
 }
+.dpe-badge{
+  font-size:11px;font-weight:900;width:22px;height:22px;
+  border-radius:5px;display:flex;align-items:center;justify-content:center;
+  color:#fff;line-height:1;flex:none;
+}
+.dpe-jours{font-size:9px;font-weight:700;color:var(--ink3);line-height:1}
+
 /* contenu principal */
 .mn{flex:1;min-width:0;padding-left:8px}
 .ad{
-  font-weight:700;font-size:13.5px;line-height:1.3;
+  font-weight:800;font-size:13px;line-height:1.3;
   white-space:normal;word-break:break-word;
   color:var(--ink);
 }
 .mt{
-  font-size:11px;color:var(--ink2);margin-top:2px;
-  white-space:normal;
-  font-weight:500;line-height:1.3;
+  font-size:11px;color:var(--ink2);margin-top:1px;
+  white-space:normal;font-weight:500;line-height:1.3;
 }
-.tags{margin-top:5px;display:flex;gap:3px;flex-wrap:wrap;min-height:0}
+.tags{margin-top:4px;display:flex;gap:3px;flex-wrap:wrap;min-height:0}
 .tag{
-  font-size:10px;font-weight:700;padding:2px 7px;
-  border-radius:5px;letter-spacing:.01em;
+  font-size:10px;font-weight:700;padding:2px 6px;
+  border-radius:4px;letter-spacing:.01em;
 }
 .tag.rdv{background:rgba(34,197,94,.15);color:#15803d}
 .tag.rel{background:rgba(180,120,0,.12);color:#92600a}
@@ -275,23 +291,25 @@ body{
 
 /* score */
 .sc{
-  font-family:var(--font);font-weight:900;font-size:16px;
-  color:var(--accent);min-width:26px;text-align:right;flex:none;
-  padding-right:2px;
+  font-family:var(--font);font-weight:900;font-size:15px;
+  color:var(--accent);width:24px;text-align:right;flex:none;
+  padding-right:0;display:flex;flex-direction:column;
+  align-items:flex-end;justify-content:center;gap:2px;
 }
-/* boutons actions rapides carte */
-.qcol{display:flex;flex-direction:row;gap:3px;flex:none;align-items:center;padding-right:4px}
+.sc-num{line-height:1}
+/* boutons actions rapides */
+.qcol{display:flex;flex-direction:column;gap:3px;flex:none;align-items:center;padding-right:4px;justify-content:center}
 .qbtn{
   border:1px solid var(--border);background:var(--bg3);
-  border-radius:8px;width:34px;height:34px;font-size:14px;
+  border-radius:7px;width:32px;height:32px;font-size:13px;
   font-weight:700;font-family:inherit;cursor:pointer;
   display:flex;align-items:center;justify-content:center;
   line-height:1;touch-action:manipulation;transition:all var(--trans);
   color:var(--ink2);
 }
-.qbtn:active{transform:scale(.88)}
+.qbtn:active{transform:scale(.85)}
 .qbtn.in{background:rgba(240,165,0,.18);border-color:var(--gold);color:var(--gold)}
-.qbtn.bo.on{background:rgba(139,92,246,.18);border-color:var(--purple);color:var(--purple)}
+.qbtn.bo.on{background:rgba(109,40,217,.15);border-color:var(--purple);color:var(--purple)}
 
 /* ── NAV BAR ── */
 .nav{
@@ -555,6 +573,10 @@ textarea.inp{resize:vertical;min-height:46px}
 #terrain-overlay .to-meta{
   font-size:13px;color:var(--ink2);margin-bottom:20px;
 }
+.to-chauff{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:14px;width:100%}
+.to-chauff-item{background:var(--bg2);border-radius:8px;padding:6px 10px;display:flex;flex-direction:column;gap:2px}
+.to-chauff-label{font-size:9.5px;font-weight:800;text-transform:uppercase;color:var(--ink3);letter-spacing:.04em}
+.to-chauff-val{font-size:13px;font-weight:700;color:var(--ink1)}
 #terrain-overlay .to-score{
   font-family:var(--font);font-size:56px;font-weight:900;
   line-height:1;margin-bottom:6px;
@@ -748,12 +770,45 @@ textarea.inp{resize:vertical;min-height:46px}
   <button class="fbtn" id="reset-btn" onclick="resetFilters()" title="Effacer tous les filtres" style="display:none;background:var(--accent);color:#fff;border-color:var(--accent)">✕ Reset</button>
  </div>
  <div class="panel" id="panel"><div class="panelin">
-  <button class="chip" data-t="chaud">🔥</button><button class="chip" data-t="tiede">♨️</button><button class="chip" data-t="froid">🌡️</button>
-  <button class="chip sun" id="cprio">⭐</button><button class="chip" id="cboite">📭 à boîter</button><button class="chip" id="crecent">🗓️ non boîté 30j</button><button class="chip" id="ctop" style="background:#d0282820;border-color:#d02828;color:#c01818">🔥 Signal TOP</button><button class="chip" id="cdpefrais" style="background:#e0802020;border-color:#e08030;color:#b05010">⚡ DPE &lt;30j</button><button class="chip" id="cvente" style="background:#0a6ebd20;border-color:#0a6ebd;color:#064e8a">🏷️ En vente</button><button class="chip" id="cdvf" style="background:#d0282815;border-color:#d02828;color:#c01818">🚨 DVF</button><button class="chip" id="chist" style="background:#1a3a6020;border-color:#1a3a60;color:#1a3a60">📅 Achat ancien</button><button class="chip" id="cpv" style="background:#c8960c20;border-color:#c8960c;color:#8a6800">📈 PV +50%</button><button class="chip" id="cterrain" style="background:#1a6e2e20;border-color:#1a6e2e;color:#145a26">🌳 Terrain +400m²</button><button class="chip" id="csci" style="background:#6b21a820;border-color:#6b21a8;color:#4c1579">🏢 SCI</button><button class="chip" id="csciurg" style="background:#7c1d6f20;border-color:#7c1d6f;color:#5b1450">🔴 SCI urgente</button><button class="chip" id="cmaison" style="background:#16a34a20;border-color:#16a34a;color:#15803d">🏠 Maison</button><button class="chip" id="cappart" style="background:#2563eb20;border-color:#2563eb;color:#1d4ed8">🏢 Appart</button>
-  <div style="width:100%;display:flex;flex-direction:column;gap:8px;margin-top:2px">
-  <select class="sel" id="quart"></select>
-  <select class="sel" id="sort"><option value="score">⇅ Score</option><option value="sci">⇅ SCI urgente</option><option value="dvf">⇅ Ventes DVF</option><option value="hist">⇅ Achat ancien</option><option value="dpe">⇅ DPE récent</option><option value="quartier">⇅ Quartier</option></select>
+  <!-- groupe urgence -->
+  <div class="fgrp">
+   <div class="fgrp-label">Urgence</div>
+   <div class="fgrp-row">
+    <button class="chip" data-t="chaud" style="background:#df3f1720;border-color:#df3f17;color:#c03010">Chaud</button>
+    <button class="chip" data-t="tiede" style="background:#dd8c0020;border-color:#dd8c00;color:#a06800">Tiède</button>
+    <button class="chip" data-t="froid" style="background:#62788a20;border-color:#62788a;color:#445666">Froid</button>
+    <button class="chip sun" id="cprio" style="background:#f0a50020;border-color:#f0a500;color:#a07000">Prioritaire</button>
+    <button class="chip" id="cdpefrais" style="background:#e0802020;border-color:#e08030;color:#b05010">DPE frais</button>
+    <button class="chip" id="ctop" style="background:#d0282820;border-color:#d02828;color:#c01818">Signal TOP</button>
+    <button class="chip" id="cboite" style="background:#6b3f9920;border-color:#6b3f99;color:#4a2e7a">A boîter</button>
+    <button class="chip" id="crecent" style="background:#1c8b7520;border-color:#1c8b75;color:#136358">Non boîte 30j</button>
+   </div>
   </div>
+  <!-- groupe signaux -->
+  <div class="fgrp">
+   <div class="fgrp-label">Signaux</div>
+   <div class="fgrp-row">
+    <button class="chip" id="cdvf" style="background:#d0282815;border-color:#d02828;color:#c01818">DVF</button>
+    <button class="chip" id="cvente" style="background:#0a6ebd20;border-color:#0a6ebd;color:#064e8a">En vente</button>
+    <button class="chip" id="chist" style="background:#1a3a6020;border-color:#1a3a60;color:#1a3a60">Achat ancien</button>
+    <button class="chip" id="cpv" style="background:#c8960c20;border-color:#c8960c;color:#8a6800">PV +50%</button>
+    <button class="chip" id="csci" style="background:#6b21a820;border-color:#6b21a8;color:#4c1579">SCI</button>
+    <button class="chip" id="csciurg" style="background:#7c1d6f20;border-color:#7c1d6f;color:#5b1450">SCI urgente</button>
+    <button class="chip" id="cterrain" style="background:#1a6e2e20;border-color:#1a6e2e;color:#145a26">Terrain</button>
+    <button class="chip" id="ccoprof" style="background:#ff990020;border-color:#ff9900;color:#cc7700">Copro fragile</button>
+   </div>
+  </div>
+  <!-- groupe type -->
+  <div class="fgrp">
+   <div class="fgrp-label">Type</div>
+   <div class="fgrp-row">
+    <button class="chip" id="cmaison" style="background:#16a34a20;border-color:#16a34a;color:#15803d">Maison</button>
+    <button class="chip" id="cappart" style="background:#2563eb20;border-color:#2563eb;color:#1d4ed8">Appart</button>
+   </div>
+  </div>
+  <!-- selects -->
+  <select class="sel" id="quart"></select>
+  <select class="sel" id="sort"><option value="score">&#x21C5; Score</option><option value="sci">&#x21C5; SCI urgente</option><option value="dvf">&#x21C5; Ventes DVF</option><option value="hist">&#x21C5; Achat ancien</option><option value="dpe">&#x21C5; DPE recent</option><option value="quartier">&#x21C5; Quartier</option></select>
  </div></div>
 </div>
 <div id="banner"></div>
@@ -949,9 +1004,31 @@ function smsMasse(){const stops=tourStops();if(!stops.length){toast('Aucun prosp
 function getSmsTpl(){return store.get('boitage13_sms_tpl')||'Bonjour, je suis agent immobilier et je serais intéressé par votre bien situé au {adresse}. Pouvez-vous me contacter ? Rémi MOREAU - Pardo & Chartier'}
 function getEmailTpl(){return store.get('boitage13_email_tpl')||'Bonjour,\n\nJe suis agent immobilier et votre bien au {adresse} retient mon attention.\nSeriez-vous vendeur ?\n\nCordialement,\nRémi MOREAU\nPardo & Chartier'}
 
-function drawList(d){$('scr-liste').innerHTML=d.map(p=>{const r=rec(p.id);const off=p.qoff&&p.qoff!==p.q?' · 🏛 '+esc(p.qoff):'';
- return '<div class="card '+p.tier+(r.s>0?' done':'')+'" data-id="'+p.id+'" onclick="openFiche(\''+p.id+'\')"><span class="rg">'+p.rang+'</span><div class="mn"><div class="ad">'+(p.prio?'⭐ ':'')+esc(p.adresse)+(phIndex[p.id]?' 📷':'')+'</div><div class="mt">'+esc(p.q)+' · DPE '+p.dpe+'/'+p.ges+' · '+p.surface+' m² · J-'+p.jours+off+'</div><div class="tags">'+tagHTML(p)+'</div></div><div class="sc">'+p.score+'</div><div class="qcol" onclick="event.stopPropagation()"><button class="qbtn '+(inTour(p.id)?'in':'')+'" title="Tournée" onclick="toggleTour(\''+p.id+'\')">'+(inTour(p.id)?'✓':'＋')+'</button><button class="qbtn bo '+(r.b?'on':'')+'" title="Boîté" onclick="quickBoite(\''+p.id+'\')">📭</button><button class="qbtn" title="Note" onclick="quickNote(\''+p.id+'\')">📝</button></div></div>'
- }).join('')||'<div style="padding:30px;text-align:center;color:var(--ink2)">Aucun prospect 🤷</div>';requestAnimationFrame(bindSwipes)}
+function chaufShort(c){
+  if(!c)return '';
+  var m={
+    'Electricite':'Elec','Électricité':'Elec','Electrique':'Elec',
+    'Gaz naturel':'Gaz','Gaz':'Gaz',
+    'Fioul domestique':'Fioul','Fioul':'Fioul',
+    'Pompe à chaleur':'PAC','PAC':'PAC',
+    'Réseau de chaleur':'Réseau','Bois':'Bois','Solaire':'Solaire'
+  };
+  return m[c]||c.slice(0,6);
+}
+function drawList(d){
+  var DPE_C={A:'#319a5c',B:'#52b86b',C:'#aad155',D:'#f5d13a',E:'#f0a020',F:'#e86030',G:'#d02828'};
+  $('scr-liste').innerHTML=d.map(p=>{
+    var r=rec(p.id);
+    var dpeBg=DPE_C[p.dpe]||'#9ba3b8';
+    var crt=chaufShort(p.chauf);
+    var surfLine=p.surface?p.surface+'m²':'';
+    var metaLine=[esc(p.q),surfLine,crt].filter(Boolean).join(' · ');
+    var prioBadge=p.prio?'<span style="color:#f0a500;margin-right:2px">★</span>':'';
+    var phBadge=phIndex[p.id]?'<span style="font-size:10px;opacity:.7">📷</span>':'';
+    return '<div class="card '+p.tier+(r.s>0?' done':'')+' " data-id="'+p.id+'" onclick="openFiche(\''+p.id+'\')">'+'<div class="dpe-col"><div class="dpe-badge" style="background:'+dpeBg+'">'+esc(p.dpe)+'</div><div class="dpe-jours">J-'+p.jours+'</div></div>'+'<div class="mn"><div class="ad">'+prioBadge+esc(p.adresse)+phBadge+'</div><div class="mt">'+metaLine+'</div><div class="tags">'+tagHTML(p)+'</div></div>'+'<div class="sc"><span class="sc-num">'+p.score+'</span></div>'+'<div class="qcol" onclick="event.stopPropagation()">'+'<button class="qbtn '+(inTour(p.id)?'in':'')+' " onclick="toggleTour(\''+p.id+'\')">'+(inTour(p.id)?'✓':'＋')+'</button>'+'<button class="qbtn bo '+(r.b?'on':'')+' " onclick="quickBoite(\''+p.id+'\')">📭</button>'+'</div></div>';
+  }).join('')||'<div style="padding:30px;text-align:center;color:var(--ink2)">Aucun prospect</div>';
+  requestAnimationFrame(bindSwipes);
+}
 function quickBoite(id){
   const r=rec(id);r.b=r.b?'':now();touch(id);saveState();refresh();
   if(ficheOpen===id&&$('boitebox'))$('boitebox').innerHTML=boiteHTML(id);
@@ -1026,12 +1103,24 @@ function renderTerrainCard(){
   var navUrl='https://www.google.com/maps/dir/?api=1&destination='+p.lat+','+p.lon+'&travelmode=bicycling';
   var tc=$('to-tour-count');
   if(tc){var d2=s.filter(function(pp){return rec(pp.id).b;}).length;tc.textContent=d2+' / '+s.length+' boîtés';}
+  // infos chauffage + cout
+  var chaufLabel=p.chauf||'—';
+  var coutLabel=p.cout_total?p.cout_total.toLocaleString('fr-FR')+' €/an':'—';
+  var consoLabel=p.conso?p.conso+' kWh/m²':'—';
+  var etageLabel=p.etage?'Et.'+p.etage:'';
+  var metaTerrain=[esc(p.q),p.surface?p.surface+' m²':'',etageLabel].filter(Boolean).join(' · ');
   $('terrain-body').innerHTML=
     '<div class="to-score" style="color:'+(done?'#15803d':'var(--accent)')+'">'+p.score+'</div>'+
-    '<div class="to-dpe" style="background:'+col+'22;color:'+col+';border:1.5px solid '+col+'44">DPE '+p.dpe+' / GES '+p.ges+'</div>'+
-    '<div class="to-addr">'+(p.prio?'⭐ ':'')+esc(p.adresse)+'</div>'+
-    '<div class="to-meta">'+esc(p.q)+' · '+p.surface+' m²'+(p.sci_score>0?' · 🏢 SCI '+p.sci_score:'')+(p.pv_pct>0?' · PV +'+p.pv_pct+'%':'')+'  · score <b>'+p.score+'</b></div>'+
-    '<button id="to-boite-btn" class="to-btn-boite'+(done?' done':'')+'" onclick="terrainBoite()">'+(done?'✓ Boîté !':'📭 Boîté !')+'</button>'+
+    '<div class="to-dpe" style="background:'+col+'22;color:'+col+';border:1.5px solid '+col+'44">DPE <b>'+p.dpe+'</b> / GES <b>'+p.ges+'</b>   '+consoLabel+'</div>'+
+    '<div class="to-addr">'+(p.prio?'★ ':'')+esc(p.adresse)+'</div>'+
+    '<div class="to-meta">'+metaTerrain+'</div>'+
+    '<div class="to-chauff">'+
+      '<div class="to-chauff-item"><span class="to-chauff-label">Chauffage</span><span class="to-chauff-val">'+chaufLabel+'</span></div>'+
+      '<div class="to-chauff-item"><span class="to-chauff-label">Coût annuel</span><span class="to-chauff-val">'+coutLabel+'</span></div>'+
+      (p.sci_score>0?'<div class="to-chauff-item"><span class="to-chauff-label">SCI</span><span class="to-chauff-val">score '+p.sci_score+'</span></div>':'')+
+      (p.pv_pct>0?'<div class="to-chauff-item"><span class="to-chauff-label">Plus-value</span><span class="to-chauff-val">+'+p.pv_pct+'%</span></div>':'')+
+    '</div>'+
+    '<button id="to-boite-btn" class="to-btn-boite'+(done?' done':'')+'" onclick="terrainBoite()">'+(done?'✓ Boîte !':'📭 Boîte !')+'</button>'+
     '<div class="to-nav">'+
     '<button onclick="terrainPrev()"'+(terrainIdx===0?' disabled style="opacity:.3"':'')+'>&#8592;</button>'+
     '<span>'+(terrainIdx+1)+' / '+s.length+'</span>'+
@@ -1094,29 +1183,32 @@ function updateStats(){
  const histHot=DATA.filter(p=>p.hist_maturite==='tres_mature'||p.hist_maturite==='mature').length;
  const topHot=DATA.filter(p=>p.signal_top).length;
 const dpeFraisHot=DATA.filter(p=>p.dpe_frais==='tres_frais').length;
-let st='';
-const venteHot=DATA.filter(function(p){return p.annonces_actives;}).length;
-if(venteHot>0)st+='<button class="stat" style="background:#0a6ebd;color:#fff;font-weight:900;border-color:#0a6ebd" onclick="fVente=fVente?0:1;if($(\'cvente\'))$(\'cvente\').classList.toggle(\'on\');refresh()" title="Biens en vente dans le secteur">🏷️ <b>'+venteHot+'</b> en vente</button>';
-if(topHot>0)st+='<button class="stat" style="background:#d0282820;border-color:#d02828;color:#c01818;font-weight:900" onclick="fTop=1;if($(\'ctop\'))$(\'ctop\').classList.add(\'on\');refresh()" title="Signal TOP">🔥 <b>'+topHot+'</b></button>';
-if(dpeFraisHot>0)st+='<button class="stat" style="background:#e0802020;border-color:#e08030;color:#b05010" onclick="fDpeFrais=1;if($(\'cdpefrais\'))$(\'cdpefrais\').classList.add(\'on\');refresh()" title="DPE &lt;30j">⚡ <b>'+dpeFraisHot+'</b></button>';
-st+='<button class="stat" onclick="fType=fType===\'maison\'?\'\':\'maison\';if($(\'cmaison\'))$(\'cmaison\').classList.toggle(\'on\',fType===\'maison\');if($(\'cappart\'))$(\'cappart\').classList.remove(\'on\');refresh()"><b>'+nbMaisons+'</b> 🏠</button>';
- st+='<button class="stat" style="background:#2563eb15;border-color:#2563eb;color:#1d4ed8" onclick="fType=fType===\'appartement\'?\'\':\'appartement\';if($(\'cappart\'))$(\'cappart\').classList.toggle(\'on\',fType===\'appartement\');if($(\'cmaison\'))$(\'cmaison\').classList.remove(\'on\');refresh()"><b>'+nbApparts+'</b> 🏢</button>';
- var nbFragile=DATA.filter(p=>p.copro_fragile).length;
- st+='<button class="stat" style="background:#ff990015;border-color:#ff9900;color:#ff9900" onclick="fCopro=fCopro===1?0:1;if($(\'ccoprof\'))$(\'ccoprof\').classList.toggle(\'on\',fCopro===1);refresh()"><b>'+nbFragile+'</b> 🏚️</button>';
- st+='<span class="stat"><b>'+tot+'</b>prospects</span>';
- st+='<span class="stat"><b>'+star+'</b>⭐</span>';
- st+='<span class="stat"><b>'+chaud+'</b>🔥</span>';
- st+='<span class="stat"><b>'+boitesToday()+'</b>💭 auj.</span>';
- st+='<span class="stat"><b>'+todo+'</b>à visiter</span>';
- st+='<button class="stat" style="background:#d0282815;border-color:#d02828;color:#c01818" onclick="fDvf=1;if($(\'cdvf\'))$(\'cdvf\').classList.add(\'on\');sortMode=\'dvf\';$(\'sort\').value=\'dvf\';nav(\'liste\');refresh()" title="Ventes DVF">🚨 <b>'+dvfHot+'</b></button>';
- st+='<button class="stat" style="background:#1a3a6015;border-color:#1a3a60;color:#1a3a60" onclick="fHist=1;if($(\'chist\'))$(\'chist\').classList.add(\'on\');sortMode=\'hist\';$(\'sort\').value=\'hist\';nav(\'liste\');refresh()" title="Vendeurs potentiels">📅 <b>'+histHot+'</b></button>';
- const pvHot=DATA.filter(p=>p.pv_pct>=50).length;
- if(pvHot>0)st+='<button class="stat" style="background:#c8960c20;border-color:#c8960c;color:#8a6800" onclick="fPv=1;if($(\'cpv\'))$(\'cpv\').classList.add(\'on\');refresh()" title="Plus-value +50%">📈 <b>'+pvHot+'</b></button>';
- const terrainHot=DATA.filter(p=>p.terrain_divisible).length;
- if(terrainHot>0)st+='<button class="stat" style="background:#1a6e2e20;border-color:#1a6e2e;color:#145a26" onclick="fTerrain=1;if($(\'cterrain\'))$(\'cterrain\').classList.add(\'on\');refresh()" title="Terrain divisible">🌳 <b>'+terrainHot+'</b></button>';
- const sciHot=DATA.filter(p=>p.sci_proche).length;
- if(sciHot>0)st+='<button class="stat" style="background:#6b21a820;border-color:#6b21a8;color:#4c1579;font-weight:900" onclick="fSci=fSci?0:1;if($(\'csci\'))$(\'csci\').classList.toggle(\'on\');refresh()" title="Propriétaire SCI identifié">🏢 <b>'+sciHot+'</b> SCI</button>';
- $('stats').innerHTML=st;
+// construction des tuiles KPI
+  var st='';
+  var venteHot=DATA.filter(function(p){return p.annonces_actives;}).length;
+  var pvHot=DATA.filter(p=>p.pv_pct>=50).length;
+  var terrainHot=DATA.filter(p=>p.terrain_divisible).length;
+  var sciHot=DATA.filter(p=>p.sci_proche).length;
+  var nbFragile=DATA.filter(p=>p.copro_fragile).length;
+  // alertes chaudes
+  st+='<button class="stat kpi-hot" onclick="fDvf=1;if($(\'cdvf\'))$(\'cdvf\').classList.add(\'on\');sortMode=\'dvf\';$(\'sort\').value=\'dvf\';nav(\'liste\');refresh()" title="Ventes DVF recentes"><b>'+dvfHot+'</b>DVF</button>';
+  if(topHot>0)st+='<button class="stat kpi-hot" onclick="fTop=1;if($(\'ctop\'))$(\'ctop\').classList.add(\'on\');refresh()" title="Signal TOP"><b>'+topHot+'</b>TOP</button>';
+  if(venteHot>0)st+='<button class="stat kpi-blue" onclick="fVente=fVente?0:1;if($(\'cvente\'))$(\'cvente\').classList.toggle(\'on\');refresh()" title="Biens en vente"><b>'+venteHot+'</b>Vente</button>';
+  if(dpeFraisHot>0)st+='<button class="stat kpi-warm" onclick="fDpeFrais=1;if($(\'cdpefrais\'))$(\'cdpefrais\').classList.add(\'on\');refresh()" title="DPE date recent"><b>'+dpeFraisHot+'</b>DPE frais</button>';
+  st+='<button class="stat kpi-warm" onclick="fHist=1;if($(\'chist\'))$(\'chist\').classList.add(\'on\');sortMode=\'hist\';$(\'sort\').value=\'hist\';nav(\'liste\');refresh()" title="Acheteurs anciens"><b>'+histHot+'</b>Hist.</button>';
+  if(pvHot>0)st+='<button class="stat kpi-warm" onclick="fPv=1;if($(\'cpv\'))$(\'cpv\').classList.add(\'on\');refresh()" title="Plus-value +50%"><b>'+pvHot+'</b>PV+</button>';
+  if(sciHot>0)st+='<button class="stat kpi-purple" onclick="fSci=fSci?0:1;if($(\'csci\'))$(\'csci\').classList.toggle(\'on\');refresh()" title="Proprietaire SCI"><b>'+sciHot+'</b>SCI</button>';
+  if(terrainHot>0)st+='<button class="stat kpi-green" onclick="fTerrain=1;if($(\'cterrain\'))$(\'cterrain\').classList.add(\'on\');refresh()" title="Terrain divisible"><b>'+terrainHot+'</b>Terrain</button>';
+  if(nbFragile>0)st+='<button class="stat kpi-warm" onclick="fCopro=fCopro===1?0:1;if($(\'ccoprof\'))$(\'ccoprof\').classList.toggle(\'on\',fCopro===1);refresh()" title="Copropriete fragile"><b>'+nbFragile+'</b>Copro</button>';
+  // compteurs type + totaux
+  st+='<button class="stat" onclick="fType=fType===\'maison\'?\'\':\'maison\';if($(\'cmaison\'))$(\'cmaison\').classList.toggle(\'on\',fType===\'maison\');if($(\'cappart\'))$(\'cappart\').classList.remove(\'on\');refresh()"><b>'+nbMaisons+'</b>Maison</button>';
+  st+='<button class="stat kpi-blue" onclick="fType=fType===\'appartement\'?\'\':\'appartement\';if($(\'cappart\'))$(\'cappart\').classList.toggle(\'on\',fType===\'appartement\');if($(\'cmaison\'))$(\'cmaison\').classList.remove(\'on\');refresh()"><b>'+nbApparts+'</b>Appart</button>';
+  st+='<span class="stat"><b>'+tot+'</b>total</span>';
+  st+='<span class="stat kpi-hot"><b>'+chaud+'</b>chauds</span>';
+  st+='<span class="stat"><b>'+star+'</b>prio</span>';
+  st+='<span class="stat kpi-green"><b>'+boitesToday()+'</b>auj.</span>';
+  st+='<span class="stat"><b>'+todo+'</b>a voir</span>';
+  $('stats').innerHTML=st;
 }
 function autoTourDvf(){
   const PRIO=['en_vente','vendu_recemment','ancienne_vente'];
