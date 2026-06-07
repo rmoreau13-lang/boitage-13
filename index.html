@@ -1670,10 +1670,61 @@ function boiteHTML(id){const b=rec(id).b;return b?'<div style="display:flex;alig
 function fmtBoite(iso){const d=new Date(iso),p=n=>String(n).padStart(2,'0');return p(d.getDate())+'/'+p(d.getMonth()+1)+'/'+d.getFullYear()+' à '+p(d.getHours())+'h'+p(d.getMinutes())}
 function setBoite(id){rec(id).b=now();touch(id);saveState();if($('boitebox'))$('boitebox').innerHTML=boiteHTML(id);refresh();toast('📭 Boîté ✓')}
 function clearBoite(id){rec(id).b='';touch(id);saveState();if($('boitebox'))$('boitebox').innerHTML=boiteHTML(id);refresh()}
+// ---- Notion CRM ----
+const NOTION_DB_URL='https://www.notion.so/2824890c433343b19b2704e08c97f1d9';
+const NOTION_SYNC_WFLOW='Sync+Notion+CRM';
+const GH_REPO='rmoreau13-lang/boitage-13';
+function notionBlockHTML(){
+  const lastSync=store.get('boitage13_notion_sync');
+  const boites=DATA.filter(p=>rec(p.id).b).length;
+  const total=DATA.length;
+  let h='<div class="sec">Notion CRM</div>';
+  h+='<div class="block">';
+  h+='<div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">';
+  h+='<div style="width:36px;height:36px;background:#191919;border-radius:8px;display:flex;align-items:center;justify-content:center;flex:none">';
+  h+='<svg width="20" height="20" viewBox="0 0 100 100" fill="none"><rect width="100" height="100" rx="14" fill="#191919"/><path d="M29 22h42c3 0 5 2 5 5v46c0 3-2 5-5 5H29c-3 0-5-2-5-5V27c0-3 2-5 5-5z" fill="white"/><path d="M35 35h30M35 48h20M35 61h25" stroke="#191919" stroke-width="6" stroke-linecap="round"/></svg>';
+  h+='</div>';
+  h+='<div style="flex:1;min-width:0">';
+  h+='<div style="font-weight:800;font-size:14px">Prospects Boitage 13</div>';
+  h+='<div style="font-size:11px;color:var(--ink2)">'+(lastSync?'Synchro : '+new Date(lastSync).toLocaleDateString(\'fr-FR\',{day:\'2-digit\',month:\'short\',hour:\'2-digit\',minute:\'2-digit\'}):'Jamais synchronisé')+'</div>';
+  h+='</div></div>';
+  // Stats rapides
+  h+='<div style="display:flex;gap:8px;margin-bottom:12px">';
+  h+='<div style="flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:8px;text-align:center">';
+  h+='<div style="font-size:18px;font-weight:900;color:var(--ink)">'+total+'</div>';
+  h+='<div style="font-size:10px;color:var(--ink2);font-weight:600">prospects</div>';
+  h+='</div>';
+  h+='<div style="flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:8px;text-align:center">';
+  h+='<div style="font-size:18px;font-weight:900;color:var(--teal)">'+boites+'</div>';
+  h+='<div style="font-size:10px;color:var(--ink2);font-weight:600">boîtés</div>';
+  h+='</div>';
+  h+='<div style="flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:8px;text-align:center">';
+  h+='<div style="font-size:18px;font-weight:900;color:var(--accent)">'+DATA.filter(p=>p.tier===\'chaud\').length+'</div>';
+  h+='<div style="font-size:10px;color:var(--ink2);font-weight:600">chauds</div>';
+  h+='</div>';
+  h+='</div>';
+  // Boutons
+  h+='<button onclick="triggerNotionSync()" style="width:100%;padding:13px;background:#191919;color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:800;cursor:pointer;margin-bottom:8px">Lancer la synchro maintenant</button>';
+  h+='<a href="'+NOTION_DB_URL+'" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:12px;background:var(--bg3);border:1.5px solid var(--border);border-radius:12px;font-size:13px;font-weight:700;color:var(--ink);text-decoration:none">Ouvrir dans Notion</a>';
+  h+='<p style="font-size:11px;color:var(--ink3);margin-top:8px;line-height:1.5">La synchro lance un pipeline GitHub Actions (env. 2 min). Les prospects boités et chauds sont prioritaires.</p>';
+  h+='</div>';
+  return h;
+}
+async function triggerNotionSync(){
+  // Déclenche le workflow GitHub Actions via l'API publique
+  const url='https://api.github.com/repos/'+GH_REPO+'/actions/workflows/sync-notion.yml/dispatches';
+  // Sans token GitHub on ne peut pas déclencher depuis le browser — on redirige vers l'interface GitHub Actions
+  const actionsUrl='https://github.com/'+GH_REPO+'/actions/workflows/sync-notion.yml';
+  toast('Ouverture GitHub Actions…');
+  store.set('boitage13_notion_sync',new Date().toISOString());
+  renderDonnees();
+  window.open(actionsUrl,'_blank','noopener');
+}
 // ---- données / export-import ----
 function renderDonnees(){let h='<div class="sec">Sauvegarde cloud</div>'+sbBlockHTML();
  let nn=0;for(const id in state)nn+=(state[id].notes||[]).length;let ph=0;for(const id in phIndex)ph+=phIndex[id]||0;
  h+=renderHistory();
+ h+=notionBlockHTML();
  h+='<div class="sec">Templates messages</div><div class="block"><h3>💬 SMS</h3><div class="fld"><textarea class="inp" rows="3" id="sms_tpl" onchange="store.set(\'boitage13_sms_tpl\',this.value)">'+esc(getSmsTpl())+'</textarea><p class="hint">Variables : {adresse}, {quartier}</p></div><h3 style="margin-top:10px">📧 E-mail</h3><div class="fld"><textarea class="inp" rows="4" id="email_tpl" onchange="store.set(\'boitage13_email_tpl\',this.value)">'+esc(getEmailTpl())+'</textarea></div></div>';
  h+='<div class="sec">Export &amp; import</div><div class="block"><button class="big ink" onclick="exportCSV()">📊 Export CSV (Notion/Excel)</button><button class="big ink" style="margin-top:8px" onclick="exportData()">⬇️ Sauvegarde complète</button><label class="big ghost" style="display:block;text-align:center;margin-top:8px;cursor:pointer">⬆️ Importer une sauvegarde<input type="file" accept="application/json" style="display:none" onchange="importData(this)"></label><p class="hint">'+nn+' note(s) · '+ph+' photo(s) · '+tours.filter(t=>!t.deleted).length+' tournée(s).</p></div>';
  $('scr-donnees').innerHTML=h}

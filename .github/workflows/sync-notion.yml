@@ -1,0 +1,38 @@
+name: Sync Notion CRM
+
+# Synchronise prospects.json vers la base Notion "Prospects Boitage 13".
+# Lancé automatiquement après le workflow MAJ prospects, ou manuellement.
+
+on:
+  workflow_run:
+    workflows: ["MAJ prospects (ADEME + DVF + Apparts)"]
+    types: [completed]
+  workflow_dispatch:     # bouton manuel dans GitHub Actions
+
+permissions:
+  contents: read
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    # Ne lancer que si le workflow parent a réussi (ou si déclenchement manuel)
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Recuperer le depot
+        uses: actions/checkout@v4
+
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Installer dependances Python
+        run: pip install requests --quiet
+
+      - name: Synchroniser vers Notion
+        env:
+          NOTION_TOKEN:     ${{ secrets.NOTION_TOKEN }}
+          SUPABASE_URL:     ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY:     ${{ secrets.SUPABASE_KEY }}
+          SUPABASE_USER_ID: ${{ secrets.SUPABASE_USER_ID }}
+        run: python3 sync_notion.py
