@@ -948,7 +948,7 @@ let DATA=[],byId={},MAX=76;
 let state={},tours=[],tour=[],tourU='',travelMode='bicycling',startPos=null,phIndex={},ficheOpen=null,firstDismissed=false;
 let ft=new Set(),fq='all',prio=0,q='',fBoite=0,fRecent=0,fDvf=0,fHist=0,fPv=0,fTerrain=0,fDpeFrais=0,fDpeMax=0,fDpeFrom='',fDpeTo='',fTop=0,fVente=0,fSci=0,fSciUrg=0,fType='maison',fCopro=0,sortMode='score';
 let fArr=new Set(),fArrLdExcl=new Set();
-const ARR_ORDER=['Marseille 4e','Marseille 5e','Marseille 10e','Marseille 11e','Marseille 12e','Marseille 13e','Marseille 14e','Allauch','Plan-de-Cuques'];
+const ARR_ORDER=['Marseille 1er','Marseille 4e','Marseille 5e','Marseille 10e','Marseille 11e','Marseille 12e','Marseille 13e','Marseille 14e','Allauch','Plan-de-Cuques'];
 // ---- état + horodatage par enregistrement ----
 function rec(id){let r=state[id];if(!r){r=state[id]={}}r.s=r.s||0;r.notes=r.notes||[];r.contact=r.contact||{};r.det=r.det||{};r.b=r.b||'';r.rdv=r.rdv||'';r.rel=r.rel||'';return r}
 function touch(id){rec(id).u=now()}

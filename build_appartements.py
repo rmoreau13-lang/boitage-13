@@ -65,9 +65,14 @@ def nearest_quartier(lat, lon, cents):
 
 def clean_addr(rec):
     a = (rec.get("adresse_ban") or "").strip()
-    for tail in (" 13013 Marseille", " 13013 MARSEILLE", "13013 Marseille", "13013"):
-        a = a.replace(tail, "")
-    a = a.replace("Marseille", "").strip(" ,")
+    import re
+    # Retire "<CP> <Ville>" en fin (Marseille, Allauch, Plan-de-Cuques, etc.)
+    a = re.sub(r'\s*\b13\d{3}\b\s+(?:Marseille|MARSEILLE|Allauch|ALLAUCH|Plan[- ]?de[- ]?Cuques|PLAN[- ]?DE[- ]?CUQUES)\s*$', '', a, flags=re.IGNORECASE)
+    # Retire un CP isolé en fin
+    a = re.sub(r'\s*\b13\d{3}\b\s*$', '', a)
+    # Retire un nom de ville en fin
+    a = re.sub(r'\s*(?:Marseille|Allauch|Plan[- ]?de[- ]?Cuques)\s*$', '', a, flags=re.IGNORECASE)
+    a = a.strip(' ,')
     if not a:
         a = (rec.get("adresse_brut") or "").strip()
     return a.title() if a else "Adresse inconnue"
