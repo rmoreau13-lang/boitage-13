@@ -903,7 +903,14 @@ textarea.inp{resize:vertical;min-height:46px}
    </div>
   </div>
   <!-- selects -->
-  <select class="sel" id="quart"></select>
+  <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:stretch">
+   <select class="sel" id="quart" style="flex:1;min-width:140px"></select>
+   <button class="sel" id="arrond-btn" type="button" style="flex:1;min-width:140px;text-align:left;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:6px" onclick="toggleArrondPanel()">
+    <span id="arrond-btn-label">🗺️ Tous arrondissements</span>
+    <span style="font-size:10px;color:var(--ink3)">▼</span>
+   </button>
+  </div>
+  <div id="arrond-panel" style="display:none;background:var(--bg2);border:1.5px solid var(--border);border-radius:10px;padding:10px;margin-top:6px"></div>
   <select class="sel" id="sort"><option value="score">&#x21C5; Score</option><option value="sci">&#x21C5; SCI urgente</option><option value="dvf">&#x21C5; Ventes DVF</option><option value="hist">&#x21C5; Achat ancien</option><option value="dpe">&#x21C5; DPE recent</option><option value="quartier">&#x21C5; Quartier</option></select>
  </div></div>
 </div>
@@ -940,6 +947,8 @@ const store={get(k){try{return localStorage.getItem(k)}catch(e){return mem[k]!==
 let DATA=[],byId={},MAX=76;
 let state={},tours=[],tour=[],tourU='',travelMode='bicycling',startPos=null,phIndex={},ficheOpen=null,firstDismissed=false;
 let ft=new Set(),fq='all',prio=0,q='',fBoite=0,fRecent=0,fDvf=0,fHist=0,fPv=0,fTerrain=0,fDpeFrais=0,fDpeMax=0,fDpeFrom='',fDpeTo='',fTop=0,fVente=0,fSci=0,fSciUrg=0,fType='maison',fCopro=0,sortMode='score';
+let fArr=new Set(),fArrLdExcl=new Set();
+const ARR_ORDER=['Marseille 4e','Marseille 5e','Marseille 10e','Marseille 11e','Marseille 12e','Marseille 13e','Marseille 14e','Allauch','Plan-de-Cuques'];
 // ---- état + horodatage par enregistrement ----
 function rec(id){let r=state[id];if(!r){r=state[id]={}}r.s=r.s||0;r.notes=r.notes||[];r.contact=r.contact||{};r.det=r.det||{};r.b=r.b||'';r.rdv=r.rdv||'';r.rel=r.rel||'';return r}
 function touch(id){rec(id).u=now()}
@@ -1000,14 +1009,15 @@ function drawMap(d){if(!map)return;baseLayer.clearLayers();
  drawTour()}
 // ---- liste ----
 function hasActiveFilters(){
-  return ft.size>0||prio||fBoite||fRecent||fDvf||fHist||fPv||fTerrain||fDpeFrais||fDpeMax||fDpeFrom||fDpeTo||fTop||fVente||fSci||fSciUrg||fType||fCopro||q||fq!=='all'||sortMode!=='score';
+  return fArr.size>0||ft.size>0||prio||fBoite||fRecent||fDvf||fHist||fPv||fTerrain||fDpeFrais||fDpeMax||fDpeFrom||fDpeTo||fTop||fVente||fSci||fSciUrg||fType||fCopro||q||fq!=='all'||sortMode!=='score';
 }
 function updateResetBtn(){
   const btn=$('reset-btn');if(!btn)return;
   btn.style.display=hasActiveFilters()?'':'none';
 }
 function resetFilters(){
-  ft.clear();prio=0;fBoite=0;fRecent=0;fDvf=0;fHist=0;fPv=0;fTerrain=0;fDpeFrais=0;fDpeMax=0;fTop=0;fVente=0;fSci=0;fSciUrg=0;fType='';fCopro=0;sortMode='score';q='';var ds=$('dpe-max-sel');if(ds)ds.value='0';fDpeFrom='';fDpeTo='';var df=$('dpe-from');if(df)df.value='';var dt=$('dpe-to');if(dt)dt.value='';
+  ft.clear();fArr.clear();fArrLdExcl.clear();prio=0;fBoite=0;fRecent=0;fDvf=0;fHist=0;fPv=0;fTerrain=0;fDpeFrais=0;fDpeMax=0;fTop=0;fVente=0;fSci=0;fSciUrg=0;fType='';fCopro=0;sortMode='score';q='';var ds=$('dpe-max-sel');if(ds)ds.value='0';fDpeFrom='';fDpeTo='';var df=$('dpe-from');if(df)df.value='';var dt=$('dpe-to');if(dt)dt.value='';
+  syncArrondUI&&syncArrondUI();
   // reset input + select
   const qi=$('q');if(qi)qi.value='';
   const si=$('sort');if(si)si.value='score';
@@ -1021,7 +1031,7 @@ function resetFilters(){
   refresh();
   toast('✓ Tous les filtres effacés — '+DATA.length+' prospects');
 }
-function filtered(){const now30=Date.now()-30*86400000;let d=DATA.filter(p=>(ft.size==0||ft.has(p.tier))&&(fq=='all'||(fq.startsWith('ld:')?p.lieu_dit===fq.slice(3):p.q==fq||p.qoff===fq))&&(!prio||p.prio)&&(!fBoite||!rec(p.id).b)&&(!fRecent||!rec(p.id).b||new Date(rec(p.id).b)<new Date(Date.now()-30*86400000))&&(!q||p.adresse.toLowerCase().includes(q)||p.q.toLowerCase().includes(q)||(p.qoff||'').toLowerCase().includes(q)||(p.lieu_dit||'').toLowerCase().includes(q))&&(!fDvf||p.dvf_signal==='en_vente'||p.dvf_signal==='vendu_recemment'||p.dvf_signal==='ancienne_vente')&&(!fHist||p.hist_maturite==='tres_mature'||p.hist_maturite==='mature')&&(!fPv||p.pv_pct>=50)&&(!fTerrain||p.terrain_divisible)&&(!fDpeMax||(p.jours!=null&&p.jours<=fDpeMax))&&(!fDpeFrom||!p.date||p.date>=fDpeFrom)&&(!fDpeTo||!p.date||p.date<=fDpeTo)&&(!fTop||p.signal_top)&&(!fVente||p.annonces_actives)&&(!fSci||p.sci_proche)&&(!fSciUrg||(p.sci_score||0)>=50)&&(!fType||(fType==='maison'?(!p.type_bien||p.type_bien==='maison'):p.type_bien===fType))&&(!fCopro||(fCopro===1&&p.copro_fragile)||(fCopro===2&&!!p.copro_nom)));
+function filtered(){const now30=Date.now()-30*86400000;let d=DATA.filter(p=>(fArr.size==0||(fArr.has(p.arrondissement)&&!fArrLdExcl.has(p.lieu_dit||p.qoff||p.q)))&&(ft.size==0||ft.has(p.tier))&&(fq=='all'||(fq.startsWith('ld:')?p.lieu_dit===fq.slice(3):p.q==fq||p.qoff===fq))&&(!prio||p.prio)&&(!fBoite||!rec(p.id).b)&&(!fRecent||!rec(p.id).b||new Date(rec(p.id).b)<new Date(Date.now()-30*86400000))&&(!q||p.adresse.toLowerCase().includes(q)||p.q.toLowerCase().includes(q)||(p.qoff||'').toLowerCase().includes(q)||(p.lieu_dit||'').toLowerCase().includes(q))&&(!fDvf||p.dvf_signal==='en_vente'||p.dvf_signal==='vendu_recemment'||p.dvf_signal==='ancienne_vente')&&(!fHist||p.hist_maturite==='tres_mature'||p.hist_maturite==='mature')&&(!fPv||p.pv_pct>=50)&&(!fTerrain||p.terrain_divisible)&&(!fDpeMax||(p.jours!=null&&p.jours<=fDpeMax))&&(!fDpeFrom||!p.date||p.date>=fDpeFrom)&&(!fDpeTo||!p.date||p.date<=fDpeTo)&&(!fTop||p.signal_top)&&(!fVente||p.annonces_actives)&&(!fSci||p.sci_proche)&&(!fSciUrg||(p.sci_score||0)>=50)&&(!fType||(fType==='maison'?(!p.type_bien||p.type_bien==='maison'):p.type_bien===fType))&&(!fCopro||(fCopro===1&&p.copro_fragile)||(fCopro===2&&!!p.copro_nom)));
  if(sortMode==='dpe')d=d.slice().sort((a,b)=>a.jours-b.jours);
  else if(sortMode==='quartier')d=d.slice().sort((a,b)=>(a.q||'').localeCompare(b.q||'','fr')||b.score-a.score);
  else if(sortMode==='dvf'){const P={en_vente:0,vendu_recemment:1,ancienne_vente:2,none:3};d=d.slice().sort((a,b)=>(P[a.dvf_signal||'none']||3)-(P[b.dvf_signal||'none']||3)||b.score-a.score);}
@@ -2181,6 +2191,86 @@ function addSwipe(el,onLeft,onRight){
   el.addEventListener('touchend',function(e){el.style.transition='transform .2s';el.style.transform='';const dx=e.changedTouches[0].clientX-sx;if(moved&&Math.abs(dx)>55){if(dx<0)onLeft();else onRight()}moved=false});
 }
 // boot
+function toggleArrondPanel(){
+  const p=$('arrond-panel');if(!p)return;
+  p.style.display=p.style.display==='none'?'block':'none';
+}
+function populateArrond(){
+  const panel=$('arrond-panel');if(!panel)return;
+  // Compter prospects par arrondissement
+  const cnt={};
+  DATA.forEach(p=>{if(p.arrondissement){cnt[p.arrondissement]=(cnt[p.arrondissement]||0)+1}});
+  const list=ARR_ORDER.filter(a=>cnt[a]>0);
+  panel.innerHTML=''
+    +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:8px">'
+      +'<span style="font-size:11px;font-weight:900;color:var(--ink2);text-transform:uppercase">Arrondissements</span>'
+      +'<button onclick="fArr.clear();syncArrondUI();refresh()" style="background:transparent;border:1px solid var(--border);border-radius:6px;padding:3px 8px;font-size:11px;font-weight:700;color:var(--ink2);cursor:pointer">Tout décocher</button>'
+    +'</div>'
+    +'<div style="display:flex;flex-wrap:wrap;gap:6px">'
+      +list.map(a=>{
+        const id='arr_'+a.replace(/[^a-z0-9]/gi,'_');
+        return '<label class="arrchip" data-arr="'+a+'" style="display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--border);border-radius:9px;padding:6px 10px;cursor:pointer;font-size:12px;font-weight:700;color:var(--ink);transition:all .12s">'
+          +'<input type="checkbox" id="'+id+'" data-arr="'+a+'" style="margin:0;cursor:pointer" onchange="onArrToggle(this)">'
+          +'<span>'+a+'</span>'
+          +'<span style="color:var(--ink3);font-weight:800;font-size:10px">('+cnt[a]+')</span>'
+        +'</label>';
+      }).join('')
+    +'</div>'
+    +'<div id="arrond-ld-wrap" style="margin-top:10px"></div>';
+  syncArrondUI();
+}
+function onArrToggle(cb){
+  const a=cb.dataset.arr;
+  if(cb.checked) fArr.add(a); else fArr.delete(a);
+  syncArrondUI();
+  refresh();
+}
+function syncArrondUI(){
+  // checkboxes
+  document.querySelectorAll('#arrond-panel input[type=checkbox][data-arr]').forEach(cb=>{
+    cb.checked=fArr.has(cb.dataset.arr);
+    const lbl=cb.closest('.arrchip');
+    if(lbl){
+      if(cb.checked){lbl.style.background='#1c8b7515';lbl.style.borderColor='#1c8b75';lbl.style.color='#136358'}
+      else{lbl.style.background='#fff';lbl.style.borderColor='var(--border)';lbl.style.color='var(--ink)'}
+    }
+  });
+  // bouton label
+  const lbl=$('arrond-btn-label');
+  if(lbl){
+    if(fArr.size===0) lbl.textContent='🗺️ Tous arrondissements';
+    else if(fArr.size===1) lbl.textContent='🗺️ '+[...fArr][0];
+    else lbl.textContent='🗺️ '+fArr.size+' arrondissements';
+  }
+  // afficher les lieux-dits de l'arrondissement sélectionné (si 1 seul sélectionné)
+  renderArrondLieuxDits();
+}
+function renderArrondLieuxDits(){
+  const wrap=$('arrond-ld-wrap');if(!wrap)return;
+  if(fArr.size===0){wrap.innerHTML='';return}
+  // Lister les lieux-dits dans les arrondissements sélectionnés
+  const lds={};
+  DATA.forEach(p=>{
+    if(!fArr.has(p.arrondissement))return;
+    const ld=p.lieu_dit||p.qoff||p.q;
+    if(!ld)return;
+    lds[ld]=(lds[ld]||0)+1;
+  });
+  const list=Object.keys(lds).sort((a,b)=>a.localeCompare(b,'fr'));
+  if(list.length===0){wrap.innerHTML='';return}
+  wrap.innerHTML='<div style="font-size:10px;font-weight:900;color:var(--ink3);text-transform:uppercase;margin:8px 0 6px">Lieux-dits inclus (cliquez pour exclure)</div>'
+    +'<div style="display:flex;flex-wrap:wrap;gap:4px">'
+      +list.map(l=>{
+        const excl=fArrLdExcl.has(l);
+        return '<button onclick="toggleArrLd(\''+l.replace(/'/g,"\\'")+'\')" style="background:'+(excl?'#fff':'#1c8b7510')+';border:1.5px solid '+(excl?'#dc2626':'#1c8b75')+';color:'+(excl?'#dc2626':'#136358')+';border-radius:7px;padding:4px 8px;font-size:11px;font-weight:700;cursor:pointer;text-decoration:'+(excl?'line-through':'none')+'">'+l+' <span style="opacity:.6;font-size:10px">('+lds[l]+')</span></button>';
+      }).join('')
+    +'</div>';
+}
+function toggleArrLd(l){
+  if(fArrLdExcl.has(l)) fArrLdExcl.delete(l); else fArrLdExcl.add(l);
+  renderArrondLieuxDits();
+  refresh();
+}
 function populateQuartiers(){
   const sel=$('quart');
   if(!sel)return;
@@ -2197,8 +2287,6 @@ function populateQuartiers(){
   sel.value=fq;
   sel.onchange=()=>{fq=sel.value;refresh()};
 }
-load();renderBanner();initMap();sbInit();migratePhotos();initData().then(()=>{populateQuartiers();refresh();updateDailyBadge();setStatus('ok');setTimeout(()=>{if(map){map.invalidateSize();if(DATA.length){const lats=DATA.filter(p=>p.lat).map(p=>p.lat),lons=DATA.filter(p=>p.lon).map(p=>p.lon);if(lats.length)map.fitBounds([[Math.min(...lats)-0.005,Math.min(...lons)-0.005],[Math.max(...lats)+0.005,Math.max(...lons)+0.005]],{maxZoom:15});}}}  ,300)});
+load();renderBanner();initMap();sbInit();migratePhotos();initData().then(()=>{populateQuartiers();populateArrond();refresh();updateDailyBadge();setStatus('ok');setTimeout(()=>{if(map){map.invalidateSize();if(DATA.length){const lats=DATA.filter(p=>p.lat).map(p=>p.lat),lons=DATA.filter(p=>p.lon).map(p=>p.lon);if(lats.length)map.fitBounds([[Math.min(...lats)-0.005,Math.min(...lons)-0.005],[Math.max(...lats)+0.005,Math.max(...lons)+0.005]],{maxZoom:15});}}}  ,300)});
 </script>
-<link rel="stylesheet" href="filters_v2.css">
-<script src="filters_v2.js" defer></script>
 </body></html>
