@@ -38,6 +38,9 @@ API = "https://data.ademe.fr/data-fair/api/v1/datasets/meg-83tjwtg8dyz4vv7h1dqe/
 
 PRIO_QUARTIERS = {            # quartiers cibles -> prio=True (déduit de vos données)
     "Château-Gombert", "Saint-Jérôme", "Les Médecins", "Palama", "Les Mourets",
+    # Nouveaux secteurs étendus
+    "Allauch", "Plan-de-Cuques", "La Pounche", "Le Logis-Neuf", "La Barasse",
+    "Saint-Barnabé", "Montolivet", "La Valentine", "Saint-Marcel",
 }
 
 # Quartiers EXCLUS du boîtage : tout prospect affecté à l'un d'eux est ignoré.
@@ -61,6 +64,7 @@ NORM_QUA = {
 # d'origine. On les fige pour que l'affectation par quartier reste STABLE jour après jour
 # (sinon, recalculer depuis un fichier régénéré ferait dériver les frontières de quartiers).
 CENTROIDES_REF = {
+    # ── 13013 — secteur historique ──────────────────────────────────────────
     "Château-Gombert": (43.346314, 5.426105),
     "Saint-Jérôme":    (43.331163, 5.417234),
     "Clair Soleil":    (43.349280, 5.446723),
@@ -73,6 +77,22 @@ CENTROIDES_REF = {
     "La Croix-Rouge":  (43.336171, 5.440412),
     "Malpassé":        (43.323078, 5.406721),
     "Petit Bosquet":   (43.358270, 5.428719),
+    # ── Allauch (13190) ─────────────────────────────────────────────────────
+    "Allauch":         (43.341231, 5.481021),
+    "La Pounche":      (43.352000, 5.496000),
+    "Le Logis-Neuf":   (43.330000, 5.492000),
+    "La Barasse":      (43.322000, 5.474000),
+    # ── Plan-de-Cuques (13380) ──────────────────────────────────────────────
+    "Plan-de-Cuques":  (43.348978, 5.462616),
+    # ── 13012 ───────────────────────────────────────────────────────────────
+    "La Valentine":    (43.298000, 5.448000),
+    "Saint-Marcel":    (43.303000, 5.427000),
+    "Les Accates":     (43.310135, 5.436019),
+    # ── 13004 ───────────────────────────────────────────────────────────────
+    "Saint-Barnabé":   (43.306945, 5.402527),
+    "Montolivet":      (43.313000, 5.413000),
+    # ── 13005 ───────────────────────────────────────────────────────────────
+    "Baille":          (43.292483, 5.397472),
 }
 
 # Garde-fou : on n'écrit PAS prospects.json si l'API renvoie moins que ce seuil
@@ -266,6 +286,9 @@ def main():
     ap.add_argument("--cp",  default="13013", help="code postal BAN principal")
     ap.add_argument("--cp2", default="", help="2e code postal BAN (optionnel)")
     ap.add_argument("--cp3", default="", help="3e code postal BAN (optionnel)")
+    ap.add_argument("--cp4", default="", help="4e code postal BAN (optionnel)")
+    ap.add_argument("--cp5", default="", help="5e code postal BAN (optionnel)")
+    ap.add_argument("--cp6", default="", help="6e code postal BAN (optionnel)")
     ap.add_argument("--out", default=str(HERE / "prospects.json"), help="fichier de sortie")
     args = ap.parse_args()
 
@@ -276,8 +299,8 @@ def main():
     cents = CENTROIDES_REF          # centroides figes -> affectation stable
     print("-> %d quartiers de reference (centroides figes)." % len(cents))
 
-    # Interroge les 3 codes postaux et dédoublonne
-    codes = [c for c in [args.cp, args.cp2, args.cp3] if c]
+    # Interroge tous les codes postaux et dédoublonne
+    codes = [c for c in [args.cp, args.cp2, args.cp3, args.cp4, args.cp5, args.cp6] if c]
     rows_all, seen_ids = [], set()
     for cp in codes:
         print("-> ADEME : maisons CP %s, DPE depuis %s ..." % (cp, since))
