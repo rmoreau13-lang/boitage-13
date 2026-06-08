@@ -1778,7 +1778,8 @@ function notionBlockHTML(){
   h+='</div>';
   h+='<div style="flex:1;min-width:0">';
   h+='<div style="font-weight:800;font-size:14px">Prospects Boitage 13</div>';
-  h+='<div style="font-size:11px;color:var(--ink2)">'+(lastSync?'Synchro : '+new Date(lastSync).toLocaleDateString(\'fr-FR\',{day:\'2-digit\',month:\'short\',hour:\'2-digit\',minute:\'2-digit\'}):'Jamais synchronisé')+'</div>';
+  var _syncDate=lastSync?new Date(lastSync).toLocaleDateString('fr-FR',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'}):null;
+  h+='<div style="font-size:11px;color:var(--ink2)">'+(_syncDate?'Synchro : '+_syncDate:'Jamais synchronisé')+'</div>';
   h+='</div></div>';
   // Stats rapides
   h+='<div style="display:flex;gap:8px;margin-bottom:12px">';
@@ -1791,7 +1792,7 @@ function notionBlockHTML(){
   h+='<div style="font-size:10px;color:var(--ink2);font-weight:600">boîtés</div>';
   h+='</div>';
   h+='<div style="flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:8px;text-align:center">';
-  h+='<div style="font-size:18px;font-weight:900;color:var(--accent)">'+DATA.filter(p=>p.tier===\'chaud\').length+'</div>';
+  h+='<div style="font-size:18px;font-weight:900;color:var(--accent)">'+(DATA.filter(function(p){return p.tier==='chaud';}).length)+'</div>';
   h+='<div style="font-size:10px;color:var(--ink2);font-weight:600">chauds</div>';
   h+='</div>';
   h+='</div>';
