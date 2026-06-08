@@ -905,7 +905,7 @@ function annBtnHTML(p){
 }
 function annURL(p){const rue=p.adresse.replace(/^\d+\s*/,'');return 'https://www.google.com/search?q='+encodeURIComponent('"'+rue+'" 13013 Marseille maison à vendre')}
 function earthURL(p){return 'https://earth.google.com/web/@'+p.lat+','+p.lon+',120a,350d,35y,0h,45t,0r'}
-function pappersURL(p){return p.pappers_url||'https://immobilier.pappers.fr/?q='+encodeURIComponent(p.adresse+' 13013 Marseille')}
+function pappersURL(p){if(p.pappers_url)return p.pappers_url;if(p.lat&&p.lon)return 'https://immobilier.pappers.fr/?lat='+p.lat+'&lon='+p.lon+'&z=18.00';return 'https://immobilier.pappers.fr/?q='+encodeURIComponent(p.adresse+' 13013 Marseille')}
 function pbURL(p){return 'https://www.pagesjaunes.fr/pagesblanches/recherche?quoiqui=&ou='+encodeURIComponent(p.adresse+' 13013 Marseille')}
 function initMap(){map=L.map('map',{zoomControl:true}).setView([43.345,5.432],13);
  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
