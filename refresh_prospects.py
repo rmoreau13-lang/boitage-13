@@ -262,7 +262,7 @@ def to_prospect(rec, today, cents):
 # ------------------------------------------------------------------ main
 def main():
     ap = argparse.ArgumentParser(description="Recharge prospects.json depuis l'API ADEME (DPE).")
-    ap.add_argument("--days", type=int, default=180, help="fenetre d'anciennete max du DPE (jours)")
+    ap.add_argument("--days", type=int, default=360, help="fenetre d'anciennete max du DPE (jours)")
     ap.add_argument("--cp",  default="13013", help="code postal BAN principal")
     ap.add_argument("--cp2", default="", help="2e code postal BAN (optionnel)")
     ap.add_argument("--cp3", default="", help="3e code postal BAN (optionnel)")
