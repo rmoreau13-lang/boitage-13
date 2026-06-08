@@ -115,10 +115,11 @@ def nearest_quartier(lat, lon, cents):
     return min(cents.items(), key=lambda kv: haversine(lat, lon, kv[1][0], kv[1][1]))[0]
 
 def clean_addr(rec):
-    """Reconstruit '28 Traverse Collet Redon' à partir des champs ADEME."""
+    """Reconstruit l'adresse propre depuis les champs ADEME."""
     a = (rec.get("adresse_ban") or "").strip()
-    for tail in (" 13013 Marseille", " 13013 MARSEILLE", "13013 Marseille", "13013"):
-        a = a.replace(tail, "")
+    for cp in ["13013", "13004", "13014"]:
+        for suffix in [" %s Marseille" % cp, " %s MARSEILLE" % cp, "%s Marseille" % cp, cp]:
+            a = a.replace(suffix, "")
     a = a.replace("Marseille", "").strip(" ,")
     if not a:
         a = (rec.get("adresse_brut") or "").strip()
@@ -261,8 +262,10 @@ def to_prospect(rec, today, cents):
 # ------------------------------------------------------------------ main
 def main():
     ap = argparse.ArgumentParser(description="Recharge prospects.json depuis l'API ADEME (DPE).")
-    ap.add_argument("--days", type=int, default=90, help="fenetre d'anciennete max du DPE (jours)")
-    ap.add_argument("--cp", default="13013", help="code postal BAN")
+    ap.add_argument("--days", type=int, default=180, help="fenetre d'anciennete max du DPE (jours)")
+    ap.add_argument("--cp",  default="13013", help="code postal BAN principal")
+    ap.add_argument("--cp2", default="13004", help="2e code postal BAN")
+    ap.add_argument("--cp3", default="13014", help="3e code postal BAN")
     ap.add_argument("--out", default=str(HERE / "prospects.json"), help="fichier de sortie")
     args = ap.parse_args()
 
@@ -273,9 +276,20 @@ def main():
     cents = CENTROIDES_REF          # centroides figes -> affectation stable
     print("-> %d quartiers de reference (centroides figes)." % len(cents))
 
-    print("-> ADEME : maisons CP %s, DPE depuis %s ..." % (args.cp, since))
-    rows = fetch_all(args.cp, since)
-    print("   %d DPE bruts recus." % len(rows))
+    # Interroge les 3 codes postaux et dédoublonne
+    codes = [c for c in [args.cp, args.cp2, args.cp3] if c]
+    rows_all, seen_ids = [], set()
+    for cp in codes:
+        print("-> ADEME : maisons CP %s, DPE depuis %s ..." % (cp, since))
+        batch = fetch_all(cp, since)
+        print("   %d DPE bruts recus." % len(batch))
+        for r in batch:
+            nid = r.get("numero_dpe")
+            if nid and nid not in seen_ids:
+                seen_ids.add(nid)
+                rows_all.append(r)
+    rows = rows_all
+    print("-> Total unique DPE maisons : %d" % len(rows))
 
     feats = load_quartiers()
     print("   %d quartiers officiels charges." % len(feats))

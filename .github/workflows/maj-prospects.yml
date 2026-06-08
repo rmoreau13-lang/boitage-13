@@ -54,8 +54,8 @@ jobs:
           }
 
           # ── ÉTAPE 2 : Maisons ADEME + croisement DVF ─────────────────────
-          echo "--- Etape 2 : Maisons ADEME ---"
-          python3 refresh_prospects.py || {
+          echo "--- Etape 2 : Maisons ADEME (13013 + 13004 + 13014, 180j) ---"
+          python3 refresh_prospects.py --cp 13013 --cp2 13004 --cp3 13014 --days 180 || {
             echo "Extraction maisons interrompue : fichier conserve."
             exit 0
           }
