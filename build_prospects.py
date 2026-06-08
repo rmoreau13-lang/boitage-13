@@ -357,7 +357,7 @@ def to_prospect(rec, today, cents, dvf_list):
 # ------------------------------------------------------------------ main
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--days", type=int, default=180)
+    ap.add_argument("--days", type=int, default=360)
     ap.add_argument("--cp", default="13013")
     ap.add_argument("--out", default=str(HERE / "prospects.json"))
     ap.add_argument("--dvf", default=str(HERE / "dvf_geocoded.json"))
