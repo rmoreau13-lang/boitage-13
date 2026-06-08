@@ -778,13 +778,21 @@ textarea.inp{resize:vertical;min-height:46px}
     <button class="chip" data-t="tiede" style="background:#dd8c0020;border-color:#dd8c00;color:#a06800">Tiède</button>
     <button class="chip" data-t="froid" style="background:#62788a20;border-color:#62788a;color:#445666">Froid</button>
     <button class="chip sun" id="cprio" style="background:#f0a50020;border-color:#f0a500;color:#a07000">Prioritaire</button>
-    <select id="dpe-max-sel" class="sel" style="flex:none;width:auto;min-width:120px;height:36px;font-size:12px;font-weight:700;padding:0 8px;" onchange="fDpeMax=+this.value;refresh()">
-     <option value="0">DPE — toutes dates</option>
-     <option value="30">DPE &lt; 1 mois</option>
-     <option value="90">DPE &lt; 3 mois</option>
-     <option value="180">DPE &lt; 6 mois</option>
-     <option value="365">DPE &lt; 1 an</option>
-    </select>
+    <div style="display:flex;flex-direction:column;gap:4px;width:100%">
+     <div style="display:flex;align-items:center;gap:6px">
+      <span style="font-size:10px;font-weight:800;color:var(--ink3);text-transform:uppercase;white-space:nowrap;min-width:24px">Du</span>
+      <input type="date" id="dpe-from" class="sel" style="flex:1;height:36px;font-size:12px;padding:0 8px" onchange="fDpeFrom=this.value;fDpeMax=0;$('dpe-max-sel').value='0';refresh()">
+      <span style="font-size:10px;font-weight:800;color:var(--ink3);text-transform:uppercase;white-space:nowrap;min-width:12px">au</span>
+      <input type="date" id="dpe-to" class="sel" style="flex:1;height:36px;font-size:12px;padding:0 8px" onchange="fDpeTo=this.value;fDpeMax=0;$('dpe-max-sel').value='0';refresh()">
+     </div>
+     <select id="dpe-max-sel" class="sel" style="height:34px;font-size:12px;font-weight:700;padding:0 8px" onchange="fDpeMax=+this.value;if(fDpeMax){var _d=new Date();_d.setDate(_d.getDate()-fDpeMax);fDpeFrom=_d.toISOString().slice(0,10);$('dpe-from').value=fDpeFrom;fDpeTo='';$('dpe-to').value=''}else{fDpeFrom='';fDpeTo='';$('dpe-from').value='';$('dpe-to').value=''}refresh()">
+      <option value="0">Raccourci : toutes dates</option>
+      <option value="30">Moins de 1 mois</option>
+      <option value="90">Moins de 3 mois</option>
+      <option value="180">Moins de 6 mois</option>
+      <option value="365">Moins de 1 an</option>
+     </select>
+    </div>
     <button class="chip" id="ctop" style="background:#d0282820;border-color:#d02828;color:#c01818">Signal TOP</button>
     <button class="chip" id="cboite" style="background:#6b3f9920;border-color:#6b3f99;color:#4a2e7a">A boîter</button>
     <button class="chip" id="crecent" style="background:#1c8b7520;border-color:#1c8b75;color:#136358">Non boîte 30j</button>
@@ -849,7 +857,7 @@ const store={get(k){try{return localStorage.getItem(k)}catch(e){return mem[k]!==
  del(k){try{localStorage.removeItem(k)}catch(e){delete mem[k]}}};
 let DATA=[],byId={},MAX=76;
 let state={},tours=[],tour=[],tourU='',travelMode='bicycling',startPos=null,phIndex={},ficheOpen=null,firstDismissed=false;
-let ft=new Set(),fq='all',prio=0,q='',fBoite=0,fRecent=0,fDvf=0,fHist=0,fPv=0,fTerrain=0,fDpeFrais=0,fDpeMax=0,fTop=0,fVente=0,fSci=0,fSciUrg=0,fType='',fCopro=0,sortMode='score';
+let ft=new Set(),fq='all',prio=0,q='',fBoite=0,fRecent=0,fDvf=0,fHist=0,fPv=0,fTerrain=0,fDpeFrais=0,fDpeMax=0,fDpeFrom='',fDpeTo='',fTop=0,fVente=0,fSci=0,fSciUrg=0,fType='',fCopro=0,sortMode='score';
 // ---- état + horodatage par enregistrement ----
 function rec(id){let r=state[id];if(!r){r=state[id]={}}r.s=r.s||0;r.notes=r.notes||[];r.contact=r.contact||{};r.det=r.det||{};r.b=r.b||'';r.rdv=r.rdv||'';r.rel=r.rel||'';return r}
 function touch(id){rec(id).u=now()}
@@ -910,14 +918,14 @@ function drawMap(d){if(!map)return;baseLayer.clearLayers();
  drawTour()}
 // ---- liste ----
 function hasActiveFilters(){
-  return ft.size>0||prio||fBoite||fRecent||fDvf||fHist||fPv||fTerrain||fDpeFrais||fDpeMax||fTop||fVente||fSci||fSciUrg||fType||fCopro||q||fq!=='all'||sortMode!=='score';
+  return ft.size>0||prio||fBoite||fRecent||fDvf||fHist||fPv||fTerrain||fDpeFrais||fDpeMax||fDpeFrom||fDpeTo||fTop||fVente||fSci||fSciUrg||fType||fCopro||q||fq!=='all'||sortMode!=='score';
 }
 function updateResetBtn(){
   const btn=$('reset-btn');if(!btn)return;
   btn.style.display=hasActiveFilters()?'':'none';
 }
 function resetFilters(){
-  ft.clear();prio=0;fBoite=0;fRecent=0;fDvf=0;fHist=0;fPv=0;fTerrain=0;fDpeFrais=0;fDpeMax=0;fTop=0;fVente=0;fSci=0;fSciUrg=0;fType='';fCopro=0;sortMode='score';q='';var ds=$('dpe-max-sel');if(ds)ds.value='0';
+  ft.clear();prio=0;fBoite=0;fRecent=0;fDvf=0;fHist=0;fPv=0;fTerrain=0;fDpeFrais=0;fDpeMax=0;fTop=0;fVente=0;fSci=0;fSciUrg=0;fType='';fCopro=0;sortMode='score';q='';var ds=$('dpe-max-sel');if(ds)ds.value='0';fDpeFrom='';fDpeTo='';var df=$('dpe-from');if(df)df.value='';var dt=$('dpe-to');if(dt)dt.value='';
   // reset input + select
   const qi=$('q');if(qi)qi.value='';
   const si=$('sort');if(si)si.value='score';
@@ -931,7 +939,7 @@ function resetFilters(){
   refresh();
   toast('✓ Tous les filtres effacés — '+DATA.length+' prospects');
 }
-function filtered(){const now30=Date.now()-30*86400000;let d=DATA.filter(p=>(ft.size==0||ft.has(p.tier))&&(fq=='all'||(fq.startsWith('ld:')?p.lieu_dit===fq.slice(3):p.q==fq||p.qoff===fq))&&(!prio||p.prio)&&(!fBoite||!rec(p.id).b)&&(!fRecent||!rec(p.id).b||new Date(rec(p.id).b)<new Date(Date.now()-30*86400000))&&(!q||p.adresse.toLowerCase().includes(q)||p.q.toLowerCase().includes(q)||(p.qoff||'').toLowerCase().includes(q)||(p.lieu_dit||'').toLowerCase().includes(q))&&(!fDvf||p.dvf_signal==='en_vente'||p.dvf_signal==='vendu_recemment'||p.dvf_signal==='ancienne_vente')&&(!fHist||p.hist_maturite==='tres_mature'||p.hist_maturite==='mature')&&(!fPv||p.pv_pct>=50)&&(!fTerrain||p.terrain_divisible)&&(!fDpeMax||(p.jours!=null&&p.jours<=fDpeMax))&&(!fTop||p.signal_top)&&(!fVente||p.annonces_actives)&&(!fSci||p.sci_proche)&&(!fSciUrg||(p.sci_score||0)>=50)&&(!fType||(fType==='maison'?(!p.type_bien||p.type_bien==='maison'):p.type_bien===fType))&&(!fCopro||(fCopro===1&&p.copro_fragile)||(fCopro===2&&!!p.copro_nom)));
+function filtered(){const now30=Date.now()-30*86400000;let d=DATA.filter(p=>(ft.size==0||ft.has(p.tier))&&(fq=='all'||(fq.startsWith('ld:')?p.lieu_dit===fq.slice(3):p.q==fq||p.qoff===fq))&&(!prio||p.prio)&&(!fBoite||!rec(p.id).b)&&(!fRecent||!rec(p.id).b||new Date(rec(p.id).b)<new Date(Date.now()-30*86400000))&&(!q||p.adresse.toLowerCase().includes(q)||p.q.toLowerCase().includes(q)||(p.qoff||'').toLowerCase().includes(q)||(p.lieu_dit||'').toLowerCase().includes(q))&&(!fDvf||p.dvf_signal==='en_vente'||p.dvf_signal==='vendu_recemment'||p.dvf_signal==='ancienne_vente')&&(!fHist||p.hist_maturite==='tres_mature'||p.hist_maturite==='mature')&&(!fPv||p.pv_pct>=50)&&(!fTerrain||p.terrain_divisible)&&(!fDpeMax||(p.jours!=null&&p.jours<=fDpeMax))&&(!fDpeFrom||!p.date||p.date>=fDpeFrom)&&(!fDpeTo||!p.date||p.date<=fDpeTo)&&(!fTop||p.signal_top)&&(!fVente||p.annonces_actives)&&(!fSci||p.sci_proche)&&(!fSciUrg||(p.sci_score||0)>=50)&&(!fType||(fType==='maison'?(!p.type_bien||p.type_bien==='maison'):p.type_bien===fType))&&(!fCopro||(fCopro===1&&p.copro_fragile)||(fCopro===2&&!!p.copro_nom)));
  if(sortMode==='dpe')d=d.slice().sort((a,b)=>a.jours-b.jours);
  else if(sortMode==='quartier')d=d.slice().sort((a,b)=>(a.q||'').localeCompare(b.q||'','fr')||b.score-a.score);
  else if(sortMode==='dvf'){const P={en_vente:0,vendu_recemment:1,ancienne_vente:2,none:3};d=d.slice().sort((a,b)=>(P[a.dvf_signal||'none']||3)-(P[b.dvf_signal||'none']||3)||b.score-a.score);}
