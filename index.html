@@ -2198,4 +2198,7 @@ function populateQuartiers(){
   sel.onchange=()=>{fq=sel.value;refresh()};
 }
 load();renderBanner();initMap();sbInit();migratePhotos();initData().then(()=>{populateQuartiers();refresh();updateDailyBadge();setStatus('ok');setTimeout(()=>{if(map){map.invalidateSize();if(DATA.length){const lats=DATA.filter(p=>p.lat).map(p=>p.lat),lons=DATA.filter(p=>p.lon).map(p=>p.lon);if(lats.length)map.fitBounds([[Math.min(...lats)-0.005,Math.min(...lons)-0.005],[Math.max(...lats)+0.005,Math.max(...lons)+0.005]],{maxZoom:15});}}}  ,300)});
-</script></body></html>
+</script>
+<link rel="stylesheet" href="filters_v2.css">
+<script src="filters_v2.js" defer></script>
+</body></html>
