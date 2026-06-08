@@ -4,7 +4,7 @@ name: MAJ prospects (ADEME + DVF + Apparts)
 # Pipeline complet :
 #   1. DVF maisons : extraction open data API DVF + géocodage BAN
 #   2. Maisons ADEME : refresh depuis data.ademe.fr
-#   3. Appartements ADEME : refresh depuis data.ademe.fr (13013 + 13004 + 13014)
+#   3. Appartements ADEME : refresh depuis data.ademe.fr (13013)
 #   4. build_prospects.py : croisement DPE maisons × DVF → prospects maisons
 #   5. build_appartements_ci.py : croisement DPE apparts × DVF hist → prospects apparts
 #   6. Fusion maisons + apparts → prospects.json final
@@ -54,8 +54,8 @@ jobs:
           }
 
           # ── ÉTAPE 2 : Maisons ADEME + croisement DVF ─────────────────────
-          echo "--- Etape 2 : Maisons ADEME (13013 + 13004 + 13014, 180j) ---"
-          python3 refresh_prospects.py --cp 13013 --cp2 13004 --cp3 13014 --days 180 || {
+          echo "--- Etape 2 : Maisons ADEME (13013, 180j) ---"
+          python3 refresh_prospects.py --cp 13013 --days 180 || {
             echo "Extraction maisons interrompue : fichier conserve."
             exit 0
           }

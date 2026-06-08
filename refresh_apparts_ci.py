@@ -4,7 +4,7 @@
 refresh_apparts_ci.py — Régénère dpe_appart_raw.json depuis l'API ADEME.
 Destiné à être appelé dans le pipeline GitHub Actions (pas de dépendance externe).
 
-Récupère les DPE appartements pour les CP 13013 / 13004 / 13014.
+Récupère les DPE appartements pour le CP 13013.
 Sauvegarde le brut dans dpe_appart_raw.json (utilisé ensuite par fusion_prospects.py).
 """
 import json, urllib.parse, urllib.request, sys, time
@@ -14,7 +14,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 
 API = "https://data.ademe.fr/data-fair/api/v1/datasets/meg-83tjwtg8dyz4vv7h1dqe/lines"
-CODES_POSTAUX = ["13013", "13004", "13014"]
+CODES_POSTAUX = ["13013"]
 JOURS_FENETRE = 180   # 6 mois de DPE
 
 SELECT = ",".join([

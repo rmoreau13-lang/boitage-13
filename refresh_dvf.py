@@ -9,8 +9,6 @@ Aucune clé API requise.
 
 Codes commune INSEE :
   13213 = Marseille 13e arr.
-  13204 = Marseille 4e arr.
-  13214 = Marseille 14e arr.
 """
 import json, time, urllib.parse, urllib.request
 from datetime import date
@@ -24,8 +22,6 @@ DATASET  = "buildingref-france-demande-de-valeurs-foncieres-geolocalisee-millesi
 # Codes INSEE des communes cibles
 COMMUNES = {
     "13213": ("13013", "Marseille 13e"),
-    "13204": ("13004", "Marseille 4e"),
-    "13214": ("13014", "Marseille 14e"),
 }
 
 # Fenêtre : mutations depuis 2022 inclus
