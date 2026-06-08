@@ -34,18 +34,113 @@ NORM_QUA = {
     "MONTOLIVET": "Montolivet", "SAINT BARNABE": "Saint-Barnabé",
 }
 CENTROIDES_REF = {
-    "Château-Gombert": (43.346314, 5.426105),
-    "Saint-Jérôme":    (43.331163, 5.417234),
-    "Clair Soleil":    (43.349280, 5.446723),
-    "Les Médecins":    (43.359562, 5.459901),
-    "Les Olives":      (43.324423, 5.453130),
-    "Saint-Just":      (43.318792, 5.399255),
-    "Saint-Mitre":     (43.346792, 5.416707),
-    "Palama":          (43.359259, 5.440727),
-    "Les Mourets":     (43.351601, 5.436561),
-    "La Croix-Rouge":  (43.336171, 5.440412),
-    "Malpassé":        (43.323078, 5.406721),
-    "Petit Bosquet":   (43.358270, 5.428719),
+    # ── 13013 — lieux-dits cadastraux officiels ──
+    "Château-Gombert":                    (43.348332, 5.441877),  # quartier 13013 [Chateau-Gombert]
+    "Saint-Jérôme":                       (43.334528, 5.415972),  # quartier 13013 [Saint Jerome]
+    "Clair Soleil":                       (43.326940, 5.453000),  # OSM Boulevard Clair Soleil (Les Olives)
+    "Les Médecins":                       (43.360332, 5.459994),  # cadastre 13013 [Les Médecins]
+    "Les Olives":                         (43.325971, 5.449584),  # quartier 13013 [Les Olives]
+    "Saint-Just":                         (43.320481, 5.405266),  # quartier 13013 [Saint Just]
+    "Saint-Mitre":                        (43.346347, 5.423655),  # quartier 13013 [Saint Mitre]
+    "Palama":                             (43.374316, 5.439438),  # quartier 13013 [Palama]
+    "Les Mourets":                        (43.366961, 5.422854),  # quartier 13013 [Les Mourets]
+    "La Croix-Rouge":                     (43.335927, 5.445285),  # quartier 13013 [La Croix Rouge]
+    "Malpassé":                           (43.325456, 5.414625),  # quartier 13013 [Malpasse]
+    "Petit Bosquet":                      (43.315490, 5.411870),  # OSM Avenue du Petit Bosquet (Saint-Just)
+    "Jeandaï":                            (43.355299, 5.428945),  # cadastre 13013 [Jeandaï]
+    "La Baudouine":                       (43.357678, 5.436810),  # cadastre 13013 [La  Baudouine]
+    "La Bertrane":                        (43.356386, 5.450959),  # cadastre 13013 [La Bertrane]
+    "La Béthéline":                       (43.360483, 5.452160),  # cadastre 13013 [La Bétheline]
+    "La Figonne":                         (43.364202, 5.443509),  # cadastre 13013 [La Figonne]
+    "La Grave":                           (43.355261, 5.456886),  # cadastre 13013 [La Grave]
+    "La Moussiere":                       (43.355215, 5.438385),  # cadastre 13013 [La Moussière]
+    "La Nègre":                           (43.374981, 5.451919),  # cadastre 13013 [La Nègre]
+    "La Parade":                          (43.369615, 5.433113),  # cadastre 13013 [La Parade]
+    "Le Cavaou":                          (43.354710, 5.458500),  # OSM Le Cavaou-Centre (Les Médecins)
+    "Le Jas":                             (43.367946, 5.454181),  # cadastre 13013 [Le Jas]
+    "Le Jausèou":                         (43.362879, 5.458044),  # cadastre 13013 [Le Jausèou]
+    "Le Vallon Gombert":                  (43.353330, 5.430000),  # estimation au pied du vallon Château-Gombert
+    "Les Couestes":                       (43.360540, 5.444435),  # cadastre 13013 [Les Couestes]
+    "Les Durbecs":                        (43.355970, 5.454862),  # cadastre 13013 [Les Durbecs]
+    "Les Milanais":                       (43.366232, 5.442598),  # cadastre 13013 [Les Milanais]
+    "Les Molières":                       (43.352180, 5.454000),  # conservé (proche La Grave/Cavaou)
+    "Les Politres":                       (43.360914, 5.454955),  # cadastre 13013 [Les Politres]
+    "Les Xaviers":                        (43.361521, 5.446638),  # cadastre 13013 [Les Xaviers]
+    "Mont-Louis":                         (43.362940, 5.442815),  # cadastre 13013 [Mont-Louis]
+    "Mouret-Bas":                         (43.359165, 5.432517),  # cadastre 13013 [Mouret-Bas]
+    "Mouret-Haut":                        (43.359434, 5.428670),  # cadastre 13013 [Mouret-Haut]
+    "Mouret-Nord":                        (43.362075, 5.429794),  # cadastre 13013 [Mouret-Nord]
+    "Mouret-Ouest":                       (43.358417, 5.426703),  # cadastre 13013 [Mouret-Ouest]
+    "Section De L'Etoile":                (43.381766, 5.432629),  # cadastre 13013 [Section de l'Étoile]
+    "Section De La Pible":                (43.386194, 5.441703),  # cadastre 13013 [Section de la Pible]
+    "Section De Niolong":                 (43.380021, 5.446314),  # cadastre 13013 [Section de Niolong]
+    "Section Du Chateau Palama":          (43.371100, 5.439320),  # OSM Château de Palama
+    "Section Du Sauveur":                 (43.371782, 5.445989),  # cadastre 13013 [Section du Sauveur]
+    "Vallon De Serre":                    (43.355111, 5.419465),  # cadastre 13013 [Vallon de Serre]
+    "Varsi":                              (43.367534, 5.444260),  # cadastre 13013 [Varsi]
+    # ── Allauch (13190) — lieux-dits cadastraux ──
+    "Allauch":                            (43.335918, 5.485481),  # cadastre Allauch [Le Village]
+    "Le Village Allauch":                 (43.335918, 5.485481),  # cadastre Allauch [Le Village]
+    "La Pounche":                         (43.333975, 5.461430),  # cadastre Allauch [LA POUNCHE]
+    "Font-Vert":                          (43.335607, 5.470924),  # cadastre Allauch [FONT-VERT]
+    "La Rigonne":                         (43.336200, 5.467804),  # cadastre Allauch [LA RIGONNE]
+    "Canton Rouge":                       (43.338988, 5.464491),  # cadastre Allauch [Canton Rouge]
+    "Blacassin":                          (43.340528, 5.468819),  # cadastre Allauch [Blacassin]
+    "Caguerasset":                        (43.346368, 5.484740),  # cadastre Allauch [CAGUERASSET]
+    "Sainte-Croix Allauch":               (43.334740, 5.493221),  # cadastre Allauch [Sainte-Croix]
+    "Les Claous":                         (43.341222, 5.491548),  # cadastre Allauch [Les Claous]
+    "Le Logis Neuf":                      (43.359309, 5.487081),  # cadastre Allauch [LE LOGIS NEUF]
+    "La Bourdonniere":                    (43.360964, 5.492088),  # cadastre Allauch [LA BOURDONNIERE]
+    "Les Barnabelles":                    (43.356316, 5.475497),  # cadastre Allauch [LES BARNABELLES]
+    "Vallon De Gage":                     (43.359121, 5.475033),  # cadastre Allauch [VALLON DE GAGE]
+    "Bon Rencontre":                      (43.352753, 5.478097),  # cadastre Allauch [Bon Rencontre]
+    "La Barasse":                         (43.285960, 5.483760),  # OSM Gare de La Barasse (Marseille 11e)
+    "Belle-Vue Allauch":                  (43.321666, 5.487176),  # cadastre Allauch [Belle-Vue]
+    "Callian":                            (43.316775, 5.481131),  # cadastre Allauch [Callian]
+    "L'Andouiller":                       (43.318926, 5.485829),  # cadastre Allauch [L'ANDOUILLER]
+    "La Salle":                           (43.322590, 5.482685),  # cadastre Allauch [La Salle]
+    "Font De Brouqueli":                  (43.331975, 5.459780),  # cadastre Allauch [Font de Brouqueli]
+    "La Tiranne":                         (43.338755, 5.470123),  # cadastre Allauch [La Tiranne]
+    "Rascous":                            (43.347836, 5.477635),  # cadastre Allauch [RASCOUS]
+    "Loir D'Ambremont":                   (43.344195, 5.483997),  # cadastre Allauch [LOIR D'AMBREMONT]
+    "Peyre-Peissot":                      (43.346455, 5.490020),  # cadastre Allauch [PEYRE PEISSOT]
+    "Quartier De La Caleche":             (43.352195, 5.490586),  # cadastre Allauch [QUARTIER DE LA CALECHE]
+    "Sainte-Euphemie":                    (43.343372, 5.472439),  # cadastre Allauch [Sainte-Euphémie]
+    # ── Plan-de-Cuques (13380) — lieux-dits cadastraux ──
+    "Plan-de-Cuques":                     (43.345680, 5.461900),  # OSM Mairie de Plan-de-Cuques
+    "La Renardiere":                      (43.347280, 5.461410),  # cadastre PDC [Le Village Nord] (renommé : La Renardière n'existe pas au cadastre PDC)
+    "Le Logis Neuf PDC":                  (43.359310, 5.487080),  # cadastre Allauch [Le Logis Neuf] (en fait à Allauch)
+    "La Condamine":                       (43.343390, 5.456370),  # cadastre PDC [La Bourgade]
+    "Plan De Campagne":                   (43.417930, 5.360990),  # OSM Plan-de-Campagne (Cabriès) — HORS ZONE PDC
+    "Les Cadeneaux":                      (43.394280, 5.340600),  # OSM Les Cadeneaux (Pennes-Mirabeau) — HORS ZONE PDC
+    "La Gavotte":                         (43.379870, 5.350950),  # OSM La Gavotte (Pennes-Mirabeau) — HORS ZONE PDC
+    "Calas":                              (43.460450, 5.353590),  # OSM Calas (Cabriès) — HORS ZONE PDC
+    "La Charbonniere":                    (43.353460, 5.465440),  # cadastre PDC [Les Petits Roubauds]
+    "Barnouin":                           (43.353250, 5.460930),  # cadastre PDC [Les Briands]
+    "La Burliere":                        (43.345630, 5.459190),  # cadastre PDC [Les Cuques]
+    "Les Pinchinades":                    (43.348610, 5.455680),  # cadastre PDC [L'Annonciade]
+    "La Billonne":                        (43.350570, 5.463230),  # cadastre PDC [Les Dragons]
+    "Le Brusq":                           (43.347800, 5.466140),  # cadastre PDC [Le Stade]
+    "La Grande Colle":                    (43.351050, 5.466390),  # cadastre PDC [Bompard]
+    "Jas De Rhodes":                      (43.354400, 5.473040),  # cadastre PDC [Les Figons]
+    # ── 13012 — quartiers / secteurs ──
+    "La Valentine":                       (43.302080, 5.482031),  # quartier 13011 [La Valentine]
+    "Saint-Marcel":                       (43.283451, 5.463413),  # quartier 13011 [Saint Marcel]
+    "Les Accates":                        (43.304816, 5.495182),  # quartier 13011 [Les Accates]
+    "La Destrousse":                      (43.303300, 5.430910),  # quartier officiel La Fourragère (13012) — La Destrousse est une autre commune (13112)
+    "Les Camoins":                        (43.305391, 5.512294),  # quartier 13011 [Les Camoins]
+    "Font Obscure":                       (43.329170, 5.402610),  # OSM Parc Font Obscure (14e/13013)
+    "Roy D'Espagne":                      (43.241060, 5.385280),  # OSM Roy d'Espagne (Marseille 8e) — HORS ZONE 13012
+    # ── 13004 — quartiers ──
+    "Saint-Barnabé":                      (43.304664, 5.417388),  # quartier 13012 [Saint Barnabe]
+    "Montolivet":                         (43.316811, 5.424743),  # quartier 13012 [Montolivet]
+    "La Pomme":                           (43.291082, 5.438565),  # quartier 13011 [La Pomme]
+    "Saint-Tronc":                        (43.272430, 5.428250),  # OSM Saint-Tronc (Marseille 10e) — HORS ZONE 13004
+    "Les Trois-Lucs":                     (43.310321, 5.465206),  # quartier 13012 [Les Trois Lucs]
+    # ── 13005 — quartiers ──
+    "Baille":                             (43.288494, 5.398746),  # quartier 13005 [Baille]
+    "Castellane":                         (43.285860, 5.384020),  # OSM Place Castellane (Marseille 6e)
+    "Sakakini":                           (43.296190, 5.393630),  # quartier officiel Le Camas (13005) — Sakakini = nom d'avenue
 }
 
 MIN_PROSPECTS = 10
