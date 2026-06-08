@@ -3303,6 +3303,32 @@
   "rang": 71
  },
  {
+  "id": "2513E3259474B",
+  "q": "Les Médecins",
+  "qoff": "Les Médecins",
+  "prio": true,
+  "date": "2025-10-15",
+  "jours": 236,
+  "dpe": "F",
+  "ges": "F",
+  "surface": 168.5,
+  "niv": 2,
+  "annee": 1969,
+  "adresse": "65 Traverse De La Balme",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 37,
+  "lat": 43.35514100691809,
+  "lon": 5.452947026917042,
+  "gmaps": "https://maps.google.com/?q=43.35514100691809,5.452947026917042",
+  "deja": false,
+  "conso": 260,
+  "gesv": 75,
+  "chauf": "Fioul domestique",
+  "rang": 72
+ },
+ {
   "id": "2613E1433899R",
   "type_bien": "appartement",
   "q": "Malpassé",
@@ -3357,7 +3383,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 72
+  "rang": 73
  },
  {
   "id": "2613E1265946Y",
@@ -3414,7 +3440,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 73
+  "rang": 74
  },
  {
   "id": "2613E1264462W",
@@ -3471,7 +3497,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 74
+  "rang": 75
  },
  {
   "id": "2613E1233342Y",
@@ -3528,7 +3554,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 75
+  "rang": 76
  },
  {
   "id": "2613E1220166E",
@@ -3585,7 +3611,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 76
+  "rang": 77
  },
  {
   "id": "2613E1216652A",
@@ -3611,7 +3637,7 @@
   "conso": 164,
   "gesv": 36,
   "chauf": "Gaz naturel",
-  "rang": 77
+  "rang": 78
  },
  {
   "id": "2613E1400600Y",
@@ -3668,7 +3694,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 78
+  "rang": 79
  },
  {
   "id": "2613E1377795V",
@@ -3725,7 +3751,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 79
+  "rang": 80
  },
  {
   "id": "2613E1332159P",
@@ -3782,7 +3808,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 80
+  "rang": 81
  },
  {
   "id": "2613E1320663L",
@@ -3839,7 +3865,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 81
+  "rang": 82
  },
  {
   "id": "2613E1307402K",
@@ -3896,7 +3922,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 82
+  "rang": 83
  },
  {
   "id": "2613E1075893F",
@@ -3922,7 +3948,33 @@
   "conso": 143,
   "gesv": 5,
   "chauf": "Électricité",
-  "rang": 83
+  "rang": 84
+ },
+ {
+  "id": "2513E2098696T",
+  "q": "Saint-Jérôme",
+  "qoff": "La Rose",
+  "prio": true,
+  "date": "2025-06-26",
+  "jours": 347,
+  "dpe": "E",
+  "ges": "D",
+  "surface": 148.0,
+  "niv": 3,
+  "annee": null,
+  "adresse": "25 Impasse Fernand Pistor",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 35,
+  "lat": 43.32278596364933,
+  "lon": 5.424122054142771,
+  "gmaps": "https://maps.google.com/?q=43.32278596364933,5.424122054142771",
+  "deja": false,
+  "conso": 274,
+  "gesv": 47,
+  "chauf": "Gaz naturel",
+  "rang": 85
  },
  {
   "id": "2613E1422778Y",
@@ -3979,7 +4031,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 84
+  "rang": 86
  },
  {
   "id": "2613E1383949N",
@@ -4036,7 +4088,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 85
+  "rang": 87
  },
  {
   "id": "2613E1364239L",
@@ -4093,7 +4145,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 86
+  "rang": 88
  },
  {
   "id": "2613E1354462K",
@@ -4150,7 +4202,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 87
+  "rang": 89
  },
  {
   "id": "2613E1170294A",
@@ -4207,7 +4259,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 88
+  "rang": 90
  },
  {
   "id": "2613E1130944O",
@@ -4264,7 +4316,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 89
+  "rang": 91
  },
  {
   "id": "2613E1082008K",
@@ -4321,7 +4373,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 90
+  "rang": 92
  },
  {
   "id": "2613E1140405L",
@@ -4347,7 +4399,7 @@
   "conso": 289,
   "gesv": 64,
   "chauf": "Gaz naturel",
-  "rang": 91
+  "rang": 93
  },
  {
   "id": "2613E0376377T",
@@ -4373,7 +4425,7 @@
   "conso": 183,
   "gesv": 24,
   "chauf": "Gaz naturel",
-  "rang": 92
+  "rang": 94
  },
  {
   "id": "2613E0334772O",
@@ -4399,7 +4451,7 @@
   "conso": 236,
   "gesv": 51,
   "chauf": "Gaz naturel",
-  "rang": 93
+  "rang": 95
  },
  {
   "id": "2613E0233356Y",
@@ -4425,7 +4477,59 @@
   "conso": 251,
   "gesv": 55,
   "chauf": "Gaz naturel",
-  "rang": 94
+  "rang": 96
+ },
+ {
+  "id": "2513E2978294L",
+  "q": "Palama",
+  "qoff": "Palama",
+  "prio": true,
+  "date": "2025-09-19",
+  "jours": 262,
+  "dpe": "D",
+  "ges": "D",
+  "surface": 338.3,
+  "niv": 2,
+  "annee": null,
+  "adresse": "Chemin Des Xaviers",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 34,
+  "lat": 43.36025896720639,
+  "lon": 5.447853992415243,
+  "gmaps": "https://maps.google.com/?q=43.36025896720639,5.447853992415243",
+  "deja": false,
+  "conso": 122,
+  "gesv": 33,
+  "chauf": "Fioul domestique",
+  "rang": 97
+ },
+ {
+  "id": "2513E2914842Z",
+  "q": "Les Médecins",
+  "qoff": "Les Médecins",
+  "prio": true,
+  "date": "2025-09-15",
+  "jours": 266,
+  "dpe": "B",
+  "ges": "A",
+  "surface": 240.0,
+  "niv": 1,
+  "annee": null,
+  "adresse": "Traverse Des Bancaous",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 34,
+  "lat": 43.35839598071389,
+  "lon": 5.461510966705036,
+  "gmaps": "https://maps.google.com/?q=43.35839598071389,5.461510966705036",
+  "deja": false,
+  "conso": 76,
+  "gesv": 2,
+  "chauf": "Électricité",
+  "rang": 98
  },
  {
   "id": "2613E1377811L",
@@ -4482,7 +4586,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 95
+  "rang": 99
  },
  {
   "id": "2613E1367887T",
@@ -4539,7 +4643,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 96
+  "rang": 100
  },
  {
   "id": "2613E1338894Q",
@@ -4596,7 +4700,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 97
+  "rang": 101
  },
  {
   "id": "2613E1319437H",
@@ -4653,7 +4757,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 98
+  "rang": 102
  },
  {
   "id": "2613E1208207F",
@@ -4710,7 +4814,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 99
+  "rang": 103
  },
  {
   "id": "2613E0922802C",
@@ -4767,7 +4871,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 100
+  "rang": 104
  },
  {
   "id": "2613E0897920C",
@@ -4824,7 +4928,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 101
+  "rang": 105
  },
  {
   "id": "2613E1043513V",
@@ -4850,7 +4954,7 @@
   "conso": 262,
   "gesv": 9,
   "chauf": "Bois – Bûches",
-  "rang": 102
+  "rang": 106
  },
  {
   "id": "2513E3990139O",
@@ -4876,7 +4980,33 @@
   "conso": 102,
   "gesv": 3,
   "chauf": "Électricité",
-  "rang": 103
+  "rang": 107
+ },
+ {
+  "id": "2513E2439659S",
+  "q": "Saint-Jérôme",
+  "qoff": "Malpassé",
+  "prio": true,
+  "date": "2025-07-24",
+  "jours": 319,
+  "dpe": "E",
+  "ges": "B",
+  "surface": 126.7,
+  "niv": 1,
+  "annee": null,
+  "adresse": "13 Avenue De Fuveau",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 33,
+  "lat": 43.32814998244439,
+  "lon": 5.421407991952929,
+  "gmaps": "https://maps.google.com/?q=43.32814998244439,5.421407991952929",
+  "deja": false,
+  "conso": 265,
+  "gesv": 10,
+  "chauf": "Électricité",
+  "rang": 108
  },
  {
   "id": "2613E1189690A",
@@ -4933,7 +5063,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 104
+  "rang": 109
  },
  {
   "id": "2613E0376674E",
@@ -4990,7 +5120,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 105
+  "rang": 110
  },
  {
   "id": "2613E1167439F",
@@ -5016,7 +5146,59 @@
   "conso": 159,
   "gesv": 27,
   "chauf": "Gaz naturel",
-  "rang": 106
+  "rang": 111
+ },
+ {
+  "id": "2513E3764598X",
+  "q": "Saint-Jérôme",
+  "qoff": "Saint-Jérôme",
+  "prio": true,
+  "date": "2025-12-01",
+  "jours": 189,
+  "dpe": "D",
+  "ges": "B",
+  "surface": 201.4,
+  "niv": 1,
+  "annee": null,
+  "adresse": "105 Traverse Charles Susini",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 32,
+  "lat": 43.33832200492101,
+  "lon": 5.416031985774069,
+  "gmaps": "https://maps.google.com/?q=43.33832200492101,5.416031985774069",
+  "deja": false,
+  "conso": 187,
+  "gesv": 7,
+  "chauf": "Électricité",
+  "rang": 112
+ },
+ {
+  "id": "2513E2301620N",
+  "q": "Les Médecins",
+  "qoff": "Les Médecins",
+  "prio": true,
+  "date": "2025-07-11",
+  "jours": 332,
+  "dpe": "D",
+  "ges": "D",
+  "surface": 205.0,
+  "niv": 1,
+  "annee": null,
+  "adresse": "Traverse De La Balme",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 32,
+  "lat": 43.354764992160625,
+  "lon": 5.453342977578188,
+  "gmaps": "https://maps.google.com/?q=43.354764992160625,5.453342977578188",
+  "deja": false,
+  "conso": 177,
+  "gesv": 48,
+  "chauf": "Fioul domestique",
+  "rang": 113
  },
  {
   "id": "2613E1392118S",
@@ -5073,7 +5255,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 107
+  "rang": 114
  },
  {
   "id": "2613E1355031H",
@@ -5130,7 +5312,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 108
+  "rang": 115
  },
  {
   "id": "2613E1346727X",
@@ -5187,7 +5369,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 109
+  "rang": 116
  },
  {
   "id": "2613E1333448E",
@@ -5244,7 +5426,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 110
+  "rang": 117
  },
  {
   "id": "2613E1321772C",
@@ -5301,7 +5483,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 111
+  "rang": 118
  },
  {
   "id": "2613E1307604E",
@@ -5358,7 +5540,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 112
+  "rang": 119
  },
  {
   "id": "2613E1277069T",
@@ -5415,7 +5597,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 113
+  "rang": 120
  },
  {
   "id": "2613E1206463D",
@@ -5472,7 +5654,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 114
+  "rang": 121
  },
  {
   "id": "2613E1127395B",
@@ -5529,7 +5711,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 115
+  "rang": 122
  },
  {
   "id": "2613E0767906O",
@@ -5586,7 +5768,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 116
+  "rang": 123
  },
  {
   "id": "2613E0539366O",
@@ -5643,7 +5825,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 117
+  "rang": 124
  },
  {
   "id": "2613E1132273R",
@@ -5669,7 +5851,7 @@
   "conso": 134,
   "gesv": 4,
   "chauf": "Bois – Granulés (pellets) ou briquettes",
-  "rang": 118
+  "rang": 125
  },
  {
   "id": "2613E1089083N",
@@ -5695,7 +5877,7 @@
   "conso": 116,
   "gesv": 21,
   "chauf": "Gaz naturel",
-  "rang": 119
+  "rang": 126
  },
  {
   "id": "2613E1089034Q",
@@ -5721,7 +5903,7 @@
   "conso": 116,
   "gesv": 21,
   "chauf": "Gaz naturel",
-  "rang": 120
+  "rang": 127
  },
  {
   "id": "2613E1084353P",
@@ -5747,7 +5929,7 @@
   "conso": 112,
   "gesv": 4,
   "chauf": "Électricité",
-  "rang": 121
+  "rang": 128
  },
  {
   "id": "2513E3956068D",
@@ -5773,7 +5955,85 @@
   "conso": 104,
   "gesv": 11,
   "chauf": "Gaz naturel",
-  "rang": 122
+  "rang": 129
+ },
+ {
+  "id": "2513E2752039I",
+  "q": "Les Mourets",
+  "qoff": "Château-Gombert",
+  "prio": true,
+  "date": "2025-09-01",
+  "jours": 280,
+  "dpe": "D",
+  "ges": "C",
+  "surface": 193.7,
+  "niv": 3,
+  "annee": null,
+  "adresse": "31 Chemin Des Mourets",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 31,
+  "lat": 43.353574032883614,
+  "lon": 5.436180028341564,
+  "gmaps": "https://maps.google.com/?q=43.353574032883614,5.436180028341564",
+  "deja": false,
+  "conso": 218,
+  "gesv": 24,
+  "chauf": "Gaz naturel",
+  "rang": 130
+ },
+ {
+  "id": "2513E2169155S",
+  "q": "Les Mourets",
+  "qoff": "Château-Gombert",
+  "prio": true,
+  "date": "2025-07-01",
+  "jours": 342,
+  "dpe": "D",
+  "ges": "D",
+  "surface": 108.3,
+  "niv": 1,
+  "annee": null,
+  "adresse": "27 Place Des Heros",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 31,
+  "lat": 43.35245103611065,
+  "lon": 5.439511957487524,
+  "gmaps": "https://maps.google.com/?q=43.35245103611065,5.439511957487524",
+  "deja": false,
+  "conso": 232,
+  "gesv": 46,
+  "chauf": "Fioul domestique",
+  "rang": 131
+ },
+ {
+  "id": "2513E2027035O",
+  "q": "Les Mourets",
+  "qoff": "Château-Gombert",
+  "prio": true,
+  "date": "2025-06-20",
+  "jours": 353,
+  "dpe": "C",
+  "ges": "C",
+  "surface": 193.5,
+  "niv": 2,
+  "annee": null,
+  "adresse": "Impasse Du Plan",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 31,
+  "lat": 43.35204001673384,
+  "lon": 5.433049029373578,
+  "gmaps": "https://maps.google.com/?q=43.35204001673384,5.433049029373578",
+  "deja": false,
+  "conso": 127,
+  "gesv": 21,
+  "chauf": "Gaz naturel",
+  "rang": 132
  },
  {
   "id": "2613E1370318G",
@@ -5830,7 +6090,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 123
+  "rang": 133
  },
  {
   "id": "2613E1335773P",
@@ -5887,7 +6147,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 124
+  "rang": 134
  },
  {
   "id": "2613E1151094O",
@@ -5944,7 +6204,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 125
+  "rang": 135
  },
  {
   "id": "2613E1075922I",
@@ -6001,7 +6261,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 126
+  "rang": 136
  },
  {
   "id": "2613E0093648O",
@@ -6058,7 +6318,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 127
+  "rang": 137
  },
  {
   "id": "2613E1294345F",
@@ -6084,7 +6344,7 @@
   "conso": 92,
   "gesv": 3,
   "chauf": "Électricité",
-  "rang": 128
+  "rang": 138
  },
  {
   "id": "2613E1039644A",
@@ -6110,7 +6370,7 @@
   "conso": 122,
   "gesv": 8,
   "chauf": "Électricité",
-  "rang": 129
+  "rang": 139
  },
  {
   "id": "2613E0347309T",
@@ -6136,7 +6396,7 @@
   "conso": 233,
   "gesv": 49,
   "chauf": "Gaz naturel",
-  "rang": 130
+  "rang": 140
  },
  {
   "id": "2613E0217908U",
@@ -6162,7 +6422,137 @@
   "conso": 272,
   "gesv": 10,
   "chauf": "Électricité",
-  "rang": 131
+  "rang": 141
+ },
+ {
+  "id": "2513E3476797Q",
+  "q": "Saint-Jérôme",
+  "qoff": "La Rose",
+  "prio": true,
+  "date": "2025-11-04",
+  "jours": 216,
+  "dpe": "E",
+  "ges": "B",
+  "surface": 101.9,
+  "niv": 1,
+  "annee": null,
+  "adresse": "161 Avenue De La Rose",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 30,
+  "lat": 43.32872100192121,
+  "lon": 5.426344036732273,
+  "gmaps": "https://maps.google.com/?q=43.32872100192121,5.426344036732273",
+  "deja": false,
+  "conso": 251,
+  "gesv": 10,
+  "chauf": "Électricité",
+  "rang": 142
+ },
+ {
+  "id": "2513E3416100D",
+  "q": "Château-Gombert",
+  "qoff": "Saint-Mitre",
+  "prio": true,
+  "date": "2025-10-29",
+  "jours": 222,
+  "dpe": "C",
+  "ges": "A",
+  "surface": 182.6,
+  "niv": 2,
+  "annee": null,
+  "adresse": "237 Chemin De Chateau Gombert",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 30,
+  "lat": 43.34634000181678,
+  "lon": 5.425959054652672,
+  "gmaps": "https://maps.google.com/?q=43.34634000181678,5.425959054652672",
+  "deja": false,
+  "conso": 130,
+  "gesv": 5,
+  "chauf": "Électricité",
+  "rang": 143
+ },
+ {
+  "id": "2513E3280449U",
+  "q": "Palama",
+  "qoff": "Palama",
+  "prio": true,
+  "date": "2025-10-16",
+  "jours": 235,
+  "dpe": "E",
+  "ges": "E",
+  "surface": 95.1,
+  "niv": 2,
+  "annee": null,
+  "adresse": "Rue Des Chars",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 30,
+  "lat": 43.35995503958741,
+  "lon": 5.440563002559329,
+  "gmaps": "https://maps.google.com/?q=43.35995503958741,5.440563002559329",
+  "deja": false,
+  "conso": 264,
+  "gesv": 58,
+  "chauf": "Gaz naturel",
+  "rang": 144
+ },
+ {
+  "id": "2513E2847550V",
+  "q": "Les Médecins",
+  "qoff": "Les Médecins",
+  "prio": true,
+  "date": "2025-09-09",
+  "jours": 272,
+  "dpe": "F",
+  "ges": "F",
+  "surface": 98.1,
+  "niv": 1,
+  "annee": null,
+  "adresse": "Chemin De La Betheline",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 30,
+  "lat": 43.35690698241771,
+  "lon": 5.450536055346421,
+  "gmaps": "https://maps.google.com/?q=43.35690698241771,5.450536055346421",
+  "deja": false,
+  "conso": 317,
+  "gesv": 80,
+  "chauf": "Fioul domestique",
+  "rang": 145
+ },
+ {
+  "id": "2513E1965168B",
+  "q": "Château-Gombert",
+  "qoff": "Saint-Mitre",
+  "prio": true,
+  "date": "2025-06-16",
+  "jours": 357,
+  "dpe": "D",
+  "ges": "D",
+  "surface": 103.2,
+  "niv": 2,
+  "annee": null,
+  "adresse": "31 Traverse Collet Redon",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 30,
+  "lat": 43.349103021351745,
+  "lon": 5.427906969952743,
+  "gmaps": "https://maps.google.com/?q=43.349103021351745,5.427906969952743",
+  "deja": false,
+  "conso": 242,
+  "gesv": 48,
+  "chauf": "GPL",
+  "rang": 146
  },
  {
   "id": "2613E1243185N",
@@ -6219,7 +6609,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 132
+  "rang": 147
  },
  {
   "id": "2613E1017500I",
@@ -6276,7 +6666,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 133
+  "rang": 148
  },
  {
   "id": "2613E0929984I",
@@ -6333,7 +6723,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 134
+  "rang": 149
  },
  {
   "id": "2613E0652361N",
@@ -6390,7 +6780,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 135
+  "rang": 150
  },
  {
   "id": "2613E1140290A",
@@ -6416,7 +6806,7 @@
   "conso": 250,
   "gesv": 49,
   "chauf": "Gaz naturel",
-  "rang": 136
+  "rang": 151
  },
  {
   "id": "2613E0916729N",
@@ -6442,7 +6832,7 @@
   "conso": 261,
   "gesv": 57,
   "chauf": "Gaz naturel",
-  "rang": 137
+  "rang": 152
  },
  {
   "id": "2613E0882945D",
@@ -6468,7 +6858,7 @@
   "conso": 272,
   "gesv": 85,
   "chauf": "Fioul domestique",
-  "rang": 138
+  "rang": 153
  },
  {
   "id": "2613E0397784C",
@@ -6494,7 +6884,7 @@
   "conso": 281,
   "gesv": 78,
   "chauf": "Fioul domestique",
-  "rang": 139
+  "rang": 154
  },
  {
   "id": "2613E0204459N",
@@ -6520,7 +6910,7 @@
   "conso": 350,
   "gesv": 14,
   "chauf": "Électricité",
-  "rang": 140
+  "rang": 155
  },
  {
   "id": "2513E3985169K",
@@ -6546,7 +6936,59 @@
   "conso": 248,
   "gesv": 9,
   "chauf": "Électricité",
-  "rang": 141
+  "rang": 156
+ },
+ {
+  "id": "2513E3450294H",
+  "q": "Les Mourets",
+  "qoff": "Château-Gombert",
+  "prio": true,
+  "date": "2025-10-31",
+  "jours": 220,
+  "dpe": "D",
+  "ges": "D",
+  "surface": 172.4,
+  "niv": 3,
+  "annee": null,
+  "adresse": "Avenue De Chateau Gombert",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 29,
+  "lat": 43.35191002171693,
+  "lon": 5.435554028438211,
+  "gmaps": "https://maps.google.com/?q=43.35191002171693,5.435554028438211",
+  "deja": false,
+  "conso": 201,
+  "gesv": 39,
+  "chauf": "Fioul domestique",
+  "rang": 157
+ },
+ {
+  "id": "2513E2509457G",
+  "q": "Palama",
+  "qoff": "Château-Gombert",
+  "prio": true,
+  "date": "2025-07-31",
+  "jours": 312,
+  "dpe": "E",
+  "ges": "C",
+  "surface": 87.2,
+  "niv": 1,
+  "annee": null,
+  "adresse": "51 Chemin Des Xaviers",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 29,
+  "lat": 43.35854803501988,
+  "lon": 5.448556041346132,
+  "gmaps": "https://maps.google.com/?q=43.35854803501988,5.448556041346132",
+  "deja": false,
+  "conso": 284,
+  "gesv": 11,
+  "chauf": "Électricité",
+  "rang": 158
  },
  {
   "id": "2613E1359416Y",
@@ -6603,7 +7045,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 142
+  "rang": 159
  },
  {
   "id": "2613E1345005R",
@@ -6660,7 +7102,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 143
+  "rang": 160
  },
  {
   "id": "2613E1326514M",
@@ -6717,7 +7159,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 144
+  "rang": 161
  },
  {
   "id": "2613E1308542G",
@@ -6774,7 +7216,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 145
+  "rang": 162
  },
  {
   "id": "2613E1268455L",
@@ -6831,7 +7273,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 146
+  "rang": 163
  },
  {
   "id": "2613E1146848G",
@@ -6888,7 +7330,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 147
+  "rang": 164
  },
  {
   "id": "2613E0901613D",
@@ -6945,7 +7387,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 148
+  "rang": 165
  },
  {
   "id": "2613E0750884W",
@@ -7002,7 +7444,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 149
+  "rang": 166
  },
  {
   "id": "2613E0107747V",
@@ -7059,7 +7501,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 150
+  "rang": 167
  },
  {
   "id": "2613E1155255P",
@@ -7085,7 +7527,7 @@
   "conso": 115,
   "gesv": 4,
   "chauf": "Électricité",
-  "rang": 151
+  "rang": 168
  },
  {
   "id": "2613E0447268I",
@@ -7111,7 +7553,7 @@
   "conso": 184,
   "gesv": 6,
   "chauf": "Bois – Bûches",
-  "rang": 152
+  "rang": 169
  },
  {
   "id": "2613E0031524E",
@@ -7137,7 +7579,85 @@
   "conso": 294,
   "gesv": 11,
   "chauf": "Électricité",
-  "rang": 153
+  "rang": 170
+ },
+ {
+  "id": "2513E3733170D",
+  "q": "Les Mourets",
+  "qoff": "Château-Gombert",
+  "prio": true,
+  "date": "2025-11-27",
+  "jours": 193,
+  "dpe": "D",
+  "ges": "D",
+  "surface": 159.3,
+  "niv": 1,
+  "annee": null,
+  "adresse": "7 Avenue Reine Jeanne",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 28,
+  "lat": 43.35551704425237,
+  "lon": 5.434075951396399,
+  "gmaps": "https://maps.google.com/?q=43.35551704425237,5.434075951396399",
+  "deja": false,
+  "conso": 216,
+  "gesv": 30,
+  "chauf": "Gaz naturel",
+  "rang": 171
+ },
+ {
+  "id": "2513E3461057G",
+  "q": "Palama",
+  "qoff": "Palama",
+  "prio": true,
+  "date": "2025-11-03",
+  "jours": 217,
+  "dpe": "E",
+  "ges": "E",
+  "surface": 80.4,
+  "niv": 2,
+  "annee": null,
+  "adresse": "25 Impasse Du Carrousel",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 28,
+  "lat": 43.35807099923678,
+  "lon": 5.439142000563835,
+  "gmaps": "https://maps.google.com/?q=43.35807099923678,5.439142000563835",
+  "deja": false,
+  "conso": 265,
+  "gesv": 57,
+  "chauf": "Gaz naturel",
+  "rang": 172
+ },
+ {
+  "id": "2513E2430707K",
+  "q": "Palama",
+  "qoff": "Palama",
+  "prio": true,
+  "date": "2025-07-23",
+  "jours": 320,
+  "dpe": "A",
+  "ges": "A",
+  "surface": 160.4,
+  "niv": 1,
+  "annee": null,
+  "adresse": "Chemin De Palama",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 28,
+  "lat": 43.36069000947178,
+  "lon": 5.442604946931113,
+  "gmaps": "https://maps.google.com/?q=43.36069000947178,5.442604946931113",
+  "deja": false,
+  "conso": 32,
+  "gesv": 1,
+  "chauf": "Électricité",
+  "rang": 173
  },
  {
   "id": "2613E1333335V",
@@ -7194,7 +7714,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 154
+  "rang": 174
  },
  {
   "id": "2613E1285823L",
@@ -7251,7 +7771,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 155
+  "rang": 175
  },
  {
   "id": "2613E1287151N",
@@ -7308,7 +7828,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 156
+  "rang": 176
  },
  {
   "id": "2613E1268801T",
@@ -7365,7 +7885,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 157
+  "rang": 177
  },
  {
   "id": "2613E1262734K",
@@ -7422,7 +7942,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 158
+  "rang": 178
  },
  {
   "id": "2613E1242297J",
@@ -7479,7 +7999,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 159
+  "rang": 179
  },
  {
   "id": "2613E1175188G",
@@ -7536,7 +8056,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 160
+  "rang": 180
  },
  {
   "id": "2613E1180117V",
@@ -7593,7 +8113,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 161
+  "rang": 181
  },
  {
   "id": "2613E1157564K",
@@ -7650,7 +8170,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 162
+  "rang": 182
  },
  {
   "id": "2613E1126798C",
@@ -7707,7 +8227,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 163
+  "rang": 183
  },
  {
   "id": "2613E0849224E",
@@ -7764,7 +8284,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 164
+  "rang": 184
  },
  {
   "id": "2613E0592096Q",
@@ -7821,7 +8341,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 165
+  "rang": 185
  },
  {
   "id": "2613E0887933Z",
@@ -7847,7 +8367,7 @@
   "conso": 306,
   "gesv": 68,
   "chauf": "Gaz naturel",
-  "rang": 166
+  "rang": 186
  },
  {
   "id": "2613E0862533B",
@@ -7873,7 +8393,7 @@
   "conso": 222,
   "gesv": 8,
   "chauf": "Électricité",
-  "rang": 167
+  "rang": 187
  },
  {
   "id": "2613E0069747H",
@@ -7899,7 +8419,85 @@
   "conso": 433,
   "gesv": 123,
   "chauf": "Fioul domestique",
-  "rang": 168
+  "rang": 188
+ },
+ {
+  "id": "2513E3755767G",
+  "q": "Les Mourets",
+  "qoff": "Château-Gombert",
+  "prio": true,
+  "date": "2025-11-28",
+  "jours": 192,
+  "dpe": "D",
+  "ges": "B",
+  "surface": 68.3,
+  "niv": 1,
+  "annee": null,
+  "adresse": "25 Place Des Heros",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 27,
+  "lat": 43.35240403948093,
+  "lon": 5.439329032398788,
+  "gmaps": "https://maps.google.com/?q=43.35240403948093,5.439329032398788",
+  "deja": false,
+  "conso": 221,
+  "gesv": 8,
+  "chauf": "Électricité",
+  "rang": 189
+ },
+ {
+  "id": "2513E3520476P",
+  "q": "Palama",
+  "qoff": "Palama",
+  "prio": true,
+  "date": "2025-11-07",
+  "jours": 213,
+  "dpe": "D",
+  "ges": "D",
+  "surface": 73.4,
+  "niv": 1,
+  "annee": null,
+  "adresse": "Rue Des Ecuyers",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 27,
+  "lat": 43.3589710267947,
+  "lon": 5.440207996261407,
+  "gmaps": "https://maps.google.com/?q=43.3589710267947,5.440207996261407",
+  "deja": false,
+  "conso": 220,
+  "gesv": 48,
+  "chauf": "Gaz naturel",
+  "rang": 190
+ },
+ {
+  "id": "2513E3503601O",
+  "q": "Château-Gombert",
+  "qoff": "Saint-Mitre",
+  "prio": true,
+  "date": "2025-11-05",
+  "jours": 215,
+  "dpe": "F",
+  "ges": "F",
+  "surface": 68.6,
+  "niv": 1,
+  "annee": 1955,
+  "adresse": "Traverse Grandjean",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 27,
+  "lat": 43.342584017638515,
+  "lon": 5.42714305851853,
+  "gmaps": "https://maps.google.com/?q=43.342584017638515,5.42714305851853",
+  "deja": false,
+  "conso": 315,
+  "gesv": 82,
+  "chauf": "Fioul domestique",
+  "rang": 191
  },
  {
   "id": "2613E1359082C",
@@ -7956,7 +8554,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 169
+  "rang": 192
  },
  {
   "id": "2613E1026137N",
@@ -8013,7 +8611,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 170
+  "rang": 193
  },
  {
   "id": "2613E1023335T",
@@ -8070,7 +8668,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 171
+  "rang": 194
  },
  {
   "id": "2613E0815695P",
@@ -8127,7 +8725,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 172
+  "rang": 195
  },
  {
   "id": "2613E0426343N",
@@ -8184,7 +8782,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 173
+  "rang": 196
  },
  {
   "id": "2613E0375512M",
@@ -8241,7 +8839,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 174
+  "rang": 197
  },
  {
   "id": "2613E0817581D",
@@ -8267,7 +8865,7 @@
   "conso": 115,
   "gesv": 4,
   "chauf": "Électricité",
-  "rang": 175
+  "rang": 198
  },
  {
   "id": "2613E0117571R",
@@ -8293,7 +8891,7 @@
   "conso": 110,
   "gesv": 4,
   "chauf": "Électricité",
-  "rang": 176
+  "rang": 199
  },
  {
   "id": "2513E3961987U",
@@ -8319,7 +8917,111 @@
   "conso": 104,
   "gesv": 4,
   "chauf": "Électricité",
-  "rang": 177
+  "rang": 200
+ },
+ {
+  "id": "2513E3227001C",
+  "q": "Saint-Mitre",
+  "qoff": "Saint-Mitre",
+  "prio": false,
+  "date": "2025-10-13",
+  "jours": 238,
+  "dpe": "E",
+  "ges": "C",
+  "surface": 175.6,
+  "niv": 1,
+  "annee": null,
+  "adresse": "10 Traverse Chaussegros",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 26,
+  "lat": 43.3433649574276,
+  "lon": 5.415254965244535,
+  "gmaps": "https://maps.google.com/?q=43.3433649574276,5.415254965244535",
+  "deja": false,
+  "conso": 321,
+  "gesv": 12,
+  "chauf": "Électricité",
+  "rang": 201
+ },
+ {
+  "id": "2513E2642192L",
+  "q": "Palama",
+  "qoff": "Palama",
+  "prio": true,
+  "date": "2025-08-19",
+  "jours": 293,
+  "dpe": "A",
+  "ges": "A",
+  "surface": 135.0,
+  "niv": 1,
+  "annee": null,
+  "adresse": "Chemin De Palama",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 26,
+  "lat": 43.36069000947178,
+  "lon": 5.442604946931113,
+  "gmaps": "https://maps.google.com/?q=43.36069000947178,5.442604946931113",
+  "deja": false,
+  "conso": 53,
+  "gesv": 2,
+  "chauf": "Électricité",
+  "rang": 202
+ },
+ {
+  "id": "2513E2354712N",
+  "q": "Saint-Jérôme",
+  "qoff": "Malpassé",
+  "prio": true,
+  "date": "2025-07-17",
+  "jours": 326,
+  "dpe": "F",
+  "ges": "C",
+  "surface": 62.0,
+  "niv": 1,
+  "annee": null,
+  "adresse": "115 Chemin Du Merlan A La Rose",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 26,
+  "lat": 43.330583972008384,
+  "lon": 5.408309992035463,
+  "gmaps": "https://maps.google.com/?q=43.330583972008384,5.408309992035463",
+  "deja": false,
+  "conso": 369,
+  "gesv": 17,
+  "chauf": "Bois – Bûches",
+  "rang": 203
+ },
+ {
+  "id": "2513E2169429G",
+  "q": "Saint-Jérôme",
+  "qoff": "Saint-Jérôme",
+  "prio": true,
+  "date": "2025-07-01",
+  "jours": 342,
+  "dpe": "C",
+  "ges": "B",
+  "surface": 142.6,
+  "niv": 1,
+  "annee": null,
+  "adresse": "35 Rue Des Polytres",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 26,
+  "lat": 43.33106903645255,
+  "lon": 5.416473052247427,
+  "gmaps": "https://maps.google.com/?q=43.33106903645255,5.416473052247427",
+  "deja": false,
+  "conso": 176,
+  "gesv": 9,
+  "chauf": "Électricité",
+  "rang": 204
  },
  {
   "id": "2613E0857014U",
@@ -8376,7 +9078,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 178
+  "rang": 205
  },
  {
   "id": "2613E0775500Q",
@@ -8433,7 +9135,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 179
+  "rang": 206
  },
  {
   "id": "2613E0020279R",
@@ -8490,7 +9192,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 180
+  "rang": 207
  },
  {
   "id": "2613E1239397V",
@@ -8516,7 +9218,7 @@
   "conso": 161,
   "gesv": 6,
   "chauf": "Électricité",
-  "rang": 181
+  "rang": 208
  },
  {
   "id": "2613E0300749Z",
@@ -8542,7 +9244,7 @@
   "conso": 61,
   "gesv": 2,
   "chauf": "Électricité",
-  "rang": 182
+  "rang": 209
  },
  {
   "id": "2613E0189712I",
@@ -8568,7 +9270,137 @@
   "conso": 177,
   "gesv": 7,
   "chauf": "Électricité",
-  "rang": 183
+  "rang": 210
+ },
+ {
+  "id": "2513E3700951Y",
+  "q": "Saint-Jérôme",
+  "qoff": "Saint-Jérôme",
+  "prio": true,
+  "date": "2025-11-25",
+  "jours": 195,
+  "dpe": "D",
+  "ges": "D",
+  "surface": 129.8,
+  "niv": 2,
+  "annee": null,
+  "adresse": "Impasse Serre",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 25,
+  "lat": 43.33134201147112,
+  "lon": 5.413902059639077,
+  "gmaps": "https://maps.google.com/?q=43.33134201147112,5.413902059639077",
+  "deja": false,
+  "conso": 153,
+  "gesv": 30,
+  "chauf": "Gaz naturel",
+  "rang": 211
+ },
+ {
+  "id": "2513E3558272H",
+  "q": "Les Mourets",
+  "qoff": "Château-Gombert",
+  "prio": true,
+  "date": "2025-11-12",
+  "jours": 208,
+  "dpe": "C",
+  "ges": "C",
+  "surface": 126.3,
+  "niv": 2,
+  "annee": null,
+  "adresse": "Voie Sans Nom Bara Bd",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 25,
+  "lat": 43.351804035677425,
+  "lon": 5.440125037567834,
+  "gmaps": "https://maps.google.com/?q=43.351804035677425,5.440125037567834",
+  "deja": false,
+  "conso": 144,
+  "gesv": 17,
+  "chauf": "Gaz naturel",
+  "rang": 212
+ },
+ {
+  "id": "2513E3407250T",
+  "q": "Palama",
+  "qoff": "Palama",
+  "prio": true,
+  "date": "2025-10-29",
+  "jours": 222,
+  "dpe": "A",
+  "ges": "A",
+  "surface": 126.2,
+  "niv": 2,
+  "annee": 2014,
+  "adresse": "100 Rue La Parade",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 25,
+  "lat": 43.36550195544205,
+  "lon": 5.440643985395249,
+  "gmaps": "https://maps.google.com/?q=43.36550195544205,5.440643985395249",
+  "deja": false,
+  "conso": 50,
+  "gesv": 1,
+  "chauf": "Électricité",
+  "rang": 213
+ },
+ {
+  "id": "2513E2901939S",
+  "q": "Palama",
+  "qoff": "Palama",
+  "prio": true,
+  "date": "2025-09-14",
+  "jours": 267,
+  "dpe": "A",
+  "ges": "A",
+  "surface": 131.7,
+  "niv": 2,
+  "annee": null,
+  "adresse": "107 Chemin Des Xaviers",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 25,
+  "lat": 43.362538989724065,
+  "lon": 5.447351005107679,
+  "gmaps": "https://maps.google.com/?q=43.362538989724065,5.447351005107679",
+  "deja": false,
+  "conso": 59,
+  "gesv": 2,
+  "chauf": "Électricité",
+  "rang": 214
+ },
+ {
+  "id": "2513E2850158D",
+  "q": "Les Mourets",
+  "qoff": "Palama",
+  "prio": true,
+  "date": "2025-09-09",
+  "jours": 272,
+  "dpe": "C",
+  "ges": "C",
+  "surface": 128.1,
+  "niv": 2,
+  "annee": null,
+  "adresse": "Rue Louis Feuillee",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 25,
+  "lat": 43.354607969840075,
+  "lon": 5.4370320121542965,
+  "gmaps": "https://maps.google.com/?q=43.354607969840075,5.4370320121542965",
+  "deja": false,
+  "conso": 104,
+  "gesv": 20,
+  "chauf": "Gaz naturel",
+  "rang": 215
  },
  {
   "id": "2613E1268207X",
@@ -8625,7 +9457,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 184
+  "rang": 216
  },
  {
   "id": "2613E1206530S",
@@ -8682,7 +9514,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 185
+  "rang": 217
  },
  {
   "id": "2613E1066831R",
@@ -8739,7 +9571,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 186
+  "rang": 218
  },
  {
   "id": "2613E0469365F",
@@ -8796,7 +9628,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 187
+  "rang": 219
  },
  {
   "id": "2613E0750300K",
@@ -8853,7 +9685,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 188
+  "rang": 220
  },
  {
   "id": "2513E3937009C",
@@ -8910,7 +9742,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.5,
-  "rang": 189
+  "rang": 221
  },
  {
   "id": "2613E0701149Z",
@@ -8967,7 +9799,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 190
+  "rang": 222
  },
  {
   "id": "2613E0686861L",
@@ -9024,7 +9856,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 191
+  "rang": 223
  },
  {
   "id": "2613E0515255F",
@@ -9081,7 +9913,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 192
+  "rang": 224
  },
  {
   "id": "2613E0303645J",
@@ -9138,7 +9970,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 193
+  "rang": 225
  },
  {
   "id": "2613E0346268S",
@@ -9195,7 +10027,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 194
+  "rang": 226
  },
  {
   "id": "2613E0086525P",
@@ -9252,7 +10084,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 195
+  "rang": 227
  },
  {
   "id": "2613E0030235P",
@@ -9309,7 +10141,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 196
+  "rang": 228
  },
  {
   "id": "2613E1256550O",
@@ -9335,7 +10167,7 @@
   "conso": 161,
   "gesv": 6,
   "chauf": "Électricité",
-  "rang": 197
+  "rang": 229
  },
  {
   "id": "2613E0902203V",
@@ -9361,7 +10193,7 @@
   "conso": 122,
   "gesv": 26,
   "chauf": "Gaz naturel",
-  "rang": 198
+  "rang": 230
  },
  {
   "id": "2613E0886672M",
@@ -9387,7 +10219,7 @@
   "conso": 227,
   "gesv": 49,
   "chauf": "Gaz naturel",
-  "rang": 199
+  "rang": 231
  },
  {
   "id": "2613E0506506S",
@@ -9413,7 +10245,7 @@
   "conso": 97,
   "gesv": 3,
   "chauf": "Électricité",
-  "rang": 200
+  "rang": 232
  },
  {
   "id": "2613E0445911D",
@@ -9439,7 +10271,7 @@
   "conso": 141,
   "gesv": 19,
   "chauf": "Gaz naturel",
-  "rang": 201
+  "rang": 233
  },
  {
   "id": "2613E0381408G",
@@ -9465,7 +10297,7 @@
   "conso": 194,
   "gesv": 7,
   "chauf": "Électricité",
-  "rang": 202
+  "rang": 234
  },
  {
   "id": "2613E0051664U",
@@ -9491,7 +10323,7 @@
   "conso": 224,
   "gesv": 49,
   "chauf": "Gaz naturel",
-  "rang": 203
+  "rang": 235
  },
  {
   "id": "2513E3943044F",
@@ -9517,7 +10349,85 @@
   "conso": 112,
   "gesv": 4,
   "chauf": "Électricité",
-  "rang": 204
+  "rang": 236
+ },
+ {
+  "id": "2513E3811408H",
+  "q": "Château-Gombert",
+  "qoff": "Saint-Mitre",
+  "prio": true,
+  "date": "2025-12-04",
+  "jours": 186,
+  "dpe": "C",
+  "ges": "C",
+  "surface": 123.2,
+  "niv": 2,
+  "annee": 1991,
+  "adresse": "237 Chemin De Chateau Gombert",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 24,
+  "lat": 43.34634000181678,
+  "lon": 5.425959054652672,
+  "gmaps": "https://maps.google.com/?q=43.34634000181678,5.425959054652672",
+  "deja": false,
+  "conso": 121,
+  "gesv": 13,
+  "chauf": "Bois – Bûches",
+  "rang": 237
+ },
+ {
+  "id": "2513E3159323C",
+  "q": "Saint-Jérôme",
+  "qoff": "Malpassé",
+  "prio": true,
+  "date": "2025-10-06",
+  "jours": 245,
+  "dpe": "B",
+  "ges": "A",
+  "surface": 120.0,
+  "niv": 2,
+  "annee": null,
+  "adresse": "10 Boulevard De La Verdiere",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 24,
+  "lat": 43.32479504490059,
+  "lon": 5.420172949799614,
+  "gmaps": "https://maps.google.com/?q=43.32479504490059,5.420172949799614",
+  "deja": false,
+  "conso": 100,
+  "gesv": 3,
+  "chauf": "Bois – Bûches",
+  "rang": 238
+ },
+ {
+  "id": "2513E2256679A",
+  "q": "Les Mourets",
+  "qoff": "Château-Gombert",
+  "prio": true,
+  "date": "2025-07-08",
+  "jours": 335,
+  "dpe": "C",
+  "ges": "A",
+  "surface": 120.6,
+  "niv": 2,
+  "annee": null,
+  "adresse": "Impasse Du Quiadou",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 24,
+  "lat": 43.35021698374908,
+  "lon": 5.440600965250822,
+  "gmaps": "https://maps.google.com/?q=43.35021698374908,5.440600965250822",
+  "deja": false,
+  "conso": 154,
+  "gesv": 5,
+  "chauf": "Électricité",
+  "rang": 239
  },
  {
   "id": "2613E1087810O",
@@ -9574,7 +10484,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 205
+  "rang": 240
  },
  {
   "id": "2613E0052371Z",
@@ -9631,7 +10541,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 206
+  "rang": 241
  },
  {
   "id": "2613E0701946Q",
@@ -9688,7 +10598,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 207
+  "rang": 242
  },
  {
   "id": "2613E0598844E",
@@ -9745,7 +10655,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 208
+  "rang": 243
  },
  {
   "id": "2613E0545102E",
@@ -9802,7 +10712,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 209
+  "rang": 244
  },
  {
   "id": "2613E0473099V",
@@ -9859,7 +10769,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 210
+  "rang": 245
  },
  {
   "id": "2613E0391759J",
@@ -9916,7 +10826,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 211
+  "rang": 246
  },
  {
   "id": "2513E3948242D",
@@ -9973,7 +10883,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.5,
-  "rang": 212
+  "rang": 247
  },
  {
   "id": "2613E1035051J",
@@ -9999,7 +10909,7 @@
   "conso": 147,
   "gesv": 25,
   "chauf": "Gaz naturel",
-  "rang": 213
+  "rang": 248
  },
  {
   "id": "2613E1009804I",
@@ -10025,7 +10935,7 @@
   "conso": 119,
   "gesv": 4,
   "chauf": "Électricité",
-  "rang": 214
+  "rang": 249
  },
  {
   "id": "2613E0981499R",
@@ -10051,7 +10961,7 @@
   "conso": 186,
   "gesv": 7,
   "chauf": "Électricité",
-  "rang": 215
+  "rang": 250
  },
  {
   "id": "2613E0944407B",
@@ -10077,7 +10987,7 @@
   "conso": 216,
   "gesv": 8,
   "chauf": "Électricité",
-  "rang": 216
+  "rang": 251
  },
  {
   "id": "2613E0864901D",
@@ -10103,7 +11013,7 @@
   "conso": 204,
   "gesv": 8,
   "chauf": "Électricité",
-  "rang": 217
+  "rang": 252
  },
  {
   "id": "2613E0662042W",
@@ -10129,7 +11039,7 @@
   "conso": 146,
   "gesv": 5,
   "chauf": "Bois – Bûches",
-  "rang": 218
+  "rang": 253
  },
  {
   "id": "2613E0254257V",
@@ -10155,7 +11065,7 @@
   "conso": 34,
   "gesv": 1,
   "chauf": "Électricité",
-  "rang": 219
+  "rang": 254
  },
  {
   "id": "2613E0057449H",
@@ -10181,7 +11091,7 @@
   "conso": 288,
   "gesv": 11,
   "chauf": "Électricité",
-  "rang": 220
+  "rang": 255
  },
  {
   "id": "2513E3943647K",
@@ -10207,7 +11117,163 @@
   "conso": 317,
   "gesv": 12,
   "chauf": "Électricité",
-  "rang": 221
+  "rang": 256
+ },
+ {
+  "id": "2513E3635991M",
+  "q": "Les Médecins",
+  "qoff": "Les Médecins",
+  "prio": true,
+  "date": "2025-11-19",
+  "jours": 201,
+  "dpe": "C",
+  "ges": "A",
+  "surface": 109.1,
+  "niv": 1,
+  "annee": null,
+  "adresse": "Chemin De La Betheline",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 23,
+  "lat": 43.35690698241771,
+  "lon": 5.450536055346421,
+  "gmaps": "https://maps.google.com/?q=43.35690698241771,5.450536055346421",
+  "deja": false,
+  "conso": 126,
+  "gesv": 4,
+  "chauf": "Électricité",
+  "rang": 257
+ },
+ {
+  "id": "2513E3302407I",
+  "q": "Palama",
+  "qoff": "Palama",
+  "prio": true,
+  "date": "2025-10-20",
+  "jours": 231,
+  "dpe": "A",
+  "ges": "A",
+  "surface": 109.3,
+  "niv": 2,
+  "annee": 1975,
+  "adresse": "44 Rue Des Chars",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 23,
+  "lat": 43.35956799511328,
+  "lon": 5.439830050621758,
+  "gmaps": "https://maps.google.com/?q=43.35956799511328,5.439830050621758",
+  "deja": false,
+  "conso": 62,
+  "gesv": 2,
+  "chauf": "Électricité",
+  "rang": 258
+ },
+ {
+  "id": "2513E3241489I",
+  "q": "Palama",
+  "qoff": "Palama",
+  "prio": true,
+  "date": "2025-10-14",
+  "jours": 237,
+  "dpe": "D",
+  "ges": "D",
+  "surface": 105.4,
+  "niv": 2,
+  "annee": null,
+  "adresse": "Rue La Parade",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 23,
+  "lat": 43.3632610305372,
+  "lon": 5.441086993421682,
+  "gmaps": "https://maps.google.com/?q=43.3632610305372,5.441086993421682",
+  "deja": false,
+  "conso": 180,
+  "gesv": 39,
+  "chauf": "Gaz naturel",
+  "rang": 259
+ },
+ {
+  "id": "2513E2868459A",
+  "q": "Palama",
+  "qoff": "Palama",
+  "prio": true,
+  "date": "2025-09-10",
+  "jours": 271,
+  "dpe": "B",
+  "ges": "B",
+  "surface": 108.3,
+  "niv": 2,
+  "annee": null,
+  "adresse": "16 Impasse Des Pierrots",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 23,
+  "lat": 43.36207003705219,
+  "lon": 5.438786970229022,
+  "gmaps": "https://maps.google.com/?q=43.36207003705219,5.438786970229022",
+  "deja": false,
+  "conso": 94,
+  "gesv": 6,
+  "chauf": "Électricité",
+  "rang": 260
+ },
+ {
+  "id": "2513E2494790D",
+  "q": "Les Médecins",
+  "qoff": "Les Médecins",
+  "prio": true,
+  "date": "2025-07-30",
+  "jours": 313,
+  "dpe": "C",
+  "ges": "A",
+  "surface": 108.6,
+  "niv": 1,
+  "annee": null,
+  "adresse": "Traverse Eole",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 23,
+  "lat": 43.35611199294271,
+  "lon": 5.459352010125907,
+  "gmaps": "https://maps.google.com/?q=43.35611199294271,5.459352010125907",
+  "deja": false,
+  "conso": 154,
+  "gesv": 5,
+  "chauf": "Bois – Granulés (pellets) ou briquettes",
+  "rang": 261
+ },
+ {
+  "id": "2513E2162693E",
+  "q": "Saint-Jérôme",
+  "qoff": "Saint-Jérôme",
+  "prio": true,
+  "date": "2025-07-01",
+  "jours": 342,
+  "dpe": "C",
+  "ges": "A",
+  "surface": 109.0,
+  "niv": 2,
+  "annee": null,
+  "adresse": "Rue Des Polytres",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 23,
+  "lat": 43.33070502438607,
+  "lon": 5.416298004862515,
+  "gmaps": "https://maps.google.com/?q=43.33070502438607,5.416298004862515",
+  "deja": false,
+  "conso": 131,
+  "gesv": 4,
+  "chauf": "Bois – Bûches",
+  "rang": 262
  },
  {
   "id": "2613E1248444U",
@@ -10264,7 +11330,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 222
+  "rang": 263
  },
  {
   "id": "2613E1037521J",
@@ -10321,7 +11387,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 223
+  "rang": 264
  },
  {
   "id": "2613E0998763R",
@@ -10378,7 +11444,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 224
+  "rang": 265
  },
  {
   "id": "2613E0935078G",
@@ -10435,7 +11501,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 225
+  "rang": 266
  },
  {
   "id": "2613E0609805T",
@@ -10492,7 +11558,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 226
+  "rang": 267
  },
  {
   "id": "2613E0449455L",
@@ -10549,7 +11615,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 227
+  "rang": 268
  },
  {
   "id": "2613E0367517Z",
@@ -10606,7 +11672,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 228
+  "rang": 269
  },
  {
   "id": "2613E0314253J",
@@ -10663,7 +11729,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 229
+  "rang": 270
  },
  {
   "id": "2613E0238559B",
@@ -10720,7 +11786,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 230
+  "rang": 271
  },
  {
   "id": "2613E0222047Z",
@@ -10777,7 +11843,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 231
+  "rang": 272
  },
  {
   "id": "2613E0105296O",
@@ -10834,7 +11900,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 232
+  "rang": 273
  },
  {
   "id": "2613E0998804G",
@@ -10860,7 +11926,7 @@
   "conso": 147,
   "gesv": 31,
   "chauf": "Gaz naturel",
-  "rang": 233
+  "rang": 274
  },
  {
   "id": "2613E0600752O",
@@ -10886,7 +11952,7 @@
   "conso": 99,
   "gesv": 19,
   "chauf": "Gaz naturel",
-  "rang": 234
+  "rang": 275
  },
  {
   "id": "2613E0548252I",
@@ -10912,7 +11978,7 @@
   "conso": 86,
   "gesv": 3,
   "chauf": "Électricité",
-  "rang": 235
+  "rang": 276
  },
  {
   "id": "2613E0396183N",
@@ -10938,7 +12004,7 @@
   "conso": 135,
   "gesv": 5,
   "chauf": "Électricité",
-  "rang": 236
+  "rang": 277
  },
  {
   "id": "2613E0236317V",
@@ -10964,7 +12030,7 @@
   "conso": 85,
   "gesv": 4,
   "chauf": "Bois – Bûches",
-  "rang": 237
+  "rang": 278
  },
  {
   "id": "2613E0239042Q",
@@ -10990,7 +12056,7 @@
   "conso": 129,
   "gesv": 5,
   "chauf": "Électricité",
-  "rang": 238
+  "rang": 279
  },
  {
   "id": "2613E0214996U",
@@ -11016,7 +12082,7 @@
   "conso": 212,
   "gesv": 32,
   "chauf": "Gaz naturel",
-  "rang": 239
+  "rang": 280
  },
  {
   "id": "2513E4005405S",
@@ -11042,7 +12108,7 @@
   "conso": 55,
   "gesv": 2,
   "chauf": "Électricité",
-  "rang": 240
+  "rang": 281
  },
  {
   "id": "2513E3992275S",
@@ -11068,7 +12134,7 @@
   "conso": 158,
   "gesv": 24,
   "chauf": "Gaz naturel",
-  "rang": 241
+  "rang": 282
  },
  {
   "id": "2513E3912418H",
@@ -11094,7 +12160,267 @@
   "conso": 107,
   "gesv": 4,
   "chauf": "Électricité",
-  "rang": 242
+  "rang": 283
+ },
+ {
+  "id": "2513E3817451S",
+  "q": "Saint-Jérôme",
+  "qoff": "Saint-Jérôme",
+  "prio": true,
+  "date": "2025-12-04",
+  "jours": 186,
+  "dpe": "B",
+  "ges": "A",
+  "surface": 100.1,
+  "niv": 1,
+  "annee": null,
+  "adresse": "10 Rue Des Polytres",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 22,
+  "lat": 43.32950301768447,
+  "lon": 5.416436971671229,
+  "gmaps": "https://maps.google.com/?q=43.32950301768447,5.416436971671229",
+  "deja": false,
+  "conso": 83,
+  "gesv": 3,
+  "chauf": "Électricité",
+  "rang": 284
+ },
+ {
+  "id": "2513E3528565S",
+  "q": "Petit Bosquet",
+  "qoff": "Les Mourets",
+  "prio": false,
+  "date": "2025-11-07",
+  "jours": 213,
+  "dpe": "A",
+  "ges": "A",
+  "surface": 233.5,
+  "niv": 3,
+  "annee": 2023,
+  "adresse": "83 Chemin Des Grives",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 22,
+  "lat": 43.354618034800275,
+  "lon": 5.4210919924831105,
+  "gmaps": "https://maps.google.com/?q=43.354618034800275,5.4210919924831105",
+  "deja": false,
+  "conso": 60,
+  "gesv": 2,
+  "chauf": "Électricité",
+  "rang": 285
+ },
+ {
+  "id": "2513E3407353S",
+  "q": "Château-Gombert",
+  "qoff": "Saint-Mitre",
+  "prio": true,
+  "date": "2025-10-29",
+  "jours": 222,
+  "dpe": "C",
+  "ges": "C",
+  "surface": 98.1,
+  "niv": 2,
+  "annee": null,
+  "adresse": "237 Chemin De Chateau Gombert",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 22,
+  "lat": 43.34634000181678,
+  "lon": 5.425959054652672,
+  "gmaps": "https://maps.google.com/?q=43.34634000181678,5.425959054652672",
+  "deja": false,
+  "conso": 142,
+  "gesv": 29,
+  "chauf": "Gaz naturel",
+  "rang": 286
+ },
+ {
+  "id": "2513E3302225I",
+  "q": "Saint-Jérôme",
+  "qoff": "Saint-Jérôme",
+  "prio": true,
+  "date": "2025-10-20",
+  "jours": 231,
+  "dpe": "B",
+  "ges": "A",
+  "surface": 96.8,
+  "niv": 1,
+  "annee": null,
+  "adresse": "29 Boulevard Ararat",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 22,
+  "lat": 43.33040602684939,
+  "lon": 5.417567050777442,
+  "gmaps": "https://maps.google.com/?q=43.33040602684939,5.417567050777442",
+  "deja": false,
+  "conso": 107,
+  "gesv": 3,
+  "chauf": "Électricité",
+  "rang": 287
+ },
+ {
+  "id": "2513E3227120R",
+  "q": "Les Mourets",
+  "qoff": "Palama",
+  "prio": true,
+  "date": "2025-10-13",
+  "jours": 238,
+  "dpe": "D",
+  "ges": "B",
+  "surface": 103.2,
+  "niv": 2,
+  "annee": null,
+  "adresse": "Voie Sans Nom Campagne De Gombert",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 22,
+  "lat": 43.35483600262665,
+  "lon": 5.43664203291998,
+  "gmaps": "https://maps.google.com/?q=43.35483600262665,5.43664203291998",
+  "deja": false,
+  "conso": 204,
+  "gesv": 8,
+  "chauf": "Électricité",
+  "rang": 288
+ },
+ {
+  "id": "2513E2830072P",
+  "q": "Saint-Jérôme",
+  "qoff": "La Rose",
+  "prio": true,
+  "date": "2025-09-08",
+  "jours": 273,
+  "dpe": "B",
+  "ges": "A",
+  "surface": 95.9,
+  "niv": 1,
+  "annee": null,
+  "adresse": "40 Chemin Des Jonquilles",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 22,
+  "lat": 43.326910042484066,
+  "lon": 5.427513054795035,
+  "gmaps": "https://maps.google.com/?q=43.326910042484066,5.427513054795035",
+  "deja": false,
+  "conso": 73,
+  "gesv": 2,
+  "chauf": "Électricité",
+  "rang": 289
+ },
+ {
+  "id": "2513E2537706T",
+  "q": "Malpassé",
+  "qoff": "Malpassé",
+  "prio": false,
+  "date": "2025-08-04",
+  "jours": 308,
+  "dpe": "E",
+  "ges": "E",
+  "surface": 135.4,
+  "niv": 2,
+  "annee": null,
+  "adresse": "29 Boulevard Bouge Malpasse",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 22,
+  "lat": 43.32345901875178,
+  "lon": 5.411930988519014,
+  "gmaps": "https://maps.google.com/?q=43.32345901875178,5.411930988519014",
+  "deja": false,
+  "conso": 240,
+  "gesv": 52,
+  "chauf": "Gaz naturel",
+  "rang": 290
+ },
+ {
+  "id": "2513E2272833I",
+  "q": "Petit Bosquet",
+  "qoff": "Les Mourets",
+  "prio": false,
+  "date": "2025-07-09",
+  "jours": 334,
+  "dpe": "A",
+  "ges": "A",
+  "surface": 292.9,
+  "niv": 2,
+  "annee": null,
+  "adresse": "Montée Milou",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 22,
+  "lat": 43.36147196886763,
+  "lon": 5.430115023592498,
+  "gmaps": "https://maps.google.com/?q=43.36147196886763,5.430115023592498",
+  "deja": false,
+  "conso": 48,
+  "gesv": 1,
+  "chauf": "Électricité",
+  "rang": 291
+ },
+ {
+  "id": "2513E2244358D",
+  "q": "Saint-Jérôme",
+  "qoff": "Malpassé",
+  "prio": true,
+  "date": "2025-07-07",
+  "jours": 336,
+  "dpe": "D",
+  "ges": "D",
+  "surface": 97.0,
+  "niv": 2,
+  "annee": null,
+  "adresse": "97 Avenue De La Rose",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 22,
+  "lat": 43.326738994398575,
+  "lon": 5.422535036979624,
+  "gmaps": "https://maps.google.com/?q=43.326738994398575,5.422535036979624",
+  "deja": false,
+  "conso": 146,
+  "gesv": 30,
+  "chauf": "Gaz naturel",
+  "rang": 292
+ },
+ {
+  "id": "2513E2105925U",
+  "q": "Palama",
+  "qoff": "Palama",
+  "prio": true,
+  "date": "2025-06-26",
+  "jours": 347,
+  "dpe": "D",
+  "ges": "C",
+  "surface": 96.4,
+  "niv": 2,
+  "annee": null,
+  "adresse": "17 Rue Des Chars",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 22,
+  "lat": 43.36041300634602,
+  "lon": 5.4418979769596945,
+  "gmaps": "https://maps.google.com/?q=43.36041300634602,5.4418979769596945",
+  "deja": false,
+  "conso": 200,
+  "gesv": 20,
+  "chauf": "Électricité",
+  "rang": 293
  },
  {
   "id": "2613E1203600A",
@@ -11151,7 +12477,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 243
+  "rang": 294
  },
  {
   "id": "2613E1083947Z",
@@ -11208,7 +12534,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 244
+  "rang": 295
  },
  {
   "id": "2613E1063693Z",
@@ -11265,7 +12591,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 245
+  "rang": 296
  },
  {
   "id": "2613E1042413N",
@@ -11322,7 +12648,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 246
+  "rang": 297
  },
  {
   "id": "2613E0861985Z",
@@ -11379,7 +12705,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 247
+  "rang": 298
  },
  {
   "id": "2613E0854799P",
@@ -11436,7 +12762,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 248
+  "rang": 299
  },
  {
   "id": "2613E0713576Y",
@@ -11493,7 +12819,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 249
+  "rang": 300
  },
  {
   "id": "2613E0714858G",
@@ -11550,7 +12876,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 250
+  "rang": 301
  },
  {
   "id": "2613E0389372O",
@@ -11607,7 +12933,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 251
+  "rang": 302
  },
  {
   "id": "2613E0193343Z",
@@ -11664,7 +12990,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 252
+  "rang": 303
  },
  {
   "id": "2613E0059696S",
@@ -11721,7 +13047,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 253
+  "rang": 304
  },
  {
   "id": "2613E1176421R",
@@ -11747,7 +13073,7 @@
   "conso": 156,
   "gesv": 34,
   "chauf": "Gaz naturel",
-  "rang": 254
+  "rang": 305
  },
  {
   "id": "2613E1084776W",
@@ -11773,7 +13099,7 @@
   "conso": 197,
   "gesv": 35,
   "chauf": "Gaz naturel",
-  "rang": 255
+  "rang": 306
  },
  {
   "id": "2613E0950354U",
@@ -11799,7 +13125,7 @@
   "conso": 281,
   "gesv": 78,
   "chauf": "Fioul domestique",
-  "rang": 256
+  "rang": 307
  },
  {
   "id": "2613E0788725H",
@@ -11825,7 +13151,7 @@
   "conso": 219,
   "gesv": 48,
   "chauf": "Gaz naturel",
-  "rang": 257
+  "rang": 308
  },
  {
   "id": "2613E0778157V",
@@ -11851,7 +13177,7 @@
   "conso": 140,
   "gesv": 27,
   "chauf": "Gaz naturel",
-  "rang": 258
+  "rang": 309
  },
  {
   "id": "2613E0658510A",
@@ -11877,7 +13203,7 @@
   "conso": 68,
   "gesv": 14,
   "chauf": "Gaz naturel",
-  "rang": 259
+  "rang": 310
  },
  {
   "id": "2613E0541387H",
@@ -11903,7 +13229,7 @@
   "conso": 144,
   "gesv": 29,
   "chauf": "Gaz naturel",
-  "rang": 260
+  "rang": 311
  },
  {
   "id": "2613E0453415T",
@@ -11929,7 +13255,7 @@
   "conso": 106,
   "gesv": 11,
   "chauf": "Gaz naturel",
-  "rang": 261
+  "rang": 312
  },
  {
   "id": "2613E0341499H",
@@ -11955,7 +13281,7 @@
   "conso": 80,
   "gesv": 3,
   "chauf": "Électricité",
-  "rang": 262
+  "rang": 313
  },
  {
   "id": "2613E0295007D",
@@ -11981,7 +13307,7 @@
   "conso": 140,
   "gesv": 5,
   "chauf": "Électricité",
-  "rang": 263
+  "rang": 314
  },
  {
   "id": "2613E0294986I",
@@ -12007,7 +13333,7 @@
   "conso": 140,
   "gesv": 5,
   "chauf": "Électricité",
-  "rang": 264
+  "rang": 315
  },
  {
   "id": "2513E3908102H",
@@ -12033,7 +13359,189 @@
   "conso": 98,
   "gesv": 3,
   "chauf": "Électricité",
-  "rang": 265
+  "rang": 316
+ },
+ {
+  "id": "2513E3442445K",
+  "q": "Château-Gombert",
+  "qoff": "Saint-Mitre",
+  "prio": true,
+  "date": "2025-10-31",
+  "jours": 220,
+  "dpe": "C",
+  "ges": "A",
+  "surface": 94.1,
+  "niv": 1,
+  "annee": null,
+  "adresse": "52 Traverse Grandjean",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 21,
+  "lat": 43.34320795872254,
+  "lon": 5.427132966109378,
+  "gmaps": "https://maps.google.com/?q=43.34320795872254,5.427132966109378",
+  "deja": false,
+  "conso": 138,
+  "gesv": 5,
+  "chauf": "Électricité",
+  "rang": 317
+ },
+ {
+  "id": "2513E3157684B",
+  "q": "Palama",
+  "qoff": "Château-Gombert",
+  "prio": true,
+  "date": "2025-10-06",
+  "jours": 245,
+  "dpe": "B",
+  "ges": "A",
+  "surface": 89.0,
+  "niv": 1,
+  "annee": null,
+  "adresse": "Avenue Baron Odon De Samatan",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 21,
+  "lat": 43.355373974961815,
+  "lon": 5.440473989367026,
+  "gmaps": "https://maps.google.com/?q=43.355373974961815,5.440473989367026",
+  "deja": false,
+  "conso": 100,
+  "gesv": 3,
+  "chauf": "Électricité",
+  "rang": 318
+ },
+ {
+  "id": "2513E3145443G",
+  "q": "Les Mourets",
+  "qoff": "Château-Gombert",
+  "prio": true,
+  "date": "2025-10-04",
+  "jours": 247,
+  "dpe": "D",
+  "ges": "C",
+  "surface": 87.5,
+  "niv": 1,
+  "annee": 1976,
+  "adresse": "59 Rue Centrale",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 21,
+  "lat": 43.3520999874691,
+  "lon": 5.439764976298951,
+  "gmaps": "https://maps.google.com/?q=43.3520999874691,5.439764976298951",
+  "deja": false,
+  "conso": 183,
+  "gesv": 27,
+  "chauf": "Gaz naturel",
+  "rang": 319
+ },
+ {
+  "id": "2513E2778395A",
+  "q": "Château-Gombert",
+  "qoff": "Saint-Mitre",
+  "prio": true,
+  "date": "2025-09-03",
+  "jours": 278,
+  "dpe": "C",
+  "ges": "A",
+  "surface": 89.2,
+  "niv": 2,
+  "annee": null,
+  "adresse": "298 Chemin De Chateau Gombert",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 21,
+  "lat": 43.34877696898737,
+  "lon": 5.4307750414922955,
+  "gmaps": "https://maps.google.com/?q=43.34877696898737,5.4307750414922955",
+  "deja": false,
+  "conso": 152,
+  "gesv": 5,
+  "chauf": "Électricité",
+  "rang": 320
+ },
+ {
+  "id": "2513E2629112J",
+  "q": "Saint-Jérôme",
+  "qoff": "Saint-Jérôme",
+  "prio": true,
+  "date": "2025-08-16",
+  "jours": 296,
+  "dpe": "C",
+  "ges": "C",
+  "surface": 89.2,
+  "niv": 1,
+  "annee": null,
+  "adresse": "20 Chemin De Chateau Gombert",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 21,
+  "lat": 43.33496601299721,
+  "lon": 5.420777948897409,
+  "gmaps": "https://maps.google.com/?q=43.33496601299721,5.420777948897409",
+  "deja": false,
+  "conso": 123,
+  "gesv": 23,
+  "chauf": "Gaz naturel",
+  "rang": 321
+ },
+ {
+  "id": "2513E2151604R",
+  "q": "Saint-Mitre",
+  "qoff": "Saint-Mitre",
+  "prio": false,
+  "date": "2025-06-30",
+  "jours": 343,
+  "dpe": "D",
+  "ges": "D",
+  "surface": 125.3,
+  "niv": 1,
+  "annee": null,
+  "adresse": "51 Chemin De St Mitre A Four De Buze",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 21,
+  "lat": 43.3445930065496,
+  "lon": 5.4163319677776425,
+  "gmaps": "https://maps.google.com/?q=43.3445930065496,5.4163319677776425",
+  "deja": false,
+  "conso": 240,
+  "gesv": 41,
+  "chauf": "Gaz naturel",
+  "rang": 322
+ },
+ {
+  "id": "2513E2005703C",
+  "q": "Petit Bosquet",
+  "qoff": "Les Mourets",
+  "prio": false,
+  "date": "2025-06-19",
+  "jours": 354,
+  "dpe": "D",
+  "ges": "D",
+  "surface": 127.1,
+  "niv": 2,
+  "annee": null,
+  "adresse": "Impasse Cavallino",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 21,
+  "lat": 43.35805003843141,
+  "lon": 5.428992991917741,
+  "gmaps": "https://maps.google.com/?q=43.35805003843141,5.428992991917741",
+  "deja": false,
+  "conso": 234,
+  "gesv": 37,
+  "chauf": "Gaz naturel",
+  "rang": 323
  },
  {
   "id": "2613E1246466S",
@@ -12090,7 +13598,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 266
+  "rang": 324
  },
  {
   "id": "2613E1222885T",
@@ -12147,7 +13655,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 267
+  "rang": 325
  },
  {
   "id": "2613E1031538G",
@@ -12204,7 +13712,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 268
+  "rang": 326
  },
  {
   "id": "2613E0562040Q",
@@ -12261,7 +13769,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 269
+  "rang": 327
  },
  {
   "id": "2613E0682979D",
@@ -12318,7 +13826,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 270
+  "rang": 328
  },
  {
   "id": "2613E0630041B",
@@ -12375,7 +13883,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 271
+  "rang": 329
  },
  {
   "id": "2613E0429732W",
@@ -12432,7 +13940,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 272
+  "rang": 330
  },
  {
   "id": "2613E0470368U",
@@ -12489,7 +13997,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 273
+  "rang": 331
  },
  {
   "id": "2613E1155329L",
@@ -12515,7 +14023,7 @@
   "conso": 161,
   "gesv": 6,
   "chauf": "Électricité",
-  "rang": 274
+  "rang": 332
  },
  {
   "id": "2613E1119717T",
@@ -12541,7 +14049,7 @@
   "conso": 192,
   "gesv": 33,
   "chauf": "Gaz naturel",
-  "rang": 275
+  "rang": 333
  },
  {
   "id": "2613E0894122A",
@@ -12567,7 +14075,7 @@
   "conso": 150,
   "gesv": 5,
   "chauf": "Électricité",
-  "rang": 276
+  "rang": 334
  },
  {
   "id": "2613E0818875X",
@@ -12593,7 +14101,7 @@
   "conso": 187,
   "gesv": 41,
   "chauf": "Gaz naturel",
-  "rang": 277
+  "rang": 335
  },
  {
   "id": "2613E0637034A",
@@ -12619,7 +14127,7 @@
   "conso": 280,
   "gesv": 60,
   "chauf": "Gaz naturel",
-  "rang": 278
+  "rang": 336
  },
  {
   "id": "2613E0432868M",
@@ -12645,7 +14153,7 @@
   "conso": 166,
   "gesv": 33,
   "chauf": "Gaz naturel",
-  "rang": 279
+  "rang": 337
  },
  {
   "id": "2613E0353009Z",
@@ -12671,7 +14179,7 @@
   "conso": 175,
   "gesv": 6,
   "chauf": "Électricité",
-  "rang": 280
+  "rang": 338
  },
  {
   "id": "2613E0247064E",
@@ -12697,7 +14205,7 @@
   "conso": 104,
   "gesv": 3,
   "chauf": "Électricité",
-  "rang": 281
+  "rang": 339
  },
  {
   "id": "2613E0040820S",
@@ -12723,7 +14231,7 @@
   "conso": 316,
   "gesv": 70,
   "chauf": "Gaz naturel",
-  "rang": 282
+  "rang": 340
  },
  {
   "id": "2613E0015193B",
@@ -12749,7 +14257,7 @@
   "conso": 216,
   "gesv": 47,
   "chauf": "Gaz naturel",
-  "rang": 283
+  "rang": 341
  },
  {
   "id": "2513E3876334L",
@@ -12775,7 +14283,293 @@
   "conso": 126,
   "gesv": 17,
   "chauf": "Gaz naturel",
-  "rang": 284
+  "rang": 342
+ },
+ {
+  "id": "2513E3707685Y",
+  "q": "Château-Gombert",
+  "qoff": "Saint-Mitre",
+  "prio": true,
+  "date": "2025-11-25",
+  "jours": 195,
+  "dpe": "C",
+  "ges": "B",
+  "surface": 84.3,
+  "niv": 2,
+  "annee": null,
+  "adresse": "57 Ancien Chemin Notre Dame Consolation",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 20,
+  "lat": 43.34044896751267,
+  "lon": 5.426751005091985,
+  "gmaps": "https://maps.google.com/?q=43.34044896751267,5.426751005091985",
+  "deja": false,
+  "conso": 162,
+  "gesv": 6,
+  "chauf": "Électricité",
+  "rang": 343
+ },
+ {
+  "id": "2513E3654707I",
+  "q": "Château-Gombert",
+  "qoff": "Saint-Mitre",
+  "prio": true,
+  "date": "2025-11-20",
+  "jours": 200,
+  "dpe": "D",
+  "ges": "D",
+  "surface": 77.8,
+  "niv": 2,
+  "annee": 1932,
+  "adresse": "21 Traverse Grandjean",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 20,
+  "lat": 43.34470404169455,
+  "lon": 5.425782014404903,
+  "gmaps": "https://maps.google.com/?q=43.34470404169455,5.425782014404903",
+  "deja": false,
+  "conso": 148,
+  "gesv": 38,
+  "chauf": "Propane",
+  "rang": 344
+ },
+ {
+  "id": "2513E3506961U",
+  "q": "Palama",
+  "qoff": "Palama",
+  "prio": true,
+  "date": "2025-11-06",
+  "jours": 214,
+  "dpe": "D",
+  "ges": "B",
+  "surface": 78.1,
+  "niv": 1,
+  "annee": null,
+  "adresse": "14 Rue Des Ecuyers",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 20,
+  "lat": 43.35926696863405,
+  "lon": 5.441177000747465,
+  "gmaps": "https://maps.google.com/?q=43.35926696863405,5.441177000747465",
+  "deja": false,
+  "conso": 208,
+  "gesv": 7,
+  "chauf": "Électricité",
+  "rang": 345
+ },
+ {
+  "id": "2513E3444417G",
+  "q": "Château-Gombert",
+  "qoff": "Saint-Mitre",
+  "prio": true,
+  "date": "2025-10-31",
+  "jours": 220,
+  "dpe": "A",
+  "ges": "A",
+  "surface": 77.5,
+  "niv": 2,
+  "annee": null,
+  "adresse": "52 Traverse Grandjean",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 20,
+  "lat": 43.34320795872254,
+  "lon": 5.427132966109378,
+  "gmaps": "https://maps.google.com/?q=43.34320795872254,5.427132966109378",
+  "deja": false,
+  "conso": 53,
+  "gesv": 2,
+  "chauf": "Électricité",
+  "rang": 346
+ },
+ {
+  "id": "2513E3026648F",
+  "q": "Malpassé",
+  "qoff": "Saint-Just",
+  "prio": false,
+  "date": "2025-09-24",
+  "jours": 257,
+  "dpe": "E",
+  "ges": "C",
+  "surface": 122.3,
+  "niv": 2,
+  "annee": null,
+  "adresse": "39 Rue Alphonse Daudet",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 20,
+  "lat": 43.318650961412075,
+  "lon": 5.407436041690448,
+  "gmaps": "https://maps.google.com/?q=43.318650961412075,5.407436041690448",
+  "deja": false,
+  "conso": 261,
+  "gesv": 13,
+  "chauf": "Électricité",
+  "rang": 347
+ },
+ {
+  "id": "2513E2922511Y",
+  "q": "La Croix-Rouge",
+  "qoff": "La Croix-Rouge",
+  "prio": false,
+  "date": "2025-09-16",
+  "jours": 265,
+  "dpe": "A",
+  "ges": "A",
+  "surface": 197.8,
+  "niv": 2,
+  "annee": null,
+  "adresse": "111 Rue Albert Einstein",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 20,
+  "lat": 43.338485963779554,
+  "lon": 5.4371159575749335,
+  "gmaps": "https://maps.google.com/?q=43.338485963779554,5.4371159575749335",
+  "deja": false,
+  "conso": 66,
+  "gesv": 2,
+  "chauf": "Électricité",
+  "rang": 348
+ },
+ {
+  "id": "2513E2920304B",
+  "q": "Petit Bosquet",
+  "qoff": "Les Mourets",
+  "prio": false,
+  "date": "2025-09-15",
+  "jours": 266,
+  "dpe": "E",
+  "ges": "E",
+  "surface": 120.9,
+  "niv": 1,
+  "annee": null,
+  "adresse": "Chemin Des Grottes Loubieres",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 20,
+  "lat": 43.35700996601875,
+  "lon": 5.423052955382446,
+  "gmaps": "https://maps.google.com/?q=43.35700996601875,5.423052955382446",
+  "deja": false,
+  "conso": 283,
+  "gesv": 58,
+  "chauf": "Gaz naturel",
+  "rang": 349
+ },
+ {
+  "id": "2513E2809117Q",
+  "q": "Les Médecins",
+  "qoff": "Les Médecins",
+  "prio": true,
+  "date": "2025-09-05",
+  "jours": 276,
+  "dpe": "B",
+  "ges": "A",
+  "surface": 82.9,
+  "niv": 1,
+  "annee": null,
+  "adresse": "Traverse Des Medecins",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 20,
+  "lat": 43.3580559952912,
+  "lon": 5.461033998796749,
+  "gmaps": "https://maps.google.com/?q=43.3580559952912,5.461033998796749",
+  "deja": false,
+  "conso": 102,
+  "gesv": 3,
+  "chauf": "Électricité",
+  "rang": 350
+ },
+ {
+  "id": "2513E2616961A",
+  "q": "Château-Gombert",
+  "qoff": "Saint-Mitre",
+  "prio": true,
+  "date": "2025-08-13",
+  "jours": 299,
+  "dpe": "C",
+  "ges": "B",
+  "surface": 80.5,
+  "niv": 1,
+  "annee": 1996,
+  "adresse": "Rue Des Manadiers",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 20,
+  "lat": 43.33885996302591,
+  "lon": 5.4232759981956535,
+  "gmaps": "https://maps.google.com/?q=43.33885996302591,5.4232759981956535",
+  "deja": false,
+  "conso": 171,
+  "gesv": 6,
+  "chauf": "Électricité",
+  "rang": 351
+ },
+ {
+  "id": "2513E2327044J",
+  "q": "Château-Gombert",
+  "qoff": "Saint-Mitre",
+  "prio": true,
+  "date": "2025-07-15",
+  "jours": 328,
+  "dpe": "A",
+  "ges": "A",
+  "surface": 78.6,
+  "niv": 1,
+  "annee": null,
+  "adresse": "21 Traverse Collet Redon",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 20,
+  "lat": 43.34867701776234,
+  "lon": 5.42795203628627,
+  "gmaps": "https://maps.google.com/?q=43.34867701776234,5.42795203628627",
+  "deja": false,
+  "conso": 70,
+  "gesv": 2,
+  "chauf": "Électricité",
+  "rang": 352
+ },
+ {
+  "id": "2513E2290155O",
+  "q": "Les Mourets",
+  "qoff": "Château-Gombert",
+  "prio": true,
+  "date": "2025-07-10",
+  "jours": 333,
+  "dpe": "C",
+  "ges": "A",
+  "surface": 84.0,
+  "niv": 1,
+  "annee": null,
+  "adresse": "17 Chemin Des Mourets",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 20,
+  "lat": 43.35295100806285,
+  "lon": 5.436300944104973,
+  "gmaps": "https://maps.google.com/?q=43.35295100806285,5.436300944104973",
+  "deja": false,
+  "conso": 146,
+  "gesv": 5,
+  "chauf": "Électricité",
+  "rang": 353
  },
  {
   "id": "2613E1213129N",
@@ -12832,7 +14626,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 285
+  "rang": 354
  },
  {
   "id": "2613E1125242G",
@@ -12889,7 +14683,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 286
+  "rang": 355
  },
  {
   "id": "2613E1010211Z",
@@ -12946,7 +14740,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 287
+  "rang": 356
  },
  {
   "id": "2613E0773189T",
@@ -13003,7 +14797,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 288
+  "rang": 357
  },
  {
   "id": "2613E0468187X",
@@ -13060,7 +14854,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 289
+  "rang": 358
  },
  {
   "id": "2613E0028705T",
@@ -13117,7 +14911,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 290
+  "rang": 359
  },
  {
   "id": "2613E0314385L",
@@ -13143,7 +14937,7 @@
   "conso": 300,
   "gesv": 66,
   "chauf": "Gaz naturel",
-  "rang": 291
+  "rang": 360
  },
  {
   "id": "2613E0247295B",
@@ -13169,7 +14963,111 @@
   "conso": 116,
   "gesv": 4,
   "chauf": "Électricité",
-  "rang": 292
+  "rang": 361
+ },
+ {
+  "id": "2513E3502816J",
+  "q": "La Croix-Rouge",
+  "qoff": "La Rose",
+  "prio": false,
+  "date": "2025-11-05",
+  "jours": 215,
+  "dpe": "C",
+  "ges": "A",
+  "surface": 190.0,
+  "niv": 2,
+  "annee": null,
+  "adresse": "120 Chemin Des Jonquilles",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 19,
+  "lat": 43.325133008586064,
+  "lon": 5.436813978396128,
+  "gmaps": "https://maps.google.com/?q=43.325133008586064,5.436813978396128",
+  "deja": false,
+  "conso": 121,
+  "gesv": 4,
+  "chauf": "Électricité",
+  "rang": 362
+ },
+ {
+  "id": "2513E2556122B",
+  "q": "La Croix-Rouge",
+  "qoff": "Les Olives",
+  "prio": false,
+  "date": "2025-08-05",
+  "jours": 307,
+  "dpe": "D",
+  "ges": "B",
+  "surface": 106.9,
+  "niv": 1,
+  "annee": null,
+  "adresse": "126 Avenue Des Olives",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 19,
+  "lat": 43.32677195804374,
+  "lon": 5.43731994539579,
+  "gmaps": "https://maps.google.com/?q=43.32677195804374,5.43731994539579",
+  "deja": false,
+  "conso": 247,
+  "gesv": 9,
+  "chauf": "Électricité",
+  "rang": 363
+ },
+ {
+  "id": "2513E2415996P",
+  "q": "Saint-Mitre",
+  "qoff": "Saint-Mitre",
+  "prio": false,
+  "date": "2025-07-22",
+  "jours": 321,
+  "dpe": "E",
+  "ges": "B",
+  "surface": 106.1,
+  "niv": 1,
+  "annee": null,
+  "adresse": "52 Chemin Des Grives",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 19,
+  "lat": 43.35381496348492,
+  "lon": 5.4194980040935725,
+  "gmaps": "https://maps.google.com/?q=43.35381496348492,5.4194980040935725",
+  "deja": false,
+  "conso": 281,
+  "gesv": 10,
+  "chauf": "Électricité",
+  "rang": 364
+ },
+ {
+  "id": "2513E1962342J",
+  "q": "Les Mourets",
+  "qoff": "Château-Gombert",
+  "prio": true,
+  "date": "2025-06-16",
+  "jours": 357,
+  "dpe": "C",
+  "ges": "A",
+  "surface": 74.2,
+  "niv": 2,
+  "annee": null,
+  "adresse": "Traverse Du Co Dou Jas",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 19,
+  "lat": 43.35203500868324,
+  "lon": 5.435859018581706,
+  "gmaps": "https://maps.google.com/?q=43.35203500868324,5.435859018581706",
+  "deja": false,
+  "conso": 136,
+  "gesv": 5,
+  "chauf": "Électricité",
+  "rang": 365
  },
  {
   "id": "2613E1147255X",
@@ -13226,7 +15124,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 293
+  "rang": 366
  },
  {
   "id": "2613E0520564K",
@@ -13283,7 +15181,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 294
+  "rang": 367
  },
  {
   "id": "2613E0495840M",
@@ -13340,7 +15238,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 295
+  "rang": 368
  },
  {
   "id": "2613E0236980I",
@@ -13397,7 +15295,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 296
+  "rang": 369
  },
  {
   "id": "2613E0000296C",
@@ -13454,7 +15352,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 297
+  "rang": 370
  },
  {
   "id": "2513E3891371U",
@@ -13511,7 +15409,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.5,
-  "rang": 298
+  "rang": 371
  },
  {
   "id": "2613E1096613D",
@@ -13537,7 +15435,7 @@
   "conso": 144,
   "gesv": 5,
   "chauf": "Électricité",
-  "rang": 299
+  "rang": 372
  },
  {
   "id": "2613E0667688A",
@@ -13563,7 +15461,111 @@
   "conso": 32,
   "gesv": 2,
   "chauf": "Gaz naturel",
-  "rang": 300
+  "rang": 373
+ },
+ {
+  "id": "2513E3330055S",
+  "q": "Château-Gombert",
+  "qoff": "Saint-Mitre",
+  "prio": true,
+  "date": "2025-10-22",
+  "jours": 229,
+  "dpe": "C",
+  "ges": "B",
+  "surface": 61.0,
+  "niv": 2,
+  "annee": null,
+  "adresse": "237 Chemin De Chateau Gombert",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 18,
+  "lat": 43.34634000181678,
+  "lon": 5.425959054652672,
+  "gmaps": "https://maps.google.com/?q=43.34634000181678,5.425959054652672",
+  "deja": false,
+  "conso": 172,
+  "gesv": 6,
+  "chauf": "Électricité",
+  "rang": 374
+ },
+ {
+  "id": "2513E3284284H",
+  "q": "Saint-Jérôme",
+  "qoff": "Saint-Jérôme",
+  "prio": true,
+  "date": "2025-10-17",
+  "jours": 234,
+  "dpe": "C",
+  "ges": "A",
+  "surface": 64.6,
+  "niv": 1,
+  "annee": null,
+  "adresse": "24 Boulevard De Cazoran",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 18,
+  "lat": 43.33131302882768,
+  "lon": 5.417375043449022,
+  "gmaps": "https://maps.google.com/?q=43.33131302882768,5.417375043449022",
+  "deja": false,
+  "conso": 144,
+  "gesv": 5,
+  "chauf": "Électricité",
+  "rang": 375
+ },
+ {
+  "id": "2513E2690621C",
+  "q": "La Croix-Rouge",
+  "qoff": "La Croix-Rouge",
+  "prio": false,
+  "date": "2025-08-25",
+  "jours": 287,
+  "dpe": "E",
+  "ges": "E",
+  "surface": 96.0,
+  "niv": 2,
+  "annee": null,
+  "adresse": "2 Boulevard Thermidor",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 18,
+  "lat": 43.33488799827781,
+  "lon": 5.4370340579800684,
+  "gmaps": "https://maps.google.com/?q=43.33488799827781,5.4370340579800684",
+  "deja": false,
+  "conso": 253,
+  "gesv": 55,
+  "chauf": "Gaz naturel",
+  "rang": 376
+ },
+ {
+  "id": "2513E2460777Y",
+  "q": "La Croix-Rouge",
+  "qoff": "Les Olives",
+  "prio": false,
+  "date": "2025-07-26",
+  "jours": 317,
+  "dpe": "C",
+  "ges": "A",
+  "surface": 178.0,
+  "niv": 3,
+  "annee": null,
+  "adresse": "8 Rue De La Maurelle",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 18,
+  "lat": 43.32615896965694,
+  "lon": 5.438046030067603,
+  "gmaps": "https://maps.google.com/?q=43.32615896965694,5.438046030067603",
+  "deja": false,
+  "conso": 127,
+  "gesv": 4,
+  "chauf": "Électricité",
+  "rang": 377
  },
  {
   "id": "2613E1151725V",
@@ -13620,7 +15622,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 301
+  "rang": 378
  },
  {
   "id": "2613E1142969B",
@@ -13677,7 +15679,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 302
+  "rang": 379
  },
  {
   "id": "2613E1136118O",
@@ -13734,7 +15736,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 303
+  "rang": 380
  },
  {
   "id": "2613E0997308S",
@@ -13791,7 +15793,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 304
+  "rang": 381
  },
  {
   "id": "2613E1005629T",
@@ -13848,7 +15850,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 305
+  "rang": 382
  },
  {
   "id": "2613E0976672A",
@@ -13905,7 +15907,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 306
+  "rang": 383
  },
  {
   "id": "2613E0650740E",
@@ -13962,7 +15964,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 307
+  "rang": 384
  },
  {
   "id": "2613E0642206Y",
@@ -14019,7 +16021,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 308
+  "rang": 385
  },
  {
   "id": "2613E0608399R",
@@ -14076,7 +16078,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 309
+  "rang": 386
  },
  {
   "id": "2613E0496287R",
@@ -14133,7 +16135,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 310
+  "rang": 387
  },
  {
   "id": "2613E0333458A",
@@ -14190,7 +16192,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 311
+  "rang": 388
  },
  {
   "id": "2613E0196039R",
@@ -14247,7 +16249,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 312
+  "rang": 389
  },
  {
   "id": "2613E0298708M",
@@ -14304,7 +16306,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 313
+  "rang": 390
  },
  {
   "id": "2613E0287551J",
@@ -14361,7 +16363,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 314
+  "rang": 391
  },
  {
   "id": "2613E0185535R",
@@ -14418,7 +16420,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 315
+  "rang": 392
  },
  {
   "id": "2513E3984247Y",
@@ -14475,7 +16477,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.5,
-  "rang": 316
+  "rang": 393
  },
  {
   "id": "2613E1049224M",
@@ -14501,7 +16503,7 @@
   "conso": 151,
   "gesv": 5,
   "chauf": "Bois – Bûches",
-  "rang": 317
+  "rang": 394
  },
  {
   "id": "2613E0819598S",
@@ -14527,7 +16529,7 @@
   "conso": 248,
   "gesv": 31,
   "chauf": "Gaz naturel",
-  "rang": 318
+  "rang": 395
  },
  {
   "id": "2613E0342190W",
@@ -14553,7 +16555,137 @@
   "conso": 350,
   "gesv": 110,
   "chauf": "Fioul domestique",
-  "rang": 319
+  "rang": 396
+ },
+ {
+  "id": "2513E3712984T",
+  "q": "Saint-Mitre",
+  "qoff": "Saint-Mitre",
+  "prio": false,
+  "date": "2025-11-26",
+  "jours": 194,
+  "dpe": "E",
+  "ges": "B",
+  "surface": 91.9,
+  "niv": 1,
+  "annee": null,
+  "adresse": "114 Chemin De La Bastide Longue",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 17,
+  "lat": 43.35029202252185,
+  "lon": 5.417621059190558,
+  "gmaps": "https://maps.google.com/?q=43.35029202252185,5.417621059190558",
+  "deja": false,
+  "conso": 268,
+  "gesv": 10,
+  "chauf": "Électricité",
+  "rang": 397
+ },
+ {
+  "id": "2513E3387511O",
+  "q": "Petit Bosquet",
+  "qoff": "Les Mourets",
+  "prio": false,
+  "date": "2025-10-27",
+  "jours": 224,
+  "dpe": "D",
+  "ges": "D",
+  "surface": 90.1,
+  "niv": 2,
+  "annee": null,
+  "adresse": "Rue Gratteloup",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 17,
+  "lat": 43.358643991204524,
+  "lon": 5.414283990832097,
+  "gmaps": "https://maps.google.com/?q=43.358643991204524,5.414283990832097",
+  "deja": false,
+  "conso": 227,
+  "gesv": 49,
+  "chauf": "Gaz naturel",
+  "rang": 398
+ },
+ {
+  "id": "2513E2961905C",
+  "q": "Les Médecins",
+  "qoff": "Les Médecins",
+  "prio": true,
+  "date": "2025-09-18",
+  "jours": 263,
+  "dpe": "C",
+  "ges": "A",
+  "surface": 50.0,
+  "niv": 1,
+  "annee": null,
+  "adresse": "Traverse Des Bancaous",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 17,
+  "lat": 43.35839598071389,
+  "lon": 5.461510966705036,
+  "gmaps": "https://maps.google.com/?q=43.35839598071389,5.461510966705036",
+  "deja": false,
+  "conso": 129,
+  "gesv": 4,
+  "chauf": "Électricité",
+  "rang": 399
+ },
+ {
+  "id": "2513E2673899Y",
+  "q": "Clair Soleil",
+  "qoff": "Les Médecins",
+  "prio": false,
+  "date": "2025-08-22",
+  "jours": 290,
+  "dpe": "D",
+  "ges": "B",
+  "surface": 94.4,
+  "niv": 1,
+  "annee": null,
+  "adresse": "Avenue De La Claire",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 17,
+  "lat": 43.35264103924728,
+  "lon": 5.450478035827948,
+  "gmaps": "https://maps.google.com/?q=43.35264103924728,5.450478035827948",
+  "deja": false,
+  "conso": 224,
+  "gesv": 7,
+  "chauf": "Bois – Bûches",
+  "rang": 400
+ },
+ {
+  "id": "2513E1980957I",
+  "q": "Saint-Jérôme",
+  "qoff": "La Rose",
+  "prio": true,
+  "date": "2025-06-17",
+  "jours": 356,
+  "dpe": "D",
+  "ges": "B",
+  "surface": 46.5,
+  "niv": 1,
+  "annee": null,
+  "adresse": "Traverse Des Bonnets",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 17,
+  "lat": 43.33055698397062,
+  "lon": 5.42475299366873,
+  "gmaps": "https://maps.google.com/?q=43.33055698397062,5.42475299366873",
+  "deja": false,
+  "conso": 206,
+  "gesv": 8,
+  "chauf": "Électricité",
+  "rang": 401
  },
  {
   "id": "2613E1215899B",
@@ -14610,7 +16742,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 320
+  "rang": 402
  },
  {
   "id": "2613E1206433Z",
@@ -14667,7 +16799,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 321
+  "rang": 403
  },
  {
   "id": "2613E1160971L",
@@ -14724,7 +16856,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 322
+  "rang": 404
  },
  {
   "id": "2613E1141189P",
@@ -14781,7 +16913,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 323
+  "rang": 405
  },
  {
   "id": "2613E1127645R",
@@ -14838,7 +16970,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 324
+  "rang": 406
  },
  {
   "id": "2613E1119218O",
@@ -14895,7 +17027,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 325
+  "rang": 407
  },
  {
   "id": "2613E1079129R",
@@ -14952,7 +17084,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 326
+  "rang": 408
  },
  {
   "id": "2613E0855245T",
@@ -15009,7 +17141,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 327
+  "rang": 409
  },
  {
   "id": "2613E0781288G",
@@ -15066,7 +17198,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 328
+  "rang": 410
  },
  {
   "id": "2613E0761819L",
@@ -15123,7 +17255,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 329
+  "rang": 411
  },
  {
   "id": "2613E0739827P",
@@ -15180,7 +17312,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 330
+  "rang": 412
  },
  {
   "id": "2613E0593964M",
@@ -15237,7 +17369,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 331
+  "rang": 413
  },
  {
   "id": "2613E0510970K",
@@ -15294,7 +17426,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 332
+  "rang": 414
  },
  {
   "id": "2613E0492788C",
@@ -15351,7 +17483,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 333
+  "rang": 415
  },
  {
   "id": "2613E0412143J",
@@ -15408,7 +17540,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 334
+  "rang": 416
  },
  {
   "id": "2613E0340066E",
@@ -15465,7 +17597,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 335
+  "rang": 417
  },
  {
   "id": "2513E4007345I",
@@ -15522,7 +17654,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.5,
-  "rang": 336
+  "rang": 418
  },
  {
   "id": "2613E1001510I",
@@ -15548,7 +17680,7 @@
   "conso": 224,
   "gesv": 49,
   "chauf": "Gaz naturel",
-  "rang": 337
+  "rang": 419
  },
  {
   "id": "2613E1001758W",
@@ -15574,7 +17706,7 @@
   "conso": 224,
   "gesv": 49,
   "chauf": "Gaz naturel",
-  "rang": 338
+  "rang": 420
  },
  {
   "id": "2613E0973940Y",
@@ -15600,7 +17732,7 @@
   "conso": 215,
   "gesv": 20,
   "chauf": "Bois – Bûches",
-  "rang": 339
+  "rang": 421
  },
  {
   "id": "2613E0630190U",
@@ -15626,7 +17758,7 @@
   "conso": 186,
   "gesv": 7,
   "chauf": "Électricité",
-  "rang": 340
+  "rang": 422
  },
  {
   "id": "2613E0585612G",
@@ -15652,7 +17784,7 @@
   "conso": 204,
   "gesv": 28,
   "chauf": "Gaz naturel",
-  "rang": 341
+  "rang": 423
  },
  {
   "id": "2613E0157941J",
@@ -15678,7 +17810,59 @@
   "conso": 217,
   "gesv": 8,
   "chauf": "Électricité",
-  "rang": 342
+  "rang": 424
+ },
+ {
+  "id": "2513E3530193I",
+  "q": "Saint-Mitre",
+  "qoff": "Saint-Mitre",
+  "prio": false,
+  "date": "2025-11-07",
+  "jours": 213,
+  "dpe": "B",
+  "ges": "A",
+  "surface": 161.1,
+  "niv": 2,
+  "annee": null,
+  "adresse": "Chemin De Party",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 16,
+  "lat": 43.347992021116106,
+  "lon": 5.416762997138114,
+  "gmaps": "https://maps.google.com/?q=43.347992021116106,5.416762997138114",
+  "deja": false,
+  "conso": 105,
+  "gesv": 3,
+  "chauf": "Électricité",
+  "rang": 425
+ },
+ {
+  "id": "2513E2563476X",
+  "q": "Les Mourets",
+  "qoff": "Château-Gombert",
+  "prio": true,
+  "date": "2025-08-06",
+  "jours": 306,
+  "dpe": "D",
+  "ges": "B",
+  "surface": 36.7,
+  "niv": 1,
+  "annee": null,
+  "adresse": "37 Traverse Des Nodins",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 16,
+  "lat": 43.349591964464196,
+  "lon": 5.43443595714448,
+  "gmaps": "https://maps.google.com/?q=43.349591964464196,5.43443595714448",
+  "deja": false,
+  "conso": 207,
+  "gesv": 8,
+  "chauf": "Électricité",
+  "rang": 426
  },
  {
   "id": "2613E1133230M",
@@ -15735,7 +17919,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 343
+  "rang": 427
  },
  {
   "id": "2613E0689316W",
@@ -15792,7 +17976,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 344
+  "rang": 428
  },
  {
   "id": "2613E0446380E",
@@ -15849,7 +18033,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 345
+  "rang": 429
  },
  {
   "id": "2613E0306663L",
@@ -15906,7 +18090,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 346
+  "rang": 430
  },
  {
   "id": "2613E0294483Z",
@@ -15963,7 +18147,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 347
+  "rang": 431
  },
  {
   "id": "2613E0275782S",
@@ -16020,7 +18204,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 348
+  "rang": 432
  },
  {
   "id": "2613E0202425H",
@@ -16077,7 +18261,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 349
+  "rang": 433
  },
  {
   "id": "2613E0124550C",
@@ -16134,7 +18318,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 350
+  "rang": 434
  },
  {
   "id": "2613E0105987D",
@@ -16191,7 +18375,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 351
+  "rang": 435
  },
  {
   "id": "2613E0659462Q",
@@ -16217,7 +18401,7 @@
   "conso": 313,
   "gesv": 49,
   "chauf": "Gaz naturel",
-  "rang": 352
+  "rang": 436
  },
  {
   "id": "2613E0546442S",
@@ -16243,7 +18427,7 @@
   "conso": 135,
   "gesv": 20,
   "chauf": "Gaz naturel",
-  "rang": 353
+  "rang": 437
  },
  {
   "id": "2613E0316295X",
@@ -16269,7 +18453,163 @@
   "conso": 203,
   "gesv": 8,
   "chauf": "Électricité",
-  "rang": 354
+  "rang": 438
+ },
+ {
+  "id": "2513E3576636P",
+  "q": "La Croix-Rouge",
+  "qoff": "La Rose",
+  "prio": false,
+  "date": "2025-11-13",
+  "jours": 207,
+  "dpe": "D",
+  "ges": "B",
+  "surface": 153.2,
+  "niv": 1,
+  "annee": null,
+  "adresse": "Boulevard Neuf",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 15,
+  "lat": 43.3328859756825,
+  "lon": 5.432181953794813,
+  "gmaps": "https://maps.google.com/?q=43.3328859756825,5.432181953794813",
+  "deja": false,
+  "conso": 203,
+  "gesv": 8,
+  "chauf": "Électricité",
+  "rang": 439
+ },
+ {
+  "id": "2513E3537490Z",
+  "q": "La Croix-Rouge",
+  "qoff": "Les Olives",
+  "prio": false,
+  "date": "2025-11-09",
+  "jours": 211,
+  "dpe": "E",
+  "ges": "C",
+  "surface": 74.8,
+  "niv": 1,
+  "annee": null,
+  "adresse": "78 Allée Des Chardonnerets",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 15,
+  "lat": 43.32994501002909,
+  "lon": 5.438623051783949,
+  "gmaps": "https://maps.google.com/?q=43.32994501002909,5.438623051783949",
+  "deja": false,
+  "conso": 268,
+  "gesv": 15,
+  "chauf": "Électricité",
+  "rang": 440
+ },
+ {
+  "id": "2513E3397350Z",
+  "q": "Saint-Mitre",
+  "qoff": "Saint-Mitre",
+  "prio": false,
+  "date": "2025-10-28",
+  "jours": 223,
+  "dpe": "A",
+  "ges": "A",
+  "surface": 147.2,
+  "niv": 1,
+  "annee": null,
+  "adresse": "101 Chemin De La Bastide Longue",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 15,
+  "lat": 43.35025599829038,
+  "lon": 5.4180650187224355,
+  "gmaps": "https://maps.google.com/?q=43.35025599829038,5.4180650187224355",
+  "deja": false,
+  "conso": 55,
+  "gesv": 2,
+  "chauf": "Électricité",
+  "rang": 441
+ },
+ {
+  "id": "2513E3074948X",
+  "q": "Saint-Just",
+  "qoff": "Saint-Just",
+  "prio": false,
+  "date": "2025-09-29",
+  "jours": 252,
+  "dpe": "A",
+  "ges": "A",
+  "surface": 152.5,
+  "niv": 2,
+  "annee": 2017,
+  "adresse": "4 Impasse Montcault",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 15,
+  "lat": 43.32164602123788,
+  "lon": 5.4017889503064875,
+  "gmaps": "https://maps.google.com/?q=43.32164602123788,5.4017889503064875",
+  "deja": false,
+  "conso": 51,
+  "gesv": 1,
+  "chauf": "Électricité",
+  "rang": 442
+ },
+ {
+  "id": "2513E2819793G",
+  "q": "Les Mourets",
+  "qoff": "Château-Gombert",
+  "prio": true,
+  "date": "2025-09-07",
+  "jours": 274,
+  "dpe": "D",
+  "ges": "B",
+  "surface": 33.6,
+  "niv": 1,
+  "annee": null,
+  "adresse": "7 Boulevard Julien Pignol",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 15,
+  "lat": 43.35268199689312,
+  "lon": 5.439232019705428,
+  "gmaps": "https://maps.google.com/?q=43.35268199689312,5.439232019705428",
+  "deja": false,
+  "conso": 215,
+  "gesv": 8,
+  "chauf": "Électricité",
+  "rang": 443
+ },
+ {
+  "id": "2513E2404235G",
+  "q": "La Croix-Rouge",
+  "qoff": "La Croix-Rouge",
+  "prio": false,
+  "date": "2025-07-22",
+  "jours": 321,
+  "dpe": "D",
+  "ges": "C",
+  "surface": 67.1,
+  "niv": 2,
+  "annee": null,
+  "adresse": "Rue Messidor",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 15,
+  "lat": 43.33663402188502,
+  "lon": 5.438488035684007,
+  "gmaps": "https://maps.google.com/?q=43.33663402188502,5.438488035684007",
+  "deja": false,
+  "conso": 246,
+  "gesv": 17,
+  "chauf": "Électricité",
+  "rang": 444
  },
  {
   "id": "2613E1183137Z",
@@ -16326,7 +18666,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 355
+  "rang": 445
  },
  {
   "id": "2613E1108610O",
@@ -16383,7 +18723,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 356
+  "rang": 446
  },
  {
   "id": "2613E0966273B",
@@ -16440,7 +18780,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 357
+  "rang": 447
  },
  {
   "id": "2613E0074294E",
@@ -16497,7 +18837,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 358
+  "rang": 448
  },
  {
   "id": "2613E0806813Z",
@@ -16554,7 +18894,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 359
+  "rang": 449
  },
  {
   "id": "2613E0674011F",
@@ -16611,7 +18951,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 360
+  "rang": 450
  },
  {
   "id": "2513E3901041S",
@@ -16668,7 +19008,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.5,
-  "rang": 361
+  "rang": 451
  },
  {
   "id": "2613E0496362O",
@@ -16725,7 +19065,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 362
+  "rang": 452
  },
  {
   "id": "2613E0469348O",
@@ -16782,7 +19122,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 363
+  "rang": 453
  },
  {
   "id": "2613E0276837H",
@@ -16839,7 +19179,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 364
+  "rang": 454
  },
  {
   "id": "2613E0088965L",
@@ -16896,7 +19236,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 365
+  "rang": 455
  },
  {
   "id": "2613E0971356O",
@@ -16922,7 +19262,7 @@
   "conso": 163,
   "gesv": 21,
   "chauf": "Gaz naturel",
-  "rang": 366
+  "rang": 456
  },
  {
   "id": "2613E0423803V",
@@ -16948,7 +19288,7 @@
   "conso": 271,
   "gesv": 10,
   "chauf": "Électricité",
-  "rang": 367
+  "rang": 457
  },
  {
   "id": "2613E0420208O",
@@ -16974,7 +19314,137 @@
   "conso": 314,
   "gesv": 12,
   "chauf": "Électricité",
-  "rang": 368
+  "rang": 458
+ },
+ {
+  "id": "2513E3531000J",
+  "q": "La Croix-Rouge",
+  "qoff": "La Croix-Rouge",
+  "prio": false,
+  "date": "2025-11-07",
+  "jours": 213,
+  "dpe": "F",
+  "ges": "F",
+  "surface": 57.9,
+  "niv": 2,
+  "annee": null,
+  "adresse": "14 Impasse Mirabel",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 14,
+  "lat": 43.33763801532923,
+  "lon": 5.451210992457232,
+  "gmaps": "https://maps.google.com/?q=43.33763801532923,5.451210992457232",
+  "deja": false,
+  "conso": 357,
+  "gesv": 79,
+  "chauf": "Gaz naturel",
+  "rang": 459
+ },
+ {
+  "id": "2583E3032177O",
+  "q": "Saint-Mitre",
+  "qoff": "Saint-Mitre",
+  "prio": false,
+  "date": "2025-09-25",
+  "jours": 256,
+  "dpe": "E",
+  "ges": "B",
+  "surface": 59.2,
+  "niv": 3,
+  "annee": null,
+  "adresse": "73 Chemin De Party",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 14,
+  "lat": 43.34906297678439,
+  "lon": 5.415641980561289,
+  "gmaps": "https://maps.google.com/?q=43.34906297678439,5.415641980561289",
+  "deja": false,
+  "conso": 251,
+  "gesv": 10,
+  "chauf": "Électricité",
+  "rang": 460
+ },
+ {
+  "id": "2513E2428397O",
+  "q": "La Croix-Rouge",
+  "qoff": "Château-Gombert",
+  "prio": false,
+  "date": "2025-07-23",
+  "jours": 320,
+  "dpe": "A",
+  "ges": "A",
+  "surface": 136.9,
+  "niv": 2,
+  "annee": null,
+  "adresse": "Rue Nicolas Copernic",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 14,
+  "lat": 43.34103001207619,
+  "lon": 5.449337045947899,
+  "gmaps": "https://maps.google.com/?q=43.34103001207619,5.449337045947899",
+  "deja": false,
+  "conso": 60,
+  "gesv": 2,
+  "chauf": "Électricité",
+  "rang": 461
+ },
+ {
+  "id": "2513E2382778Z",
+  "q": "Saint-Mitre",
+  "qoff": "Saint-Mitre",
+  "prio": false,
+  "date": "2025-07-19",
+  "jours": 324,
+  "dpe": "B",
+  "ges": "A",
+  "surface": 142.0,
+  "niv": 2,
+  "annee": 2006,
+  "adresse": "Traverse De Party",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 14,
+  "lat": 43.350079027312546,
+  "lon": 5.412644986432922,
+  "gmaps": "https://maps.google.com/?q=43.350079027312546,5.412644986432922",
+  "deja": false,
+  "conso": 95,
+  "gesv": 3,
+  "chauf": "Électricité",
+  "rang": 462
+ },
+ {
+  "id": "2513E1961654X",
+  "q": "Clair Soleil",
+  "qoff": "Château-Gombert",
+  "prio": false,
+  "date": "2025-06-16",
+  "jours": 357,
+  "dpe": "E",
+  "ges": "D",
+  "surface": 60.1,
+  "niv": 2,
+  "annee": null,
+  "adresse": "6 Rue Etienne Miege",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 14,
+  "lat": 43.344298989884436,
+  "lon": 5.445392050698755,
+  "gmaps": "https://maps.google.com/?q=43.344298989884436,5.445392050698755",
+  "deja": false,
+  "conso": 262,
+  "gesv": 43,
+  "chauf": "Fioul domestique",
+  "rang": 463
  },
  {
   "id": "2613E1012749P",
@@ -17031,7 +19501,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 369
+  "rang": 464
  },
  {
   "id": "2613E0194829D",
@@ -17088,7 +19558,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 370
+  "rang": 465
  },
  {
   "id": "2613E0754738C",
@@ -17145,7 +19615,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 371
+  "rang": 466
  },
  {
   "id": "2613E0245479F",
@@ -17202,7 +19672,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 372
+  "rang": 467
  },
  {
   "id": "2513E3874172H",
@@ -17259,7 +19729,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.5,
-  "rang": 373
+  "rang": 468
  },
  {
   "id": "2613E0636752E",
@@ -17285,7 +19755,7 @@
   "conso": 90,
   "gesv": 19,
   "chauf": "Gaz naturel",
-  "rang": 374
+  "rang": 469
  },
  {
   "id": "2613E0413465F",
@@ -17311,7 +19781,163 @@
   "conso": 116,
   "gesv": 4,
   "chauf": "Électricité",
-  "rang": 375
+  "rang": 470
+ },
+ {
+  "id": "2513E3705058X",
+  "q": "La Croix-Rouge",
+  "qoff": "Les Olives",
+  "prio": false,
+  "date": "2025-11-25",
+  "jours": 195,
+  "dpe": "B",
+  "ges": "A",
+  "surface": 134.8,
+  "niv": 1,
+  "annee": null,
+  "adresse": "104 Avenue Des Olives",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 13,
+  "lat": 43.32737001208396,
+  "lon": 5.436150012066667,
+  "gmaps": "https://maps.google.com/?q=43.32737001208396,5.436150012066667",
+  "deja": false,
+  "conso": 105,
+  "gesv": 4,
+  "chauf": "Électricité",
+  "rang": 471
+ },
+ {
+  "id": "2513E3079400D",
+  "q": "Malpassé",
+  "qoff": "Saint-Just",
+  "prio": false,
+  "date": "2025-09-29",
+  "jours": 252,
+  "dpe": "C",
+  "ges": "C",
+  "surface": 128.6,
+  "niv": 2,
+  "annee": null,
+  "adresse": "32 Boulevard Des Tilleuls",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 13,
+  "lat": 43.31810401852959,
+  "lon": 5.409598010569484,
+  "gmaps": "https://maps.google.com/?q=43.31810401852959,5.409598010569484",
+  "deja": false,
+  "conso": 96,
+  "gesv": 16,
+  "chauf": "Gaz naturel",
+  "rang": 472
+ },
+ {
+  "id": "2513E2823444R",
+  "q": "La Croix-Rouge",
+  "qoff": "Les Olives",
+  "prio": false,
+  "date": "2025-09-08",
+  "jours": 273,
+  "dpe": "E",
+  "ges": "C",
+  "surface": 52.8,
+  "niv": 2,
+  "annee": null,
+  "adresse": "Traverse Des Baudillons",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 13,
+  "lat": 43.32789201220544,
+  "lon": 5.438569954058607,
+  "gmaps": "https://maps.google.com/?q=43.32789201220544,5.438569954058607",
+  "deja": false,
+  "conso": 276,
+  "gesv": 11,
+  "chauf": "Électricité",
+  "rang": 473
+ },
+ {
+  "id": "2513E2821735Y",
+  "q": "La Croix-Rouge",
+  "qoff": "Les Olives",
+  "prio": false,
+  "date": "2025-09-07",
+  "jours": 274,
+  "dpe": "F",
+  "ges": "C",
+  "surface": 48.7,
+  "niv": 1,
+  "annee": null,
+  "adresse": "Traverse Des Baudillons",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 13,
+  "lat": 43.32789201220544,
+  "lon": 5.438569954058607,
+  "gmaps": "https://maps.google.com/?q=43.32789201220544,5.438569954058607",
+  "deja": false,
+  "conso": 410,
+  "gesv": 16,
+  "chauf": "Électricité",
+  "rang": 474
+ },
+ {
+  "id": "2513E2727633Q",
+  "q": "Saint-Mitre",
+  "qoff": "Saint-Mitre",
+  "prio": false,
+  "date": "2025-08-28",
+  "jours": 284,
+  "dpe": "A",
+  "ges": "A",
+  "surface": 133.0,
+  "niv": 2,
+  "annee": null,
+  "adresse": "77 Chemin De Party",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 13,
+  "lat": 43.34967097323833,
+  "lon": 5.415168977831365,
+  "gmaps": "https://maps.google.com/?q=43.34967097323833,5.415168977831365",
+  "deja": false,
+  "conso": 46,
+  "gesv": 1,
+  "chauf": "Bois – Bûches",
+  "rang": 475
+ },
+ {
+  "id": "2513E2302020X",
+  "q": "Saint-Mitre",
+  "qoff": "Saint-Mitre",
+  "prio": false,
+  "date": "2025-07-11",
+  "jours": 332,
+  "dpe": "D",
+  "ges": "D",
+  "surface": 127.3,
+  "niv": 1,
+  "annee": null,
+  "adresse": "91 Chemin De La Bastide Longue",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 13,
+  "lat": 43.34985695492903,
+  "lon": 5.419219041577353,
+  "gmaps": "https://maps.google.com/?q=43.34985695492903,5.419219041577353",
+  "deja": false,
+  "conso": 139,
+  "gesv": 30,
+  "chauf": "Gaz naturel",
+  "rang": 476
  },
  {
   "id": "2613E0571035P",
@@ -17368,7 +19994,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 376
+  "rang": 477
  },
  {
   "id": "2613E1040724O",
@@ -17425,7 +20051,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 377
+  "rang": 478
  },
  {
   "id": "2613E1031756Q",
@@ -17482,7 +20108,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 378
+  "rang": 479
  },
  {
   "id": "2613E0922373P",
@@ -17539,7 +20165,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 379
+  "rang": 480
  },
  {
   "id": "2613E0854764G",
@@ -17596,7 +20222,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 380
+  "rang": 481
  },
  {
   "id": "2613E0467944O",
@@ -17653,7 +20279,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 381
+  "rang": 482
  },
  {
   "id": "2613E0411891R",
@@ -17710,7 +20336,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 382
+  "rang": 483
  },
  {
   "id": "2613E0364659B",
@@ -17767,7 +20393,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 383
+  "rang": 484
  },
  {
   "id": "2613E0096150U",
@@ -17824,7 +20450,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 384
+  "rang": 485
  },
  {
   "id": "2613E0872707J",
@@ -17850,7 +20476,7 @@
   "conso": 101,
   "gesv": 3,
   "chauf": "Électricité",
-  "rang": 385
+  "rang": 486
  },
  {
   "id": "2613E0810212S",
@@ -17876,7 +20502,7 @@
   "conso": 141,
   "gesv": 26,
   "chauf": "Gaz naturel",
-  "rang": 386
+  "rang": 487
  },
  {
   "id": "2613E0680618I",
@@ -17902,7 +20528,7 @@
   "conso": 183,
   "gesv": 7,
   "chauf": "Électricité",
-  "rang": 387
+  "rang": 488
  },
  {
   "id": "2613E0333937L",
@@ -17928,7 +20554,215 @@
   "conso": 77,
   "gesv": 2,
   "chauf": "Électricité",
-  "rang": 388
+  "rang": 489
+ },
+ {
+  "id": "2513E3851995I",
+  "q": "La Croix-Rouge",
+  "qoff": "La Croix-Rouge",
+  "prio": false,
+  "date": "2025-12-08",
+  "jours": 182,
+  "dpe": "C",
+  "ges": "C",
+  "surface": 123.0,
+  "niv": 1,
+  "annee": null,
+  "adresse": "9 Avenue Des Roses",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 12,
+  "lat": 43.33567303957301,
+  "lon": 5.452614044324587,
+  "gmaps": "https://maps.google.com/?q=43.33567303957301,5.452614044324587",
+  "deja": false,
+  "conso": 103,
+  "gesv": 13,
+  "chauf": "Gaz naturel",
+  "rang": 490
+ },
+ {
+  "id": "2513E3837202J",
+  "q": "Saint-Just",
+  "qoff": "Saint-Just",
+  "prio": false,
+  "date": "2025-12-07",
+  "jours": 183,
+  "dpe": "D",
+  "ges": "B",
+  "surface": 123.6,
+  "niv": 2,
+  "annee": null,
+  "adresse": "6T Boulevard Verd",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 12,
+  "lat": 43.31698500729634,
+  "lon": 5.40595501583963,
+  "gmaps": "https://maps.google.com/?q=43.31698500729634,5.40595501583963",
+  "deja": false,
+  "conso": 199,
+  "gesv": 8,
+  "chauf": "Électricité",
+  "rang": 491
+ },
+ {
+  "id": "2513E3378989U",
+  "q": "La Croix-Rouge",
+  "qoff": "La Rose",
+  "prio": false,
+  "date": "2025-10-27",
+  "jours": 224,
+  "dpe": "C",
+  "ges": "C",
+  "surface": 119.0,
+  "niv": 1,
+  "annee": null,
+  "adresse": "27 Boulevard Neuf",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 12,
+  "lat": 43.33279898998118,
+  "lon": 5.432460009681608,
+  "gmaps": "https://maps.google.com/?q=43.33279898998118,5.432460009681608",
+  "deja": false,
+  "conso": 106,
+  "gesv": 21,
+  "chauf": "Gaz naturel",
+  "rang": 492
+ },
+ {
+  "id": "2513E3051296F",
+  "q": "La Croix-Rouge",
+  "qoff": "La Rose",
+  "prio": false,
+  "date": "2025-09-26",
+  "jours": 255,
+  "dpe": "D",
+  "ges": "B",
+  "surface": 120.0,
+  "niv": 3,
+  "annee": null,
+  "adresse": "16 Avenue De La Croix Rouge",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 12,
+  "lat": 43.3303419837927,
+  "lon": 5.430365053684346,
+  "gmaps": "https://maps.google.com/?q=43.3303419837927,5.430365053684346",
+  "deja": false,
+  "conso": 184,
+  "gesv": 7,
+  "chauf": "Électricité",
+  "rang": 493
+ },
+ {
+  "id": "2513E2934781W",
+  "q": "La Croix-Rouge",
+  "qoff": "La Croix-Rouge",
+  "prio": false,
+  "date": "2025-09-16",
+  "jours": 265,
+  "dpe": "C",
+  "ges": "A",
+  "surface": 118.9,
+  "niv": 2,
+  "annee": null,
+  "adresse": "152 Avenue De La Croix Rouge",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 12,
+  "lat": 43.33387997696966,
+  "lon": 5.441463034904508,
+  "gmaps": "https://maps.google.com/?q=43.33387997696966,5.441463034904508",
+  "deja": false,
+  "conso": 152,
+  "gesv": 5,
+  "chauf": "Électricité",
+  "rang": 494
+ },
+ {
+  "id": "2513E2809306X",
+  "q": "Petit Bosquet",
+  "qoff": "Les Mourets",
+  "prio": false,
+  "date": "2025-09-05",
+  "jours": 276,
+  "dpe": "D",
+  "ges": "B",
+  "surface": 116.0,
+  "niv": 1,
+  "annee": 1980,
+  "adresse": "14 Rue Pommes D'Amour",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 12,
+  "lat": 43.361348034455226,
+  "lon": 5.431464975962537,
+  "gmaps": "https://maps.google.com/?q=43.361348034455226,5.431464975962537",
+  "deja": false,
+  "conso": 190,
+  "gesv": 8,
+  "chauf": "Électricité",
+  "rang": 495
+ },
+ {
+  "id": "2513E2790819W",
+  "q": "La Croix-Rouge",
+  "qoff": "Château-Gombert",
+  "prio": false,
+  "date": "2025-09-04",
+  "jours": 277,
+  "dpe": "D",
+  "ges": "B",
+  "surface": 116.2,
+  "niv": 2,
+  "annee": null,
+  "adresse": "9 Rue Georges Charpak",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 12,
+  "lat": 43.3419460123518,
+  "lon": 5.441951961472073,
+  "gmaps": "https://maps.google.com/?q=43.3419460123518,5.441951961472073",
+  "deja": false,
+  "conso": 180,
+  "gesv": 6,
+  "chauf": "Bois – Bûches",
+  "rang": 496
+ },
+ {
+  "id": "2513E2127391K",
+  "q": "Saint-Mitre",
+  "qoff": "Les Mourets",
+  "prio": false,
+  "date": "2025-06-27",
+  "jours": 346,
+  "dpe": "C",
+  "ges": "C",
+  "surface": 122.6,
+  "niv": 2,
+  "annee": null,
+  "adresse": "Chemin Des Grives",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 12,
+  "lat": 43.35388300600057,
+  "lon": 5.4194939551429275,
+  "gmaps": "https://maps.google.com/?q=43.35388300600057,5.4194939551429275",
+  "deja": false,
+  "conso": 127,
+  "gesv": 20,
+  "chauf": "Gaz naturel",
+  "rang": 497
  },
  {
   "id": "2613E1008623X",
@@ -17985,7 +20819,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 389
+  "rang": 498
  },
  {
   "id": "2613E0994097F",
@@ -18042,7 +20876,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 390
+  "rang": 499
  },
  {
   "id": "2613E0050456I",
@@ -18099,7 +20933,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 391
+  "rang": 500
  },
  {
   "id": "2613E0941571Z",
@@ -18156,7 +20990,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 392
+  "rang": 501
  },
  {
   "id": "2613E0873034Y",
@@ -18213,7 +21047,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 393
+  "rang": 502
  },
  {
   "id": "2613E0689310Q",
@@ -18270,7 +21104,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 394
+  "rang": 503
  },
  {
   "id": "2613E0222196S",
@@ -18327,7 +21161,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 395
+  "rang": 504
  },
  {
   "id": "2613E0568244G",
@@ -18384,7 +21218,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 396
+  "rang": 505
  },
  {
   "id": "2613E0468693J",
@@ -18441,7 +21275,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 397
+  "rang": 506
  },
  {
   "id": "2613E0208665H",
@@ -18498,7 +21332,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 398
+  "rang": 507
  },
  {
   "id": "2613E0043029R",
@@ -18555,7 +21389,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 399
+  "rang": 508
  },
  {
   "id": "2513E3980309M",
@@ -18612,7 +21446,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.5,
-  "rang": 400
+  "rang": 509
  },
  {
   "id": "2513E3966164L",
@@ -18669,7 +21503,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.5,
-  "rang": 401
+  "rang": 510
  },
  {
   "id": "2513E3937353I",
@@ -18726,7 +21560,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.5,
-  "rang": 402
+  "rang": 511
  },
  {
   "id": "2613E0963900U",
@@ -18752,7 +21586,7 @@
   "conso": 198,
   "gesv": 7,
   "chauf": "Électricité",
-  "rang": 403
+  "rang": 512
  },
  {
   "id": "2613E0204393Z",
@@ -18778,7 +21612,163 @@
   "conso": 110,
   "gesv": 4,
   "chauf": "Électricité",
-  "rang": 404
+  "rang": 513
+ },
+ {
+  "id": "2513E3566707S",
+  "q": "La Croix-Rouge",
+  "qoff": "La Croix-Rouge",
+  "prio": false,
+  "date": "2025-11-12",
+  "jours": 208,
+  "dpe": "C",
+  "ges": "A",
+  "surface": 110.6,
+  "niv": 2,
+  "annee": null,
+  "adresse": "56 Boulevard Fructidor",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 11,
+  "lat": 43.33511396010504,
+  "lon": 5.437882051601448,
+  "gmaps": "https://maps.google.com/?q=43.33511396010504,5.437882051601448",
+  "deja": false,
+  "conso": 125,
+  "gesv": 4,
+  "chauf": "Électricité",
+  "rang": 514
+ },
+ {
+  "id": "2513E3521082X",
+  "q": "Saint-Mitre",
+  "qoff": "Saint-Mitre",
+  "prio": false,
+  "date": "2025-11-07",
+  "jours": 213,
+  "dpe": "C",
+  "ges": "A",
+  "surface": 113.9,
+  "niv": 1,
+  "annee": null,
+  "adresse": "46 Chemin De La Television",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 11,
+  "lat": 43.35204998674354,
+  "lon": 5.417571012156381,
+  "gmaps": "https://maps.google.com/?q=43.35204998674354,5.417571012156381",
+  "deja": false,
+  "conso": 144,
+  "gesv": 5,
+  "chauf": "Électricité",
+  "rang": 515
+ },
+ {
+  "id": "2513E2828375I",
+  "q": "Saint-Just",
+  "qoff": "Saint-Just",
+  "prio": false,
+  "date": "2025-09-08",
+  "jours": 273,
+  "dpe": "D",
+  "ges": "C",
+  "surface": 106.0,
+  "niv": 2,
+  "annee": null,
+  "adresse": "24 Rue Etienne Parrocel",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 11,
+  "lat": 43.31812304416928,
+  "lon": 5.399179997858491,
+  "gmaps": "https://maps.google.com/?q=43.31812304416928,5.399179997858491",
+  "deja": false,
+  "conso": 181,
+  "gesv": 26,
+  "chauf": "Gaz naturel",
+  "rang": 516
+ },
+ {
+  "id": "2513E2370668F",
+  "q": "La Croix-Rouge",
+  "qoff": "La Rose",
+  "prio": false,
+  "date": "2025-07-18",
+  "jours": 325,
+  "dpe": "C",
+  "ges": "C",
+  "surface": 110.2,
+  "niv": 1,
+  "annee": null,
+  "adresse": "7 Impasse Notre Dame",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 11,
+  "lat": 43.336310011430044,
+  "lon": 5.429022001340743,
+  "gmaps": "https://maps.google.com/?q=43.336310011430044,5.429022001340743",
+  "deja": false,
+  "conso": 124,
+  "gesv": 24,
+  "chauf": "Fioul domestique",
+  "rang": 517
+ },
+ {
+  "id": "2513E2299844F",
+  "q": "Petit Bosquet",
+  "qoff": "Les Mourets",
+  "prio": false,
+  "date": "2025-07-11",
+  "jours": 332,
+  "dpe": "D",
+  "ges": "D",
+  "surface": 110.2,
+  "niv": 2,
+  "annee": null,
+  "adresse": "5 Rue De La Gardiette",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 11,
+  "lat": 43.35938501659098,
+  "lon": 5.41361294222815,
+  "gmaps": "https://maps.google.com/?q=43.35938501659098,5.41361294222815",
+  "deja": false,
+  "conso": 193,
+  "gesv": 38,
+  "chauf": "Gaz naturel",
+  "rang": 518
+ },
+ {
+  "id": "2513E2233927Y",
+  "q": "Malpassé",
+  "qoff": "Malpassé",
+  "prio": false,
+  "date": "2025-07-06",
+  "jours": 337,
+  "dpe": "B",
+  "ges": "B",
+  "surface": 107.0,
+  "niv": 1,
+  "annee": null,
+  "adresse": "14 Impasse De La Fougasse",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 11,
+  "lat": 43.320091967966135,
+  "lon": 5.416648991724019,
+  "gmaps": "https://maps.google.com/?q=43.320091967966135,5.416648991724019",
+  "deja": false,
+  "conso": 82,
+  "gesv": 7,
+  "chauf": "Gaz naturel",
+  "rang": 519
  },
  {
   "id": "2613E1084349L",
@@ -18835,7 +21825,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 405
+  "rang": 520
  },
  {
   "id": "2613E1021179V",
@@ -18892,7 +21882,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 406
+  "rang": 521
  },
  {
   "id": "2613E1011831H",
@@ -18949,7 +21939,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 407
+  "rang": 522
  },
  {
   "id": "2613E0781694W",
@@ -19006,7 +21996,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 408
+  "rang": 523
  },
  {
   "id": "2613E0752258S",
@@ -19063,7 +22053,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 409
+  "rang": 524
  },
  {
   "id": "2613E0621932E",
@@ -19120,7 +22110,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 410
+  "rang": 525
  },
  {
   "id": "2613E0585507F",
@@ -19177,7 +22167,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 411
+  "rang": 526
  },
  {
   "id": "2613E0517599J",
@@ -19234,7 +22224,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 412
+  "rang": 527
  },
  {
   "id": "2613E0436584K",
@@ -19291,7 +22281,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 413
+  "rang": 528
  },
  {
   "id": "2613E0403783V",
@@ -19348,7 +22338,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 414
+  "rang": 529
  },
  {
   "id": "2613E0308425F",
@@ -19405,7 +22395,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 415
+  "rang": 530
  },
  {
   "id": "2613E0073270U",
@@ -19462,7 +22452,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 416
+  "rang": 531
  },
  {
   "id": "2613E0014028G",
@@ -19519,7 +22509,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 417
+  "rang": 532
  },
  {
   "id": "2513E4033005G",
@@ -19576,7 +22566,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.5,
-  "rang": 418
+  "rang": 533
  },
  {
   "id": "2513E3923809K",
@@ -19633,7 +22623,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.5,
-  "rang": 419
+  "rang": 534
  },
  {
   "id": "2613E0657132A",
@@ -19659,7 +22649,7 @@
   "conso": 147,
   "gesv": 5,
   "chauf": "Électricité",
-  "rang": 420
+  "rang": 535
  },
  {
   "id": "2613E0549626E",
@@ -19685,7 +22675,7 @@
   "conso": 128,
   "gesv": 23,
   "chauf": "Gaz naturel",
-  "rang": 421
+  "rang": 536
  },
  {
   "id": "2613E0548776M",
@@ -19711,7 +22701,7 @@
   "conso": 94,
   "gesv": 15,
   "chauf": "Gaz naturel",
-  "rang": 422
+  "rang": 537
  },
  {
   "id": "2613E0432403P",
@@ -19737,7 +22727,293 @@
   "conso": 53,
   "gesv": 1,
   "chauf": "Bois – Granulés (pellets) ou briquettes",
-  "rang": 423
+  "rang": 538
+ },
+ {
+  "id": "2513E3589022Z",
+  "q": "La Croix-Rouge",
+  "qoff": "La Croix-Rouge",
+  "prio": false,
+  "date": "2025-11-14",
+  "jours": 206,
+  "dpe": "B",
+  "ges": "A",
+  "surface": 101.8,
+  "niv": 2,
+  "annee": null,
+  "adresse": "25 Boulevard Thermidor",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 10,
+  "lat": 43.334947994651934,
+  "lon": 5.4373750516268915,
+  "gmaps": "https://maps.google.com/?q=43.334947994651934,5.4373750516268915",
+  "deja": false,
+  "conso": 85,
+  "gesv": 3,
+  "chauf": "Électricité",
+  "rang": 539
+ },
+ {
+  "id": "2513E3102225A",
+  "q": "La Croix-Rouge",
+  "qoff": "Les Olives",
+  "prio": false,
+  "date": "2025-10-01",
+  "jours": 250,
+  "dpe": "B",
+  "ges": "A",
+  "surface": 97.9,
+  "niv": 2,
+  "annee": 2008,
+  "adresse": "Traverse De L'Erable",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 10,
+  "lat": 43.327562000465115,
+  "lon": 5.440699025373015,
+  "gmaps": "https://maps.google.com/?q=43.327562000465115,5.440699025373015",
+  "deja": false,
+  "conso": 98,
+  "gesv": 3,
+  "chauf": "Électricité",
+  "rang": 540
+ },
+ {
+  "id": "2513E2609374F",
+  "q": "La Croix-Rouge",
+  "qoff": "La Croix-Rouge",
+  "prio": false,
+  "date": "2025-08-12",
+  "jours": 300,
+  "dpe": "A",
+  "ges": "A",
+  "surface": 96.6,
+  "niv": 2,
+  "annee": 2025,
+  "adresse": "113 Rue Albert Einstein",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 10,
+  "lat": 43.33868200392371,
+  "lon": 5.437318951789296,
+  "gmaps": "https://maps.google.com/?q=43.33868200392371,5.437318951789296",
+  "deja": false,
+  "conso": 44,
+  "gesv": 2,
+  "chauf": "Électricité",
+  "rang": 541
+ },
+ {
+  "id": "2513E2609356N",
+  "q": "La Croix-Rouge",
+  "qoff": "La Croix-Rouge",
+  "prio": false,
+  "date": "2025-08-12",
+  "jours": 300,
+  "dpe": "A",
+  "ges": "A",
+  "surface": 96.0,
+  "niv": 2,
+  "annee": 2025,
+  "adresse": "113 Rue Albert Einstein",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 10,
+  "lat": 43.33868200392371,
+  "lon": 5.437318951789296,
+  "gmaps": "https://maps.google.com/?q=43.33868200392371,5.437318951789296",
+  "deja": false,
+  "conso": 37,
+  "gesv": 1,
+  "chauf": "Électricité",
+  "rang": 542
+ },
+ {
+  "id": "2513E2609363U",
+  "q": "La Croix-Rouge",
+  "qoff": "La Croix-Rouge",
+  "prio": false,
+  "date": "2025-08-12",
+  "jours": 300,
+  "dpe": "A",
+  "ges": "A",
+  "surface": 95.6,
+  "niv": 2,
+  "annee": 2025,
+  "adresse": "113 Rue Albert Einstein",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 10,
+  "lat": 43.33868200392371,
+  "lon": 5.437318951789296,
+  "gmaps": "https://maps.google.com/?q=43.33868200392371,5.437318951789296",
+  "deja": false,
+  "conso": 32,
+  "gesv": 1,
+  "chauf": "Électricité",
+  "rang": 543
+ },
+ {
+  "id": "2513E2609379K",
+  "q": "La Croix-Rouge",
+  "qoff": "La Croix-Rouge",
+  "prio": false,
+  "date": "2025-08-12",
+  "jours": 300,
+  "dpe": "A",
+  "ges": "A",
+  "surface": 96.9,
+  "niv": 2,
+  "annee": 2025,
+  "adresse": "113 Rue Albert Einstein",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 10,
+  "lat": 43.33868200392371,
+  "lon": 5.437318951789296,
+  "gmaps": "https://maps.google.com/?q=43.33868200392371,5.437318951789296",
+  "deja": false,
+  "conso": 39,
+  "gesv": 2,
+  "chauf": "Électricité",
+  "rang": 544
+ },
+ {
+  "id": "2513E2609366X",
+  "q": "La Croix-Rouge",
+  "qoff": "La Croix-Rouge",
+  "prio": false,
+  "date": "2025-08-12",
+  "jours": 300,
+  "dpe": "A",
+  "ges": "A",
+  "surface": 95.7,
+  "niv": 2,
+  "annee": 2025,
+  "adresse": "113 Rue Albert Einstein",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 10,
+  "lat": 43.33868200392371,
+  "lon": 5.437318951789296,
+  "gmaps": "https://maps.google.com/?q=43.33868200392371,5.437318951789296",
+  "deja": false,
+  "conso": 32,
+  "gesv": 1,
+  "chauf": "Électricité",
+  "rang": 545
+ },
+ {
+  "id": "2513E2609361S",
+  "q": "La Croix-Rouge",
+  "qoff": "La Croix-Rouge",
+  "prio": false,
+  "date": "2025-08-12",
+  "jours": 300,
+  "dpe": "A",
+  "ges": "A",
+  "surface": 95.6,
+  "niv": 2,
+  "annee": 2025,
+  "adresse": "113 Rue Albert Einstein",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 10,
+  "lat": 43.33868200392371,
+  "lon": 5.437318951789296,
+  "gmaps": "https://maps.google.com/?q=43.33868200392371,5.437318951789296",
+  "deja": false,
+  "conso": 32,
+  "gesv": 1,
+  "chauf": "Électricité",
+  "rang": 546
+ },
+ {
+  "id": "2513E2609377I",
+  "q": "La Croix-Rouge",
+  "qoff": "La Croix-Rouge",
+  "prio": false,
+  "date": "2025-08-12",
+  "jours": 300,
+  "dpe": "A",
+  "ges": "A",
+  "surface": 96.9,
+  "niv": 2,
+  "annee": 2025,
+  "adresse": "113 Rue Albert Einstein",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 10,
+  "lat": 43.33868200392371,
+  "lon": 5.437318951789296,
+  "gmaps": "https://maps.google.com/?q=43.33868200392371,5.437318951789296",
+  "deja": false,
+  "conso": 49,
+  "gesv": 2,
+  "chauf": "Électricité",
+  "rang": 547
+ },
+ {
+  "id": "2513E2609381M",
+  "q": "La Croix-Rouge",
+  "qoff": "La Croix-Rouge",
+  "prio": false,
+  "date": "2025-08-12",
+  "jours": 300,
+  "dpe": "A",
+  "ges": "A",
+  "surface": 96.6,
+  "niv": 2,
+  "annee": 2025,
+  "adresse": "113 Rue Albert Einstein",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 10,
+  "lat": 43.33868200392371,
+  "lon": 5.437318951789296,
+  "gmaps": "https://maps.google.com/?q=43.33868200392371,5.437318951789296",
+  "deja": false,
+  "conso": 45,
+  "gesv": 2,
+  "chauf": "Électricité",
+  "rang": 548
+ },
+ {
+  "id": "2513E2609369A",
+  "q": "La Croix-Rouge",
+  "qoff": "La Croix-Rouge",
+  "prio": false,
+  "date": "2025-08-12",
+  "jours": 300,
+  "dpe": "A",
+  "ges": "A",
+  "surface": 95.7,
+  "niv": 2,
+  "annee": 2025,
+  "adresse": "113 Rue Albert Einstein",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 10,
+  "lat": 43.33868200392371,
+  "lon": 5.437318951789296,
+  "gmaps": "https://maps.google.com/?q=43.33868200392371,5.437318951789296",
+  "deja": false,
+  "conso": 37,
+  "gesv": 1,
+  "chauf": "Électricité",
+  "rang": 549
  },
  {
   "id": "2613E0614945L",
@@ -19794,7 +23070,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 424
+  "rang": 550
  },
  {
   "id": "2613E0687807V",
@@ -19851,7 +23127,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 425
+  "rang": 551
  },
  {
   "id": "2613E0644299L",
@@ -19908,7 +23184,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 426
+  "rang": 552
  },
  {
   "id": "2613E0630211P",
@@ -19965,7 +23241,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 427
+  "rang": 553
  },
  {
   "id": "2613E0584879B",
@@ -20022,7 +23298,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 428
+  "rang": 554
  },
  {
   "id": "2613E0256106Y",
@@ -20079,7 +23355,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 429
+  "rang": 555
  },
  {
   "id": "2613E0503832W",
@@ -20136,7 +23412,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 430
+  "rang": 556
  },
  {
   "id": "2613E0456248S",
@@ -20193,7 +23469,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 431
+  "rang": 557
  },
  {
   "id": "2613E0447790K",
@@ -20250,7 +23526,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 432
+  "rang": 558
  },
  {
   "id": "2613E0375099P",
@@ -20307,7 +23583,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 433
+  "rang": 559
  },
  {
   "id": "2613E0349758Y",
@@ -20364,7 +23640,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 434
+  "rang": 560
  },
  {
   "id": "2613E0362137B",
@@ -20421,7 +23697,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 435
+  "rang": 561
  },
  {
   "id": "2613E0342483D",
@@ -20478,7 +23754,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 436
+  "rang": 562
  },
  {
   "id": "2613E0175237P",
@@ -20535,7 +23811,7 @@
   "confort_ete": null,
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 437
+  "rang": 563
  },
  {
   "id": "2613E0142171V",
@@ -20592,7 +23868,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 438
+  "rang": 564
  },
  {
   "id": "2513E3949182H",
@@ -20649,7 +23925,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.5,
-  "rang": 439
+  "rang": 565
  },
  {
   "id": "2513E3876882N",
@@ -20706,7 +23982,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.5,
-  "rang": 440
+  "rang": 566
  },
  {
   "id": "2613E1032517X",
@@ -20732,7 +24008,7 @@
   "conso": 163,
   "gesv": 6,
   "chauf": "Électricité",
-  "rang": 441
+  "rang": 567
  },
  {
   "id": "2613E0974957B",
@@ -20758,7 +24034,7 @@
   "conso": 81,
   "gesv": 3,
   "chauf": "Électricité",
-  "rang": 442
+  "rang": 568
  },
  {
   "id": "2613E0815242E",
@@ -20784,7 +24060,7 @@
   "conso": 88,
   "gesv": 3,
   "chauf": "Électricité",
-  "rang": 443
+  "rang": 569
  },
  {
   "id": "2613E0627003F",
@@ -20810,7 +24086,7 @@
   "conso": 168,
   "gesv": 6,
   "chauf": "Électricité",
-  "rang": 444
+  "rang": 570
  },
  {
   "id": "2613E0603372I",
@@ -20836,7 +24112,7 @@
   "conso": 157,
   "gesv": 6,
   "chauf": "Électricité",
-  "rang": 445
+  "rang": 571
  },
  {
   "id": "2613E0381806O",
@@ -20862,7 +24138,137 @@
   "conso": 107,
   "gesv": 4,
   "chauf": "Électricité",
-  "rang": 446
+  "rang": 572
+ },
+ {
+  "id": "2513E3346669S",
+  "q": "La Croix-Rouge",
+  "qoff": "La Rose",
+  "prio": false,
+  "date": "2025-10-23",
+  "jours": 228,
+  "dpe": "C",
+  "ges": "C",
+  "surface": 89.0,
+  "niv": 1,
+  "annee": null,
+  "adresse": "105 Chemin Des Jonquilles",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 9,
+  "lat": 43.326667970965424,
+  "lon": 5.434529018834007,
+  "gmaps": "https://maps.google.com/?q=43.326667970965424,5.434529018834007",
+  "deja": false,
+  "conso": 113,
+  "gesv": 13,
+  "chauf": "Gaz naturel",
+  "rang": 573
+ },
+ {
+  "id": "2513E2620907U",
+  "q": "Petit Bosquet",
+  "qoff": "Les Mourets",
+  "prio": false,
+  "date": "2025-08-14",
+  "jours": 298,
+  "dpe": "C",
+  "ges": "C",
+  "surface": 91.2,
+  "niv": 1,
+  "annee": null,
+  "adresse": "7 Rue Gratteloup",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 9,
+  "lat": 43.35903301845538,
+  "lon": 5.414480017822983,
+  "gmaps": "https://maps.google.com/?q=43.35903301845538,5.414480017822983",
+  "deja": false,
+  "conso": 143,
+  "gesv": 16,
+  "chauf": "Gaz naturel",
+  "rang": 574
+ },
+ {
+  "id": "2513E2139759C",
+  "q": "La Croix-Rouge",
+  "qoff": "La Croix-Rouge",
+  "prio": false,
+  "date": "2025-06-29",
+  "jours": 344,
+  "dpe": "C",
+  "ges": "A",
+  "surface": 86.6,
+  "niv": 2,
+  "annee": null,
+  "adresse": "6 Rue Niels Bohr",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 9,
+  "lat": 43.335455026424704,
+  "lon": 5.445596964068166,
+  "gmaps": "https://maps.google.com/?q=43.335455026424704,5.445596964068166",
+  "deja": false,
+  "conso": 151,
+  "gesv": 5,
+  "chauf": "Bois – Bûches",
+  "rang": 575
+ },
+ {
+  "id": "2513E2135678D",
+  "q": "Saint-Just",
+  "qoff": "Saint-Just",
+  "prio": false,
+  "date": "2025-06-28",
+  "jours": 345,
+  "dpe": "C",
+  "ges": "A",
+  "surface": 88.1,
+  "niv": 3,
+  "annee": null,
+  "adresse": "33 Rue Etienne Parrocel",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 9,
+  "lat": 43.31820400142568,
+  "lon": 5.39918595626776,
+  "gmaps": "https://maps.google.com/?q=43.31820400142568,5.39918595626776",
+  "deja": false,
+  "conso": 127,
+  "gesv": 4,
+  "chauf": "Électricité",
+  "rang": 576
+ },
+ {
+  "id": "2513E2077493G",
+  "q": "Malpassé",
+  "qoff": "Saint-Just",
+  "prio": false,
+  "date": "2025-06-24",
+  "jours": 349,
+  "dpe": "C",
+  "ges": "C",
+  "surface": 92.8,
+  "niv": 2,
+  "annee": null,
+  "adresse": "3 Place Pierre Carrie",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 9,
+  "lat": 43.322411969362285,
+  "lon": 5.40237004119976,
+  "gmaps": "https://maps.google.com/?q=43.322411969362285,5.40237004119976",
+  "deja": false,
+  "conso": 174,
+  "gesv": 24,
+  "chauf": "Gaz naturel",
+  "rang": 577
  },
  {
   "id": "2613E0443077D",
@@ -20919,7 +24325,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 447
+  "rang": 578
  },
  {
   "id": "2613E1035681P",
@@ -20976,7 +24382,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 448
+  "rang": 579
  },
  {
   "id": "2613E1036505H",
@@ -21033,7 +24439,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 449
+  "rang": 580
  },
  {
   "id": "2613E0810567J",
@@ -21090,7 +24496,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 450
+  "rang": 581
  },
  {
   "id": "2613E0802208W",
@@ -21147,7 +24553,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 451
+  "rang": 582
  },
  {
   "id": "2613E0774306S",
@@ -21204,7 +24610,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 452
+  "rang": 583
  },
  {
   "id": "2613E0768329V",
@@ -21261,7 +24667,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 453
+  "rang": 584
  },
  {
   "id": "2613E0732791Z",
@@ -21318,7 +24724,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 454
+  "rang": 585
  },
  {
   "id": "2613E0575937D",
@@ -21375,7 +24781,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 455
+  "rang": 586
  },
  {
   "id": "2613E0140563Z",
@@ -21432,7 +24838,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 456
+  "rang": 587
  },
  {
   "id": "2613E0499410U",
@@ -21489,7 +24895,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 457
+  "rang": 588
  },
  {
   "id": "2613E0446552U",
@@ -21546,7 +24952,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 458
+  "rang": 589
  },
  {
   "id": "2613E0430504O",
@@ -21603,7 +25009,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 459
+  "rang": 590
  },
  {
   "id": "2538E3954591H",
@@ -21660,7 +25066,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.5,
-  "rang": 460
+  "rang": 591
  },
  {
   "id": "2513E3891440L",
@@ -21717,7 +25123,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.5,
-  "rang": 461
+  "rang": 592
  },
  {
   "id": "2513E3882559W",
@@ -21743,7 +25149,215 @@
   "conso": 105,
   "gesv": 3,
   "chauf": "Électricité",
-  "rang": 462
+  "rang": 593
+ },
+ {
+  "id": "2513E3474468B",
+  "q": "Clair Soleil",
+  "qoff": "Château-Gombert",
+  "prio": false,
+  "date": "2025-11-04",
+  "jours": 216,
+  "dpe": "C",
+  "ges": "A",
+  "surface": 79.3,
+  "niv": 2,
+  "annee": null,
+  "adresse": "24 Rue Georges Charpak",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 8,
+  "lat": 43.34351702345863,
+  "lon": 5.442856001372934,
+  "gmaps": "https://maps.google.com/?q=43.34351702345863,5.442856001372934",
+  "deja": false,
+  "conso": 169,
+  "gesv": 5,
+  "chauf": "Bois – Bûches",
+  "rang": 594
+ },
+ {
+  "id": "2513E3079840B",
+  "q": "La Croix-Rouge",
+  "qoff": "La Croix-Rouge",
+  "prio": false,
+  "date": "2025-09-29",
+  "jours": 252,
+  "dpe": "B",
+  "ges": "A",
+  "surface": 77.7,
+  "niv": 1,
+  "annee": null,
+  "adresse": "Boulevard Fructidor",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 8,
+  "lat": 43.33583297416272,
+  "lon": 5.438645004893272,
+  "gmaps": "https://maps.google.com/?q=43.33583297416272,5.438645004893272",
+  "deja": false,
+  "conso": 108,
+  "gesv": 4,
+  "chauf": "Électricité",
+  "rang": 595
+ },
+ {
+  "id": "2513E2983664Z",
+  "q": "Petit Bosquet",
+  "qoff": "Les Mourets",
+  "prio": false,
+  "date": "2025-09-21",
+  "jours": 260,
+  "dpe": "D",
+  "ges": "B",
+  "surface": 81.5,
+  "niv": 3,
+  "annee": null,
+  "adresse": "1 Boulevard Manen",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 8,
+  "lat": 43.35918296878598,
+  "lon": 5.434052016431305,
+  "gmaps": "https://maps.google.com/?q=43.35918296878598,5.434052016431305",
+  "deja": false,
+  "conso": 180,
+  "gesv": 7,
+  "chauf": "Électricité",
+  "rang": 596
+ },
+ {
+  "id": "2513E2856439S",
+  "q": "Malpassé",
+  "qoff": "Malpassé",
+  "prio": false,
+  "date": "2025-09-10",
+  "jours": 271,
+  "dpe": "C",
+  "ges": "A",
+  "surface": 81.4,
+  "niv": 2,
+  "annee": null,
+  "adresse": "34 Boulevard Bouge Malpasse",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 8,
+  "lat": 43.32375499669038,
+  "lon": 5.411880012699752,
+  "gmaps": "https://maps.google.com/?q=43.32375499669038,5.411880012699752",
+  "deja": false,
+  "conso": 123,
+  "gesv": 4,
+  "chauf": "Bois – Bûches",
+  "rang": 597
+ },
+ {
+  "id": "2513E2621200B",
+  "q": "Petit Bosquet",
+  "qoff": "Les Mourets",
+  "prio": false,
+  "date": "2025-08-14",
+  "jours": 298,
+  "dpe": "C",
+  "ges": "C",
+  "surface": 75.9,
+  "niv": 2,
+  "annee": null,
+  "adresse": "5 Rue Gratteloup",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 8,
+  "lat": 43.359120997027176,
+  "lon": 5.41436504340355,
+  "gmaps": "https://maps.google.com/?q=43.359120997027176,5.41436504340355",
+  "deja": false,
+  "conso": 104,
+  "gesv": 22,
+  "chauf": "Gaz naturel",
+  "rang": 598
+ },
+ {
+  "id": "2513E2358075W",
+  "q": "Malpassé",
+  "qoff": "Malpassé",
+  "prio": false,
+  "date": "2025-07-17",
+  "jours": 326,
+  "dpe": "C",
+  "ges": "A",
+  "surface": 79.2,
+  "niv": 2,
+  "annee": null,
+  "adresse": "37 Boulevard Gemy",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 8,
+  "lat": 43.32094398202261,
+  "lon": 5.414277044334999,
+  "gmaps": "https://maps.google.com/?q=43.32094398202261,5.414277044334999",
+  "deja": false,
+  "conso": 179,
+  "gesv": 5,
+  "chauf": "Bois – Bûches",
+  "rang": 599
+ },
+ {
+  "id": "2513E2336273I",
+  "q": "Petit Bosquet",
+  "qoff": "Les Mourets",
+  "prio": false,
+  "date": "2025-07-16",
+  "jours": 327,
+  "dpe": "C",
+  "ges": "C",
+  "surface": 83.6,
+  "niv": 2,
+  "annee": null,
+  "adresse": "5 Impasse Des Independants",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 8,
+  "lat": 43.3605229806762,
+  "lon": 5.427957991139629,
+  "gmaps": "https://maps.google.com/?q=43.3605229806762,5.427957991139629",
+  "deja": false,
+  "conso": 169,
+  "gesv": 24,
+  "chauf": "Gaz naturel",
+  "rang": 600
+ },
+ {
+  "id": "2513E1938225U",
+  "q": "La Croix-Rouge",
+  "qoff": "La Rose",
+  "prio": false,
+  "date": "2025-06-13",
+  "jours": 360,
+  "dpe": "C",
+  "ges": "A",
+  "surface": 84.7,
+  "niv": 2,
+  "annee": 1996,
+  "adresse": "7 Traverse Des Alvergnes",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 8,
+  "lat": 43.33707595874227,
+  "lon": 5.427766019065875,
+  "gmaps": "https://maps.google.com/?q=43.33707595874227,5.427766019065875",
+  "deja": false,
+  "conso": 134,
+  "gesv": 4,
+  "chauf": "Électricité",
+  "rang": 601
  },
  {
   "id": "2613E1032162G",
@@ -21800,7 +25414,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 463
+  "rang": 602
  },
  {
   "id": "2613E0620825P",
@@ -21857,7 +25471,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 464
+  "rang": 603
  },
  {
   "id": "2613E0580058Q",
@@ -21914,7 +25528,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 465
+  "rang": 604
  },
  {
   "id": "2613E0507116E",
@@ -21971,7 +25585,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 466
+  "rang": 605
  },
  {
   "id": "2613E0440460M",
@@ -22028,7 +25642,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 467
+  "rang": 606
  },
  {
   "id": "2513E3911119I",
@@ -22085,7 +25699,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.5,
-  "rang": 468
+  "rang": 607
  },
  {
   "id": "2613E0864341P",
@@ -22111,7 +25725,7 @@
   "conso": 202,
   "gesv": 44,
   "chauf": "Gaz naturel",
-  "rang": 469
+  "rang": 608
  },
  {
   "id": "2613E0494398A",
@@ -22137,7 +25751,7 @@
   "conso": 143,
   "gesv": 5,
   "chauf": "Bois – Granulés (pellets) ou briquettes",
-  "rang": 470
+  "rang": 609
  },
  {
   "id": "2613E0429011D",
@@ -22163,7 +25777,137 @@
   "conso": 130,
   "gesv": 4,
   "chauf": "Électricité",
-  "rang": 471
+  "rang": 610
+ },
+ {
+  "id": "2513E3560533G",
+  "q": "Clair Soleil",
+  "qoff": "Château-Gombert",
+  "prio": false,
+  "date": "2025-11-12",
+  "jours": 208,
+  "dpe": "D",
+  "ges": "D",
+  "surface": 73.0,
+  "niv": 1,
+  "annee": null,
+  "adresse": "28 Rue Georges Charpak",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 7,
+  "lat": 43.34362099280316,
+  "lon": 5.442938963423619,
+  "gmaps": "https://maps.google.com/?q=43.34362099280316,5.442938963423619",
+  "deja": false,
+  "conso": 214,
+  "gesv": 49,
+  "chauf": "Fioul domestique",
+  "rang": 611
+ },
+ {
+  "id": "2513E2561117E",
+  "q": "Malpassé",
+  "qoff": "Malpassé",
+  "prio": false,
+  "date": "2025-08-06",
+  "jours": 306,
+  "dpe": "D",
+  "ges": "D",
+  "surface": 70.5,
+  "niv": 1,
+  "annee": null,
+  "adresse": "18 Boulevard Clement",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 7,
+  "lat": 43.321767039497004,
+  "lon": 5.416126055304087,
+  "gmaps": "https://maps.google.com/?q=43.321767039497004,5.416126055304087",
+  "deja": false,
+  "conso": 188,
+  "gesv": 32,
+  "chauf": "Gaz naturel",
+  "rang": 612
+ },
+ {
+  "id": "2513E2385171A",
+  "q": "La Croix-Rouge",
+  "qoff": "Les Olives",
+  "prio": false,
+  "date": "2025-07-20",
+  "jours": 323,
+  "dpe": "C",
+  "ges": "A",
+  "surface": 65.3,
+  "niv": 1,
+  "annee": null,
+  "adresse": "127 Avenue Des Olives",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 7,
+  "lat": 43.32673703611894,
+  "lon": 5.437866948184563,
+  "gmaps": "https://maps.google.com/?q=43.32673703611894,5.437866948184563",
+  "deja": false,
+  "conso": 118,
+  "gesv": 4,
+  "chauf": "Électricité",
+  "rang": 613
+ },
+ {
+  "id": "2513E2018330T",
+  "q": "La Croix-Rouge",
+  "qoff": "La Rose",
+  "prio": false,
+  "date": "2025-06-19",
+  "jours": 354,
+  "dpe": "B",
+  "ges": "A",
+  "surface": 73.1,
+  "niv": 1,
+  "annee": 2008,
+  "adresse": "100 Chemin Des Jonquilles",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 7,
+  "lat": 43.32644804324053,
+  "lon": 5.435110982792169,
+  "gmaps": "https://maps.google.com/?q=43.32644804324053,5.435110982792169",
+  "deja": false,
+  "conso": 94,
+  "gesv": 3,
+  "chauf": "Électricité",
+  "rang": 614
+ },
+ {
+  "id": "2513E1954405C",
+  "q": "Clair Soleil",
+  "qoff": "Château-Gombert",
+  "prio": false,
+  "date": "2025-06-15",
+  "jours": 358,
+  "dpe": "C",
+  "ges": "A",
+  "surface": 69.3,
+  "niv": 1,
+  "annee": null,
+  "adresse": "63 Avenue Paul Dalbret",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 7,
+  "lat": 43.35284798686971,
+  "lon": 5.4463810416997,
+  "gmaps": "https://maps.google.com/?q=43.35284798686971,5.4463810416997",
+  "deja": false,
+  "conso": 116,
+  "gesv": 4,
+  "chauf": "Électricité",
+  "rang": 615
  },
  {
   "id": "2613E0574983L",
@@ -22220,7 +25964,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 472
+  "rang": 616
  },
  {
   "id": "2613E0538323L",
@@ -22277,7 +26021,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 473
+  "rang": 617
  },
  {
   "id": "2613E0515188Q",
@@ -22334,7 +26078,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 474
+  "rang": 618
  },
  {
   "id": "2613E0078032Y",
@@ -22391,7 +26135,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 475
+  "rang": 619
  },
  {
   "id": "2613E0849845B",
@@ -22417,7 +26161,7 @@
   "conso": 154,
   "gesv": 5,
   "chauf": "Électricité",
-  "rang": 476
+  "rang": 620
  },
  {
   "id": "2613E0563309L",
@@ -22443,7 +26187,7 @@
   "conso": 187,
   "gesv": 41,
   "chauf": "Gaz naturel",
-  "rang": 477
+  "rang": 621
  },
  {
   "id": "2613E0543487B",
@@ -22469,7 +26213,111 @@
   "conso": 198,
   "gesv": 7,
   "chauf": "Électricité",
-  "rang": 478
+  "rang": 622
+ },
+ {
+  "id": "2513E3630819O",
+  "q": "Malpassé",
+  "qoff": "Saint-Just",
+  "prio": false,
+  "date": "2025-11-19",
+  "jours": 201,
+  "dpe": "C",
+  "ges": "A",
+  "surface": 59.8,
+  "niv": 2,
+  "annee": null,
+  "adresse": "Impasse Gueidon",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 6,
+  "lat": 43.319762957466764,
+  "lon": 5.4158059882229646,
+  "gmaps": "https://maps.google.com/?q=43.319762957466764,5.4158059882229646",
+  "deja": false,
+  "conso": 110,
+  "gesv": 4,
+  "chauf": "Électricité",
+  "rang": 623
+ },
+ {
+  "id": "2513E3464127I",
+  "q": "Malpassé",
+  "qoff": "Saint-Just",
+  "prio": false,
+  "date": "2025-11-03",
+  "jours": 217,
+  "dpe": "D",
+  "ges": "D",
+  "surface": 59.9,
+  "niv": 1,
+  "annee": null,
+  "adresse": "10 Impasse Moreau",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 6,
+  "lat": 43.32328102551913,
+  "lon": 5.405558964025483,
+  "gmaps": "https://maps.google.com/?q=43.32328102551913,5.405558964025483",
+  "deja": false,
+  "conso": 158,
+  "gesv": 34,
+  "chauf": "Gaz naturel",
+  "rang": 624
+ },
+ {
+  "id": "2513E2337263K",
+  "q": "Saint-Mitre",
+  "qoff": "Saint-Mitre",
+  "prio": false,
+  "date": "2025-07-16",
+  "jours": 327,
+  "dpe": "C",
+  "ges": "A",
+  "surface": 61.0,
+  "niv": 1,
+  "annee": null,
+  "adresse": "4 Boulevard Chaussegros",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 6,
+  "lat": 43.34240604275195,
+  "lon": 5.4166909585284095,
+  "gmaps": "https://maps.google.com/?q=43.34240604275195,5.4166909585284095",
+  "deja": false,
+  "conso": 133,
+  "gesv": 4,
+  "chauf": "Bois – Bûches",
+  "rang": 625
+ },
+ {
+  "id": "2513E2071057S",
+  "q": "Malpassé",
+  "qoff": "Saint-Just",
+  "prio": false,
+  "date": "2025-06-24",
+  "jours": 349,
+  "dpe": "C",
+  "ges": "B",
+  "surface": 63.4,
+  "niv": 2,
+  "annee": null,
+  "adresse": "81 Rue Alphonse Daudet",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 6,
+  "lat": 43.319746985882006,
+  "lon": 5.409160942019548,
+  "gmaps": "https://maps.google.com/?q=43.319746985882006,5.409160942019548",
+  "deja": false,
+  "conso": 177,
+  "gesv": 6,
+  "chauf": "Électricité",
+  "rang": 626
  },
  {
   "id": "2613E0922219R",
@@ -22526,7 +26374,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 479
+  "rang": 627
  },
  {
   "id": "2613E0839581H",
@@ -22583,7 +26431,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 480
+  "rang": 628
  },
  {
   "id": "2613E0758583Z",
@@ -22640,7 +26488,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 481
+  "rang": 629
  },
  {
   "id": "2613E0715290W",
@@ -22697,7 +26545,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 482
+  "rang": 630
  },
  {
   "id": "2613E0632579R",
@@ -22754,7 +26602,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 483
+  "rang": 631
  },
  {
   "id": "2613E0597198W",
@@ -22811,7 +26659,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 484
+  "rang": 632
  },
  {
   "id": "2613E0554051J",
@@ -22868,7 +26716,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 485
+  "rang": 633
  },
  {
   "id": "2613E0231566C",
@@ -22925,7 +26773,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 486
+  "rang": 634
  },
  {
   "id": "2613E0135874Q",
@@ -22982,7 +26830,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 487
+  "rang": 635
  },
  {
   "id": "2513E3940657K",
@@ -23039,7 +26887,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.5,
-  "rang": 488
+  "rang": 636
  },
  {
   "id": "2613E0964245B",
@@ -23065,7 +26913,7 @@
   "conso": 102,
   "gesv": 3,
   "chauf": "Électricité",
-  "rang": 489
+  "rang": 637
  },
  {
   "id": "2613E0134401Z",
@@ -23091,7 +26939,85 @@
   "conso": 181,
   "gesv": 7,
   "chauf": "Électricité",
-  "rang": 490
+  "rang": 638
+ },
+ {
+  "id": "2513E3530331Q",
+  "q": "Saint-Just",
+  "qoff": "Saint-Just",
+  "prio": false,
+  "date": "2025-11-07",
+  "jours": 213,
+  "dpe": "C",
+  "ges": "A",
+  "surface": 50.8,
+  "niv": 2,
+  "annee": null,
+  "adresse": "62 Plateau Des Marguerites",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 5,
+  "lat": 43.32235201235817,
+  "lon": 5.401203991735124,
+  "gmaps": "https://maps.google.com/?q=43.32235201235817,5.401203991735124",
+  "deja": false,
+  "conso": 148,
+  "gesv": 5,
+  "chauf": "Bois – Bûches",
+  "rang": 639
+ },
+ {
+  "id": "2513E3035803I",
+  "q": "La Croix-Rouge",
+  "qoff": "Les Olives",
+  "prio": false,
+  "date": "2025-09-25",
+  "jours": 256,
+  "dpe": "D",
+  "ges": "D",
+  "surface": 54.4,
+  "niv": 1,
+  "annee": null,
+  "adresse": "83 Rue Simone Weil",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 5,
+  "lat": 43.33020499075701,
+  "lon": 5.443823048880489,
+  "gmaps": "https://maps.google.com/?q=43.33020499075701,5.443823048880489",
+  "deja": false,
+  "conso": 168,
+  "gesv": 31,
+  "chauf": "Gaz naturel",
+  "rang": 640
+ },
+ {
+  "id": "2513E3038708B",
+  "q": "Malpassé",
+  "qoff": "Malpassé",
+  "prio": false,
+  "date": "2025-09-25",
+  "jours": 256,
+  "dpe": "B",
+  "ges": "A",
+  "surface": 48.0,
+  "niv": 2,
+  "annee": 1949,
+  "adresse": "2 Impasse De La Margelle",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 5,
+  "lat": 43.32270003950538,
+  "lon": 5.410426005042768,
+  "gmaps": "https://maps.google.com/?q=43.32270003950538,5.410426005042768",
+  "deja": false,
+  "conso": 101,
+  "gesv": 4,
+  "chauf": "Électricité",
+  "rang": 641
  },
  {
   "id": "2613E0368843Z",
@@ -23148,7 +27074,7 @@
   "confort_ete": "insuffisant",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 491
+  "rang": 642
  },
  {
   "id": "2613E0330885B",
@@ -23205,7 +27131,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 492
+  "rang": 643
  },
  {
   "id": "2613E0234047N",
@@ -23262,7 +27188,7 @@
   "confort_ete": "bon",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 493
+  "rang": 644
  },
  {
   "id": "2513E4027547I",
@@ -23319,7 +27245,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.5,
-  "rang": 494
+  "rang": 645
  },
  {
   "id": "2513E3997126H",
@@ -23376,7 +27302,59 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.5,
-  "rang": 495
+  "rang": 646
+ },
+ {
+  "id": "2513E3631011Y",
+  "q": "Malpassé",
+  "qoff": "Saint-Just",
+  "prio": false,
+  "date": "2025-11-19",
+  "jours": 201,
+  "dpe": "C",
+  "ges": "B",
+  "surface": 41.9,
+  "niv": 1,
+  "annee": null,
+  "adresse": "Impasse Gueidon",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 4,
+  "lat": 43.319762957466764,
+  "lon": 5.4158059882229646,
+  "gmaps": "https://maps.google.com/?q=43.319762957466764,5.4158059882229646",
+  "deja": false,
+  "conso": 166,
+  "gesv": 6,
+  "chauf": "Électricité",
+  "rang": 647
+ },
+ {
+  "id": "2513E3216697U",
+  "q": "Clair Soleil",
+  "qoff": "Château-Gombert",
+  "prio": false,
+  "date": "2025-10-10",
+  "jours": 241,
+  "dpe": "C",
+  "ges": "A",
+  "surface": 44.5,
+  "niv": 2,
+  "annee": null,
+  "adresse": "Avenue Paul Dalbret",
+  "statut": "Aucune annonce trouvée",
+  "flags": [],
+  "tier": "froid",
+  "score": 4,
+  "lat": 43.35298196231269,
+  "lon": 5.446144002121337,
+  "gmaps": "https://maps.google.com/?q=43.35298196231269,5.446144002121337",
+  "deja": false,
+  "conso": 119,
+  "gesv": 4,
+  "chauf": "Électricité",
+  "rang": 648
  },
  {
   "id": "2613E0488304Q",
@@ -23433,7 +27411,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 496
+  "rang": 649
  },
  {
   "id": "2613E0482796U",
@@ -23490,7 +27468,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 497
+  "rang": 650
  },
  {
   "id": "2613E0358037J",
@@ -23547,7 +27525,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 498
+  "rang": 651
  },
  {
   "id": "2613E0202503H",
@@ -23604,7 +27582,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 499
+  "rang": 652
  },
  {
   "id": "2613E0062362G",
@@ -23661,7 +27639,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 500
+  "rang": 653
  },
  {
   "id": "2613E0328455P",
@@ -23718,7 +27696,7 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.6,
-  "rang": 501
+  "rang": 654
  },
  {
   "id": "2513E3926688D",
@@ -23775,6 +27753,6 @@
   "confort_ete": "moyen",
   "modele_dpe": "DPE 3CL 2021 méthode logement",
   "version_dpe": 2.5,
-  "rang": 502
+  "rang": 655
  }
 ]
