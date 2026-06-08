@@ -16,7 +16,7 @@
   }
 })()</script>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0d0f14">
+<meta name="theme-color" content="#4f8ef7">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Boîtage 13">
@@ -30,16 +30,16 @@
 <style>
 /* ── TOKENS ── */
 :root{
-  /* === DARK MODE NATIF === */
-  --bg:     #0d0f14;
-  --bg2:    #13161e;
-  --bg3:    #1a1e28;
-  --bg4:    #212636;
-  --border: rgba(255,255,255,.07);
-  --border2:rgba(255,255,255,.13);
-  --ink:    #f0f2f8;
-  --ink2:   #8a93aa;
-  --ink3:   #4d5468;
+  /* === LIGHT MODE PRO === */
+  --bg:     #f4f6fb;
+  --bg2:    #ffffff;
+  --bg3:    #eef0f7;
+  --bg4:    #e4e8f2;
+  --border: rgba(0,0,0,.08);
+  --border2:rgba(0,0,0,.15);
+  --ink:    #111827;
+  --ink2:   #4b5563;
+  --ink3:   #9ca3af;
 
   /* Accents — bleu électrique moderne */
   --accent:  #4f8ef7;   /* electric blue — CTA principal */
@@ -52,20 +52,20 @@
   --red:     #f87171;
 
   /* Sémantiques signal */
-  --sig-hot:  #f87171;
-  --sig-warm: #fbbf24;
+  --sig-hot:  #ef4444;
+  --sig-warm: #f59e0b;
   --sig-cool: #64748b;
   --sig-vente:#4f8ef7;
-  --sig-hist: #60a5fa;
-  --sig-pv:   #f59e0b;
-  --sig-tree: #34d399;
-  --sig-sci:  #a78bfa;
+  --sig-hist: #1e40af;
+  --sig-pv:   #d97706;
+  --sig-tree: #16a34a;
+  --sig-sci:  #7c3aed;
 
   --r:  16px;
   --r2: 12px;
   --r3: 8px;
-  --sh: 0 1px 3px rgba(0,0,0,.4), 0 4px 20px rgba(0,0,0,.3);
-  --sh2:0 8px 40px rgba(0,0,0,.5);
+  --sh: 0 1px 3px rgba(0,0,0,.08), 0 4px 16px rgba(0,0,0,.06);
+  --sh2:0 8px 32px rgba(0,0,0,.12);
   --safe-top: env(safe-area-inset-top,0px);
   --safe-bot: env(safe-area-inset-bottom,0px);
   --font: 'DM Sans',system-ui,sans-serif;
@@ -122,9 +122,9 @@ body{
 
 /* status pill */
 .pill{font-size:10.5px;font-weight:700;padding:3px 10px;border-radius:999px;border:1px solid;white-space:nowrap;flex:none;letter-spacing:.01em}
-.pill.ok{background:rgba(52,211,153,.12);color:#34d399;border-color:rgba(52,211,153,.25)}
-.pill.sync{background:rgba(251,191,36,.10);color:#fbbf24;border-color:rgba(251,191,36,.25)}
-.pill.fail{background:rgba(248,113,113,.12);color:#f87171;border-color:rgba(248,113,113,.25)}
+.pill.ok{background:rgba(22,163,74,.10);color:#15803d;border-color:rgba(22,163,74,.3)}
+.pill.sync{background:rgba(180,120,0,.08);color:#92600a;border-color:rgba(180,120,0,.25)}
+.pill.fail{background:rgba(239,68,68,.10);color:#dc2626;border-color:rgba(239,68,68,.25)}
 
 /* ── STATS KPI BAR ── */
 .stats{
@@ -167,35 +167,35 @@ body{
 .stat[style*="cursor:pointer"]:active{transform:scale(.92)}
 /* KPI color variants */
 .stat.kpi-hot{
-  background:rgba(248,113,113,.10);
-  border-color:rgba(248,113,113,.22);
-  color:#f87171;
+  background:rgba(239,68,68,.07);
+  border-color:rgba(239,68,68,.2);
+  color:#dc2626;
 }
-.stat.kpi-hot b{color:#fca5a5}
+.stat.kpi-hot b{color:#b91c1c}
 .stat.kpi-warm{
-  background:rgba(251,191,36,.10);
-  border-color:rgba(251,191,36,.22);
-  color:#fbbf24;
+  background:rgba(245,158,11,.08);
+  border-color:rgba(245,158,11,.22);
+  color:#d97706;
 }
-.stat.kpi-warm b{color:#fde68a}
+.stat.kpi-warm b{color:#92600a}
 .stat.kpi-blue{
-  background:rgba(79,142,247,.10);
+  background:rgba(79,142,247,.08);
   border-color:rgba(79,142,247,.22);
-  color:#4f8ef7;
+  color:#2563eb;
 }
-.stat.kpi-blue b{color:#93c5fd}
+.stat.kpi-blue b{color:#1d4ed8}
 .stat.kpi-purple{
-  background:rgba(167,139,250,.10);
-  border-color:rgba(167,139,250,.22);
-  color:#a78bfa;
+  background:rgba(139,92,246,.08);
+  border-color:rgba(139,92,246,.22);
+  color:#7c3aed;
 }
-.stat.kpi-purple b{color:#c4b5fd}
+.stat.kpi-purple b{color:#5b21b6}
 .stat.kpi-green{
-  background:rgba(52,211,153,.10);
-  border-color:rgba(52,211,153,.22);
-  color:#34d399;
+  background:rgba(22,163,74,.08);
+  border-color:rgba(22,163,74,.22);
+  color:#15803d;
 }
-.stat.kpi-green b{color:#6ee7b7}
+.stat.kpi-green b{color:#166534}
 
 /* ── SEARCH ROW ── */
 .srow{display:flex;gap:7px}
@@ -249,13 +249,13 @@ body{
   background:var(--accent) !important;
   color:#fff !important;
   border-color:var(--accent) !important;
-  box-shadow:0 0 0 2px rgba(79,142,247,.25) !important;
+  box-shadow:0 0 0 2px rgba(79,142,247,.2) !important;
 }
 .chip.sun.on{
   background:var(--gold) !important;
-  color:#0d0f14 !important;
+  color:#1a1209 !important;
   border-color:var(--gold) !important;
-  box-shadow:0 0 0 2px rgba(251,191,36,.25) !important;
+  box-shadow:0 0 0 2px rgba(245,158,11,.2) !important;
 }
 .sel{
   border:1px solid var(--border);background:var(--bg4);
@@ -415,7 +415,7 @@ body{
 /* ── BUTTONS ── */
 .big{
   width:100%;padding:14px;border:none;border-radius:var(--r2);
-  background:var(--teal);color:#0d0f14;font-family:inherit;
+  background:var(--teal);color:#fff;font-family:inherit;
   font-weight:700;font-size:14px;cursor:pointer;
   touch-action:manipulation;min-height:50px;
   transition:opacity var(--trans),transform .12s;letter-spacing:.02em;
@@ -783,8 +783,8 @@ textarea.inp{resize:vertical;min-height:46px}
   #banner>div{font-size:13px;padding:10px 20px}
 }
 
-/* Leaflet dark mode */
-.leaflet-tile{filter:brightness(.75) contrast(1.05) saturate(.6) hue-rotate(180deg) invert(1)}
+/* Leaflet — tuiles normales (light mode) */
+.leaflet-tile{filter:none}
 
 /* ── DAILY BADGE ── */
 #daily-badge{
@@ -797,23 +797,23 @@ textarea.inp{resize:vertical;min-height:46px}
   white-space:nowrap;
 }
 #daily-badge.done{
-  background:rgba(52,211,153,.12);color:#34d399;
-  border-color:rgba(52,211,153,.25);
+  background:rgba(22,163,74,.10);color:#15803d;
+  border-color:rgba(22,163,74,.3);
 }
 #daily-badge.near{
-  background:rgba(251,191,36,.12);color:#fbbf24;
-  border-color:rgba(251,191,36,.25);
+  background:rgba(245,158,11,.10);color:#d97706;
+  border-color:rgba(245,158,11,.3);
 }
 
 /* ── TERRAIN OVERLAY CTA ── */
 #terrain-overlay .to-btn-boite{
-  background:linear-gradient(135deg,var(--teal),#1ba99e) !important;
-  color:#0d0f14 !important;
-  box-shadow:0 8px 28px rgba(45,212,191,.35) !important;
+  background:var(--teal) !important;
+  color:#fff !important;
+  box-shadow:0 6px 24px rgba(14,165,160,.3) !important;
 }
 #terrain-overlay .to-btn-boite.done{
-  background:linear-gradient(135deg,var(--green),#22a880) !important;
-  box-shadow:0 6px 24px rgba(52,211,153,.3) !important;
+  background:#16a34a !important;
+  box-shadow:0 6px 24px rgba(22,163,74,.3) !important;
 }
 
 /* ── TOAST ── */
@@ -821,13 +821,11 @@ textarea.inp{resize:vertical;min-height:46px}
   position:fixed;left:50%;
   bottom:calc(72px + var(--safe-bot));
   transform:translateX(-50%) translateY(8px);
-  background:var(--bg4);color:var(--ink);
-  border:1px solid var(--border2);
+  background:var(--ink);color:var(--bg2);
   padding:10px 18px;border-radius:999px;
   font-size:13px;font-weight:700;z-index:2000;
   opacity:0;transition:opacity .18s,transform .18s;
   pointer-events:none;box-shadow:var(--sh2);white-space:nowrap;
-  backdrop-filter:blur(12px);
 }
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 </style></head><body>
