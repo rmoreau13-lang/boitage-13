@@ -277,6 +277,64 @@ def quartier_officiel(lat, lon, feats):
             return NORM_QUA.get(raw, raw.title())
     return ""
 
+# ------------------------------------------------------------------ DVF + Historique
+def load_dvf(path):
+    if not Path(path).exists():
+        print("   (dvf_geocoded.json introuvable, croisement DVF désactivé)")
+        return []
+    with open(path, encoding='utf-8') as f:
+        return json.load(f)
+
+def load_hist(path):
+    if not Path(path).exists():
+        print("   (dvf_hist.json introuvable, hist_maturite désactivé)")
+        return []
+    with open(path, encoding='utf-8') as f:
+        return json.load(f)
+
+def find_nearest(lat, lon, lst, max_dist_m=80):
+    """Retourne l'élément le plus proche dans un rayon max_dist_m."""
+    best, best_dist = None, max_dist_m + 1
+    for v in lst:
+        vlat, vlon = v.get('lat'), v.get('lon')
+        if not vlat or not vlon:
+            continue
+        d = haversine(lat, lon, vlat, vlon)
+        if d < best_dist:
+            best_dist = d
+            best = (v, round(d, 1))
+    return best
+
+def calc_dvf_signal(dvf_date_str, today):
+    if not dvf_date_str:
+        return 'none'
+    try:
+        age_jours = (today - datetime.strptime(dvf_date_str[:10], "%Y-%m-%d").date()).days
+        if age_jours <= 365:
+            return 'vendu_recemment'
+        elif age_jours <= 1095:
+            return 'ancienne_vente'
+        else:
+            return 'none'
+    except Exception:
+        return 'none'
+
+def calc_hist_maturite(achat_date_str, today):
+    if not achat_date_str:
+        return 'nouveau'
+    try:
+        age_ans = (today - datetime.strptime(achat_date_str[:10], "%Y-%m-%d").date()).days / 365.25
+        if age_ans >= 10:
+            return 'tres_mature'
+        elif age_ans >= 7:
+            return 'mature'
+        elif age_ans >= 3:
+            return 'recente'
+        else:
+            return 'nouveau'
+    except Exception:
+        return 'nouveau'
+
 # ------------------------------------------------------------------ API ADEME
 def fetch_all(cp, since_iso, page=1000, timeout=60):
     qs = ('type_batiment:maison AND code_postal_ban:%s '
@@ -297,7 +355,7 @@ def fetch_all(cp, since_iso, page=1000, timeout=60):
     return rows
 
 # ------------------------------------------------------------------ transform
-def to_prospect(rec, today, cents):
+def to_prospect(rec, today, cents, dvf_list=None, hist_list=None):
     lat, lon = geo(rec)
     if lat is None:
         return None
@@ -331,7 +389,45 @@ def to_prospect(rec, today, cents):
         s -= PEN_ANNONCE
     score = max(-20, min(100, round(s)))
 
-    return {
+    # Croisement DVF récent
+    dvf_extra = {"dvf_signal": "none"}
+    if dvf_list:
+        dvf_match = find_nearest(lat, lon, dvf_list)
+        if dvf_match:
+            vente, dist_m = dvf_match
+            dvf_date_str = vente.get("date_mutation")
+            dvf_extra = {
+                "dvf_signal": calc_dvf_signal(dvf_date_str, today),
+                "dvf_date": dvf_date_str,
+                "dvf_prix": vente.get("prix"),
+                "dvf_surface": vente.get("surface_bati"),
+                "dvf_terrain": vente.get("surface_terrain"),
+                "dvf_pieces": vente.get("pieces"),
+                "dvf_prix_m2": vente.get("prix_m2"),
+                "dvf_dist_m": dist_m,
+                "dvf_adresse": vente.get("adresse"),
+            }
+
+    # Croisement historique acheteurs anciens
+    hist_extra = {"hist_maturite": "nouveau"}
+    if hist_list:
+        hist_match = find_nearest(lat, lon, hist_list)
+        if hist_match:
+            achat, hist_dist_m = hist_match
+            achat_date_str = achat.get("date")
+            try:
+                age_ans = (today - datetime.strptime(achat_date_str[:10], "%Y-%m-%d").date()).days / 365.25 if achat_date_str else None
+            except Exception:
+                age_ans = None
+            hist_extra = {
+                "hist_maturite": calc_hist_maturite(achat_date_str, today),
+                "hist_age_achat_ans": int(age_ans) if age_ans else None,
+                "hist_annee_achat": achat.get("annee"),
+                "hist_prix_achat": achat.get("prix"),
+                "hist_prix_m2_achat": achat.get("prix_m2"),
+            }
+
+    p = {
         "id": rec.get("numero_dpe"),
         "q": q,
         "qoff": "",            # quartier officiel (rempli dans main via point-dans-polygone)
@@ -356,6 +452,9 @@ def to_prospect(rec, today, cents):
         "gesv": round(float(gesv)) if gesv else None,
         "chauf": rec.get("type_energie_principale_chauffage"),
     }
+    p.update(dvf_extra)
+    p.update(hist_extra)
+    return p
 
 # ------------------------------------------------------------------ main
 def main():
@@ -368,6 +467,8 @@ def main():
     ap.add_argument("--cp5", default="", help="5e code postal BAN (optionnel)")
     ap.add_argument("--cp6", default="", help="6e code postal BAN (optionnel)")
     ap.add_argument("--out", default=str(HERE / "prospects.json"), help="fichier de sortie")
+    ap.add_argument("--dvf", default=str(HERE / "dvf_geocoded.json"), help="fichier DVF géocodé")
+    ap.add_argument("--hist", default=str(HERE / "dvf_hist.json"), help="historique achats DVF")
     args = ap.parse_args()
 
     out = Path(args.out)
@@ -395,13 +496,18 @@ def main():
     feats = load_quartiers()
     print("   %d quartiers officiels charges." % len(feats))
 
+    # Charger DVF et historique
+    dvf_list = load_dvf(args.dvf)
+    hist_list = load_hist(args.hist)
+    print("-> %d ventes DVF chargées, %d achats historiques chargés." % (len(dvf_list), len(hist_list)))
+
     seen, prospects = set(), []
     for rec in rows:
         nid = rec.get("numero_dpe")
         if not nid or nid in seen:
             continue
         seen.add(nid)
-        p = to_prospect(rec, today, cents)
+        p = to_prospect(rec, today, cents, dvf_list, hist_list)
         if p and p["q"] not in EXCLUDE_QUARTIERS:
             if feats:
                 p["qoff"] = quartier_officiel(p["lat"], p["lon"], feats)
@@ -418,7 +524,9 @@ def main():
     out.write_text(json.dumps(prospects, ensure_ascii=False, indent=1), encoding="utf-8")
     chauds = sum(1 for p in prospects if p["tier"] == "chaud")
     stars = sum(1 for p in prospects if p["prio"])
-    print("OK %s : %d prospects  (%d etoiles, %d chauds)" % (out, len(prospects), stars, chauds))
+    dvf_ok = sum(1 for p in prospects if p.get("dvf_signal") and p["dvf_signal"] != "none")
+    hist_ok = sum(1 for p in prospects if p.get("hist_maturite") in ("tres_mature", "mature"))
+    print("OK %s : %d prospects  (%d etoiles, %d chauds | %d DVF | %d hist matures)" % (out, len(prospects), stars, chauds, dvf_ok, hist_ok))
     print('   Pensez a re-pousser : git add prospects.json && '
           'git commit -m "MAJ prospects (extraction ADEME)" && git push')
 
