@@ -972,8 +972,9 @@ function load(){
  firstDismissed=store.get('boitage13_dismiss')==='1';
 }
 async function initData(){
- try{const r=await fetch('prospects.json?t='+Math.floor(Date.now()/300000));if(r.ok){const j=await r.json();const a=Array.isArray(j)?j:(j&&j.prospects);if(a&&a.length){DATA=a;store.set('boitage13_cache',JSON.stringify(a))}}}catch(e){}
- if(!DATA.length){const c=store.get('boitage13_cache');if(c){try{DATA=JSON.parse(c)}catch(e){}}}
+ try{const r=await fetch('prospects.json?t='+Math.floor(Date.now()/300000));if(r.ok){const j=await r.json();const a=Array.isArray(j)?j:(j&&j.prospects);if(a&&a.length){DATA=a;try{localStorage.removeItem('boitage13_cache')}catch(e){}}}}catch(e){}
+ // Fallback cache IndexedDB ou mémoire uniquement (pas localStorage — trop volumineux)
+ if(!DATA.length){const c=store.get('boitage13_cache');if(c){try{DATA=JSON.parse(c);localStorage.removeItem('boitage13_cache')}catch(e){}}}
  DATA=DATA.filter(p=>!EXCLU.has(p.q)).sort((a,b)=>b.score-a.score);DATA.forEach((p,i)=>p.rang=i+1);
  byId={};DATA.forEach(p=>byId[p.id]=p);MAX=Math.max(76,...DATA.map(p=>p.score||0));
 }
@@ -1285,7 +1286,7 @@ function updateStats(){
  const tot=DATA.length,star=DATA.filter(p=>p.prio).length,chaud=DATA.filter(p=>p.tier==='chaud').length,todo=DATA.filter(p=>rec(p.id).s==0).length;
  const nbMaisons=DATA.filter(p=>!p.type_bien||p.type_bien==='maison').length;
  const nbApparts=DATA.filter(p=>p.type_bien==='appartement').length;
- const dvfHot=DATA.filter(p=>p.dvf_signal==='en_vente'||p.dvf_signal==='vendu_recemment').length;
+ const dvfHot=DATA.filter(p=>p.dvf_signal==='en_vente'||p.dvf_signal==='vendu_recemment'||p.dvf_signal==='ancienne_vente').length;
  const histHot=DATA.filter(p=>p.hist_maturite==='tres_mature'||p.hist_maturite==='mature').length;
  const topHot=DATA.filter(p=>p.signal_top).length;
 const dpeFraisHot=DATA.filter(p=>p.dpe_frais==='tres_frais').length;
@@ -2290,3 +2291,4 @@ function populateQuartiers(){
 load();renderBanner();initMap();sbInit();migratePhotos();initData().then(()=>{populateQuartiers();populateArrond();refresh();updateDailyBadge();setStatus('ok');setTimeout(()=>{if(map){map.invalidateSize();if(DATA.length){const lats=DATA.filter(p=>p.lat).map(p=>p.lat),lons=DATA.filter(p=>p.lon).map(p=>p.lon);if(lats.length)map.fitBounds([[Math.min(...lats)-0.005,Math.min(...lons)-0.005],[Math.max(...lats)+0.005,Math.max(...lons)+0.005]],{maxZoom:15});}}}  ,300)});
 </script>
 </body></html>
+
