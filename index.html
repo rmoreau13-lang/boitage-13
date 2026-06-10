@@ -2053,73 +2053,114 @@ function printFiche(id){
   var p=DATA.find(function(x){return x.id===id});
   if(!p)return;
   var r=rec(id)||{};
-  var dc={A:'#00b050',B:'#92d050',C:'#c6e000',D:'#ffbf00',E:'#ff9900',F:'#ff0000',G:'#c00000'}[p.dpe]||'#888';
-  var pv=p.prix_estime?Math.round(p.prix_estime).toLocaleString('fr-FR')+'€':'—';
-  var pvM2=(p.prix_estime&&p.surface)?Math.round(p.prix_estime/p.surface).toLocaleString('fr-FR')+' €/m²':'—';
-  var signal=p.signal_top?'🔥 TOP':'';
-  var w=window.open('','_blank','width=820,height=950');
+  var DPE_COLOR={A:'#00b050',B:'#92d050',C:'#c6e000',D:'#ffbf00',E:'#ff9900',F:'#ff0000',G:'#c00000'};
+  var dc=DPE_COLOR[p.dpe]||'#888';
+  var dpeLabels=['A','B','C','D','E','F','G'];
+  var w=window.open('','_blank','width=500,height=820');
   if(!w)return;
-  var nom=(r.contact&&r.contact.nom)||'—';
-  var tel=(r.contact&&r.contact.tel)||'—';
-  var mail=(r.contact&&r.contact.email)||'—';
-  var note=(r.note||'Aucune note').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  var typeLbl=p.type_bien==='appartement'?'🏢 Appart'+(p.etage!=null?' · Ét.'+p.etage:''):'🏠 Maison';
-  var dvfDate=p.dvf_date||'—';
-  var dvfPrix=p.dvf_prix?Math.round(p.dvf_prix).toLocaleString('fr-FR')+' €':'—';
-  var annonces=(p.annonces_actives>0)?'✅ '+p.annonces_actives+' annonce(s)':'❌ Non';
-  var sci=p.sci_name||'—';
+
+  // --- données ---
   var surface=p.surface?p.surface+' m²':'—';
-  var dpeDt=p.date_dpe?'<div style="font-size:11px;color:#888">'+p.date_dpe+'</div>':'';
-  var sigHtml=signal?'<div style="background:#fff3cd;border:1px solid #ffc107;border-radius:6px;padding:8px 12px;margin-bottom:12px;font-weight:700">'+signal+'</div>':'';
-  var css=[
-    '*{box-sizing:border-box;margin:0;padding:0}',
-    'body{font-family:Inter,Arial,sans-serif;background:#fff;color:#111;padding:20px 24px 80px;max-width:740px;margin:0 auto}',
-    'h1{font-size:18px;font-weight:900;margin-bottom:4px;color:#1a1a2e}',
-    '.sub{font-size:13px;color:#666;margin-bottom:14px}',
-    '.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}',
-    '.card{border:1px solid #e0e0e0;border-radius:8px;padding:10px}',
-    '.card h2{font-size:10px;font-weight:800;text-transform:uppercase;color:#aaa;margin-bottom:4px}',
-    '.big{font-size:20px;font-weight:900;color:#1a1a2e}',
-    '.sm{font-size:14px;font-weight:700;color:#1a1a2e}',
-    '.dpe{display:inline-block;background:'+dc+';color:#fff;font-size:22px;font-weight:900;padding:3px 14px;border-radius:6px}',
-    '.row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #f0f0f0;font-size:13px}',
-    '.row:last-child{border:none}',
-    '.lbl{color:#888;font-weight:600}',
-    '.sec{margin-bottom:14px}',
-    '.sec h3{font-size:11px;font-weight:800;text-transform:uppercase;color:#aaa;margin-bottom:6px;border-bottom:2px solid #eee;padding-bottom:4px}',
-    '.note{background:#f8f9fa;border-radius:8px;padding:10px;font-size:13px;white-space:pre-wrap;min-height:50px}',
-    '.btns{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e0e0e0;padding:10px 24px;display:flex;gap:8px;justify-content:center}',
-    '.btn{padding:9px 24px;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer}',
-    '.bp{background:#e0552a;color:#fff}',
-    '.bc{background:#eee;color:#333}',
-    '@media print{.btns{display:none}body{padding:12px}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}'
-  ].join('');
-  var body='<h1>'+(p.adresse||p.id)+'</h1>'
-    +'<div class="sub">'+(p.q||'—')+' · '+(p.cp||'')+' Marseille</div>'
-    +sigHtml
-    +'<div class="g2">'
-      +'<div class="card"><h2>DPE</h2><span class="dpe">'+(p.dpe||'?')+'</span>'+dpeDt+'</div>'
-      +'<div class="card"><h2>Valeur estimée</h2><div class="sm">'+pv+'</div><div style="font-size:11px;color:#888">'+pvM2+'</div></div>'
-      +'<div class="card"><h2>Surface</h2><div class="big">'+surface+'</div></div>'
-      +'<div class="card"><h2>Type</h2><div class="sm">'+typeLbl+'</div></div>'
+  var annee=p.annee?p.annee+'':'';
+  var chauf=p.chauf||'—';
+  var conso=p.conso?p.conso+' kWh/m².an':'—';
+  var gesv=p.gesv?p.gesv+' kgCO₂/m².an':'—';
+  var cout=p.cout_total?p.cout_total.toLocaleString('fr-FR')+' €/an':'—';
+  var dpeDate=p.date?(function(){try{var d=new Date(p.date);return d.toLocaleDateString('fr-FR',{month:'long',year:'numeric'})}catch(e){return p.date}})():'—';
+  var dvfDate=p.dvf_date?(function(){try{var d=new Date(p.dvf_date);return d.toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'})}catch(e){return p.dvf_date}})():'—';
+  var dvfPrix=p.dvf_prix?Math.round(p.dvf_prix).toLocaleString('fr-FR')+' €':'—';
+  var dvfM2=p.dvf_prix_m2?Math.round(p.dvf_prix_m2).toLocaleString('fr-FR')+' €/m²':'—';
+  var dvfSurface=p.dvf_surface?p.dvf_surface+' m²':'—';
+  var dvfSignalLbl={en_vente:'🔴 En vente',vendu_recemment:'🟠 Vendu récemment',ancienne_vente:'🟡 Ancienne vente',none:''}[p.dvf_signal||'none']||'';
+  var histLbl={tres_mature:'📅 Achat il y a '+p.hist_age_achat_ans+' ans — Vendeur très probable',mature:'📅 Achat il y a '+p.hist_age_achat_ans+' ans — En fenêtre de revente',recente:'📅 Achat il y a '+p.hist_age_achat_ans+' ans',nouveau:''}[p.hist_maturite||'nouveau']||'';
+  var typeLbl=p.type_bien==='appartement'?'Appartement':'Maison';
+  var adresse=p.adresse||p.id;
+  var quartier=(p.prio?'⭐ ':'')+esc(p.q||'')+(p.qoff&&p.qoff!==p.q?' · '+esc(p.qoff):'');
+
+  // --- barre DPE ---
+  var dpeBar=dpeLabels.map(function(l){
+    var active=l===p.dpe;
+    return '<div style="display:flex;align-items:center;gap:5px;margin:2px 0">'
+      +'<div style="width:'+(30+(dpeLabels.indexOf(l)*14))+'px;height:22px;background:'+DPE_COLOR[l]+';border-radius:0 4px 4px 0;display:flex;align-items:center;padding-left:6px;'+(active?'outline:2.5px solid #111;outline-offset:1px':'')+'">'
+      +'<span style="color:#fff;font-weight:'+(active?'900':'600')+';font-size:'+(active?'15':'12')+'px">'+l+'</span></div>'
+      +(active?'<span style="font-weight:900;font-size:13px">← '+conso+'</span>':'')
+      +'</div>';
+  }).join('');
+
+  var css='*{box-sizing:border-box;margin:0;padding:0}'
+    +'body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f5f5f7;color:#1a1a2e;max-width:480px;margin:0 auto}'
+    +'.hero{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);color:#fff;padding:20px 20px 16px}'
+    +'.hero-addr{font-size:17px;font-weight:800;line-height:1.3;margin-bottom:4px}'
+    +'.hero-q{font-size:12px;opacity:.7;margin-bottom:12px}'
+    +'.hero-pills{display:flex;flex-wrap:wrap;gap:6px}'
+    +'.pill{background:rgba(255,255,255,.12);border-radius:20px;padding:4px 10px;font-size:11px;font-weight:700}'
+    +'.pill.hot{background:rgba(255,150,50,.25);color:#ffb066}'
+    +'.body{padding:14px 14px 80px}'
+    +'.sec{background:#fff;border-radius:12px;padding:14px;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,.06)}'
+    +'.sec-title{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:#888;margin-bottom:10px}'
+    +'.row{display:flex;justify-content:space-between;align-items:baseline;padding:5px 0;border-bottom:1px solid #f0f0f0;font-size:13px}'
+    +'.row:last-child{border:none}'
+    +'.lbl{color:#888;font-weight:500}'
+    +'.val{font-weight:700;text-align:right;max-width:55%}'
+    +'.dpe-wrap{display:flex;gap:16px;align-items:flex-start}'
+    +'.btns{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e0e0e0;padding:12px 16px;display:flex;gap:8px}'
+    +'.btn{flex:1;padding:12px;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer}'
+    +'.bp{background:#1a1a2e;color:#fff}'
+    +'.bs{background:#e0552a;color:#fff}'
+    +'@media print{.btns{display:none}body{background:#fff}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}';
+
+  var hasDvf=p.dvf_signal&&p.dvf_signal!=='none';
+  var dvfBlock=hasDvf
+    ?'<div class="sec">'
+      +'<div class="sec-title">💰 Marché DVF — Dernière vente</div>'
+      +(dvfSignalLbl?'<div style="font-size:12px;font-weight:700;margin-bottom:8px">'+dvfSignalLbl+'</div>':'')
+      +'<div class="row"><span class="lbl">Date de vente</span><span class="val">'+dvfDate+'</span></div>'
+      +'<div class="row"><span class="lbl">Prix</span><span class="val" style="color:#1c8b75;font-size:15px">'+dvfPrix+'</span></div>'
+      +(p.dvf_prix_m2?'<div class="row"><span class="lbl">Prix/m²</span><span class="val">'+dvfM2+'</span></div>':'')
+      +(p.dvf_surface?'<div class="row"><span class="lbl">Surface vendue</span><span class="val">'+dvfSurface+'</span></div>':'')
+      +(p.dvf_adresse?'<div class="row"><span class="lbl">Adresse vente</span><span class="val" style="font-size:11px">'+esc(p.dvf_adresse)+'</span></div>':'')
+      +'</div>'
+    :'';
+
+  var histBlock=histLbl
+    ?'<div style="background:#1a3a6015;border-radius:8px;padding:8px 10px;font-size:12px;font-weight:700;color:#1a3a60;margin-bottom:10px">'+histLbl+'</div>'
+    :'';
+
+  var body='<div class="hero">'
+    +'<div class="hero-addr">'+esc(adresse)+'</div>'
+    +'<div class="hero-q">'+quartier+'</div>'
+    +'<div class="hero-pills">'
+    +'<span class="pill">'+typeLbl+'</span>'
+    +'<span class="pill">'+surface+'</span>'
+    +(annee?'<span class="pill">'+annee+'</span>':'')
+    +(dvfSignalLbl?'<span class="pill hot">'+dvfSignalLbl+'</span>':'')
+    +'</div></div>'
+    +'<div class="body">'
+    +histBlock
+    +'<div class="sec">'
+      +'<div class="sec-title">⚡ DPE — Diagnostic de Performance Énergétique</div>'
+      +'<div class="dpe-wrap"><div>'+dpeBar+'</div>'
+      +'<div style="margin-left:auto;text-align:right">'
+        +(p.dpe?'<div style="background:'+dc+';color:#fff;font-size:32px;font-weight:900;padding:4px 18px;border-radius:8px;display:inline-block">'+p.dpe+'</div>':'')
+        +'<div style="font-size:10px;color:#888;margin-top:4px">DPE '+dpeDate+'</div>'
+      +'</div></div>'
+      +'<div style="margin-top:10px">'
+        +'<div class="row"><span class="lbl">Énergie primaire</span><span class="val">'+conso+'</span></div>'
+        +'<div class="row"><span class="lbl">Émissions GES</span><span class="val">'+gesv+'</span></div>'
+        +'<div class="row"><span class="lbl">Coût énergétique</span><span class="val">'+cout+'</span></div>'
+        +'<div class="row"><span class="lbl">Chauffage</span><span class="val">'+esc(chauf)+'</span></div>'
+        +(annee?'<div class="row"><span class="lbl">Année construction</span><span class="val">'+annee+'</span></div>':'')
+      +'</div>'
     +'</div>'
-    +'<div class="sec"><h3>Informations</h3>'
-      +'<div class="row"><span class="lbl">Dernière vente</span><span>'+dvfDate+'</span></div>'
-      +'<div class="row"><span class="lbl">Prix vente</span><span>'+dvfPrix+'</span></div>'
-      +'<div class="row"><span class="lbl">Annonces</span><span>'+annonces+'</span></div>'
-      +'<div class="row"><span class="lbl">SCI</span><span>'+sci+'</span></div>'
+    +dvfBlock
+    +'<div style="text-align:center;font-size:10px;color:#bbb;margin-top:8px">Boîtage 13e · '+new Date().toLocaleDateString(\'fr-FR\')+'</div>'
     +'</div>'
-    +'<div class="sec"><h3>Contact</h3>'
-      +'<div class="row"><span class="lbl">Nom</span><span>'+nom+'</span></div>'
-      +'<div class="row"><span class="lbl">Tél</span><span>'+tel+'</span></div>'
-      +'<div class="row"><span class="lbl">Email</span><span>'+mail+'</span></div>'
-    +'</div>'
-    +'<div class="sec"><h3>Note</h3><div class="note">'+note+'</div></div>'
     +'<div class="btns">'
-      +'<button class="btn bp" onclick="window.print()">🖨️ Imprimer</button>'
-      +'<button class="btn bc" onclick="window.close()">Fermer</button>'
+      +'<button class="btn bp" onclick="window.print()">🖨️ Imprimer / PDF</button>'
+      +'<button class="btn bs" onclick="if(navigator.share){navigator.share({title:\''+esc(adresse)+'\',text:\''+esc(adresse)+' · '+esc(p.q||'')+' · DPE '+p.dpe+' · '+surface+'\'})}else{window.print()}">⬆ Partager</button>'
     +'</div>';
-  w.document.write('<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><title>Fiche</title><style>'+css+'</style></head><body>'+body+'</body></html>');
+
+  w.document.write('<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+esc(adresse)+'</title><style>'+css+'</style></head><body>'+body+'</body></html>');
   w.document.close();
 }
 
