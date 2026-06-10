@@ -2107,7 +2107,8 @@ function printFiche(id){
     +'.btn{flex:1;padding:12px;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer}'
     +'.bp{background:#1a1a2e;color:#fff}'
     +'.bs{background:#e0552a;color:#fff}'
-    +'@media print{.btns{display:none}body{background:#fff}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}';
+    +'@page{size:A4;margin:15mm}'
+    +'@media print{.btns{display:none}body{background:#fff;max-width:100%}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}';
 
   var hasDvf=p.dvf_signal&&p.dvf_signal!=='none';
   var dvfBlock=hasDvf
@@ -2156,11 +2157,11 @@ function printFiche(id){
     +'<div style="text-align:center;font-size:10px;color:#bbb;margin-top:8px">Boîtage 13e · '+(new Date().toLocaleDateString("fr-FR"))+'</div>'
     +'</div>'
     +'<div class="btns">'
-      +'<button class="btn bp" onclick="window.print()">🖨️ Imprimer / PDF</button>'
+      +'<button class="btn bp" onclick="window.print()">📄 Enregistrer en PDF</button>'
       +'<button class="btn bs" onclick="if(navigator.share){navigator.share({title:\''+esc(adresse)+'\',text:\''+esc(adresse)+' · '+esc(p.q||'')+' · DPE '+p.dpe+' · '+surface+'\'})}else{window.print()}">⬆ Partager</button>'
     +'</div>';
 
-  w.document.write('<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+esc(adresse)+'</title><style>'+css+'</style></head><body>'+body+'</body></html>');
+  w.document.write('<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+esc(adresse)+'</title><style>'+css+'</style></head><body>'+body+'<script>setTimeout(function(){window.print()},600);<\/script></body></html>');
   w.document.close();
 }
 
