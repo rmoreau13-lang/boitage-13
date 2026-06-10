@@ -1832,7 +1832,7 @@ function openFiche(id){ficheOpen=id;const p=byId[id];if(!p)return;const r=rec(id
  const seg=STAT.map((t,k)=>'<button class="'+(r.s==k?'on':'')+'" onclick="setS(\''+id+'\','+k+')">'+t+'</button>').join('');
  const off=p.qoff&&p.qoff!==p.q?' · 🏛 '+esc(p.qoff):'';
  $('fiche').innerHTML='<div class="fhead"><div class="fbar"><button class="back" onclick="closeFiche()">‹</button><div class="ftt"><h2>'+esc(p.adresse)+'</h2><div class="fq">'+(p.prio?'⭐ ':'')+esc(p.q)+' · '+EMO[p.tier]+' '+p.tier+off+(p.lieu_dit&&p.lieu_dit!==p.q?' <span style="opacity:.6;font-size:10px">· '+esc(p.lieu_dit)+'</span>':'')+'</div></div><div class="fsc">'+p.score+'</div></div>'
- +'<button class="copyaddr" onclick="copyAddr(\''+id+'\',this)">📋 Copier l\'adresse</button>'
+ +'<div style="display:flex;gap:6px;margin:0 12px 0">'+'<button class="copyaddr" style="flex:1" onclick="copyAddr(\''+id+'\',this)">📋 Copier l\'adresse</button>'+'<button class="copyaddr" style="flex:none;padding:0 14px" onclick="shareFiche(\''+id+'\')">⬆ Partager</button>'+'</div>'
  +'<div class="facts"><a class="act map" href="'+p.gmaps+'" target="_blank"><span class="ai">📍</span>Maps</a><a class="act earth" href="'+earthURL(p)+'" target="_blank"><span class="ai">🌍</span>Earth</a>'+annBtnHTML(p)+'<a class="act papers" href="'+pappersURL(p)+'" target="_blank"><span class="ai">🏠</span>Pappers</a>'+'<a class="act pb" href="'+pbURL(p)+'" target="_blank"><span class="ai">📞</span>Pages Blanches</a>'+'<button class="act tour '+(inTour(id)?'in':'')+'" id="ftour" onclick="toggleTour(\''+id+'\')">'+(inTour(id)?'<span class=\"ai\">✓</span>Tournée':'<span class=\"ai\">＋</span>Tournée')+'</button><button class=\"act fiche\" onclick=\"printFiche(\''+id+'\')\">\U0001F4C4 Fiche</button><button class=\"act print\" onclick=\"printFiche(\''+id+'\')\">\U0001F5A8\uFE0F Imprimer</button></div></div>'
  +'<div class="fbody">'
  +coproHTML(p)
@@ -1845,7 +1845,8 @@ function openFiche(id){ficheOpen=id;const p=byId[id];if(!p)return;const r=rec(id
  +fichePappersHTML(p)+ficheSciHTML(p)+ficheVenteHTML(p)+ficheAdemeHTML(p)+ficheDvfHTML(p)
  +'</div>';
  const fd=$('fiche');fd.classList.add('show');requestAnimationFrame(()=>fd.classList.add('open'));renderPhotos(id);bindFicheInputs(id)}
-function closeFiche(){saveState();const fd=$('fiche');fd.classList.remove('open');ficheOpen=null;setTimeout(()=>fd.classList.remove('show'),260);refresh()}
+function closeFiche(){saveState();const fd=$('fiche');fd.classList.remove('open');ficheOpen=null;setTimeout(()=>fd.classList.remove('show'),260);history.replaceState(null,'',location.pathname);refresh()}
+function shareFiche(id){const p=byId[id];if(!p)return;const url=location.origin+location.pathname+'?fiche='+encodeURIComponent(id);const txt=(p.prio?'⭐ ':'')+p.adresse+' • '+p.q+(p.surface?' • '+p.surface+' m²':'')+(p.dpe?' • DPE '+p.dpe:'');if(navigator.share){navigator.share({title:p.adresse,text:txt,url:url}).catch(()=>{})}else{navigator.clipboard&&navigator.clipboard.writeText(url).then(()=>toast('Lien copié ✓')).catch(()=>toast('Lien : '+url))}}
 function syncFicheTour(){const b=$('ftour');if(b){const on=inTour(ficheOpen);b.classList.toggle('in',on);b.textContent=on?'✓ Tournée':'＋ Tournée'}}
 function setS(id,k){rec(id).s=k;touch(id);saveState();document.querySelectorAll('#fiche .seg button').forEach((b,i)=>b.classList.toggle('on',i===k))}
 function setC(id,k,v){rec(id).contact[k]=v;touch(id);saveState()}
@@ -2288,7 +2289,7 @@ function populateQuartiers(){
   sel.value=fq;
   sel.onchange=()=>{fq=sel.value;refresh()};
 }
-load();renderBanner();initMap();sbInit();migratePhotos();initData().then(()=>{populateQuartiers();populateArrond();refresh();updateDailyBadge();setStatus('ok');setTimeout(()=>{if(map){map.invalidateSize();if(DATA.length){const lats=DATA.filter(p=>p.lat).map(p=>p.lat),lons=DATA.filter(p=>p.lon).map(p=>p.lon);if(lats.length)map.fitBounds([[Math.min(...lats)-0.005,Math.min(...lons)-0.005],[Math.max(...lats)+0.005,Math.max(...lons)+0.005]],{maxZoom:15});}}}  ,300)});
+load();renderBanner();initMap();sbInit();migratePhotos();initData().then(()=>{populateQuartiers();populateArrond();refresh();updateDailyBadge();setStatus('ok');setTimeout(()=>{if(map){map.invalidateSize();if(DATA.length){const lats=DATA.filter(p=>p.lat).map(p=>p.lat),lons=DATA.filter(p=>p.lon).map(p=>p.lon);if(lats.length)map.fitBounds([[Math.min(...lats)-0.005,Math.min(...lons)-0.005],[Math.max(...lats)+0.005,Math.max(...lons)+0.005]],{maxZoom:15});}}}  ,300);const urlFiche=new URLSearchParams(location.search).get('fiche');if(urlFiche&&byId[urlFiche]){nav('liste');setTimeout(()=>openFiche(urlFiche),100)}});
 </script>
 </body></html>
 
