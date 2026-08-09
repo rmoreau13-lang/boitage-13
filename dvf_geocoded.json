@@ -4156,21 +4156,6 @@
  },
  {
   "date_mutation": "2023-03-13",
-  "adresse": "2 Bd Du Bocage",
-  "code_postal": "13013",
-  "commune": "Marseille 13e",
-  "prix": 200000.0,
-  "surface_bati": 172.0,
-  "surface_terrain": 270.0,
-  "pieces": 6,
-  "lat": 43.322047,
-  "lon": 5.414851,
-  "prix_m2": 1163.0,
-  "type_local": "Maison",
-  "_raw_code": "13213"
- },
- {
-  "date_mutation": "2023-03-13",
   "adresse": "1 Lot La Bastide De Ravel",
   "code_postal": "13013",
   "commune": "Marseille 13e",
@@ -4181,6 +4166,21 @@
   "lat": 43.324468,
   "lon": 5.432952,
   "prix_m2": 3692.0,
+  "type_local": "Maison",
+  "_raw_code": "13213"
+ },
+ {
+  "date_mutation": "2023-03-13",
+  "adresse": "2 Bd Du Bocage",
+  "code_postal": "13013",
+  "commune": "Marseille 13e",
+  "prix": 200000.0,
+  "surface_bati": 172.0,
+  "surface_terrain": 270.0,
+  "pieces": 6,
+  "lat": 43.322047,
+  "lon": 5.414851,
+  "prix_m2": 1163.0,
   "type_local": "Maison",
   "_raw_code": "13213"
  },
