@@ -6961,21 +6961,6 @@
  },
  {
   "date_mutation": "2022-07-13",
-  "adresse": "8 Lot Les Cytises",
-  "code_postal": "13013",
-  "commune": "Marseille 13e",
-  "prix": 339000.0,
-  "surface_bati": 69.0,
-  "surface_terrain": 361.0,
-  "pieces": 3,
-  "lat": 43.340452,
-  "lon": 5.435157,
-  "prix_m2": 4913.0,
-  "type_local": "Maison",
-  "_raw_code": "13213"
- },
- {
-  "date_mutation": "2022-07-13",
   "adresse": "13 Rue Albert",
   "code_postal": "13013",
   "commune": "Marseille 13e",
@@ -6986,6 +6971,21 @@
   "lat": 43.330298,
   "lon": 5.42057,
   "prix_m2": 3300.0,
+  "type_local": "Maison",
+  "_raw_code": "13213"
+ },
+ {
+  "date_mutation": "2022-07-13",
+  "adresse": "8 Lot Les Cytises",
+  "code_postal": "13013",
+  "commune": "Marseille 13e",
+  "prix": 339000.0,
+  "surface_bati": 69.0,
+  "surface_terrain": 361.0,
+  "pieces": 3,
+  "lat": 43.340452,
+  "lon": 5.435157,
+  "prix_m2": 4913.0,
   "type_local": "Maison",
   "_raw_code": "13213"
  },
